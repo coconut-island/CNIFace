@@ -15,6 +15,7 @@ set(SOURCE_FILES
         main.cpp
         common.h
         common.cpp
+        FacePreprocess.h
         3rdparty/tvm/apps/howto_deploy/tvm_runtime_pack.cc
         ${RETINA_FACE_SRC}
         ${MOBILE_FACE_NET_SRC}
