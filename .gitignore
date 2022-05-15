@@ -32,7 +32,9 @@
 *.app
 
 cmake-build-debug/
-models/relay/*
+models/relay/*.json
+models/relay/*.params
+models/relay/*.so
 build/
 .pkl_memoize_py3/
 .DS_Store
