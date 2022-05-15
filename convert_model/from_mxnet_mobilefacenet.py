@@ -1,14 +1,13 @@
 import mxnet as mx
 import tvm.relay as relay
 
-
 if __name__ == "__main__":
-    network = 'mnet.25'
+    network = 'mobilefacenet'
     device = 'x86.cpu'
 
     path = './models/%s' % (network)
 
-    image_shape = (1, 3, 480, 640)
+    image_shape = (1, 3, 112, 112)
 
     mx_sym, args, auxs = mx.model.load_checkpoint(path, 0)
 

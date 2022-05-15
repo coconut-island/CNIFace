@@ -3,6 +3,8 @@
 
 这个project 是想 做一个 人脸平台的
 
+2. retinaface + mobilefacenet 1:1 demo【完成】
+
 1. 做个retinaface tvm infer demo 【完成】
 
 python 的tvm 自己安装

@@ -2,7 +2,23 @@ cmake_minimum_required(VERSION 3.16.5)
 project(main)
 set(CMAKE_CXX_STANDARD 14)
 
-set(SOURCE_FILES main.cpp config.h config.cpp anchor_generator.h anchor_generator.cpp ulsMatF.h 3rdparty/tvm/apps/howto_deploy/tvm_runtime_pack.cc)
+file(GLOB RETINA_FACE_SRC
+        ${CMAKE_CURRENT_SOURCE_DIR}/retinaface/*.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/retinaface/*.cpp
+)
+file(GLOB MOBILE_FACE_NET_SRC
+        ${CMAKE_CURRENT_SOURCE_DIR}/mobilefacenet/*.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/mobilefacenet/*.cpp
+        )
+
+set(SOURCE_FILES
+        main.cpp
+        common.h
+        common.cpp
+        3rdparty/tvm/apps/howto_deploy/tvm_runtime_pack.cc
+        ${RETINA_FACE_SRC}
+        ${MOBILE_FACE_NET_SRC}
+)
 
 find_package(OpenCV REQUIRED)
 

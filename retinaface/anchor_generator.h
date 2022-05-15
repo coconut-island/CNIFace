@@ -82,13 +82,15 @@ public:
 
     cv::Rect_< float > finalbox; // final box res
 
+    cv::Rect_< float > source_box; // source img final box res
+
     void print() {
-//        printf("finalbox %f %f %f %f, score %f\n", finalbox.x, finalbox.y, finalbox.width, finalbox.height, score);
-//        printf("landmarks ");
-//        for (int i = 0; i < pts.size(); ++i) {
-//            printf("%f %f, ", pts[i].x, pts[i].y);
-//        }
-//        printf("\n");
+        printf("finalbox %f %f %f %f, score %f\n", finalbox.x, finalbox.y, finalbox.width, finalbox.height, score);
+        printf("landmarks ");
+        for (auto & pt : pts) {
+            printf("%f %f, ", pt.x, pt.y);
+        }
+        printf("\n");
     }
 };
 

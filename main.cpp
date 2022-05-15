@@ -1,225 +1,175 @@
 #include <iostream>
-#include <fstream>
-#include <algorithm>
 #include <iterator>
 #include <cmath>
-
-#include <dlpack/dlpack.h>
-#include <tvm/runtime/module.h>
-#include <tvm/runtime/registry.h>
-#include <tvm/runtime/packed_func.h>
 
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/core/core.hpp>
 
-#include "anchor_generator.h"
-#include "config.h"
-#include "ulsMatF.h"
+#include "retinaface/anchor_generator.h"
+#include "retinaface/config.h"
+#include "retinaface/RetinaFaceDeploy.h"
+#include "FacePreprocess.h"
+
+#include "mobilefacenet/MobileFaceNetDeploy.h"
+
 
 using namespace std;
 using namespace tvm::runtime;
+using namespace cv;
 
-void nms_cpu(std::vector<Anchor>& boxes, float threshold, std::vector<Anchor>& filterOutBoxes) {
-    filterOutBoxes.clear();
-    if(boxes.empty())
-        return;
-    std::vector<size_t> idx(boxes.size());
 
-    for(unsigned i = 0; i < idx.size(); i++)
-    {
-        idx[i] = i;
+inline double count_angle(float landmark[5][2]) {
+    double a = landmark[2][1] - (landmark[0][1] + landmark[1][1]) / 2;
+    double b = landmark[2][0] - (landmark[0][0] + landmark[1][0]) / 2;
+    double angle = atan(abs(b) / a) * 180 / PI;
+    return angle;
+}
+
+void retinaOutput2Rects(const RetinaOutput& retinaOutput, vector<cni::Rect>& rects) {
+    vector<Anchor> anchors = retinaOutput.result;
+    float ratio_x = retinaOutput.ratio.x;
+    float ratio_y = retinaOutput.ratio.y;
+
+    for (auto& anchor : anchors) {
+        cni::Rect rect;
+        rect.score = anchor.score;
+        rect.x = anchor.finalbox.x * ratio_x;
+        rect.y = anchor.finalbox.y * ratio_y;
+        rect.w = anchor.finalbox.width * ratio_x;
+        rect.h = anchor.finalbox.height * ratio_y;
+
+        for (int i = 0; i < anchor.pts.size(); ++i) {
+            rect.landmarks[i][0] = anchor.pts[i].x * ratio_x;
+            rect.landmarks[i][1] = anchor.pts[i].y * ratio_y;
+        }
+        rects.emplace_back(rect);
     }
+}
 
-    //descending sort
-    sort(boxes.begin(), boxes.end(), std::greater<Anchor>());
+Mat Zscore(const Mat &fc) {
+    Mat mean, std;
+    meanStdDev(fc, mean, std);
+    Mat fc_norm = (fc - mean) / std;
+    return fc_norm;
+}
 
-    while(!idx.empty())
-    {
-        int good_idx = idx[0];
-        filterOutBoxes.push_back(boxes[good_idx]);
+inline float getMold(const vector<float>& vec){
+    int n = vec.size();
+    float sum = 0.0;
+    for (int i = 0; i < n; ++i)
+        sum += vec[i] * vec[i];
+    return sqrt(sum);
+}
 
-        std::vector<size_t> tmp = idx;
-        idx.clear();
-        for(unsigned i = 1; i < tmp.size(); i++)
-        {
-            int tmp_i = tmp[i];
-            float inter_x1 = std::max( boxes[good_idx][0], boxes[tmp_i][0] );
-            float inter_y1 = std::max( boxes[good_idx][1], boxes[tmp_i][1] );
-            float inter_x2 = std::min( boxes[good_idx][2], boxes[tmp_i][2] );
-            float inter_y2 = std::min( boxes[good_idx][3], boxes[tmp_i][3] );
+inline float CosineDistance(const vector<float>& lhs, const vector<float>& rhs){
+    int n = lhs.size();
+    assert(n == rhs.size());
+    float tmp = 0.0;
+    for (int i = 0; i<n; ++i)
+        tmp += lhs[i] * rhs[i];
+    return tmp / (getMold(lhs) * getMold(rhs));
+}
 
-            float w = std::max((inter_x2 - inter_x1 + 1), 0.0F);
-            float h = std::max((inter_y2 - inter_y1 + 1), 0.0F);
-
-            float inter_area = w * h;
-            float area_1 = (boxes[good_idx][2] - boxes[good_idx][0] + 1) * (boxes[good_idx][3] - boxes[good_idx][1] + 1);
-            float area_2 = (boxes[tmp_i][2] - boxes[tmp_i][0] + 1) * (boxes[tmp_i][3] - boxes[tmp_i][1] + 1);
-            float o = inter_area / (area_1 + area_2 - inter_area);
-            if( o <= threshold )
-                idx.push_back(tmp_i);
+void mat2Vector(const Mat& mat, vector<float>& feature) {
+    if (mat.isContinuous()) {
+        feature.assign((float*)mat.data, (float*)mat.data + mat.total() * mat.channels());
+    } else {
+        for (int i = 0; i < mat.rows; ++i) {
+            feature.insert(feature.end(), mat.ptr<float>(i), mat.ptr<float>(i) + mat.cols * mat.channels());
         }
     }
 }
 
-
 int main(int argc, char *argv[]) {
-    DLDevice dev{kDLCPU, 0};
-    string model_dir_path = "../models/relay/retinaface_mnet025_v1/";
-    string so_lib_path = model_dir_path + "mnet.25.x86.cpu.so";
-    Module mod_syslib = Module::LoadFromFile(so_lib_path);
+    RetinaFaceDeploy retinaFaceDeploy("../models/relay/");
+    MobileFaceNetDeploy mobileFaceNetDeploy("../models/relay/");
 
-    // json graph
-    std::ifstream json_in(model_dir_path + "mnet.25.x86.cpu.json", std::ios::in);
-    std::string json_data((std::istreambuf_iterator<char>(json_in)), std::istreambuf_iterator<char>());
-    json_in.close();
+    auto img = imread("../images/1.jpg");
+    auto retinaOutput = retinaFaceDeploy.forward(img);
 
-    // parameters in binary
-    std::ifstream params_in(model_dir_path + "mnet.25.x86.cpu.params", std::ios::binary);
-    std::string params_data((std::istreambuf_iterator<char>(params_in)), std::istreambuf_iterator<char>());
-    params_in.close();
+    vector<cni::Rect> rects;
+    retinaOutput2Rects(retinaOutput, rects);
 
-    // parameters need to be TVMByteArray type to indicate the binary data
-    TVMByteArray params_arr;
-    params_arr.data = params_data.c_str();
-    params_arr.size = params_data.length();
+    cni::Rect& rect = rects[0];
 
-    int dtype_code = kDLFloat;
-    int dtype_bits = 32;
-    int dtype_lanes = 1;
-    int device_type = kDLCPU;
-    int device_id = 0;
+    float v1[5][2] = {
+            {30.2946f + 8.0f, 51.6963f},
+            {65.5318f + 8.0f, 51.5014f},
+            {48.0252f + 8.0f, 71.7366f},
+            {33.5493f + 8.0f, 92.3655f},
+            {62.7299f + 8.0f, 92.2041f}
+    };
 
-    // get global function module for graph runtime
-    tvm::runtime::Module mod = (*tvm::runtime::Registry::Get("tvm.graph_executor.create"))(json_data, mod_syslib, device_type, device_id);
+    cv::Mat dst(5, 2, CV_32FC1, v1);
+    memcpy(dst.data, v1, 2 * 5 * sizeof(float));
 
-    DLTensor* x;
+    double angle = count_angle(rect.landmarks);
+    cv::Mat src(5, 2, CV_32FC1, angle);
+    memcpy(src.data, rect.landmarks, 2 * 5 * sizeof(float));
 
-    int in_ndim = 4;
-    int in_c = 3, in_h = 640, in_w = 480;
+    cv::Mat m = FacePreprocess::similarTransform(src, dst);
+    cv::Mat aligned = img.clone();
+    cv::warpPerspective(img, aligned, m, cv::Size(112, 112), INTER_LINEAR);
+    resize(aligned, aligned, Size(112, 112), 0, 0, INTER_LINEAR);
 
-    int ratio_x = 1, ratio_y = 1;
-    int64_t in_shape[4] = {1, in_c, in_h, in_w};
-    TVMArrayAlloc(in_shape, in_ndim, dtype_code, dtype_bits, dtype_lanes, device_type, device_id, &x);
+    Mat fc = mobileFaceNetDeploy.forward(aligned);
+    fc = Zscore(fc);
 
-    int64_t w1=ceil(in_w/32.0),w2=ceil(in_w/16.0),w3=ceil(in_w/8.0), h1=ceil(in_h/32.0),h2=ceil(in_h/16.0),h3=ceil(in_h/8.0);
-    int out_num = (w1*h1+w2*h2+w3*h3)*(4+8+20);
+    std::vector<float> feature;
+    mat2Vector(fc, feature);
 
-    tvm::runtime::PackedFunc set_input = mod.GetFunction("set_input");
-    tvm::runtime::PackedFunc load_params = mod.GetFunction("load_params");
-    tvm::runtime::PackedFunc run = mod.GetFunction("run");
-    tvm::runtime::PackedFunc get_output = mod.GetFunction("get_output");
-
-    int total_input = 3*in_w*in_h;
-    auto* data_x = (float*)malloc(total_input*sizeof(float));
-    //float* y_iter = (float*)malloc(out_num*4);
-
-
-    cv::Mat image = cv::imread("../images/1.jpg");
-    if(!image.data)
-        printf("load error");
-
-    cv::Mat resizeImage;
-    cv::resize(image, resizeImage, cv::Size(in_w, in_h), cv::INTER_AREA);
-    cv::Mat input_mat;
-
-    const int64 start = cv::getTickCount();
-    resizeImage.convertTo(input_mat, CV_32FC3);
-    //cv::cvtColor(input_mat, input_mat, cv::COLOR_BGR2RGB);
-
-    cv::Mat split_mat[3];
-    cv::split(input_mat, split_mat);
-    memcpy(data_x,                                 split_mat[2].ptr<float>(), input_mat.cols*input_mat.rows*sizeof(float));
-    memcpy(data_x+input_mat.cols*input_mat.rows,   split_mat[1].ptr<float>(), input_mat.cols*input_mat.rows*sizeof(float));
-    memcpy(data_x+input_mat.cols*input_mat.rows*2, split_mat[0].ptr<float>(), input_mat.cols*input_mat.rows*sizeof(float));
-    TVMArrayCopyFromBytes(x, data_x, total_input*sizeof(float));
-
-    const int64 start_forward= cv::getTickCount();
-    double duration_before = (start_forward-start)/ cv::getTickFrequency();
-    std::cout << "Pre Forward Time: " << duration_before*1000 << "ms" << std::endl;
-    // get the function from the module(set input data)
-    set_input("data", x);
-
-    load_params(params_arr);
-
-    // get the function from the module(run it)
-    run();
-
-    std::vector<AnchorGenerator> ac(_feat_stride_fpn.size());
-    for (int i = 0; i < _feat_stride_fpn.size(); ++i) {
-        int stride = _feat_stride_fpn[i];
-        ac[i].Init(stride, anchor_cfg[stride], false);
+    VideoCapture cap(0);
+    if (!cap.isOpened()) {
+        cerr << "nothing" << endl;
+        return -1;
     }
 
-    std::vector<Anchor> proposals;
-    proposals.clear();
+    int count = 0;
+    Mat frame;
+    while (count < 1000) {
+        count++;
+        cap >> frame;
+        Mat result_cnn = frame.clone();
 
-    int64_t w[3] = {w1, w2, w3};
-    int64_t h[3] = {h1, h2, h3};
-    int64_t out_size[9] = {w1*h1*4, w1*h1*8, w1*h1*20, w2*h2*4, w2*h2*8, w2*h2*20, w3*h3*4, w3*h3*8, w3*h3*20};
+        RetinaOutput output_ = retinaFaceDeploy.forward(result_cnn);
 
-    int out_ndim = 4;
-    int64_t out_shape[9][4] = {{1, 4, h1, w1}, {1, 8, h1, w1}, {1, 20, h1, w1},
-                               {1, 4, h2, w2}, {1, 8, h2, w2}, {1, 20, h2, w2},
-                               {1, 4, h3, w3}, {1, 8, h3, w3}, {1, 20, h3, w3}};
+        vector<cni::Rect> _rects;
+        retinaOutput2Rects(output_, _rects);
 
-    DLTensor* y[9];
-    for (int i = 0 ; i < 9; i++)
-        TVMArrayAlloc(out_shape[i], out_ndim, dtype_code, dtype_bits, dtype_lanes, device_type, device_id, &y[i]);
+        for (cni::Rect& _rect : _rects) {
+            cv::Mat _dst(5, 2, CV_32FC1, v1);
+            memcpy(_dst.data, v1, 2 * 5 * sizeof(float));
 
-    for (int i = 0 ; i < 9; i+=3) {
-        get_output(i, y[i]);
-        get_output(i+1, y[i+1]);
-        get_output(i+2, y[i+2]);
+            double _angle = count_angle(_rect.landmarks);
+            cv::Mat _src(5, 2, CV_32FC1, _angle);
+            memcpy(_src.data, _rect.landmarks, 2 * 5 * sizeof(float));
 
-        ulsMatF clsMat(w[i/3], h[i/3], 4);
-        ulsMatF regMat(w[i/3], h[i/3], 8);
-        ulsMatF ptsMat(w[i/3], h[i/3], 20);
+            cv::Mat _m = FacePreprocess::similarTransform(_src, _dst);
+            cv::Mat _aligned = frame.clone();
+            cv::warpPerspective(result_cnn, _aligned, _m, cv::Size(112, 112), INTER_LINEAR);
+            resize(_aligned, _aligned, Size(112, 112), 0, 0, INTER_LINEAR);
 
-        TVMArrayCopyToBytes(y[i], clsMat.m_data, out_size[i]*sizeof(float));
-        TVMArrayCopyToBytes(y[i+1], regMat.m_data, out_size[i+1]*sizeof(float));
-        TVMArrayCopyToBytes(y[i+2], ptsMat.m_data, out_size[i+2]*sizeof(float));
+            Mat _fc = mobileFaceNetDeploy.forward(_aligned);
+            _fc = Zscore(_fc);
 
-        ac[i/3].FilterAnchor(clsMat, regMat, ptsMat, proposals);
-        std::cout <<"proposals:" << proposals.size() << std::endl;
+            std::vector<float> _feature;
+            mat2Vector(_fc, _feature);
+            auto distance = CosineDistance(feature, _feature);
 
-    }
+            auto _landmarks = _rect.landmarks;
 
-    const int64 end_forward= cv::getTickCount();
-    double duration_forward = (end_forward-start_forward)/ cv::getTickFrequency();
-    std::cout << "Forward Time: " << duration_forward*1000 << "ms" << std::endl;
-
-    // nms
-    std::vector<Anchor> result;
-    nms_cpu(proposals, nms_threshold, result);
-
-    const int64 end_all= cv::getTickCount();
-    double duration_after = (end_all-end_forward)/ cv::getTickFrequency();
-    std::cout << "Post Forward Time: " << duration_after*1000 << "ms" << std::endl;
-    double duration = (end_all-start)/ cv::getTickFrequency();
-    std::cout << "All Time: " << duration*1000 << "ms" << std::endl;
-
-    printf("final proposals: %ld\n", result.size());
-    for(int i = 0; i < result.size(); i ++)
-    {
-        printf("score%d: %.6f\n", i, result[i].score);
-        cv::rectangle (resizeImage, cv::Point((int)result[i].finalbox.x*ratio_x, (int)result[i].finalbox.y*ratio_y), cv::Point((int)result[i].finalbox.width*ratio_x, (int)result[i].finalbox.height*ratio_y), cv::Scalar(0, 255, 255), 2, 8, 0);
-        for (auto & pt : result[i].pts) {
-            cv::circle(resizeImage, cv::Point((int)pt.x*ratio_x, (int)pt.y*ratio_y), 1, cv::Scalar(225, 0, 225), 2, 8);
+            cv::putText(result_cnn, std::to_string(distance), Point(_rect.x, _rect.y), cv::FONT_HERSHEY_SIMPLEX, 0.75, cv::Scalar(255, 255, 0));
+            cv::rectangle(result_cnn, Point(_rect.x, _rect.y), Point(_rect.w, _rect.h), cv::Scalar(0, 0, 255), 2);
+            for (int i = 0; i < 5; ++i) {
+                cv::circle(result_cnn, Point(_landmarks[i][0], _landmarks[i][1]), 3,
+                           Scalar(0, 255, 0), FILLED, LINE_AA);
+            }
         }
+
+        cv::imshow("image", result_cnn);
+        cv::waitKey(1);
+
     }
-    result[0].print();
-
-    cv::imshow("img", resizeImage);
-    cv::waitKey(0);
-
-    free(data_x);
-//    free(y_iter);
-    data_x = nullptr;
-    //y_iter = nullptr;
-
-    TVMArrayFree(x);
-    for (auto & i : y)
-        TVMArrayFree(i);
     return 0;
 }

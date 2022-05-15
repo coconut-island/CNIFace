@@ -32,7 +32,7 @@
 *.app
 
 cmake-build-debug/
-models/relay/retinaface_mnet025_v1/*
+models/relay/*
 build/
 .pkl_memoize_py3/
 .DS_Store
