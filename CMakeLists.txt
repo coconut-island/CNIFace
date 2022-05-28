@@ -12,10 +12,6 @@ file(GLOB COMMON_SRC
         ${CMAKE_CURRENT_SOURCE_DIR}/common/*.cpp
         )
 
-file(GLOB TVM_RUNTIME_SRC
-        ${CMAKE_CURRENT_SOURCE_DIR}/3rdparty/tvm/apps/howto_deploy/tvm_runtime_pack.cc
-        )
-
 file(GLOB RETINA_FACE_SRC
         ${CMAKE_CURRENT_SOURCE_DIR}/retinaface/*.h
         ${CMAKE_CURRENT_SOURCE_DIR}/retinaface/*.cpp
@@ -35,16 +31,13 @@ set(SOURCE_FILES
         main.cpp
         ${COMMON_SRC}
         ${UTILS_SRC}
-        ${TVM_RUNTIME_SRC}
 )
 
 include_directories(
         ${OpenCV_INCLUDE_DIRS}
         ${SYSTEM_INCLUDE}
-        "3rdparty/tvm/include"
-        "3rdparty/tvm/3rdparty/dmlc-core/include"
-        "3rdparty/tvm/3rdparty/dlpack/include"
 )
+
 link_directories(
         ${OpenCV_LIBRARY_DIRS}
         ${SYSTEM_LIB}
@@ -52,12 +45,15 @@ link_directories(
 
 # main
 add_executable(${CMAKE_PROJECT_NAME} ${SOURCE_FILES})
-target_link_libraries(${CMAKE_PROJECT_NAME} ${OpenCV_LIBS} dl pthread faiss gflags)
+target_link_libraries(${CMAKE_PROJECT_NAME} ${OpenCV_LIBS} dl pthread tvm_runtime faiss gflags)
 
 
 # samples
-add_executable (detect ./samples/detect.cpp ${COMMON_SRC} ${UTILS_SRC} ${RETINA_FACE_SRC} ${TVM_RUNTIME_SRC})
-target_link_libraries(detect ${OpenCV_LIBS} dl pthread)
+add_executable (detect ./samples/detect.cpp ${COMMON_SRC} ${UTILS_SRC} ${RETINA_FACE_SRC})
+target_link_libraries(detect ${OpenCV_LIBS} dl pthread tvm_runtime)
 
-add_executable (recognition ./samples/recognition.cpp ${COMMON_SRC} ${UTILS_SRC} ${RETINA_FACE_SRC} ${ARC_FACE_SRC} ${TVM_RUNTIME_SRC})
-target_link_libraries(recognition ${OpenCV_LIBS} dl pthread)
+add_executable (detect_camera ./samples/detect_camera.cpp ${COMMON_SRC} ${UTILS_SRC} ${RETINA_FACE_SRC})
+target_link_libraries(detect_camera ${OpenCV_LIBS} dl pthread tvm_runtime)
+
+add_executable (recognition ./samples/recognition.cpp ${COMMON_SRC} ${UTILS_SRC} ${RETINA_FACE_SRC} ${ARC_FACE_SRC})
+target_link_libraries(recognition ${OpenCV_LIBS} dl pthread tvm_runtime)

@@ -15,6 +15,12 @@
 
 class ImageUtil {
 public:
+    static void bgr2rgb_packed(const uint8_t* src, uint8_t* dst, int img_width, int img_height);
+
+    static void rgb2bgr_packed(const uint8_t* src, uint8_t* dst, int img_width, int img_height);
+
+    static void swap_packed_rb(const uint8_t* src, uint8_t* dst, int img_width, int img_height);
+
     static void bilinear_resize(const uint8_t* dataSrc, uint8_t* dataDst, int src_width, int src_height, int dst_width, int dst_height);
 
     static cv::Mat draw_faces(cv::Mat& img, const vector<Anchor>& anchors);

@@ -10,6 +10,24 @@
 #include <algorithm>
 
 
+void ImageUtil::swap_packed_rb(const uint8_t* src, uint8_t* dst, int img_width, int img_height) {
+    for (int i = 0; i < img_width * img_height * 3; i += 3) {
+        dst[i] = src[i + 2];
+        dst[i + 1] = src[i + 1];
+        dst[i + 2] = src[i];
+    }
+}
+
+void ImageUtil::bgr2rgb_packed(const uint8_t* src, uint8_t* dst, int img_width, int img_height) {
+    swap_packed_rb(src, dst, img_width, img_height);
+}
+
+
+void ImageUtil::rgb2bgr_packed(const uint8_t* src, uint8_t* dst, int img_width, int img_height) {
+    swap_packed_rb(src, dst, img_width, img_height);
+}
+
+
 void ImageUtil::bilinear_resize(const uint8_t* dataSrc, uint8_t* dataDst, int src_width, int src_height, int dst_width, int dst_height) {
     double scale_x = (double)src_width / dst_width;
     double scale_y = (double)src_height / dst_height;
