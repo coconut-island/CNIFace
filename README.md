@@ -1,15 +1,22 @@
 # CNIFace
 
+一个学习实验型项目。
 
-这个project 是想 做一个 人脸平台的
+此Repo的code和model均来自于开源社区
 
-2. retinaface + mobilefacenet 1:1 demo【完成】
+启动项目的解决方案主要来自于 insightface，非常感谢
 
-1. 做个retinaface tvm infer demo 【完成】
 
-python 的tvm 自己安装
-opencv4 自己安装
-CmakeLists.txt lib路径自己改下
+## 运行
 
-python3 ./convert_model/from_mxnet_mnet.25.py 
-mkdir build && cd build && cmake .. && make && ./main
+安装好依赖后
+CMakeLists.txt 修改 SYSTEM_INCLUDE 和 SYSTEM_LIB
+
+关于模型请移动到 models/README.md
+
+功能完善后会做Docker Image
+
+## samples
+
+目录：samples/
+

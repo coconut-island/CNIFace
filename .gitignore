@@ -42,3 +42,6 @@ build/
 .idea/
 **/__pycache__
 __pycache__
+
+models/*.onnx
+*.bak

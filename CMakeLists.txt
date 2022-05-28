@@ -1,38 +1,63 @@
 cmake_minimum_required(VERSION 3.16.5)
-project(main)
+project(cniface)
 set(CMAKE_CXX_STANDARD 14)
+
+find_package(OpenCV REQUIRED)
+
+set(SYSTEM_INCLUDE "/usr/local/include")
+set(SYSTEM_LIB "/usr/local/lib")
+
+file(GLOB COMMON_SRC
+        ${CMAKE_CURRENT_SOURCE_DIR}/common/*.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/common/*.cpp
+        )
+
+file(GLOB TVM_RUNTIME_SRC
+        ${CMAKE_CURRENT_SOURCE_DIR}/3rdparty/tvm/apps/howto_deploy/tvm_runtime_pack.cc
+        )
 
 file(GLOB RETINA_FACE_SRC
         ${CMAKE_CURRENT_SOURCE_DIR}/retinaface/*.h
         ${CMAKE_CURRENT_SOURCE_DIR}/retinaface/*.cpp
-)
-file(GLOB MOBILE_FACE_NET_SRC
-        ${CMAKE_CURRENT_SOURCE_DIR}/mobilefacenet/*.h
-        ${CMAKE_CURRENT_SOURCE_DIR}/mobilefacenet/*.cpp
+        )
+
+file(GLOB ARC_FACE_SRC
+        ${CMAKE_CURRENT_SOURCE_DIR}/arcface/*.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/arcface/*.cpp
+        )
+
+file(GLOB UTILS_SRC
+        ${CMAKE_CURRENT_SOURCE_DIR}/utils/*.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/utils/*.cpp
         )
 
 set(SOURCE_FILES
         main.cpp
-        common.h
-        common.cpp
-        FacePreprocess.h
-        3rdparty/tvm/apps/howto_deploy/tvm_runtime_pack.cc
-        ${RETINA_FACE_SRC}
-        ${MOBILE_FACE_NET_SRC}
+        ${COMMON_SRC}
+        ${UTILS_SRC}
+        ${TVM_RUNTIME_SRC}
 )
-
-find_package(OpenCV REQUIRED)
 
 include_directories(
         ${OpenCV_INCLUDE_DIRS}
+        ${SYSTEM_INCLUDE}
         "3rdparty/tvm/include"
         "3rdparty/tvm/3rdparty/dmlc-core/include"
         "3rdparty/tvm/3rdparty/dlpack/include"
 )
 link_directories(
         ${OpenCV_LIBRARY_DIRS}
-        "/usr/local/lib"
+        ${SYSTEM_LIB}
 )
 
+# main
 add_executable(${CMAKE_PROJECT_NAME} ${SOURCE_FILES})
-target_link_libraries(${CMAKE_PROJECT_NAME} ${OpenCV_LIBS} dl pthread)
+target_link_libraries(${CMAKE_PROJECT_NAME} ${OpenCV_LIBS} dl pthread faiss gflags)
+
+
+# samples
+add_executable (detect ./samples/detect.cpp ${COMMON_SRC} ${UTILS_SRC} ${RETINA_FACE_SRC} ${TVM_RUNTIME_SRC})
+target_link_libraries(detect ${OpenCV_LIBS} dl pthread)
+
+add_executable (recognition ./samples/recognition.cpp ${COMMON_SRC} ${UTILS_SRC} ${RETINA_FACE_SRC} ${ARC_FACE_SRC} ${TVM_RUNTIME_SRC})
+target_link_libraries(recognition ${OpenCV_LIBS} dl pthread)
