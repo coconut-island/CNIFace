@@ -6,6 +6,8 @@
 
 启动项目的解决方案主要来自于 insightface，非常感谢
 
+现使用TVM版本： d04907919bfcb23678a30bef0d5f44cad109d0bd
+
 
 ## 运行
 
