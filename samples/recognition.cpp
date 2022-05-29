@@ -3,35 +3,34 @@
 //
 
 #include <opencv2/highgui.hpp>
-#include <opencv2/imgproc.hpp>
 
 #include "../retinaface/RetinaFace.h"
 #include "../arcface/ArcFace.h"
 #include "../utils/MathUtil.h"
+#include "../utils/ImageUtil.h"
 #include "../utils/CPUTimer.h"
 
 using namespace cv;
 
 int main() {
     auto img = imread("../images/t1.jpg");
+    auto* rgb_img = (uint8_t*)malloc(img.rows * img.cols * 3 * sizeof(uint8_t));
+    ImageUtil::bgr2rgb_packed(img.data, rgb_img, img.cols, img.rows);
+
     CPUTimer cpuTimer;
 
-    Mat rgb_mat;
-    cvtColor(img, rgb_mat, COLOR_BGR2RGB);
     RetinaFace retinaFace("../models/relay/");
     ArcFace arcFace("../models/relay/");
-    auto* rgb_img = (uint8_t*)malloc(img.rows * img.cols * 3 * sizeof(uint8_t));
-    memcpy(rgb_img, rgb_mat.data, img.rows * img.cols * 3 * sizeof(uint8_t));
 
     auto anchors = retinaFace.detect(rgb_img, img.cols, img.rows, 0.5);
 
     for (const auto& anchor : anchors) {
         cpuTimer.start();
-        auto* feature = (float*)malloc(arcFace.feature_size * sizeof(float));
+        auto* feature = (float*)malloc(arcFace.getFeatureSize() * sizeof(float));
         arcFace.recognize(rgb_img, img.cols, img.rows, anchor.kps, feature);
         cpuTimer.stop();
 
-        auto similarity = MathUtil::cosine_similarity(feature, feature, arcFace.feature_size);
+        auto similarity = MathUtil::cosine_similarity(feature, feature, arcFace.getFeatureSize());
 
         std::cout << "feature = " << std::to_string(similarity) << std::endl;
         free(feature);

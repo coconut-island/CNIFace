@@ -15,9 +15,25 @@ public:
     explicit ArcFace(const std::string& model_dir_path);
     ~ArcFace();
 
+    /**
+     * @param input_img 112 * 112 rgb img
+     * @param feature 512
+     */
+    void recognize(uint8_t* rgb_img, float *feature);
+
+    /**
+     * @param rgb_img source img
+     * @param img_width source img width
+     * @param img_height source img height
+     * @param kps anchor.kps
+     * @param feature 512
+     */
     void recognize(uint8_t* rgb_img, int img_width, int img_height, const vector<float>& kps, float* feature);
 
-    int feature_size = 512;
+    size_t getInputWidth() const;
+    size_t getInputHeight() const;
+    size_t getInputElements() const;
+    size_t getFeatureSize() const;
 
 private:
     shared_ptr<Module> handle;
@@ -44,6 +60,10 @@ private:
 
     int64_t out_shapes[2] = {1, 512};
 
+    int feature_size = 512;
+
+    float coordinates_112_112[10] = {38.2946, 73.5318, 56.0252, 41.5493, 70.7299,
+                     51.6963, 51.5014, 71.7366, 92.3655, 92.2041};
 };
 
 

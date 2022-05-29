@@ -20,11 +20,11 @@ int main() {
         return 1;
     }
 
-    size_t count = 0;
+    size_t count = 1000;
     Mat frame;
 
     CPUTimer cpuTimer;
-    while (count < 1000) {
+    while (count--) {
         count++;
         cap >> frame;
         Mat img = frame.clone();

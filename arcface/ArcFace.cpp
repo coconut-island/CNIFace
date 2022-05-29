@@ -36,28 +36,12 @@ ArcFace::ArcFace(const string &model_dir_path) {
 
 ArcFace::~ArcFace() = default;
 
-void ArcFace::recognize(uint8_t* bgr_img, int img_width, int img_height, const vector<float>& kps, float *feature) {
-    assert(kps.size() == 10);
-
-    float dst[10] = {38.2946, 73.5318, 56.0252, 41.5493, 70.7299,
-                     51.6963, 51.5014, 71.7366, 92.3655, 92.2041};
-
-    float src[10];
-    for (int i = 0; i < 5; i++) {
-        src[i] = kps[2 * i];
-        src[i + 5] = kps[2 * i + 1];
-    }
-
-    float M[6];
-    ImageUtil::getAffineMatrix(src, dst, M);
-    auto* input_img = (uint8_t*)malloc(input_elements * sizeof(uint8_t));
-    ImageUtil::warpAffineMatrix(bgr_img, input_img, img_width, img_height, input_width, input_height, M);
-
+void ArcFace::recognize(uint8_t* rgb_img, float *feature) {
     auto* input_data = (float*)malloc(input_size);
     for (int i = 0; i < input_width * input_height; i++) {
-        input_data[i] = scale * ((float)input_img[i * 3] - mean);
-        input_data[i + input_width * input_height] = scale * ((float)input_img[i * 3 + 1] - mean);
-        input_data[i + input_width * input_height * 2] = scale * ((float)input_img[i * 3 + 2] - mean);
+        input_data[i] = scale * ((float)rgb_img[i * 3] - mean);
+        input_data[i + input_width * input_height] = scale * ((float)rgb_img[i * 3 + 1] - mean);
+        input_data[i + input_width * input_height * 2] = scale * ((float)rgb_img[i * 3 + 2] - mean);
     }
 
     auto *mod = (Module *)handle.get();
@@ -80,7 +64,44 @@ void ArcFace::recognize(uint8_t* bgr_img, int img_width, int img_height, const v
 
     memcpy(feature, tvm_output_data->data, out_shapes[0] * out_shapes[1] * sizeof(float));
 
+    TVMArrayFree(tvm_input_data);
+    free(input_data);
+}
+
+void ArcFace::recognize(uint8_t* rgb_img, int img_width, int img_height, const vector<float>& kps, float *feature) {
+    assert(kps.size() == 10);
+
+    auto dst = coordinates_112_112;
+
+    float src[10];
+    for (int i = 0; i < 5; i++) {
+        src[i] = kps[2 * i];
+        src[i + 5] = kps[2 * i + 1];
+    }
+
+    float M[6];
+    ImageUtil::getAffineMatrix(src, dst, M);
+    auto* input_img = (uint8_t*)malloc(input_elements * sizeof(uint8_t));
+    ImageUtil::warpAffineMatrix(rgb_img, input_img, img_width, img_height, input_width, input_height, M);
+
+    recognize(input_img, feature);
     free(input_img);
+}
+
+size_t ArcFace::getInputWidth() const {
+    return input_width;
+}
+
+size_t ArcFace::getInputHeight() const {
+    return input_height;
+}
+
+size_t ArcFace::getInputElements() const {
+    return input_elements;
+}
+
+size_t ArcFace::getFeatureSize() const {
+    return feature_size;
 }
 
 

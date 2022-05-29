@@ -48,7 +48,7 @@ int main() {
             arc_count++;
 
             arcFaceCpuTimer.start();
-            auto* feature = (float*)malloc(arcFace.feature_size * sizeof(float));
+            auto* feature = (float*)malloc(arcFace.getFeatureSize() * sizeof(float));
             arcFace.recognize(rgb_img, img.cols, img.rows, anchor.kps, feature);
             arcFaceCpuTimer.stop();
 
@@ -57,7 +57,7 @@ int main() {
                 continue;
             }
 
-            auto similarity = MathUtil::cosine_similarity(feature, golden_feature, arcFace.feature_size);
+            auto similarity = MathUtil::cosine_similarity(feature, golden_feature, arcFace.getFeatureSize());
 
             cv::putText(img, "similarity = " + std::to_string(similarity), Point(anchor.x, anchor.y - 10), cv::FONT_HERSHEY_SIMPLEX, 0.75, cv::Scalar(255, 255, 0));
 
