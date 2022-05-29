@@ -37,6 +37,8 @@ ArcFace::ArcFace(const string &model_dir_path) {
 ArcFace::~ArcFace() = default;
 
 void ArcFace::recognize(uint8_t* bgr_img, int img_width, int img_height, const vector<float>& kps, float *feature) {
+    assert(kps.size() == 10);
+
     float dst[10] = {38.2946, 73.5318, 56.0252, 41.5493, 70.7299,
                      51.6963, 51.5014, 71.7366, 92.3655, 92.2041};
 

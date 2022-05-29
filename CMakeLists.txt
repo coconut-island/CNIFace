@@ -57,3 +57,6 @@ target_link_libraries(detect_camera ${OpenCV_LIBS} dl pthread tvm_runtime)
 
 add_executable (recognition ./samples/recognition.cpp ${COMMON_SRC} ${UTILS_SRC} ${RETINA_FACE_SRC} ${ARC_FACE_SRC})
 target_link_libraries(recognition ${OpenCV_LIBS} dl pthread tvm_runtime)
+
+add_executable (recognition_camera ./samples/recognition_camera.cpp ${COMMON_SRC} ${UTILS_SRC} ${RETINA_FACE_SRC} ${ARC_FACE_SRC})
+target_link_libraries(recognition_camera ${OpenCV_LIBS} dl pthread tvm_runtime)

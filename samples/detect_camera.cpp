@@ -7,6 +7,7 @@
 
 #include "../retinaface/RetinaFace.h"
 #include "../utils/ImageUtil.h"
+#include "../utils/CPUTimer.h"
 
 using namespace cv;
 
@@ -19,35 +20,29 @@ int main() {
         return 1;
     }
 
-    int count = 0;
+    size_t count = 0;
     Mat frame;
 
-    int64_t total = 0;
-    int64_t delta_ticks = 0;
-    double fps = 0;
+    CPUTimer cpuTimer;
     while (count < 1000) {
         count++;
-        total++;
         cap >> frame;
         Mat img = frame.clone();
 
-        clock_t current_ticks = clock();
+        cpuTimer.start();
 
         auto* rgb_img = (uint8_t*)malloc(img.rows * img.cols * 3 * sizeof(uint8_t));
         ImageUtil::bgr2rgb_packed(img.data, rgb_img, img.cols, img.rows);
 
         auto anchors = retinaFace.detect(rgb_img, img.cols, img.rows, 0.5);
 
+        cpuTimer.stop();
+
         free(rgb_img);
-        auto draw_img = ImageUtil::draw_faces(img, anchors);
+        ImageUtil::draw_faces(img, anchors);
 
-        delta_ticks += (clock() - current_ticks);
-        if (delta_ticks > 0) {
-            fps = (double )total / ((double)delta_ticks / CLOCKS_PER_SEC);
-        }
-
-        cv::putText(draw_img, "FPS = " + std::to_string(fps), Point(30, 30), cv::FONT_HERSHEY_SIMPLEX, 0.75, cv::Scalar(255, 255, 0));
-        cv::imshow("draw_img", draw_img);
+        cv::putText(img, "FPS = " + std::to_string(cpuTimer.getFPS()), Point(10, 30), cv::FONT_HERSHEY_SIMPLEX, 0.75, cv::Scalar(255, 255, 0));
+        cv::imshow("draw_img", img);
         cv::waitKey(1);
     }
     return 0;
