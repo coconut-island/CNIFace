@@ -20,6 +20,7 @@
 #include "../arcface/ArcFace.h"
 #include "../utils/ImageUtil.h"
 #include "../utils/CPUTimer.h"
+#include "../utils/MathUtil.h"
 
 using namespace std;
 using namespace cv;
@@ -28,7 +29,7 @@ using namespace faiss;
 using idx_t = faiss::Index::idx_t;
 
 int main() {
-    string filePath = "/Users/abel/Downloads/faces_112_less";
+    string filePath = "../../lfw-align-128-less";
     vector<string> names;
     DIR *pDir;
     struct dirent* ptr;
@@ -49,7 +50,8 @@ int main() {
     for (const string& name : names) {
         DIR *_pDir;
         struct dirent* _ptr;
-        string file_dir_path = filePath + "/" + name;
+        string file_dir_path;
+        file_dir_path.append(filePath).append("/").append(name);
         if(!(_pDir = opendir(file_dir_path.c_str()))){
             cout<<"Folder doesn't Exist!"<<endl;
             return 1;
@@ -75,6 +77,7 @@ int main() {
 
     unordered_map<idx_t, string> id_name_map;
     vector<float*> features;
+    vector<float*> normalize_L2_features;
 
     cout << "files size: " << face_file_paths.size() << endl;
     for (idx_t j = 0; j < face_file_paths.size(); ++j) {
@@ -90,19 +93,26 @@ int main() {
         auto* feature = (float*)malloc(arcFace.getFeatureSize() * sizeof(float));
         arcFace.recognize(rgb_img, feature);
 
+        auto* normalize_L2_feature = (float*)malloc(arcFace.getFeatureSize() * sizeof(float));
+        memcpy(normalize_L2_feature, feature, arcFace.getFeatureSize() * sizeof(float));
         features.emplace_back(feature);
 
-//        if (index.ntotal >= 50) {
-//            index.nlist = 4;
-//        }
-        index.train(1, feature);
-        index.add_with_ids(1, feature, &j);
+        MathUtil::normalize_L2(normalize_L2_feature, arcFace.getFeatureSize());
+        normalize_L2_features.emplace_back(normalize_L2_feature);
 
         string name = face_file_paths_name_map[face_file_path];
         id_name_map[j] = name;
 
         free(resized_img);
         free(rgb_img);
+    }
+
+    index.train(1, normalize_L2_features[0]);
+
+    std::cout << "Index is trained = " << index.is_trained << std::endl;
+
+    for (idx_t i = 0; i < normalize_L2_features.size(); ++i) {
+        index.add_with_ids(1, normalize_L2_features[i], &i);
     }
 
 
@@ -138,16 +148,23 @@ int main() {
             auto* I = new idx_t[10];
             auto* D = new float[10];
 
-            index.search(1, feature, 10, D, I);
+            auto* normalize_L2_feature = (float*)malloc(arcFace.getFeatureSize() * sizeof(float));
+            memcpy(normalize_L2_feature, feature, arcFace.getFeatureSize() * sizeof(float));
+
+            MathUtil::normalize_L2(normalize_L2_feature, arcFace.getFeatureSize());
+            index.search(1, normalize_L2_feature, 10, D, I);
 
             retrievalCpuTimer.stop();
 
             float distance = D[0];
 
-            cv::putText(img, "FPS = " + std::to_string(cpuTimer.getFPS()), Point(anchor.x, anchor.y - 50), cv::FONT_HERSHEY_SIMPLEX, 0.75, cv::Scalar(255, 255, 0));
-            cv::putText(img, id_name_map[I[0]], Point(anchor.x, anchor.y - 30), cv::FONT_HERSHEY_SIMPLEX, 0.75, cv::Scalar(255, 255, 0));
-            cv::putText(img, "similarity = " + std::to_string(distance), Point(anchor.x, anchor.y - 10), cv::FONT_HERSHEY_SIMPLEX, 0.75, cv::Scalar(255, 255, 0));
+            double cosine_similarity = MathUtil::cosine_similarity(feature, features[I[0]], arcFace.getFeatureSize());
 
+            cv::putText(img, "name: " + id_name_map[I[0]], Point(anchor.x, anchor.y - 50), cv::FONT_HERSHEY_SIMPLEX, 0.75, cv::Scalar(255, 255, 0));
+            cv::putText(img, "cosine_similarity = " + std::to_string(cosine_similarity), Point(anchor.x, anchor.y - 30), cv::FONT_HERSHEY_SIMPLEX, 0.75, cv::Scalar(255, 255, 0));
+            cv::putText(img, "distance         = " + std::to_string(distance), Point(anchor.x, anchor.y - 10), cv::FONT_HERSHEY_SIMPLEX, 0.75, cv::Scalar(255, 255, 0));
+
+            free(normalize_L2_feature);
             free(feature);
             delete[] I;
             delete[] D;
@@ -155,6 +172,8 @@ int main() {
 
         retrievalCpuTimer.print();
         cpuTimer.stop();
+
+        cv::putText(img, "FPS = " + std::to_string(cpuTimer.getFPS()), Point(10, 30), cv::FONT_HERSHEY_SIMPLEX, 0.75, cv::Scalar(255, 255, 0));
 
         ImageUtil::draw_faces(img, anchors);
 
@@ -164,6 +183,10 @@ int main() {
 
 
     for (const auto& feature : features) {
+        free(feature);
+    }
+
+    for (const auto& feature : normalize_L2_features) {
         free(feature);
     }
 

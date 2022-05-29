@@ -6,7 +6,19 @@
 #include <algorithm>
 
 #include "MathUtil.h"
+#include <cmath>
 
+void MathUtil::normalize_L2(float* data, size_t size) {
+    float sum = 0;
+    for (size_t i = 0; i < size; ++i) {
+        sum += data[i] * data[i];
+    }
+
+    float norm = std::sqrt(sum);
+    for (size_t i = 0; i < size; ++i) {
+        data[i] = data[i] / norm;
+    }
+}
 
 float MathUtil::inner_product(const float* a, const float* b, size_t size) {
     float dot = 0.0;
