@@ -14,7 +14,7 @@ class CPUTimer {
 public:
     CPUTimer();
 
-    CPUTimer(const std::string& taskName);
+    explicit CPUTimer(const std::string& taskName);
 
     void start();
 
@@ -34,8 +34,8 @@ public:
 
 private:
     std::string taskName = "";
-    std::chrono::nanoseconds totalTime = std::chrono::high_resolution_clock::duration::zero();
-    std::chrono::nanoseconds lastTime = std::chrono::high_resolution_clock::duration::zero();
+    std::chrono::nanoseconds totalTime = std::chrono::steady_clock::duration::zero();
+    std::chrono::nanoseconds lastTime = std::chrono::steady_clock::duration::zero();
     std::chrono::time_point<std::chrono::steady_clock> startTime;
     size_t count = 0;
     bool active = false;

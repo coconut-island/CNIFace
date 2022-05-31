@@ -13,18 +13,17 @@ CPUTimer::CPUTimer(const std::string &taskName) {
 }
 
 
-
 void CPUTimer::start() {
     if (!active) {
         active = true;
         count++;
-        startTime = std::chrono::high_resolution_clock::now();
+        startTime = std::chrono::steady_clock::now();
     }
 }
 
 void CPUTimer::stop() {
     if (active) {
-        auto endTime = std::chrono::high_resolution_clock::now();
+        auto endTime = std::chrono::steady_clock::now();
         lastTime = endTime - startTime;
         totalTime += lastTime;
         active = false;
