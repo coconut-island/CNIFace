@@ -6,6 +6,7 @@
 
 #include "../retinaface/RetinaFace.h"
 #include "../utils/ImageUtil.h"
+#include "../utils/CVUtil.h"
 #include "../utils/CPUTimer.h"
 
 using namespace cv;
@@ -26,7 +27,7 @@ int main() {
 
     free(rgb_img);
 
-    ImageUtil::draw_faces(img, anchors);
+    CVUtil::draw_faces(img, anchors);
     cv::imshow("draw_img", img);
     cv::waitKey(0);
     return 0;

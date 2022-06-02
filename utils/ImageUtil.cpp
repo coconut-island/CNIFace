@@ -4,8 +4,6 @@
 
 #include "ImageUtil.h"
 
-#include <opencv2/imgproc/imgproc.hpp>
-
 #include <emmintrin.h>
 #include <algorithm>
 
@@ -71,18 +69,6 @@ void ImageUtil::bilinear_resize(const uint8_t* dataSrc, uint8_t* dataDst, int sr
                                                         *(dataSrc + sy * stepSrc + 3 * (sx + 1) + k) * cbufx[1] * cbufy[0] +
                                                         *(dataSrc + (sy + 1) * stepSrc + 3 * (sx + 1) + k) * cbufx[1] * cbufy[1]) >> 22;
             }
-        }
-    }
-}
-
-void ImageUtil::draw_faces(cv::Mat& img, const vector<Anchor> &anchors) {
-    auto red_color = cv::Scalar(0, 0, 255);
-    auto green_color = cv::Scalar(0, 255, 0);
-
-    for (const auto& anchor : anchors) {
-        cv::rectangle(img, cv::Point(anchor.x, anchor.y),cv::Point(anchor.w, anchor.h), red_color, 2);
-        for (int i = 0; i < anchor.kps.size(); i += 2) {
-            cv::circle(img, cv::Point(anchor.kps[i], anchor.kps[i + 1]), 3, green_color, cv::FILLED, cv::LINE_AA);
         }
     }
 }

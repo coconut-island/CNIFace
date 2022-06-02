@@ -7,6 +7,7 @@
 
 #include "../retinaface/RetinaFace.h"
 #include "../utils/ImageUtil.h"
+#include "../utils/CVUtil.h"
 #include "../utils/CPUTimer.h"
 
 using namespace cv;
@@ -39,7 +40,7 @@ int main() {
         cpuTimer.stop();
 
         free(rgb_img);
-        ImageUtil::draw_faces(img, anchors);
+        CVUtil::draw_faces(img, anchors);
 
         cv::putText(img, "FPS = " + std::to_string(cpuTimer.getFPS()), Point(10, 30), cv::FONT_HERSHEY_SIMPLEX, 0.75, cv::Scalar(255, 255, 0));
         cv::imshow("draw_img", img);

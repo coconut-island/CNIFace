@@ -8,8 +8,6 @@
 #include <cstdint>
 #include <vector>
 
-#include <opencv2/highgui.hpp>
-
 #include "../common/Anchor.h"
 
 
@@ -23,7 +21,6 @@ public:
 
     static void bilinear_resize(const uint8_t* dataSrc, uint8_t* dataDst, int src_width, int src_height, int dst_width, int dst_height);
 
-    static void draw_faces(cv::Mat& img, const vector<Anchor>& anchors);
 
     static void getAffineMatrix(float* src_5pts, const float* dst_5pts, float* M);
 
