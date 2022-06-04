@@ -3,7 +3,6 @@
 //
 
 #include <cstddef>
-#include <algorithm>
 
 #include "MathUtil.h"
 #include <cmath>
