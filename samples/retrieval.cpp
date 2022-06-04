@@ -12,7 +12,7 @@
 #include <opencv2/imgproc.hpp>
 
 #include <faiss/IndexFlat.h>
-#include <faiss/IndexIVFFlat.h>
+#include <faiss/MetaIndexes.h>
 #include <faiss/MetricType.h>
 #include <faiss/utils/distances.h>
 
@@ -67,15 +67,13 @@ int main() {
         }
         closedir(_pDir);
     }
-
     RetinaFace retinaFace("../models/relay/");
     ArcFace arcFace("../models/relay/");
 
     int d = arcFace.getFeatureSize();
-    int nlist = 1;
 
     IndexFlat quantizer(d, faiss::METRIC_INNER_PRODUCT);
-    IndexIVFFlat index(&quantizer, d, nlist, faiss::METRIC_INNER_PRODUCT);
+    IndexIDMap index(&quantizer);
 
     unordered_map<idx_t, string> id_name_map;
     vector<float*> features;
@@ -108,8 +106,6 @@ int main() {
         free(resized_img);
         free(rgb_img);
     }
-
-    index.train(1, normalize_L2_features[0]);
 
     std::cout << "Index is trained = " << index.is_trained << std::endl;
 
