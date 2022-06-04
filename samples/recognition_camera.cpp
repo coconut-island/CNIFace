@@ -53,6 +53,8 @@ int main() {
             arcFace.recognize(rgb_img, img.cols, img.rows, anchor.kps, feature);
             arcFaceCpuTimer.stop();
 
+            MathUtil::normalize_L2(feature, arcFace.getFeatureSize());
+
             if (arc_count <= 1) {
                 golden_feature = feature;
                 continue;

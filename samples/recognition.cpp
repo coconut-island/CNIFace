@@ -30,6 +30,7 @@ int main() {
         arcFace.recognize(rgb_img, img.cols, img.rows, anchor.kps, feature);
         cpuTimer.stop();
 
+        MathUtil::normalize_L2(feature, arcFace.getFeatureSize());
         auto similarity = MathUtil::cosine_similarity(feature, feature, arcFace.getFeatureSize());
 
         std::cout << "feature = " << std::to_string(similarity) << std::endl;
