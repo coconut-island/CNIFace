@@ -72,8 +72,8 @@ int main() {
 
     int d = arcFace.getFeatureSize();
 
-    IndexFlat quantizer(d, faiss::METRIC_INNER_PRODUCT);
-    IndexIDMap index(&quantizer);
+    IndexFlat _index(d, faiss::METRIC_INNER_PRODUCT);
+    IndexIDMap index(&_index);
 
     unordered_map<idx_t, string> id_name_map;
     vector<float*> features;
