@@ -12,10 +12,18 @@
 
 using namespace cv;
 
+//feature similarity = 1.000000
+//feature similarity = 0.062621
+//feature similarity = -0.010281
+//feature similarity = -0.081489
+//feature similarity = 0.038155
+//feature similarity = -0.030517
+
 int main() {
     auto img = imread("../images/t1.jpg");
     auto* rgb_img = (uint8_t*)malloc(img.rows * img.cols * 3 * sizeof(uint8_t));
     ImageUtil::bgr2rgb_packed(img.data, rgb_img, img.cols, img.rows);
+    float* goldenFeature;
 
     CPUTimer cpuTimer;
 
@@ -24,6 +32,7 @@ int main() {
 
     auto anchors = retinaFace.detect(rgb_img, img.cols, img.rows, 0.5);
 
+    int idx = 0;
     for (const auto& anchor : anchors) {
         cpuTimer.start();
         auto* feature = (float*)malloc(arcFace.getFeatureSize() * sizeof(float));
@@ -31,12 +40,22 @@ int main() {
         cpuTimer.stop();
 
         MathUtil::normalize_L2(feature, arcFace.getFeatureSize());
-        auto similarity = MathUtil::cosine_similarity(feature, feature, arcFace.getFeatureSize());
 
-        std::cout << "feature = " << std::to_string(similarity) << std::endl;
-        free(feature);
+        if (idx == 0) {
+            goldenFeature = feature;
+        }
+        auto similarity = MathUtil::cosine_similarity(goldenFeature, feature, arcFace.getFeatureSize());
+
+        std::cout << "feature similarity = " << std::to_string(similarity) << std::endl;
+
+        if (idx != 0) {
+            free(feature);
+        }
+        idx++;
     }
 
     cpuTimer.print();
     free(rgb_img);
+    free(goldenFeature);
+    return 0;
 }
