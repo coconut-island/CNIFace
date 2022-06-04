@@ -41,7 +41,7 @@ private:
 
     static Repository* getRepoByName(const string& repoName);
 
-    int64_t size();
+
     vector<SearchResult> search(const string& featureBase64, int topk);
     void addWithId(int64_t featureId, const string& featureBase64);
     void deleteById(int64_t featureId);
@@ -49,6 +49,7 @@ private:
 
 public:
     string getRepoName();
+    int64_t size();
 
     static void initRepos();
 

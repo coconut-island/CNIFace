@@ -33,6 +33,7 @@ int main() {
     auto repos = Repository::listRepos();
     for (const auto& repo : repos) {
         cout << "repo name: " << repo->getRepoName() << endl;
+        cout << "repo size: " << to_string(repo->size()) << endl;
     }
 
     auto img = imread("../images/t1.jpg");
@@ -94,6 +95,7 @@ int main() {
     repos = Repository::listRepos();
     for (const auto& repo : repos) {
         cout << "repo name: " << repo->getRepoName() << endl;
+        cout << "repo size: " << to_string(repo->size()) << endl;
     }
 
     free(rgb_img);
