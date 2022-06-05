@@ -582,16 +582,16 @@ const char descriptor_table_protodef_cniface_2eproto[] PROTOBUF_SECTION_VARIABLE
   "ture\022\032.cniface.AddFeatureRequest\032\033.cnifa"
   "ce.AddFeatureResponse\"\000\022P\n\rdeleteFeature"
   "\022\035.cniface.deleteFeatureRequest\032\036.cnifac"
-  "e.deleteFeatureResponse\"\000B4\n\030cn.abellee."
-  "cniface.grpc.B\014CNIFaceProtoP\001\242\002\007CNIFACEb"
-  "\006proto3"
+  "e.deleteFeatureResponse\"\000B3\n\027cn.abellee."
+  "cniface.grpcB\014CNIFaceProtoP\001\242\002\007CNIFACEb\006"
+  "proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_cniface_2eproto_deps[1] = {
   &::descriptor_table_google_2fprotobuf_2fempty_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_cniface_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_cniface_2eproto = {
-  false, false, 2167, descriptor_table_protodef_cniface_2eproto, "cniface.proto", 
+  false, false, 2166, descriptor_table_protodef_cniface_2eproto, "cniface.proto", 
   &descriptor_table_cniface_2eproto_once, descriptor_table_cniface_2eproto_deps, 1, 21,
   schemas, file_default_instances, TableStruct_cniface_2eproto::offsets,
   file_level_metadata_cniface_2eproto, file_level_enum_descriptors_cniface_2eproto, file_level_service_descriptors_cniface_2eproto,

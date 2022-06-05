@@ -25,7 +25,7 @@ grpc::Status RepositoryService::listRepo(::grpc::ServerContext *context, const :
         repository->set_size(repo->size());
     }
 
-    return Service::listRepo(context, request, response);
+    return grpc::Status::OK;
 }
 
 grpc::Status RepositoryService::addRepo(::grpc::ServerContext *context, const ::cniface::AddRepoRequest *request,
@@ -33,7 +33,7 @@ grpc::Status RepositoryService::addRepo(::grpc::ServerContext *context, const ::
     response->set_code(0);
     response->set_message("OK");
     Repository::addRepo(request->reponame(), DEFAULT_FEATURE_DIM);
-    return Service::addRepo(context, request, response);
+    return grpc::Status::OK;
 }
 
 grpc::Status RepositoryService::deleteRepo(::grpc::ServerContext *context, const ::cniface::DeleteRepoRequest *request,
@@ -41,7 +41,7 @@ grpc::Status RepositoryService::deleteRepo(::grpc::ServerContext *context, const
     response->set_code(0);
     response->set_message("OK");
     Repository::destroy(request->reponame());
-    return Service::deleteRepo(context, request, response);
+    return grpc::Status::OK;
 }
 
 grpc::Status RepositoryService::search(::grpc::ServerContext *context, const ::cniface::SearchRequest *request,
@@ -55,7 +55,7 @@ grpc::Status RepositoryService::search(::grpc::ServerContext *context, const ::c
         result->set_distance(result->distance());
     }
 
-    return Service::search(context, request, response);
+    return grpc::Status::OK;
 }
 
 grpc::Status RepositoryService::addFeature(::grpc::ServerContext *context, const ::cniface::AddFeatureRequest *request,
@@ -63,7 +63,7 @@ grpc::Status RepositoryService::addFeature(::grpc::ServerContext *context, const
     response->set_code(0);
     response->set_message("OK");
     Repository::addWithId(request->reponame(), request->featureid(), request->featurebase64());
-    return Service::addFeature(context, request, response);
+    return grpc::Status::OK;
 }
 
 grpc::Status RepositoryService::deleteFeature(::grpc::ServerContext *context, const ::cniface::deleteFeatureRequest *request,
@@ -71,5 +71,5 @@ grpc::Status RepositoryService::deleteFeature(::grpc::ServerContext *context, co
     response->set_code(0);
     response->set_message("OK");
     Repository::deleteById(request->reponame(), request->featureid());
-    return Service::deleteFeature(context, request, response);
+    return grpc::Status::OK;
 }
