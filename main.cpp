@@ -10,7 +10,7 @@
 int main(int argc, char *argv[]) {
     std::cout << "Starting All Servers!" << std::endl;
 
-    std::string server_address("0.0.0.0:50051");
+    std::string server_address("0.0.0.0:50001");
     RepositoryService repositoryService;
     DetectService detectService;
     RecognitionService recognitionService;
