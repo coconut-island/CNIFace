@@ -1,13 +1,68 @@
 syntax = "proto3";
 
-import "google/protobuf/empty.proto";
-
 option java_multiple_files = true;
-option java_package = "cn.abellee.cniface.grpc.repository";
-option java_outer_classname = "RepositoryProto";
+option java_package = "cn.abellee.cniface.grpc.";
+option java_outer_classname = "CNIFaceProto";
 option objc_class_prefix = "CNIFACE";
 
 package cniface;
+
+import "google/protobuf/empty.proto";
+
+
+service DetectService {
+    rpc detect (DetectRequest) returns ( DetectResponse) {}
+}
+
+message DetectRequest {
+    string faceImageBase64 = 1;
+    float score = 2;
+}
+
+message DetectResult {
+    float score = 1;
+    float x = 2;
+    float y = 3;
+    float w = 4;
+    float h = 5;
+    repeated float kps = 6;
+}
+
+message DetectResponse {
+    int64 code = 1;
+    string message = 2;
+    repeated DetectResult results = 3;
+}
+
+
+
+service RecognitionService {
+    rpc extractFeature (ExtractFeatureRequest) returns ( ExtractFeatureResponse) {}
+    rpc similarity (SimilarityRequest) returns ( SimilarityeResponse) {}
+}
+
+message ExtractFeatureRequest {
+    string faceImageBase64 = 1;
+    repeated float kps = 2;
+}
+
+message ExtractFeatureResponse {
+    int64 code = 1;
+    string message = 2;
+    string featureBase64 = 3;
+}
+
+message SimilarityRequest {
+    string featureBase64_1 = 1;
+    string featureBase64_2 = 2;
+}
+
+message SimilarityeResponse {
+    int64 code = 1;
+    string message = 2;
+    float similarity = 3;
+}
+
 
 
 message Repository {
@@ -90,4 +145,3 @@ message SearchResponse {
     string message = 2;
     repeated SearchResult results = 3;
 }
-

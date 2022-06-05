@@ -5,7 +5,7 @@
 #ifndef CNIFACE_REPOSITORYSERVICE_H
 #define CNIFACE_REPOSITORYSERVICE_H
 
-#include "../grpc/repository.grpc.pb.h"
+#include "../grpc/cniface.grpc.pb.h"
 
 
 class RepositoryService final : public cniface::RepositoryService::Service {

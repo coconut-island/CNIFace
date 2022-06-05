@@ -5,7 +5,7 @@
 #ifndef CNIFACE_DETECTSERVICE_H
 #define CNIFACE_DETECTSERVICE_H
 
-#include "../grpc/detect.grpc.pb.h"
+#include "../grpc/cniface.grpc.pb.h"
 #include "../retinaface/RetinaFace.h"
 
 

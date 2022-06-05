@@ -5,7 +5,7 @@
 #ifndef CNIFACE_RECOGNITIONSERVICE_H
 #define CNIFACE_RECOGNITIONSERVICE_H
 
-#include "../grpc/recognition.grpc.pb.h"
+#include "../grpc/cniface.grpc.pb.h"
 #include "../arcface/ArcFace.h"
 
 
