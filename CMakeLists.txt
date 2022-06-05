@@ -32,10 +32,27 @@ file(GLOB UTILS_SRC
         ${CMAKE_CURRENT_SOURCE_DIR}/utils/*.cpp
         )
 
+file(GLOB GRPC_SRC
+        ${CMAKE_CURRENT_SOURCE_DIR}/grpc/*.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/grpc/*.cc
+        )
+
+file(GLOB SERVICE_SRC
+        ${CMAKE_CURRENT_SOURCE_DIR}/service/*.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/service/*.cpp
+        )
+
 set(SOURCE_FILES
         main.cpp
         ${COMMON_SRC}
         ${UTILS_SRC}
+        ${RETINA_FACE_SRC}
+        ${ARC_FACE_SRC}
+        ${COMMON_SRC}
+        ${UTILS_SRC}
+        ${REPOSITORY_SRC}
+        ${GRPC_SRC}
+        ${SERVICE_SRC}
 )
 
 include_directories(
@@ -50,7 +67,7 @@ link_directories(
 
 # main
 add_executable(${CMAKE_PROJECT_NAME} ${SOURCE_FILES})
-target_link_libraries(${CMAKE_PROJECT_NAME} ${OpenCV_LIBS} dl pthread tvm_runtime gflags)
+target_link_libraries(${CMAKE_PROJECT_NAME} ${OpenCV_LIBS} dl pthread tvm_runtime faiss rocksdb gflags grpc++ protobuf)
 
 
 # samples

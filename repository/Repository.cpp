@@ -37,7 +37,12 @@ Repository::Repository(const string &name, int feature_dim) {
 
 }
 
-Repository::~Repository() = default;
+Repository::~Repository() {
+    name_repo->erase(name);
+    delete index;
+    db->Close();
+    delete db;
+};
 
 void Repository::initRepos() {
     isInit = false;
@@ -90,15 +95,8 @@ vector<Repository*> Repository::listRepos() {
 }
 
 void Repository::destroy() {
-    delete index;
-
-    db->Close();
-    delete db;
-
-    rocksdb::DestroyDB(CNIFACE_DIR + name + ".db", rocksdb::Options());
-
-    name_repo->erase(name);
     delete this;
+    rocksdb::DestroyDB(CNIFACE_DIR + name + ".db", rocksdb::Options());
 }
 
 void Repository::destroy(const string &repoName) {

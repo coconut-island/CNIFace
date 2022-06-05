@@ -11,5 +11,6 @@
 #define ThrowError(msg)         throw std::runtime_error(msg)
 #define ThrowErrorIf(cond, msg) if (cond) throw std::runtime_error (msg)
 #define CNIFACE_DIR std::string("./")
+#define DEFAULT_FEATURE_DIM 512
 
 #endif //CNIFACE_COMMON_H
