@@ -101,20 +101,20 @@ struct SimilarityRequestDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT SimilarityRequestDefaultTypeInternal _SimilarityRequest_default_instance_;
-constexpr SimilarityeResponse::SimilarityeResponse(
+constexpr SimilarityResponse::SimilarityResponse(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : message_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , code_(int64_t{0})
   , similarity_(0){}
-struct SimilarityeResponseDefaultTypeInternal {
-  constexpr SimilarityeResponseDefaultTypeInternal()
+struct SimilarityResponseDefaultTypeInternal {
+  constexpr SimilarityResponseDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~SimilarityeResponseDefaultTypeInternal() {}
+  ~SimilarityResponseDefaultTypeInternal() {}
   union {
-    SimilarityeResponse _instance;
+    SimilarityResponse _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT SimilarityeResponseDefaultTypeInternal _SimilarityeResponse_default_instance_;
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT SimilarityResponseDefaultTypeInternal _SimilarityResponse_default_instance_;
 constexpr Repository::Repository(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
@@ -359,14 +359,14 @@ const uint32_t TableStruct_cniface_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
   PROTOBUF_FIELD_OFFSET(::cniface::SimilarityRequest, featurebase64_1_),
   PROTOBUF_FIELD_OFFSET(::cniface::SimilarityRequest, featurebase64_2_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::cniface::SimilarityeResponse, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::cniface::SimilarityResponse, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::cniface::SimilarityeResponse, code_),
-  PROTOBUF_FIELD_OFFSET(::cniface::SimilarityeResponse, message_),
-  PROTOBUF_FIELD_OFFSET(::cniface::SimilarityeResponse, similarity_),
+  PROTOBUF_FIELD_OFFSET(::cniface::SimilarityResponse, code_),
+  PROTOBUF_FIELD_OFFSET(::cniface::SimilarityResponse, message_),
+  PROTOBUF_FIELD_OFFSET(::cniface::SimilarityResponse, similarity_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::cniface::Repository, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -488,7 +488,7 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 29, -1, -1, sizeof(::cniface::ExtractFeatureRequest)},
   { 37, -1, -1, sizeof(::cniface::ExtractFeatureResponse)},
   { 46, -1, -1, sizeof(::cniface::SimilarityRequest)},
-  { 54, -1, -1, sizeof(::cniface::SimilarityeResponse)},
+  { 54, -1, -1, sizeof(::cniface::SimilarityResponse)},
   { 63, -1, -1, sizeof(::cniface::Repository)},
   { 71, -1, -1, sizeof(::cniface::ListRepositoryResponse)},
   { 80, -1, -1, sizeof(::cniface::deleteFeatureRequest)},
@@ -512,7 +512,7 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cniface::_ExtractFeatureRequest_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cniface::_ExtractFeatureResponse_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cniface::_SimilarityRequest_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cniface::_SimilarityeResponse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cniface::_SimilarityResponse_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cniface::_Repository_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cniface::_ListRepositoryResponse_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cniface::_deleteFeatureRequest_default_instance_),
@@ -542,56 +542,56 @@ const char descriptor_table_protodef_cniface_2eproto[] PROTOBUF_SECTION_VARIABLE
   "tFeatureResponse\022\014\n\004code\030\001 \001(\003\022\017\n\007messag"
   "e\030\002 \001(\t\022\025\n\rfeatureBase64\030\003 \001(\t\"E\n\021Simila"
   "rityRequest\022\027\n\017featureBase64_1\030\001 \001(\t\022\027\n\017"
-  "featureBase64_2\030\002 \001(\t\"H\n\023SimilarityeResp"
-  "onse\022\014\n\004code\030\001 \001(\003\022\017\n\007message\030\002 \001(\t\022\022\n\ns"
-  "imilarity\030\003 \001(\002\"(\n\nRepository\022\014\n\004name\030\001 "
-  "\001(\t\022\014\n\004size\030\002 \001(\003\"b\n\026ListRepositoryRespo"
-  "nse\022\014\n\004code\030\001 \001(\003\022\017\n\007message\030\002 \001(\t\022)\n\014re"
-  "positories\030\003 \003(\0132\023.cniface.Repository\";\n"
-  "\024deleteFeatureRequest\022\020\n\010repoName\030\001 \001(\t\022"
-  "\021\n\tfeatureId\030\002 \001(\003\"6\n\025deleteFeatureRespo"
-  "nse\022\014\n\004code\030\001 \001(\003\022\017\n\007message\030\002 \001(\t\"O\n\021Ad"
-  "dFeatureRequest\022\020\n\010repoName\030\001 \001(\t\022\021\n\tfea"
-  "tureId\030\002 \001(\003\022\025\n\rfeatureBase64\030\003 \001(\t\"3\n\022A"
-  "ddFeatureResponse\022\014\n\004code\030\001 \001(\003\022\017\n\007messa"
-  "ge\030\002 \001(\t\"%\n\021DeleteRepoRequest\022\020\n\010repoNam"
-  "e\030\001 \001(\t\"3\n\022DeleteRepoResponse\022\014\n\004code\030\001 "
-  "\001(\003\022\017\n\007message\030\002 \001(\t\"\"\n\016AddRepoRequest\022\020"
-  "\n\010repoName\030\001 \001(\t\"0\n\017AddRepoResponse\022\014\n\004c"
-  "ode\030\001 \001(\003\022\017\n\007message\030\002 \001(\t\"%\n\021Repository"
-  "Request\022\020\n\010repoName\030\001 \001(\t\"3\n\014SearchResul"
-  "t\022\021\n\tfeatureId\030\001 \001(\003\022\020\n\010distance\030\002 \001(\002\"F"
-  "\n\rSearchRequest\022\020\n\010repoName\030\001 \001(\t\022\025\n\rfea"
-  "tureBase64\030\002 \001(\t\022\014\n\004topk\030\003 \001(\003\"W\n\016Search"
-  "Response\022\014\n\004code\030\001 \001(\003\022\017\n\007message\030\002 \001(\t\022"
-  "&\n\007results\030\003 \003(\0132\025.cniface.SearchResult2"
-  "L\n\rDetectService\022;\n\006detect\022\026.cniface.Det"
-  "ectRequest\032\027.cniface.DetectResponse\"\0002\263\001"
-  "\n\022RecognitionService\022S\n\016extractFeature\022\036"
-  ".cniface.ExtractFeatureRequest\032\037.cniface"
-  ".ExtractFeatureResponse\"\000\022H\n\nsimilarity\022"
-  "\032.cniface.SimilarityRequest\032\034.cniface.Si"
-  "milarityeResponse\"\0002\273\003\n\021RepositoryServic"
-  "e\022E\n\010listRepo\022\026.google.protobuf.Empty\032\037."
-  "cniface.ListRepositoryResponse\"\000\022>\n\007addR"
-  "epo\022\027.cniface.AddRepoRequest\032\030.cniface.A"
-  "ddRepoResponse\"\000\022G\n\ndeleteRepo\022\032.cniface"
-  ".DeleteRepoRequest\032\033.cniface.DeleteRepoR"
-  "esponse\"\000\022;\n\006search\022\026.cniface.SearchRequ"
-  "est\032\027.cniface.SearchResponse\"\000\022G\n\naddFea"
-  "ture\022\032.cniface.AddFeatureRequest\032\033.cnifa"
-  "ce.AddFeatureResponse\"\000\022P\n\rdeleteFeature"
-  "\022\035.cniface.deleteFeatureRequest\032\036.cnifac"
-  "e.deleteFeatureResponse\"\000B3\n\027cn.abellee."
-  "cniface.grpcB\014CNIFaceProtoP\001\242\002\007CNIFACEb\006"
-  "proto3"
+  "featureBase64_2\030\002 \001(\t\"G\n\022SimilarityRespo"
+  "nse\022\014\n\004code\030\001 \001(\003\022\017\n\007message\030\002 \001(\t\022\022\n\nsi"
+  "milarity\030\003 \001(\002\"(\n\nRepository\022\014\n\004name\030\001 \001"
+  "(\t\022\014\n\004size\030\002 \001(\003\"b\n\026ListRepositoryRespon"
+  "se\022\014\n\004code\030\001 \001(\003\022\017\n\007message\030\002 \001(\t\022)\n\014rep"
+  "ositories\030\003 \003(\0132\023.cniface.Repository\";\n\024"
+  "deleteFeatureRequest\022\020\n\010repoName\030\001 \001(\t\022\021"
+  "\n\tfeatureId\030\002 \001(\003\"6\n\025deleteFeatureRespon"
+  "se\022\014\n\004code\030\001 \001(\003\022\017\n\007message\030\002 \001(\t\"O\n\021Add"
+  "FeatureRequest\022\020\n\010repoName\030\001 \001(\t\022\021\n\tfeat"
+  "ureId\030\002 \001(\003\022\025\n\rfeatureBase64\030\003 \001(\t\"3\n\022Ad"
+  "dFeatureResponse\022\014\n\004code\030\001 \001(\003\022\017\n\007messag"
+  "e\030\002 \001(\t\"%\n\021DeleteRepoRequest\022\020\n\010repoName"
+  "\030\001 \001(\t\"3\n\022DeleteRepoResponse\022\014\n\004code\030\001 \001"
+  "(\003\022\017\n\007message\030\002 \001(\t\"\"\n\016AddRepoRequest\022\020\n"
+  "\010repoName\030\001 \001(\t\"0\n\017AddRepoResponse\022\014\n\004co"
+  "de\030\001 \001(\003\022\017\n\007message\030\002 \001(\t\"%\n\021RepositoryR"
+  "equest\022\020\n\010repoName\030\001 \001(\t\"3\n\014SearchResult"
+  "\022\021\n\tfeatureId\030\001 \001(\003\022\020\n\010distance\030\002 \001(\002\"F\n"
+  "\rSearchRequest\022\020\n\010repoName\030\001 \001(\t\022\025\n\rfeat"
+  "ureBase64\030\002 \001(\t\022\014\n\004topk\030\003 \001(\003\"W\n\016SearchR"
+  "esponse\022\014\n\004code\030\001 \001(\003\022\017\n\007message\030\002 \001(\t\022&"
+  "\n\007results\030\003 \003(\0132\025.cniface.SearchResult2L"
+  "\n\rDetectService\022;\n\006detect\022\026.cniface.Dete"
+  "ctRequest\032\027.cniface.DetectResponse\"\0002\262\001\n"
+  "\022RecognitionService\022S\n\016extractFeature\022\036."
+  "cniface.ExtractFeatureRequest\032\037.cniface."
+  "ExtractFeatureResponse\"\000\022G\n\nsimilarity\022\032"
+  ".cniface.SimilarityRequest\032\033.cniface.Sim"
+  "ilarityResponse\"\0002\273\003\n\021RepositoryService\022"
+  "E\n\010listRepo\022\026.google.protobuf.Empty\032\037.cn"
+  "iface.ListRepositoryResponse\"\000\022>\n\007addRep"
+  "o\022\027.cniface.AddRepoRequest\032\030.cniface.Add"
+  "RepoResponse\"\000\022G\n\ndeleteRepo\022\032.cniface.D"
+  "eleteRepoRequest\032\033.cniface.DeleteRepoRes"
+  "ponse\"\000\022;\n\006search\022\026.cniface.SearchReques"
+  "t\032\027.cniface.SearchResponse\"\000\022G\n\naddFeatu"
+  "re\022\032.cniface.AddFeatureRequest\032\033.cniface"
+  ".AddFeatureResponse\"\000\022P\n\rdeleteFeature\022\035"
+  ".cniface.deleteFeatureRequest\032\036.cniface."
+  "deleteFeatureResponse\"\000B3\n\027cn.abellee.cn"
+  "iface.grpcB\014CNIFaceProtoP\001\242\002\007CNIFACEb\006pr"
+  "oto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_cniface_2eproto_deps[1] = {
   &::descriptor_table_google_2fprotobuf_2fempty_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_cniface_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_cniface_2eproto = {
-  false, false, 2166, descriptor_table_protodef_cniface_2eproto, "cniface.proto", 
+  false, false, 2164, descriptor_table_protodef_cniface_2eproto, "cniface.proto", 
   &descriptor_table_cniface_2eproto_once, descriptor_table_cniface_2eproto_deps, 1, 21,
   schemas, file_default_instances, TableStruct_cniface_2eproto::offsets,
   file_level_metadata_cniface_2eproto, file_level_enum_descriptors_cniface_2eproto, file_level_service_descriptors_cniface_2eproto,
@@ -2246,20 +2246,20 @@ void SimilarityRequest::InternalSwap(SimilarityRequest* other) {
 
 // ===================================================================
 
-class SimilarityeResponse::_Internal {
+class SimilarityResponse::_Internal {
  public:
 };
 
-SimilarityeResponse::SimilarityeResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+SimilarityResponse::SimilarityResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
   if (!is_message_owned) {
     RegisterArenaDtor(arena);
   }
-  // @@protoc_insertion_point(arena_constructor:cniface.SimilarityeResponse)
+  // @@protoc_insertion_point(arena_constructor:cniface.SimilarityResponse)
 }
-SimilarityeResponse::SimilarityeResponse(const SimilarityeResponse& from)
+SimilarityResponse::SimilarityResponse(const SimilarityResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   message_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
@@ -2273,10 +2273,10 @@ SimilarityeResponse::SimilarityeResponse(const SimilarityeResponse& from)
   ::memcpy(&code_, &from.code_,
     static_cast<size_t>(reinterpret_cast<char*>(&similarity_) -
     reinterpret_cast<char*>(&code_)) + sizeof(similarity_));
-  // @@protoc_insertion_point(copy_constructor:cniface.SimilarityeResponse)
+  // @@protoc_insertion_point(copy_constructor:cniface.SimilarityResponse)
 }
 
-inline void SimilarityeResponse::SharedCtor() {
+inline void SimilarityResponse::SharedCtor() {
 message_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
   message_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
@@ -2287,30 +2287,30 @@ message_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlre
     reinterpret_cast<char*>(&code_)) + sizeof(similarity_));
 }
 
-SimilarityeResponse::~SimilarityeResponse() {
-  // @@protoc_insertion_point(destructor:cniface.SimilarityeResponse)
+SimilarityResponse::~SimilarityResponse() {
+  // @@protoc_insertion_point(destructor:cniface.SimilarityResponse)
   if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-inline void SimilarityeResponse::SharedDtor() {
+inline void SimilarityResponse::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   message_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
-void SimilarityeResponse::ArenaDtor(void* object) {
-  SimilarityeResponse* _this = reinterpret_cast< SimilarityeResponse* >(object);
+void SimilarityResponse::ArenaDtor(void* object) {
+  SimilarityResponse* _this = reinterpret_cast< SimilarityResponse* >(object);
   (void)_this;
 }
-void SimilarityeResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+void SimilarityResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
 }
-void SimilarityeResponse::SetCachedSize(int size) const {
+void SimilarityResponse::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
 
-void SimilarityeResponse::Clear() {
-// @@protoc_insertion_point(message_clear_start:cniface.SimilarityeResponse)
+void SimilarityResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:cniface.SimilarityResponse)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -2322,7 +2322,7 @@ void SimilarityeResponse::Clear() {
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* SimilarityeResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* SimilarityResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
@@ -2341,7 +2341,7 @@ const char* SimilarityeResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAME
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
           auto str = _internal_mutable_message();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cniface.SimilarityeResponse.message"));
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cniface.SimilarityResponse.message"));
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -2377,9 +2377,9 @@ failure:
 #undef CHK_
 }
 
-uint8_t* SimilarityeResponse::_InternalSerialize(
+uint8_t* SimilarityResponse::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:cniface.SimilarityeResponse)
+  // @@protoc_insertion_point(serialize_to_array_start:cniface.SimilarityResponse)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -2394,7 +2394,7 @@ uint8_t* SimilarityeResponse::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_message().data(), static_cast<int>(this->_internal_message().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "cniface.SimilarityeResponse.message");
+      "cniface.SimilarityResponse.message");
     target = stream->WriteStringMaybeAliased(
         2, this->_internal_message(), target);
   }
@@ -2413,12 +2413,12 @@ uint8_t* SimilarityeResponse::_InternalSerialize(
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:cniface.SimilarityeResponse)
+  // @@protoc_insertion_point(serialize_to_array_end:cniface.SimilarityResponse)
   return target;
 }
 
-size_t SimilarityeResponse::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:cniface.SimilarityeResponse)
+size_t SimilarityResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:cniface.SimilarityResponse)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -2449,21 +2449,21 @@ size_t SimilarityeResponse::ByteSizeLong() const {
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData SimilarityeResponse::_class_data_ = {
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData SimilarityResponse::_class_data_ = {
     ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    SimilarityeResponse::MergeImpl
+    SimilarityResponse::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*SimilarityeResponse::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*SimilarityResponse::GetClassData() const { return &_class_data_; }
 
-void SimilarityeResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+void SimilarityResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
                       const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<SimilarityeResponse *>(to)->MergeFrom(
-      static_cast<const SimilarityeResponse &>(from));
+  static_cast<SimilarityResponse *>(to)->MergeFrom(
+      static_cast<const SimilarityResponse &>(from));
 }
 
 
-void SimilarityeResponse::MergeFrom(const SimilarityeResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:cniface.SimilarityeResponse)
+void SimilarityResponse::MergeFrom(const SimilarityResponse& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:cniface.SimilarityResponse)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -2484,18 +2484,18 @@ void SimilarityeResponse::MergeFrom(const SimilarityeResponse& from) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void SimilarityeResponse::CopyFrom(const SimilarityeResponse& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:cniface.SimilarityeResponse)
+void SimilarityResponse::CopyFrom(const SimilarityResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:cniface.SimilarityResponse)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool SimilarityeResponse::IsInitialized() const {
+bool SimilarityResponse::IsInitialized() const {
   return true;
 }
 
-void SimilarityeResponse::InternalSwap(SimilarityeResponse* other) {
+void SimilarityResponse::InternalSwap(SimilarityResponse* other) {
   using std::swap;
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
@@ -2506,14 +2506,14 @@ void SimilarityeResponse::InternalSwap(SimilarityeResponse* other) {
       &other->message_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(SimilarityeResponse, similarity_)
-      + sizeof(SimilarityeResponse::similarity_)
-      - PROTOBUF_FIELD_OFFSET(SimilarityeResponse, code_)>(
+      PROTOBUF_FIELD_OFFSET(SimilarityResponse, similarity_)
+      + sizeof(SimilarityResponse::similarity_)
+      - PROTOBUF_FIELD_OFFSET(SimilarityResponse, code_)>(
           reinterpret_cast<char*>(&code_),
           reinterpret_cast<char*>(&other->code_));
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata SimilarityeResponse::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata SimilarityResponse::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_cniface_2eproto_getter, &descriptor_table_cniface_2eproto_once,
       file_level_metadata_cniface_2eproto[6]);
@@ -5827,8 +5827,8 @@ template<> PROTOBUF_NOINLINE ::cniface::ExtractFeatureResponse* Arena::CreateMay
 template<> PROTOBUF_NOINLINE ::cniface::SimilarityRequest* Arena::CreateMaybeMessage< ::cniface::SimilarityRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::cniface::SimilarityRequest >(arena);
 }
-template<> PROTOBUF_NOINLINE ::cniface::SimilarityeResponse* Arena::CreateMaybeMessage< ::cniface::SimilarityeResponse >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::cniface::SimilarityeResponse >(arena);
+template<> PROTOBUF_NOINLINE ::cniface::SimilarityResponse* Arena::CreateMaybeMessage< ::cniface::SimilarityResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::cniface::SimilarityResponse >(arena);
 }
 template<> PROTOBUF_NOINLINE ::cniface::Repository* Arena::CreateMaybeMessage< ::cniface::Repository >(Arena* arena) {
   return Arena::CreateMessageInternal< ::cniface::Repository >(arena);

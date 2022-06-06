@@ -38,7 +38,7 @@ message DetectResponse {
 
 service RecognitionService {
     rpc extractFeature (ExtractFeatureRequest) returns ( ExtractFeatureResponse) {}
-    rpc similarity (SimilarityRequest) returns ( SimilarityeResponse) {}
+    rpc similarity (SimilarityRequest) returns ( SimilarityResponse) {}
 }
 
 message ExtractFeatureRequest {
@@ -57,7 +57,7 @@ message SimilarityRequest {
     string featureBase64_2 = 2;
 }
 
-message SimilarityeResponse {
+message SimilarityResponse {
     int64 code = 1;
     string message = 2;
     float similarity = 3;

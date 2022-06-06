@@ -5,7 +5,6 @@
 #include "RecognitionService.h"
 
 #include <opencv2/highgui.hpp>
-#include <opencv2/imgproc.hpp>
 
 #include "../utils/base64.h"
 #include "../utils/MathUtil.h"
@@ -43,7 +42,7 @@ grpc::Status RecognitionService::extractFeature(::grpc::ServerContext *context, 
 }
 
 grpc::Status RecognitionService::similarity(::grpc::ServerContext *context, const ::cniface::SimilarityRequest *request,
-                                            ::cniface::SimilarityeResponse *response) {
+                                            ::cniface::SimilarityResponse *response) {
     response->set_code(0);
     response->set_message("OK");
 

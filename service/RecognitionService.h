@@ -17,7 +17,7 @@ public:
                                 ::cniface::ExtractFeatureResponse *response) override;
 
     grpc::Status similarity(::grpc::ServerContext *context, const ::cniface::SimilarityRequest *request,
-                            ::cniface::SimilarityeResponse *response) override;
+                            ::cniface::SimilarityResponse *response) override;
 
 private:
     ArcFace arcFace{"../models/relay/"};

@@ -121,23 +121,23 @@ void RecognitionService::Stub::async::extractFeature(::grpc::ClientContext* cont
   return result;
 }
 
-::grpc::Status RecognitionService::Stub::similarity(::grpc::ClientContext* context, const ::cniface::SimilarityRequest& request, ::cniface::SimilarityeResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::cniface::SimilarityRequest, ::cniface::SimilarityeResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_similarity_, context, request, response);
+::grpc::Status RecognitionService::Stub::similarity(::grpc::ClientContext* context, const ::cniface::SimilarityRequest& request, ::cniface::SimilarityResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::cniface::SimilarityRequest, ::cniface::SimilarityResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_similarity_, context, request, response);
 }
 
-void RecognitionService::Stub::async::similarity(::grpc::ClientContext* context, const ::cniface::SimilarityRequest* request, ::cniface::SimilarityeResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::cniface::SimilarityRequest, ::cniface::SimilarityeResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_similarity_, context, request, response, std::move(f));
+void RecognitionService::Stub::async::similarity(::grpc::ClientContext* context, const ::cniface::SimilarityRequest* request, ::cniface::SimilarityResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::cniface::SimilarityRequest, ::cniface::SimilarityResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_similarity_, context, request, response, std::move(f));
 }
 
-void RecognitionService::Stub::async::similarity(::grpc::ClientContext* context, const ::cniface::SimilarityRequest* request, ::cniface::SimilarityeResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+void RecognitionService::Stub::async::similarity(::grpc::ClientContext* context, const ::cniface::SimilarityRequest* request, ::cniface::SimilarityResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_similarity_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncResponseReader< ::cniface::SimilarityeResponse>* RecognitionService::Stub::PrepareAsyncsimilarityRaw(::grpc::ClientContext* context, const ::cniface::SimilarityRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::cniface::SimilarityeResponse, ::cniface::SimilarityRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_similarity_, context, request);
+::grpc::ClientAsyncResponseReader< ::cniface::SimilarityResponse>* RecognitionService::Stub::PrepareAsyncsimilarityRaw(::grpc::ClientContext* context, const ::cniface::SimilarityRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::cniface::SimilarityResponse, ::cniface::SimilarityRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_similarity_, context, request);
 }
 
-::grpc::ClientAsyncResponseReader< ::cniface::SimilarityeResponse>* RecognitionService::Stub::AsyncsimilarityRaw(::grpc::ClientContext* context, const ::cniface::SimilarityRequest& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::cniface::SimilarityResponse>* RecognitionService::Stub::AsyncsimilarityRaw(::grpc::ClientContext* context, const ::cniface::SimilarityRequest& request, ::grpc::CompletionQueue* cq) {
   auto* result =
     this->PrepareAsyncsimilarityRaw(context, request, cq);
   result->StartCall();
@@ -158,11 +158,11 @@ RecognitionService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       RecognitionService_method_names[1],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< RecognitionService::Service, ::cniface::SimilarityRequest, ::cniface::SimilarityeResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< RecognitionService::Service, ::cniface::SimilarityRequest, ::cniface::SimilarityResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](RecognitionService::Service* service,
              ::grpc::ServerContext* ctx,
              const ::cniface::SimilarityRequest* req,
-             ::cniface::SimilarityeResponse* resp) {
+             ::cniface::SimilarityResponse* resp) {
                return service->similarity(ctx, req, resp);
              }, this)));
 }
@@ -177,7 +177,7 @@ RecognitionService::Service::~Service() {
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status RecognitionService::Service::similarity(::grpc::ServerContext* context, const ::cniface::SimilarityRequest* request, ::cniface::SimilarityeResponse* response) {
+::grpc::Status RecognitionService::Service::similarity(::grpc::ServerContext* context, const ::cniface::SimilarityRequest* request, ::cniface::SimilarityResponse* response) {
   (void) context;
   (void) request;
   (void) response;

@@ -249,20 +249,20 @@ class RecognitionService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cniface::ExtractFeatureResponse>> PrepareAsyncextractFeature(::grpc::ClientContext* context, const ::cniface::ExtractFeatureRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cniface::ExtractFeatureResponse>>(PrepareAsyncextractFeatureRaw(context, request, cq));
     }
-    virtual ::grpc::Status similarity(::grpc::ClientContext* context, const ::cniface::SimilarityRequest& request, ::cniface::SimilarityeResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cniface::SimilarityeResponse>> Asyncsimilarity(::grpc::ClientContext* context, const ::cniface::SimilarityRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cniface::SimilarityeResponse>>(AsyncsimilarityRaw(context, request, cq));
+    virtual ::grpc::Status similarity(::grpc::ClientContext* context, const ::cniface::SimilarityRequest& request, ::cniface::SimilarityResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cniface::SimilarityResponse>> Asyncsimilarity(::grpc::ClientContext* context, const ::cniface::SimilarityRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cniface::SimilarityResponse>>(AsyncsimilarityRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cniface::SimilarityeResponse>> PrepareAsyncsimilarity(::grpc::ClientContext* context, const ::cniface::SimilarityRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cniface::SimilarityeResponse>>(PrepareAsyncsimilarityRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cniface::SimilarityResponse>> PrepareAsyncsimilarity(::grpc::ClientContext* context, const ::cniface::SimilarityRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cniface::SimilarityResponse>>(PrepareAsyncsimilarityRaw(context, request, cq));
     }
     class async_interface {
      public:
       virtual ~async_interface() {}
       virtual void extractFeature(::grpc::ClientContext* context, const ::cniface::ExtractFeatureRequest* request, ::cniface::ExtractFeatureResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void extractFeature(::grpc::ClientContext* context, const ::cniface::ExtractFeatureRequest* request, ::cniface::ExtractFeatureResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      virtual void similarity(::grpc::ClientContext* context, const ::cniface::SimilarityRequest* request, ::cniface::SimilarityeResponse* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void similarity(::grpc::ClientContext* context, const ::cniface::SimilarityRequest* request, ::cniface::SimilarityeResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void similarity(::grpc::ClientContext* context, const ::cniface::SimilarityRequest* request, ::cniface::SimilarityResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void similarity(::grpc::ClientContext* context, const ::cniface::SimilarityRequest* request, ::cniface::SimilarityResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
@@ -270,8 +270,8 @@ class RecognitionService final {
    private:
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::cniface::ExtractFeatureResponse>* AsyncextractFeatureRaw(::grpc::ClientContext* context, const ::cniface::ExtractFeatureRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::cniface::ExtractFeatureResponse>* PrepareAsyncextractFeatureRaw(::grpc::ClientContext* context, const ::cniface::ExtractFeatureRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::cniface::SimilarityeResponse>* AsyncsimilarityRaw(::grpc::ClientContext* context, const ::cniface::SimilarityRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::cniface::SimilarityeResponse>* PrepareAsyncsimilarityRaw(::grpc::ClientContext* context, const ::cniface::SimilarityRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::cniface::SimilarityResponse>* AsyncsimilarityRaw(::grpc::ClientContext* context, const ::cniface::SimilarityRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::cniface::SimilarityResponse>* PrepareAsyncsimilarityRaw(::grpc::ClientContext* context, const ::cniface::SimilarityRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -283,20 +283,20 @@ class RecognitionService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cniface::ExtractFeatureResponse>> PrepareAsyncextractFeature(::grpc::ClientContext* context, const ::cniface::ExtractFeatureRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cniface::ExtractFeatureResponse>>(PrepareAsyncextractFeatureRaw(context, request, cq));
     }
-    ::grpc::Status similarity(::grpc::ClientContext* context, const ::cniface::SimilarityRequest& request, ::cniface::SimilarityeResponse* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cniface::SimilarityeResponse>> Asyncsimilarity(::grpc::ClientContext* context, const ::cniface::SimilarityRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cniface::SimilarityeResponse>>(AsyncsimilarityRaw(context, request, cq));
+    ::grpc::Status similarity(::grpc::ClientContext* context, const ::cniface::SimilarityRequest& request, ::cniface::SimilarityResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cniface::SimilarityResponse>> Asyncsimilarity(::grpc::ClientContext* context, const ::cniface::SimilarityRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cniface::SimilarityResponse>>(AsyncsimilarityRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cniface::SimilarityeResponse>> PrepareAsyncsimilarity(::grpc::ClientContext* context, const ::cniface::SimilarityRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cniface::SimilarityeResponse>>(PrepareAsyncsimilarityRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cniface::SimilarityResponse>> PrepareAsyncsimilarity(::grpc::ClientContext* context, const ::cniface::SimilarityRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cniface::SimilarityResponse>>(PrepareAsyncsimilarityRaw(context, request, cq));
     }
     class async final :
       public StubInterface::async_interface {
      public:
       void extractFeature(::grpc::ClientContext* context, const ::cniface::ExtractFeatureRequest* request, ::cniface::ExtractFeatureResponse* response, std::function<void(::grpc::Status)>) override;
       void extractFeature(::grpc::ClientContext* context, const ::cniface::ExtractFeatureRequest* request, ::cniface::ExtractFeatureResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      void similarity(::grpc::ClientContext* context, const ::cniface::SimilarityRequest* request, ::cniface::SimilarityeResponse* response, std::function<void(::grpc::Status)>) override;
-      void similarity(::grpc::ClientContext* context, const ::cniface::SimilarityRequest* request, ::cniface::SimilarityeResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void similarity(::grpc::ClientContext* context, const ::cniface::SimilarityRequest* request, ::cniface::SimilarityResponse* response, std::function<void(::grpc::Status)>) override;
+      void similarity(::grpc::ClientContext* context, const ::cniface::SimilarityRequest* request, ::cniface::SimilarityResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -310,8 +310,8 @@ class RecognitionService final {
     class async async_stub_{this};
     ::grpc::ClientAsyncResponseReader< ::cniface::ExtractFeatureResponse>* AsyncextractFeatureRaw(::grpc::ClientContext* context, const ::cniface::ExtractFeatureRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::cniface::ExtractFeatureResponse>* PrepareAsyncextractFeatureRaw(::grpc::ClientContext* context, const ::cniface::ExtractFeatureRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::cniface::SimilarityeResponse>* AsyncsimilarityRaw(::grpc::ClientContext* context, const ::cniface::SimilarityRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::cniface::SimilarityeResponse>* PrepareAsyncsimilarityRaw(::grpc::ClientContext* context, const ::cniface::SimilarityRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::cniface::SimilarityResponse>* AsyncsimilarityRaw(::grpc::ClientContext* context, const ::cniface::SimilarityRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::cniface::SimilarityResponse>* PrepareAsyncsimilarityRaw(::grpc::ClientContext* context, const ::cniface::SimilarityRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_extractFeature_;
     const ::grpc::internal::RpcMethod rpcmethod_similarity_;
   };
@@ -322,7 +322,7 @@ class RecognitionService final {
     Service();
     virtual ~Service();
     virtual ::grpc::Status extractFeature(::grpc::ServerContext* context, const ::cniface::ExtractFeatureRequest* request, ::cniface::ExtractFeatureResponse* response);
-    virtual ::grpc::Status similarity(::grpc::ServerContext* context, const ::cniface::SimilarityRequest* request, ::cniface::SimilarityeResponse* response);
+    virtual ::grpc::Status similarity(::grpc::ServerContext* context, const ::cniface::SimilarityRequest* request, ::cniface::SimilarityResponse* response);
   };
   template <class BaseClass>
   class WithAsyncMethod_extractFeature : public BaseClass {
@@ -356,11 +356,11 @@ class RecognitionService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status similarity(::grpc::ServerContext* /*context*/, const ::cniface::SimilarityRequest* /*request*/, ::cniface::SimilarityeResponse* /*response*/) override {
+    ::grpc::Status similarity(::grpc::ServerContext* /*context*/, const ::cniface::SimilarityRequest* /*request*/, ::cniface::SimilarityResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void Requestsimilarity(::grpc::ServerContext* context, ::cniface::SimilarityRequest* request, ::grpc::ServerAsyncResponseWriter< ::cniface::SimilarityeResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void Requestsimilarity(::grpc::ServerContext* context, ::cniface::SimilarityRequest* request, ::grpc::ServerAsyncResponseWriter< ::cniface::SimilarityResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
@@ -399,25 +399,25 @@ class RecognitionService final {
    public:
     WithCallbackMethod_similarity() {
       ::grpc::Service::MarkMethodCallback(1,
-          new ::grpc::internal::CallbackUnaryHandler< ::cniface::SimilarityRequest, ::cniface::SimilarityeResponse>(
+          new ::grpc::internal::CallbackUnaryHandler< ::cniface::SimilarityRequest, ::cniface::SimilarityResponse>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::cniface::SimilarityRequest* request, ::cniface::SimilarityeResponse* response) { return this->similarity(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::cniface::SimilarityRequest* request, ::cniface::SimilarityResponse* response) { return this->similarity(context, request, response); }));}
     void SetMessageAllocatorFor_similarity(
-        ::grpc::MessageAllocator< ::cniface::SimilarityRequest, ::cniface::SimilarityeResponse>* allocator) {
+        ::grpc::MessageAllocator< ::cniface::SimilarityRequest, ::cniface::SimilarityResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(1);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::cniface::SimilarityRequest, ::cniface::SimilarityeResponse>*>(handler)
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::cniface::SimilarityRequest, ::cniface::SimilarityResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
     ~WithCallbackMethod_similarity() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status similarity(::grpc::ServerContext* /*context*/, const ::cniface::SimilarityRequest* /*request*/, ::cniface::SimilarityeResponse* /*response*/) override {
+    ::grpc::Status similarity(::grpc::ServerContext* /*context*/, const ::cniface::SimilarityRequest* /*request*/, ::cniface::SimilarityResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerUnaryReactor* similarity(
-      ::grpc::CallbackServerContext* /*context*/, const ::cniface::SimilarityRequest* /*request*/, ::cniface::SimilarityeResponse* /*response*/)  { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::cniface::SimilarityRequest* /*request*/, ::cniface::SimilarityResponse* /*response*/)  { return nullptr; }
   };
   typedef WithCallbackMethod_extractFeature<WithCallbackMethod_similarity<Service > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
@@ -450,7 +450,7 @@ class RecognitionService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status similarity(::grpc::ServerContext* /*context*/, const ::cniface::SimilarityRequest* /*request*/, ::cniface::SimilarityeResponse* /*response*/) override {
+    ::grpc::Status similarity(::grpc::ServerContext* /*context*/, const ::cniface::SimilarityRequest* /*request*/, ::cniface::SimilarityResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -487,7 +487,7 @@ class RecognitionService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status similarity(::grpc::ServerContext* /*context*/, const ::cniface::SimilarityRequest* /*request*/, ::cniface::SimilarityeResponse* /*response*/) override {
+    ::grpc::Status similarity(::grpc::ServerContext* /*context*/, const ::cniface::SimilarityRequest* /*request*/, ::cniface::SimilarityResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -532,7 +532,7 @@ class RecognitionService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status similarity(::grpc::ServerContext* /*context*/, const ::cniface::SimilarityRequest* /*request*/, ::cniface::SimilarityeResponse* /*response*/) override {
+    ::grpc::Status similarity(::grpc::ServerContext* /*context*/, const ::cniface::SimilarityRequest* /*request*/, ::cniface::SimilarityResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -574,10 +574,10 @@ class RecognitionService final {
     WithStreamedUnaryMethod_similarity() {
       ::grpc::Service::MarkMethodStreamed(1,
         new ::grpc::internal::StreamedUnaryHandler<
-          ::cniface::SimilarityRequest, ::cniface::SimilarityeResponse>(
+          ::cniface::SimilarityRequest, ::cniface::SimilarityResponse>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerUnaryStreamer<
-                     ::cniface::SimilarityRequest, ::cniface::SimilarityeResponse>* streamer) {
+                     ::cniface::SimilarityRequest, ::cniface::SimilarityResponse>* streamer) {
                        return this->Streamedsimilarity(context,
                          streamer);
                   }));
@@ -586,12 +586,12 @@ class RecognitionService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status similarity(::grpc::ServerContext* /*context*/, const ::cniface::SimilarityRequest* /*request*/, ::cniface::SimilarityeResponse* /*response*/) override {
+    ::grpc::Status similarity(::grpc::ServerContext* /*context*/, const ::cniface::SimilarityRequest* /*request*/, ::cniface::SimilarityResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status Streamedsimilarity(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::cniface::SimilarityRequest,::cniface::SimilarityeResponse>* server_unary_streamer) = 0;
+    virtual ::grpc::Status Streamedsimilarity(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::cniface::SimilarityRequest,::cniface::SimilarityResponse>* server_unary_streamer) = 0;
   };
   typedef WithStreamedUnaryMethod_extractFeature<WithStreamedUnaryMethod_similarity<Service > > StreamedUnaryService;
   typedef Service SplitStreamedService;

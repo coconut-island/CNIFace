@@ -109,9 +109,9 @@ extern SearchResultDefaultTypeInternal _SearchResult_default_instance_;
 class SimilarityRequest;
 struct SimilarityRequestDefaultTypeInternal;
 extern SimilarityRequestDefaultTypeInternal _SimilarityRequest_default_instance_;
-class SimilarityeResponse;
-struct SimilarityeResponseDefaultTypeInternal;
-extern SimilarityeResponseDefaultTypeInternal _SimilarityeResponse_default_instance_;
+class SimilarityResponse;
+struct SimilarityResponseDefaultTypeInternal;
+extern SimilarityResponseDefaultTypeInternal _SimilarityResponse_default_instance_;
 class deleteFeatureRequest;
 struct deleteFeatureRequestDefaultTypeInternal;
 extern deleteFeatureRequestDefaultTypeInternal _deleteFeatureRequest_default_instance_;
@@ -138,7 +138,7 @@ template<> ::cniface::SearchRequest* Arena::CreateMaybeMessage<::cniface::Search
 template<> ::cniface::SearchResponse* Arena::CreateMaybeMessage<::cniface::SearchResponse>(Arena*);
 template<> ::cniface::SearchResult* Arena::CreateMaybeMessage<::cniface::SearchResult>(Arena*);
 template<> ::cniface::SimilarityRequest* Arena::CreateMaybeMessage<::cniface::SimilarityRequest>(Arena*);
-template<> ::cniface::SimilarityeResponse* Arena::CreateMaybeMessage<::cniface::SimilarityeResponse>(Arena*);
+template<> ::cniface::SimilarityResponse* Arena::CreateMaybeMessage<::cniface::SimilarityResponse>(Arena*);
 template<> ::cniface::deleteFeatureRequest* Arena::CreateMaybeMessage<::cniface::deleteFeatureRequest>(Arena*);
 template<> ::cniface::deleteFeatureResponse* Arena::CreateMaybeMessage<::cniface::deleteFeatureResponse>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
@@ -1224,24 +1224,24 @@ class SimilarityRequest final :
 };
 // -------------------------------------------------------------------
 
-class SimilarityeResponse final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cniface.SimilarityeResponse) */ {
+class SimilarityResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cniface.SimilarityResponse) */ {
  public:
-  inline SimilarityeResponse() : SimilarityeResponse(nullptr) {}
-  ~SimilarityeResponse() override;
-  explicit constexpr SimilarityeResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline SimilarityResponse() : SimilarityResponse(nullptr) {}
+  ~SimilarityResponse() override;
+  explicit constexpr SimilarityResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  SimilarityeResponse(const SimilarityeResponse& from);
-  SimilarityeResponse(SimilarityeResponse&& from) noexcept
-    : SimilarityeResponse() {
+  SimilarityResponse(const SimilarityResponse& from);
+  SimilarityResponse(SimilarityResponse&& from) noexcept
+    : SimilarityResponse() {
     *this = ::std::move(from);
   }
 
-  inline SimilarityeResponse& operator=(const SimilarityeResponse& from) {
+  inline SimilarityResponse& operator=(const SimilarityResponse& from) {
     CopyFrom(from);
     return *this;
   }
-  inline SimilarityeResponse& operator=(SimilarityeResponse&& from) noexcept {
+  inline SimilarityResponse& operator=(SimilarityResponse&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -1264,20 +1264,20 @@ class SimilarityeResponse final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const SimilarityeResponse& default_instance() {
+  static const SimilarityResponse& default_instance() {
     return *internal_default_instance();
   }
-  static inline const SimilarityeResponse* internal_default_instance() {
-    return reinterpret_cast<const SimilarityeResponse*>(
-               &_SimilarityeResponse_default_instance_);
+  static inline const SimilarityResponse* internal_default_instance() {
+    return reinterpret_cast<const SimilarityResponse*>(
+               &_SimilarityResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     6;
 
-  friend void swap(SimilarityeResponse& a, SimilarityeResponse& b) {
+  friend void swap(SimilarityResponse& a, SimilarityResponse& b) {
     a.Swap(&b);
   }
-  inline void Swap(SimilarityeResponse* other) {
+  inline void Swap(SimilarityResponse* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -1290,7 +1290,7 @@ class SimilarityeResponse final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(SimilarityeResponse* other) {
+  void UnsafeArenaSwap(SimilarityResponse* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -1298,13 +1298,13 @@ class SimilarityeResponse final :
 
   // implements Message ----------------------------------------------
 
-  SimilarityeResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<SimilarityeResponse>(arena);
+  SimilarityResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<SimilarityResponse>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const SimilarityeResponse& from);
+  void CopyFrom(const SimilarityResponse& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const SimilarityeResponse& from);
+  void MergeFrom(const SimilarityResponse& from);
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
   public:
@@ -1321,15 +1321,15 @@ class SimilarityeResponse final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(SimilarityeResponse* other);
+  void InternalSwap(SimilarityResponse* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "cniface.SimilarityeResponse";
+    return "cniface.SimilarityResponse";
   }
   protected:
-  explicit SimilarityeResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit SimilarityResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   private:
   static void ArenaDtor(void* object);
@@ -1382,7 +1382,7 @@ class SimilarityeResponse final :
   void _internal_set_similarity(float value);
   public:
 
-  // @@protoc_insertion_point(class_scope:cniface.SimilarityeResponse)
+  // @@protoc_insertion_point(class_scope:cniface.SimilarityResponse)
  private:
   class _Internal;
 
@@ -4381,64 +4381,64 @@ inline void SimilarityRequest::set_allocated_featurebase64_2(std::string* featur
 
 // -------------------------------------------------------------------
 
-// SimilarityeResponse
+// SimilarityResponse
 
 // int64 code = 1;
-inline void SimilarityeResponse::clear_code() {
+inline void SimilarityResponse::clear_code() {
   code_ = int64_t{0};
 }
-inline int64_t SimilarityeResponse::_internal_code() const {
+inline int64_t SimilarityResponse::_internal_code() const {
   return code_;
 }
-inline int64_t SimilarityeResponse::code() const {
-  // @@protoc_insertion_point(field_get:cniface.SimilarityeResponse.code)
+inline int64_t SimilarityResponse::code() const {
+  // @@protoc_insertion_point(field_get:cniface.SimilarityResponse.code)
   return _internal_code();
 }
-inline void SimilarityeResponse::_internal_set_code(int64_t value) {
+inline void SimilarityResponse::_internal_set_code(int64_t value) {
   
   code_ = value;
 }
-inline void SimilarityeResponse::set_code(int64_t value) {
+inline void SimilarityResponse::set_code(int64_t value) {
   _internal_set_code(value);
-  // @@protoc_insertion_point(field_set:cniface.SimilarityeResponse.code)
+  // @@protoc_insertion_point(field_set:cniface.SimilarityResponse.code)
 }
 
 // string message = 2;
-inline void SimilarityeResponse::clear_message() {
+inline void SimilarityResponse::clear_message() {
   message_.ClearToEmpty();
 }
-inline const std::string& SimilarityeResponse::message() const {
-  // @@protoc_insertion_point(field_get:cniface.SimilarityeResponse.message)
+inline const std::string& SimilarityResponse::message() const {
+  // @@protoc_insertion_point(field_get:cniface.SimilarityResponse.message)
   return _internal_message();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void SimilarityeResponse::set_message(ArgT0&& arg0, ArgT... args) {
+void SimilarityResponse::set_message(ArgT0&& arg0, ArgT... args) {
  
  message_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:cniface.SimilarityeResponse.message)
+  // @@protoc_insertion_point(field_set:cniface.SimilarityResponse.message)
 }
-inline std::string* SimilarityeResponse::mutable_message() {
+inline std::string* SimilarityResponse::mutable_message() {
   std::string* _s = _internal_mutable_message();
-  // @@protoc_insertion_point(field_mutable:cniface.SimilarityeResponse.message)
+  // @@protoc_insertion_point(field_mutable:cniface.SimilarityResponse.message)
   return _s;
 }
-inline const std::string& SimilarityeResponse::_internal_message() const {
+inline const std::string& SimilarityResponse::_internal_message() const {
   return message_.Get();
 }
-inline void SimilarityeResponse::_internal_set_message(const std::string& value) {
+inline void SimilarityResponse::_internal_set_message(const std::string& value) {
   
   message_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
 }
-inline std::string* SimilarityeResponse::_internal_mutable_message() {
+inline std::string* SimilarityResponse::_internal_mutable_message() {
   
   return message_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
 }
-inline std::string* SimilarityeResponse::release_message() {
-  // @@protoc_insertion_point(field_release:cniface.SimilarityeResponse.message)
+inline std::string* SimilarityResponse::release_message() {
+  // @@protoc_insertion_point(field_release:cniface.SimilarityResponse.message)
   return message_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
 }
-inline void SimilarityeResponse::set_allocated_message(std::string* message) {
+inline void SimilarityResponse::set_allocated_message(std::string* message) {
   if (message != nullptr) {
     
   } else {
@@ -4451,27 +4451,27 @@ inline void SimilarityeResponse::set_allocated_message(std::string* message) {
     message_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:cniface.SimilarityeResponse.message)
+  // @@protoc_insertion_point(field_set_allocated:cniface.SimilarityResponse.message)
 }
 
 // float similarity = 3;
-inline void SimilarityeResponse::clear_similarity() {
+inline void SimilarityResponse::clear_similarity() {
   similarity_ = 0;
 }
-inline float SimilarityeResponse::_internal_similarity() const {
+inline float SimilarityResponse::_internal_similarity() const {
   return similarity_;
 }
-inline float SimilarityeResponse::similarity() const {
-  // @@protoc_insertion_point(field_get:cniface.SimilarityeResponse.similarity)
+inline float SimilarityResponse::similarity() const {
+  // @@protoc_insertion_point(field_get:cniface.SimilarityResponse.similarity)
   return _internal_similarity();
 }
-inline void SimilarityeResponse::_internal_set_similarity(float value) {
+inline void SimilarityResponse::_internal_set_similarity(float value) {
   
   similarity_ = value;
 }
-inline void SimilarityeResponse::set_similarity(float value) {
+inline void SimilarityResponse::set_similarity(float value) {
   _internal_set_similarity(value);
-  // @@protoc_insertion_point(field_set:cniface.SimilarityeResponse.similarity)
+  // @@protoc_insertion_point(field_set:cniface.SimilarityResponse.similarity)
 }
 
 // -------------------------------------------------------------------
