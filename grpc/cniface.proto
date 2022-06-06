@@ -83,15 +83,15 @@ service RepositoryService {
 
     rpc search (SearchRequest) returns ( SearchResponse) {}
     rpc addFeature (AddFeatureRequest) returns ( AddFeatureResponse) {}
-    rpc deleteFeature (deleteFeatureRequest) returns ( deleteFeatureResponse) {}
+    rpc deleteFeature (DeleteFeatureRequest) returns ( DeleteFeatureResponse) {}
 }
 
-message deleteFeatureRequest {
+message DeleteFeatureRequest {
     string repoName = 1;
     int64 featureId = 2;
 }
 
-message deleteFeatureResponse {
+message DeleteFeatureResponse {
     int64 code = 1;
     string message = 2;
 }

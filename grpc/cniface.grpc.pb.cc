@@ -324,23 +324,23 @@ void RepositoryService::Stub::async::addFeature(::grpc::ClientContext* context, 
   return result;
 }
 
-::grpc::Status RepositoryService::Stub::deleteFeature(::grpc::ClientContext* context, const ::cniface::deleteFeatureRequest& request, ::cniface::deleteFeatureResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::cniface::deleteFeatureRequest, ::cniface::deleteFeatureResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_deleteFeature_, context, request, response);
+::grpc::Status RepositoryService::Stub::deleteFeature(::grpc::ClientContext* context, const ::cniface::DeleteFeatureRequest& request, ::cniface::DeleteFeatureResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::cniface::DeleteFeatureRequest, ::cniface::DeleteFeatureResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_deleteFeature_, context, request, response);
 }
 
-void RepositoryService::Stub::async::deleteFeature(::grpc::ClientContext* context, const ::cniface::deleteFeatureRequest* request, ::cniface::deleteFeatureResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::cniface::deleteFeatureRequest, ::cniface::deleteFeatureResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_deleteFeature_, context, request, response, std::move(f));
+void RepositoryService::Stub::async::deleteFeature(::grpc::ClientContext* context, const ::cniface::DeleteFeatureRequest* request, ::cniface::DeleteFeatureResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::cniface::DeleteFeatureRequest, ::cniface::DeleteFeatureResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_deleteFeature_, context, request, response, std::move(f));
 }
 
-void RepositoryService::Stub::async::deleteFeature(::grpc::ClientContext* context, const ::cniface::deleteFeatureRequest* request, ::cniface::deleteFeatureResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+void RepositoryService::Stub::async::deleteFeature(::grpc::ClientContext* context, const ::cniface::DeleteFeatureRequest* request, ::cniface::DeleteFeatureResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_deleteFeature_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncResponseReader< ::cniface::deleteFeatureResponse>* RepositoryService::Stub::PrepareAsyncdeleteFeatureRaw(::grpc::ClientContext* context, const ::cniface::deleteFeatureRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::cniface::deleteFeatureResponse, ::cniface::deleteFeatureRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_deleteFeature_, context, request);
+::grpc::ClientAsyncResponseReader< ::cniface::DeleteFeatureResponse>* RepositoryService::Stub::PrepareAsyncdeleteFeatureRaw(::grpc::ClientContext* context, const ::cniface::DeleteFeatureRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::cniface::DeleteFeatureResponse, ::cniface::DeleteFeatureRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_deleteFeature_, context, request);
 }
 
-::grpc::ClientAsyncResponseReader< ::cniface::deleteFeatureResponse>* RepositoryService::Stub::AsyncdeleteFeatureRaw(::grpc::ClientContext* context, const ::cniface::deleteFeatureRequest& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::cniface::DeleteFeatureResponse>* RepositoryService::Stub::AsyncdeleteFeatureRaw(::grpc::ClientContext* context, const ::cniface::DeleteFeatureRequest& request, ::grpc::CompletionQueue* cq) {
   auto* result =
     this->PrepareAsyncdeleteFeatureRaw(context, request, cq);
   result->StartCall();
@@ -401,11 +401,11 @@ RepositoryService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       RepositoryService_method_names[5],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< RepositoryService::Service, ::cniface::deleteFeatureRequest, ::cniface::deleteFeatureResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< RepositoryService::Service, ::cniface::DeleteFeatureRequest, ::cniface::DeleteFeatureResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](RepositoryService::Service* service,
              ::grpc::ServerContext* ctx,
-             const ::cniface::deleteFeatureRequest* req,
-             ::cniface::deleteFeatureResponse* resp) {
+             const ::cniface::DeleteFeatureRequest* req,
+             ::cniface::DeleteFeatureResponse* resp) {
                return service->deleteFeature(ctx, req, resp);
              }, this)));
 }
@@ -448,7 +448,7 @@ RepositoryService::Service::~Service() {
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status RepositoryService::Service::deleteFeature(::grpc::ServerContext* context, const ::cniface::deleteFeatureRequest* request, ::cniface::deleteFeatureResponse* response) {
+::grpc::Status RepositoryService::Service::deleteFeature(::grpc::ServerContext* context, const ::cniface::DeleteFeatureRequest* request, ::cniface::DeleteFeatureResponse* response) {
   (void) context;
   (void) request;
   (void) response;

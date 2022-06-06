@@ -67,6 +67,12 @@ extern AddRepoRequestDefaultTypeInternal _AddRepoRequest_default_instance_;
 class AddRepoResponse;
 struct AddRepoResponseDefaultTypeInternal;
 extern AddRepoResponseDefaultTypeInternal _AddRepoResponse_default_instance_;
+class DeleteFeatureRequest;
+struct DeleteFeatureRequestDefaultTypeInternal;
+extern DeleteFeatureRequestDefaultTypeInternal _DeleteFeatureRequest_default_instance_;
+class DeleteFeatureResponse;
+struct DeleteFeatureResponseDefaultTypeInternal;
+extern DeleteFeatureResponseDefaultTypeInternal _DeleteFeatureResponse_default_instance_;
 class DeleteRepoRequest;
 struct DeleteRepoRequestDefaultTypeInternal;
 extern DeleteRepoRequestDefaultTypeInternal _DeleteRepoRequest_default_instance_;
@@ -112,18 +118,14 @@ extern SimilarityRequestDefaultTypeInternal _SimilarityRequest_default_instance_
 class SimilarityResponse;
 struct SimilarityResponseDefaultTypeInternal;
 extern SimilarityResponseDefaultTypeInternal _SimilarityResponse_default_instance_;
-class deleteFeatureRequest;
-struct deleteFeatureRequestDefaultTypeInternal;
-extern deleteFeatureRequestDefaultTypeInternal _deleteFeatureRequest_default_instance_;
-class deleteFeatureResponse;
-struct deleteFeatureResponseDefaultTypeInternal;
-extern deleteFeatureResponseDefaultTypeInternal _deleteFeatureResponse_default_instance_;
 }  // namespace cniface
 PROTOBUF_NAMESPACE_OPEN
 template<> ::cniface::AddFeatureRequest* Arena::CreateMaybeMessage<::cniface::AddFeatureRequest>(Arena*);
 template<> ::cniface::AddFeatureResponse* Arena::CreateMaybeMessage<::cniface::AddFeatureResponse>(Arena*);
 template<> ::cniface::AddRepoRequest* Arena::CreateMaybeMessage<::cniface::AddRepoRequest>(Arena*);
 template<> ::cniface::AddRepoResponse* Arena::CreateMaybeMessage<::cniface::AddRepoResponse>(Arena*);
+template<> ::cniface::DeleteFeatureRequest* Arena::CreateMaybeMessage<::cniface::DeleteFeatureRequest>(Arena*);
+template<> ::cniface::DeleteFeatureResponse* Arena::CreateMaybeMessage<::cniface::DeleteFeatureResponse>(Arena*);
 template<> ::cniface::DeleteRepoRequest* Arena::CreateMaybeMessage<::cniface::DeleteRepoRequest>(Arena*);
 template<> ::cniface::DeleteRepoResponse* Arena::CreateMaybeMessage<::cniface::DeleteRepoResponse>(Arena*);
 template<> ::cniface::DetectRequest* Arena::CreateMaybeMessage<::cniface::DetectRequest>(Arena*);
@@ -139,8 +141,6 @@ template<> ::cniface::SearchResponse* Arena::CreateMaybeMessage<::cniface::Searc
 template<> ::cniface::SearchResult* Arena::CreateMaybeMessage<::cniface::SearchResult>(Arena*);
 template<> ::cniface::SimilarityRequest* Arena::CreateMaybeMessage<::cniface::SimilarityRequest>(Arena*);
 template<> ::cniface::SimilarityResponse* Arena::CreateMaybeMessage<::cniface::SimilarityResponse>(Arena*);
-template<> ::cniface::deleteFeatureRequest* Arena::CreateMaybeMessage<::cniface::deleteFeatureRequest>(Arena*);
-template<> ::cniface::deleteFeatureResponse* Arena::CreateMaybeMessage<::cniface::deleteFeatureResponse>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace cniface {
 
@@ -1741,24 +1741,24 @@ class ListRepositoryResponse final :
 };
 // -------------------------------------------------------------------
 
-class deleteFeatureRequest final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cniface.deleteFeatureRequest) */ {
+class DeleteFeatureRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cniface.DeleteFeatureRequest) */ {
  public:
-  inline deleteFeatureRequest() : deleteFeatureRequest(nullptr) {}
-  ~deleteFeatureRequest() override;
-  explicit constexpr deleteFeatureRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline DeleteFeatureRequest() : DeleteFeatureRequest(nullptr) {}
+  ~DeleteFeatureRequest() override;
+  explicit constexpr DeleteFeatureRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  deleteFeatureRequest(const deleteFeatureRequest& from);
-  deleteFeatureRequest(deleteFeatureRequest&& from) noexcept
-    : deleteFeatureRequest() {
+  DeleteFeatureRequest(const DeleteFeatureRequest& from);
+  DeleteFeatureRequest(DeleteFeatureRequest&& from) noexcept
+    : DeleteFeatureRequest() {
     *this = ::std::move(from);
   }
 
-  inline deleteFeatureRequest& operator=(const deleteFeatureRequest& from) {
+  inline DeleteFeatureRequest& operator=(const DeleteFeatureRequest& from) {
     CopyFrom(from);
     return *this;
   }
-  inline deleteFeatureRequest& operator=(deleteFeatureRequest&& from) noexcept {
+  inline DeleteFeatureRequest& operator=(DeleteFeatureRequest&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -1781,20 +1781,20 @@ class deleteFeatureRequest final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const deleteFeatureRequest& default_instance() {
+  static const DeleteFeatureRequest& default_instance() {
     return *internal_default_instance();
   }
-  static inline const deleteFeatureRequest* internal_default_instance() {
-    return reinterpret_cast<const deleteFeatureRequest*>(
-               &_deleteFeatureRequest_default_instance_);
+  static inline const DeleteFeatureRequest* internal_default_instance() {
+    return reinterpret_cast<const DeleteFeatureRequest*>(
+               &_DeleteFeatureRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     9;
 
-  friend void swap(deleteFeatureRequest& a, deleteFeatureRequest& b) {
+  friend void swap(DeleteFeatureRequest& a, DeleteFeatureRequest& b) {
     a.Swap(&b);
   }
-  inline void Swap(deleteFeatureRequest* other) {
+  inline void Swap(DeleteFeatureRequest* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -1807,7 +1807,7 @@ class deleteFeatureRequest final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(deleteFeatureRequest* other) {
+  void UnsafeArenaSwap(DeleteFeatureRequest* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -1815,13 +1815,13 @@ class deleteFeatureRequest final :
 
   // implements Message ----------------------------------------------
 
-  deleteFeatureRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<deleteFeatureRequest>(arena);
+  DeleteFeatureRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<DeleteFeatureRequest>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const deleteFeatureRequest& from);
+  void CopyFrom(const DeleteFeatureRequest& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const deleteFeatureRequest& from);
+  void MergeFrom(const DeleteFeatureRequest& from);
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
   public:
@@ -1838,15 +1838,15 @@ class deleteFeatureRequest final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(deleteFeatureRequest* other);
+  void InternalSwap(DeleteFeatureRequest* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "cniface.deleteFeatureRequest";
+    return "cniface.DeleteFeatureRequest";
   }
   protected:
-  explicit deleteFeatureRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit DeleteFeatureRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   private:
   static void ArenaDtor(void* object);
@@ -1889,7 +1889,7 @@ class deleteFeatureRequest final :
   void _internal_set_featureid(int64_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:cniface.deleteFeatureRequest)
+  // @@protoc_insertion_point(class_scope:cniface.DeleteFeatureRequest)
  private:
   class _Internal;
 
@@ -1903,24 +1903,24 @@ class deleteFeatureRequest final :
 };
 // -------------------------------------------------------------------
 
-class deleteFeatureResponse final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cniface.deleteFeatureResponse) */ {
+class DeleteFeatureResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cniface.DeleteFeatureResponse) */ {
  public:
-  inline deleteFeatureResponse() : deleteFeatureResponse(nullptr) {}
-  ~deleteFeatureResponse() override;
-  explicit constexpr deleteFeatureResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline DeleteFeatureResponse() : DeleteFeatureResponse(nullptr) {}
+  ~DeleteFeatureResponse() override;
+  explicit constexpr DeleteFeatureResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  deleteFeatureResponse(const deleteFeatureResponse& from);
-  deleteFeatureResponse(deleteFeatureResponse&& from) noexcept
-    : deleteFeatureResponse() {
+  DeleteFeatureResponse(const DeleteFeatureResponse& from);
+  DeleteFeatureResponse(DeleteFeatureResponse&& from) noexcept
+    : DeleteFeatureResponse() {
     *this = ::std::move(from);
   }
 
-  inline deleteFeatureResponse& operator=(const deleteFeatureResponse& from) {
+  inline DeleteFeatureResponse& operator=(const DeleteFeatureResponse& from) {
     CopyFrom(from);
     return *this;
   }
-  inline deleteFeatureResponse& operator=(deleteFeatureResponse&& from) noexcept {
+  inline DeleteFeatureResponse& operator=(DeleteFeatureResponse&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -1943,20 +1943,20 @@ class deleteFeatureResponse final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const deleteFeatureResponse& default_instance() {
+  static const DeleteFeatureResponse& default_instance() {
     return *internal_default_instance();
   }
-  static inline const deleteFeatureResponse* internal_default_instance() {
-    return reinterpret_cast<const deleteFeatureResponse*>(
-               &_deleteFeatureResponse_default_instance_);
+  static inline const DeleteFeatureResponse* internal_default_instance() {
+    return reinterpret_cast<const DeleteFeatureResponse*>(
+               &_DeleteFeatureResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     10;
 
-  friend void swap(deleteFeatureResponse& a, deleteFeatureResponse& b) {
+  friend void swap(DeleteFeatureResponse& a, DeleteFeatureResponse& b) {
     a.Swap(&b);
   }
-  inline void Swap(deleteFeatureResponse* other) {
+  inline void Swap(DeleteFeatureResponse* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -1969,7 +1969,7 @@ class deleteFeatureResponse final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(deleteFeatureResponse* other) {
+  void UnsafeArenaSwap(DeleteFeatureResponse* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -1977,13 +1977,13 @@ class deleteFeatureResponse final :
 
   // implements Message ----------------------------------------------
 
-  deleteFeatureResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<deleteFeatureResponse>(arena);
+  DeleteFeatureResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<DeleteFeatureResponse>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const deleteFeatureResponse& from);
+  void CopyFrom(const DeleteFeatureResponse& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const deleteFeatureResponse& from);
+  void MergeFrom(const DeleteFeatureResponse& from);
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
   public:
@@ -2000,15 +2000,15 @@ class deleteFeatureResponse final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(deleteFeatureResponse* other);
+  void InternalSwap(DeleteFeatureResponse* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "cniface.deleteFeatureResponse";
+    return "cniface.DeleteFeatureResponse";
   }
   protected:
-  explicit deleteFeatureResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit DeleteFeatureResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   private:
   static void ArenaDtor(void* object);
@@ -2051,7 +2051,7 @@ class deleteFeatureResponse final :
   void _internal_set_code(int64_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:cniface.deleteFeatureResponse)
+  // @@protoc_insertion_point(class_scope:cniface.DeleteFeatureResponse)
  private:
   class _Internal;
 
@@ -4666,44 +4666,44 @@ ListRepositoryResponse::repositories() const {
 
 // -------------------------------------------------------------------
 
-// deleteFeatureRequest
+// DeleteFeatureRequest
 
 // string repoName = 1;
-inline void deleteFeatureRequest::clear_reponame() {
+inline void DeleteFeatureRequest::clear_reponame() {
   reponame_.ClearToEmpty();
 }
-inline const std::string& deleteFeatureRequest::reponame() const {
-  // @@protoc_insertion_point(field_get:cniface.deleteFeatureRequest.repoName)
+inline const std::string& DeleteFeatureRequest::reponame() const {
+  // @@protoc_insertion_point(field_get:cniface.DeleteFeatureRequest.repoName)
   return _internal_reponame();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void deleteFeatureRequest::set_reponame(ArgT0&& arg0, ArgT... args) {
+void DeleteFeatureRequest::set_reponame(ArgT0&& arg0, ArgT... args) {
  
  reponame_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:cniface.deleteFeatureRequest.repoName)
+  // @@protoc_insertion_point(field_set:cniface.DeleteFeatureRequest.repoName)
 }
-inline std::string* deleteFeatureRequest::mutable_reponame() {
+inline std::string* DeleteFeatureRequest::mutable_reponame() {
   std::string* _s = _internal_mutable_reponame();
-  // @@protoc_insertion_point(field_mutable:cniface.deleteFeatureRequest.repoName)
+  // @@protoc_insertion_point(field_mutable:cniface.DeleteFeatureRequest.repoName)
   return _s;
 }
-inline const std::string& deleteFeatureRequest::_internal_reponame() const {
+inline const std::string& DeleteFeatureRequest::_internal_reponame() const {
   return reponame_.Get();
 }
-inline void deleteFeatureRequest::_internal_set_reponame(const std::string& value) {
+inline void DeleteFeatureRequest::_internal_set_reponame(const std::string& value) {
   
   reponame_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
 }
-inline std::string* deleteFeatureRequest::_internal_mutable_reponame() {
+inline std::string* DeleteFeatureRequest::_internal_mutable_reponame() {
   
   return reponame_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
 }
-inline std::string* deleteFeatureRequest::release_reponame() {
-  // @@protoc_insertion_point(field_release:cniface.deleteFeatureRequest.repoName)
+inline std::string* DeleteFeatureRequest::release_reponame() {
+  // @@protoc_insertion_point(field_release:cniface.DeleteFeatureRequest.repoName)
   return reponame_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
 }
-inline void deleteFeatureRequest::set_allocated_reponame(std::string* reponame) {
+inline void DeleteFeatureRequest::set_allocated_reponame(std::string* reponame) {
   if (reponame != nullptr) {
     
   } else {
@@ -4716,89 +4716,89 @@ inline void deleteFeatureRequest::set_allocated_reponame(std::string* reponame) 
     reponame_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:cniface.deleteFeatureRequest.repoName)
+  // @@protoc_insertion_point(field_set_allocated:cniface.DeleteFeatureRequest.repoName)
 }
 
 // int64 featureId = 2;
-inline void deleteFeatureRequest::clear_featureid() {
+inline void DeleteFeatureRequest::clear_featureid() {
   featureid_ = int64_t{0};
 }
-inline int64_t deleteFeatureRequest::_internal_featureid() const {
+inline int64_t DeleteFeatureRequest::_internal_featureid() const {
   return featureid_;
 }
-inline int64_t deleteFeatureRequest::featureid() const {
-  // @@protoc_insertion_point(field_get:cniface.deleteFeatureRequest.featureId)
+inline int64_t DeleteFeatureRequest::featureid() const {
+  // @@protoc_insertion_point(field_get:cniface.DeleteFeatureRequest.featureId)
   return _internal_featureid();
 }
-inline void deleteFeatureRequest::_internal_set_featureid(int64_t value) {
+inline void DeleteFeatureRequest::_internal_set_featureid(int64_t value) {
   
   featureid_ = value;
 }
-inline void deleteFeatureRequest::set_featureid(int64_t value) {
+inline void DeleteFeatureRequest::set_featureid(int64_t value) {
   _internal_set_featureid(value);
-  // @@protoc_insertion_point(field_set:cniface.deleteFeatureRequest.featureId)
+  // @@protoc_insertion_point(field_set:cniface.DeleteFeatureRequest.featureId)
 }
 
 // -------------------------------------------------------------------
 
-// deleteFeatureResponse
+// DeleteFeatureResponse
 
 // int64 code = 1;
-inline void deleteFeatureResponse::clear_code() {
+inline void DeleteFeatureResponse::clear_code() {
   code_ = int64_t{0};
 }
-inline int64_t deleteFeatureResponse::_internal_code() const {
+inline int64_t DeleteFeatureResponse::_internal_code() const {
   return code_;
 }
-inline int64_t deleteFeatureResponse::code() const {
-  // @@protoc_insertion_point(field_get:cniface.deleteFeatureResponse.code)
+inline int64_t DeleteFeatureResponse::code() const {
+  // @@protoc_insertion_point(field_get:cniface.DeleteFeatureResponse.code)
   return _internal_code();
 }
-inline void deleteFeatureResponse::_internal_set_code(int64_t value) {
+inline void DeleteFeatureResponse::_internal_set_code(int64_t value) {
   
   code_ = value;
 }
-inline void deleteFeatureResponse::set_code(int64_t value) {
+inline void DeleteFeatureResponse::set_code(int64_t value) {
   _internal_set_code(value);
-  // @@protoc_insertion_point(field_set:cniface.deleteFeatureResponse.code)
+  // @@protoc_insertion_point(field_set:cniface.DeleteFeatureResponse.code)
 }
 
 // string message = 2;
-inline void deleteFeatureResponse::clear_message() {
+inline void DeleteFeatureResponse::clear_message() {
   message_.ClearToEmpty();
 }
-inline const std::string& deleteFeatureResponse::message() const {
-  // @@protoc_insertion_point(field_get:cniface.deleteFeatureResponse.message)
+inline const std::string& DeleteFeatureResponse::message() const {
+  // @@protoc_insertion_point(field_get:cniface.DeleteFeatureResponse.message)
   return _internal_message();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void deleteFeatureResponse::set_message(ArgT0&& arg0, ArgT... args) {
+void DeleteFeatureResponse::set_message(ArgT0&& arg0, ArgT... args) {
  
  message_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:cniface.deleteFeatureResponse.message)
+  // @@protoc_insertion_point(field_set:cniface.DeleteFeatureResponse.message)
 }
-inline std::string* deleteFeatureResponse::mutable_message() {
+inline std::string* DeleteFeatureResponse::mutable_message() {
   std::string* _s = _internal_mutable_message();
-  // @@protoc_insertion_point(field_mutable:cniface.deleteFeatureResponse.message)
+  // @@protoc_insertion_point(field_mutable:cniface.DeleteFeatureResponse.message)
   return _s;
 }
-inline const std::string& deleteFeatureResponse::_internal_message() const {
+inline const std::string& DeleteFeatureResponse::_internal_message() const {
   return message_.Get();
 }
-inline void deleteFeatureResponse::_internal_set_message(const std::string& value) {
+inline void DeleteFeatureResponse::_internal_set_message(const std::string& value) {
   
   message_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
 }
-inline std::string* deleteFeatureResponse::_internal_mutable_message() {
+inline std::string* DeleteFeatureResponse::_internal_mutable_message() {
   
   return message_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
 }
-inline std::string* deleteFeatureResponse::release_message() {
-  // @@protoc_insertion_point(field_release:cniface.deleteFeatureResponse.message)
+inline std::string* DeleteFeatureResponse::release_message() {
+  // @@protoc_insertion_point(field_release:cniface.DeleteFeatureResponse.message)
   return message_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
 }
-inline void deleteFeatureResponse::set_allocated_message(std::string* message) {
+inline void DeleteFeatureResponse::set_allocated_message(std::string* message) {
   if (message != nullptr) {
     
   } else {
@@ -4811,7 +4811,7 @@ inline void deleteFeatureResponse::set_allocated_message(std::string* message) {
     message_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:cniface.deleteFeatureResponse.message)
+  // @@protoc_insertion_point(field_set_allocated:cniface.DeleteFeatureResponse.message)
 }
 
 // -------------------------------------------------------------------

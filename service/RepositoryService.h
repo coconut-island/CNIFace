@@ -28,8 +28,8 @@ public:
     grpc::Status addFeature(::grpc::ServerContext *context, const ::cniface::AddFeatureRequest *request,
                             ::cniface::AddFeatureResponse *response) override;
 
-    grpc::Status deleteFeature(::grpc::ServerContext *context, const ::cniface::deleteFeatureRequest *request,
-                               ::cniface::deleteFeatureResponse *response) override;
+    grpc::Status deleteFeature(::grpc::ServerContext *context, const ::cniface::DeleteFeatureRequest *request,
+                               ::cniface::DeleteFeatureResponse *response) override;
 };
 
 

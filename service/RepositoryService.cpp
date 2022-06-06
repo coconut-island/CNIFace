@@ -66,8 +66,8 @@ grpc::Status RepositoryService::addFeature(::grpc::ServerContext *context, const
     return grpc::Status::OK;
 }
 
-grpc::Status RepositoryService::deleteFeature(::grpc::ServerContext *context, const ::cniface::deleteFeatureRequest *request,
-                                              ::cniface::deleteFeatureResponse *response) {
+grpc::Status RepositoryService::deleteFeature(::grpc::ServerContext *context, const ::cniface::DeleteFeatureRequest *request,
+                                              ::cniface::DeleteFeatureResponse *response) {
     response->set_code(0);
     response->set_message("OK");
     Repository::deleteById(request->reponame(), request->featureid());

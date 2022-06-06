@@ -142,32 +142,32 @@ struct ListRepositoryResponseDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ListRepositoryResponseDefaultTypeInternal _ListRepositoryResponse_default_instance_;
-constexpr deleteFeatureRequest::deleteFeatureRequest(
+constexpr DeleteFeatureRequest::DeleteFeatureRequest(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : reponame_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , featureid_(int64_t{0}){}
-struct deleteFeatureRequestDefaultTypeInternal {
-  constexpr deleteFeatureRequestDefaultTypeInternal()
+struct DeleteFeatureRequestDefaultTypeInternal {
+  constexpr DeleteFeatureRequestDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~deleteFeatureRequestDefaultTypeInternal() {}
+  ~DeleteFeatureRequestDefaultTypeInternal() {}
   union {
-    deleteFeatureRequest _instance;
+    DeleteFeatureRequest _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT deleteFeatureRequestDefaultTypeInternal _deleteFeatureRequest_default_instance_;
-constexpr deleteFeatureResponse::deleteFeatureResponse(
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT DeleteFeatureRequestDefaultTypeInternal _DeleteFeatureRequest_default_instance_;
+constexpr DeleteFeatureResponse::DeleteFeatureResponse(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : message_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , code_(int64_t{0}){}
-struct deleteFeatureResponseDefaultTypeInternal {
-  constexpr deleteFeatureResponseDefaultTypeInternal()
+struct DeleteFeatureResponseDefaultTypeInternal {
+  constexpr DeleteFeatureResponseDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~deleteFeatureResponseDefaultTypeInternal() {}
+  ~DeleteFeatureResponseDefaultTypeInternal() {}
   union {
-    deleteFeatureResponse _instance;
+    DeleteFeatureResponse _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT deleteFeatureResponseDefaultTypeInternal _deleteFeatureResponse_default_instance_;
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT DeleteFeatureResponseDefaultTypeInternal _DeleteFeatureResponse_default_instance_;
 constexpr AddFeatureRequest::AddFeatureRequest(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : reponame_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
@@ -385,21 +385,21 @@ const uint32_t TableStruct_cniface_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
   PROTOBUF_FIELD_OFFSET(::cniface::ListRepositoryResponse, message_),
   PROTOBUF_FIELD_OFFSET(::cniface::ListRepositoryResponse, repositories_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::cniface::deleteFeatureRequest, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::cniface::DeleteFeatureRequest, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::cniface::deleteFeatureRequest, reponame_),
-  PROTOBUF_FIELD_OFFSET(::cniface::deleteFeatureRequest, featureid_),
+  PROTOBUF_FIELD_OFFSET(::cniface::DeleteFeatureRequest, reponame_),
+  PROTOBUF_FIELD_OFFSET(::cniface::DeleteFeatureRequest, featureid_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::cniface::deleteFeatureResponse, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::cniface::DeleteFeatureResponse, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::cniface::deleteFeatureResponse, code_),
-  PROTOBUF_FIELD_OFFSET(::cniface::deleteFeatureResponse, message_),
+  PROTOBUF_FIELD_OFFSET(::cniface::DeleteFeatureResponse, code_),
+  PROTOBUF_FIELD_OFFSET(::cniface::DeleteFeatureResponse, message_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::cniface::AddFeatureRequest, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -491,8 +491,8 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 54, -1, -1, sizeof(::cniface::SimilarityResponse)},
   { 63, -1, -1, sizeof(::cniface::Repository)},
   { 71, -1, -1, sizeof(::cniface::ListRepositoryResponse)},
-  { 80, -1, -1, sizeof(::cniface::deleteFeatureRequest)},
-  { 88, -1, -1, sizeof(::cniface::deleteFeatureResponse)},
+  { 80, -1, -1, sizeof(::cniface::DeleteFeatureRequest)},
+  { 88, -1, -1, sizeof(::cniface::DeleteFeatureResponse)},
   { 96, -1, -1, sizeof(::cniface::AddFeatureRequest)},
   { 105, -1, -1, sizeof(::cniface::AddFeatureResponse)},
   { 113, -1, -1, sizeof(::cniface::DeleteRepoRequest)},
@@ -515,8 +515,8 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cniface::_SimilarityResponse_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cniface::_Repository_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cniface::_ListRepositoryResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cniface::_deleteFeatureRequest_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cniface::_deleteFeatureResponse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cniface::_DeleteFeatureRequest_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cniface::_DeleteFeatureResponse_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cniface::_AddFeatureRequest_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cniface::_AddFeatureResponse_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cniface::_DeleteRepoRequest_default_instance_),
@@ -548,8 +548,8 @@ const char descriptor_table_protodef_cniface_2eproto[] PROTOBUF_SECTION_VARIABLE
   "(\t\022\014\n\004size\030\002 \001(\003\"b\n\026ListRepositoryRespon"
   "se\022\014\n\004code\030\001 \001(\003\022\017\n\007message\030\002 \001(\t\022)\n\014rep"
   "ositories\030\003 \003(\0132\023.cniface.Repository\";\n\024"
-  "deleteFeatureRequest\022\020\n\010repoName\030\001 \001(\t\022\021"
-  "\n\tfeatureId\030\002 \001(\003\"6\n\025deleteFeatureRespon"
+  "DeleteFeatureRequest\022\020\n\010repoName\030\001 \001(\t\022\021"
+  "\n\tfeatureId\030\002 \001(\003\"6\n\025DeleteFeatureRespon"
   "se\022\014\n\004code\030\001 \001(\003\022\017\n\007message\030\002 \001(\t\"O\n\021Add"
   "FeatureRequest\022\020\n\010repoName\030\001 \001(\t\022\021\n\tfeat"
   "ureId\030\002 \001(\003\022\025\n\rfeatureBase64\030\003 \001(\t\"3\n\022Ad"
@@ -581,8 +581,8 @@ const char descriptor_table_protodef_cniface_2eproto[] PROTOBUF_SECTION_VARIABLE
   "t\032\027.cniface.SearchResponse\"\000\022G\n\naddFeatu"
   "re\022\032.cniface.AddFeatureRequest\032\033.cniface"
   ".AddFeatureResponse\"\000\022P\n\rdeleteFeature\022\035"
-  ".cniface.deleteFeatureRequest\032\036.cniface."
-  "deleteFeatureResponse\"\000B3\n\027cn.abellee.cn"
+  ".cniface.DeleteFeatureRequest\032\036.cniface."
+  "DeleteFeatureResponse\"\000B3\n\027cn.abellee.cn"
   "iface.grpcB\014CNIFaceProtoP\001\242\002\007CNIFACEb\006pr"
   "oto3"
   ;
@@ -3012,20 +3012,20 @@ void ListRepositoryResponse::InternalSwap(ListRepositoryResponse* other) {
 
 // ===================================================================
 
-class deleteFeatureRequest::_Internal {
+class DeleteFeatureRequest::_Internal {
  public:
 };
 
-deleteFeatureRequest::deleteFeatureRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+DeleteFeatureRequest::DeleteFeatureRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
   if (!is_message_owned) {
     RegisterArenaDtor(arena);
   }
-  // @@protoc_insertion_point(arena_constructor:cniface.deleteFeatureRequest)
+  // @@protoc_insertion_point(arena_constructor:cniface.DeleteFeatureRequest)
 }
-deleteFeatureRequest::deleteFeatureRequest(const deleteFeatureRequest& from)
+DeleteFeatureRequest::DeleteFeatureRequest(const DeleteFeatureRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   reponame_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
@@ -3037,10 +3037,10 @@ deleteFeatureRequest::deleteFeatureRequest(const deleteFeatureRequest& from)
       GetArenaForAllocation());
   }
   featureid_ = from.featureid_;
-  // @@protoc_insertion_point(copy_constructor:cniface.deleteFeatureRequest)
+  // @@protoc_insertion_point(copy_constructor:cniface.DeleteFeatureRequest)
 }
 
-inline void deleteFeatureRequest::SharedCtor() {
+inline void DeleteFeatureRequest::SharedCtor() {
 reponame_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
   reponame_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
@@ -3048,30 +3048,30 @@ reponame_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlr
 featureid_ = int64_t{0};
 }
 
-deleteFeatureRequest::~deleteFeatureRequest() {
-  // @@protoc_insertion_point(destructor:cniface.deleteFeatureRequest)
+DeleteFeatureRequest::~DeleteFeatureRequest() {
+  // @@protoc_insertion_point(destructor:cniface.DeleteFeatureRequest)
   if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-inline void deleteFeatureRequest::SharedDtor() {
+inline void DeleteFeatureRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   reponame_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
-void deleteFeatureRequest::ArenaDtor(void* object) {
-  deleteFeatureRequest* _this = reinterpret_cast< deleteFeatureRequest* >(object);
+void DeleteFeatureRequest::ArenaDtor(void* object) {
+  DeleteFeatureRequest* _this = reinterpret_cast< DeleteFeatureRequest* >(object);
   (void)_this;
 }
-void deleteFeatureRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+void DeleteFeatureRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
 }
-void deleteFeatureRequest::SetCachedSize(int size) const {
+void DeleteFeatureRequest::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
 
-void deleteFeatureRequest::Clear() {
-// @@protoc_insertion_point(message_clear_start:cniface.deleteFeatureRequest)
+void DeleteFeatureRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:cniface.DeleteFeatureRequest)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -3081,7 +3081,7 @@ void deleteFeatureRequest::Clear() {
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* deleteFeatureRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* DeleteFeatureRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
@@ -3092,7 +3092,7 @@ const char* deleteFeatureRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAM
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           auto str = _internal_mutable_reponame();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cniface.deleteFeatureRequest.repoName"));
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cniface.DeleteFeatureRequest.repoName"));
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -3128,9 +3128,9 @@ failure:
 #undef CHK_
 }
 
-uint8_t* deleteFeatureRequest::_InternalSerialize(
+uint8_t* DeleteFeatureRequest::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:cniface.deleteFeatureRequest)
+  // @@protoc_insertion_point(serialize_to_array_start:cniface.DeleteFeatureRequest)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -3139,7 +3139,7 @@ uint8_t* deleteFeatureRequest::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_reponame().data(), static_cast<int>(this->_internal_reponame().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "cniface.deleteFeatureRequest.repoName");
+      "cniface.DeleteFeatureRequest.repoName");
     target = stream->WriteStringMaybeAliased(
         1, this->_internal_reponame(), target);
   }
@@ -3154,12 +3154,12 @@ uint8_t* deleteFeatureRequest::_InternalSerialize(
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:cniface.deleteFeatureRequest)
+  // @@protoc_insertion_point(serialize_to_array_end:cniface.DeleteFeatureRequest)
   return target;
 }
 
-size_t deleteFeatureRequest::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:cniface.deleteFeatureRequest)
+size_t DeleteFeatureRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:cniface.DeleteFeatureRequest)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -3181,21 +3181,21 @@ size_t deleteFeatureRequest::ByteSizeLong() const {
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData deleteFeatureRequest::_class_data_ = {
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DeleteFeatureRequest::_class_data_ = {
     ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    deleteFeatureRequest::MergeImpl
+    DeleteFeatureRequest::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*deleteFeatureRequest::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DeleteFeatureRequest::GetClassData() const { return &_class_data_; }
 
-void deleteFeatureRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+void DeleteFeatureRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
                       const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<deleteFeatureRequest *>(to)->MergeFrom(
-      static_cast<const deleteFeatureRequest &>(from));
+  static_cast<DeleteFeatureRequest *>(to)->MergeFrom(
+      static_cast<const DeleteFeatureRequest &>(from));
 }
 
 
-void deleteFeatureRequest::MergeFrom(const deleteFeatureRequest& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:cniface.deleteFeatureRequest)
+void DeleteFeatureRequest::MergeFrom(const DeleteFeatureRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:cniface.DeleteFeatureRequest)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -3209,18 +3209,18 @@ void deleteFeatureRequest::MergeFrom(const deleteFeatureRequest& from) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void deleteFeatureRequest::CopyFrom(const deleteFeatureRequest& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:cniface.deleteFeatureRequest)
+void DeleteFeatureRequest::CopyFrom(const DeleteFeatureRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:cniface.DeleteFeatureRequest)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool deleteFeatureRequest::IsInitialized() const {
+bool DeleteFeatureRequest::IsInitialized() const {
   return true;
 }
 
-void deleteFeatureRequest::InternalSwap(deleteFeatureRequest* other) {
+void DeleteFeatureRequest::InternalSwap(DeleteFeatureRequest* other) {
   using std::swap;
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
@@ -3233,7 +3233,7 @@ void deleteFeatureRequest::InternalSwap(deleteFeatureRequest* other) {
   swap(featureid_, other->featureid_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata deleteFeatureRequest::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata DeleteFeatureRequest::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_cniface_2eproto_getter, &descriptor_table_cniface_2eproto_once,
       file_level_metadata_cniface_2eproto[9]);
@@ -3241,20 +3241,20 @@ void deleteFeatureRequest::InternalSwap(deleteFeatureRequest* other) {
 
 // ===================================================================
 
-class deleteFeatureResponse::_Internal {
+class DeleteFeatureResponse::_Internal {
  public:
 };
 
-deleteFeatureResponse::deleteFeatureResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+DeleteFeatureResponse::DeleteFeatureResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
   if (!is_message_owned) {
     RegisterArenaDtor(arena);
   }
-  // @@protoc_insertion_point(arena_constructor:cniface.deleteFeatureResponse)
+  // @@protoc_insertion_point(arena_constructor:cniface.DeleteFeatureResponse)
 }
-deleteFeatureResponse::deleteFeatureResponse(const deleteFeatureResponse& from)
+DeleteFeatureResponse::DeleteFeatureResponse(const DeleteFeatureResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   message_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
@@ -3266,10 +3266,10 @@ deleteFeatureResponse::deleteFeatureResponse(const deleteFeatureResponse& from)
       GetArenaForAllocation());
   }
   code_ = from.code_;
-  // @@protoc_insertion_point(copy_constructor:cniface.deleteFeatureResponse)
+  // @@protoc_insertion_point(copy_constructor:cniface.DeleteFeatureResponse)
 }
 
-inline void deleteFeatureResponse::SharedCtor() {
+inline void DeleteFeatureResponse::SharedCtor() {
 message_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
   message_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
@@ -3277,30 +3277,30 @@ message_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlre
 code_ = int64_t{0};
 }
 
-deleteFeatureResponse::~deleteFeatureResponse() {
-  // @@protoc_insertion_point(destructor:cniface.deleteFeatureResponse)
+DeleteFeatureResponse::~DeleteFeatureResponse() {
+  // @@protoc_insertion_point(destructor:cniface.DeleteFeatureResponse)
   if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-inline void deleteFeatureResponse::SharedDtor() {
+inline void DeleteFeatureResponse::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   message_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
-void deleteFeatureResponse::ArenaDtor(void* object) {
-  deleteFeatureResponse* _this = reinterpret_cast< deleteFeatureResponse* >(object);
+void DeleteFeatureResponse::ArenaDtor(void* object) {
+  DeleteFeatureResponse* _this = reinterpret_cast< DeleteFeatureResponse* >(object);
   (void)_this;
 }
-void deleteFeatureResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+void DeleteFeatureResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
 }
-void deleteFeatureResponse::SetCachedSize(int size) const {
+void DeleteFeatureResponse::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
 
-void deleteFeatureResponse::Clear() {
-// @@protoc_insertion_point(message_clear_start:cniface.deleteFeatureResponse)
+void DeleteFeatureResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:cniface.DeleteFeatureResponse)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -3310,7 +3310,7 @@ void deleteFeatureResponse::Clear() {
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* deleteFeatureResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* DeleteFeatureResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
@@ -3329,7 +3329,7 @@ const char* deleteFeatureResponse::_InternalParse(const char* ptr, ::PROTOBUF_NA
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
           auto str = _internal_mutable_message();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cniface.deleteFeatureResponse.message"));
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cniface.DeleteFeatureResponse.message"));
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -3357,9 +3357,9 @@ failure:
 #undef CHK_
 }
 
-uint8_t* deleteFeatureResponse::_InternalSerialize(
+uint8_t* DeleteFeatureResponse::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:cniface.deleteFeatureResponse)
+  // @@protoc_insertion_point(serialize_to_array_start:cniface.DeleteFeatureResponse)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -3374,7 +3374,7 @@ uint8_t* deleteFeatureResponse::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_message().data(), static_cast<int>(this->_internal_message().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "cniface.deleteFeatureResponse.message");
+      "cniface.DeleteFeatureResponse.message");
     target = stream->WriteStringMaybeAliased(
         2, this->_internal_message(), target);
   }
@@ -3383,12 +3383,12 @@ uint8_t* deleteFeatureResponse::_InternalSerialize(
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:cniface.deleteFeatureResponse)
+  // @@protoc_insertion_point(serialize_to_array_end:cniface.DeleteFeatureResponse)
   return target;
 }
 
-size_t deleteFeatureResponse::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:cniface.deleteFeatureResponse)
+size_t DeleteFeatureResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:cniface.DeleteFeatureResponse)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -3410,21 +3410,21 @@ size_t deleteFeatureResponse::ByteSizeLong() const {
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData deleteFeatureResponse::_class_data_ = {
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DeleteFeatureResponse::_class_data_ = {
     ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    deleteFeatureResponse::MergeImpl
+    DeleteFeatureResponse::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*deleteFeatureResponse::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DeleteFeatureResponse::GetClassData() const { return &_class_data_; }
 
-void deleteFeatureResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+void DeleteFeatureResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
                       const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<deleteFeatureResponse *>(to)->MergeFrom(
-      static_cast<const deleteFeatureResponse &>(from));
+  static_cast<DeleteFeatureResponse *>(to)->MergeFrom(
+      static_cast<const DeleteFeatureResponse &>(from));
 }
 
 
-void deleteFeatureResponse::MergeFrom(const deleteFeatureResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:cniface.deleteFeatureResponse)
+void DeleteFeatureResponse::MergeFrom(const DeleteFeatureResponse& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:cniface.DeleteFeatureResponse)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -3438,18 +3438,18 @@ void deleteFeatureResponse::MergeFrom(const deleteFeatureResponse& from) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void deleteFeatureResponse::CopyFrom(const deleteFeatureResponse& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:cniface.deleteFeatureResponse)
+void DeleteFeatureResponse::CopyFrom(const DeleteFeatureResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:cniface.DeleteFeatureResponse)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool deleteFeatureResponse::IsInitialized() const {
+bool DeleteFeatureResponse::IsInitialized() const {
   return true;
 }
 
-void deleteFeatureResponse::InternalSwap(deleteFeatureResponse* other) {
+void DeleteFeatureResponse::InternalSwap(DeleteFeatureResponse* other) {
   using std::swap;
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
@@ -3462,7 +3462,7 @@ void deleteFeatureResponse::InternalSwap(deleteFeatureResponse* other) {
   swap(code_, other->code_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata deleteFeatureResponse::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata DeleteFeatureResponse::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_cniface_2eproto_getter, &descriptor_table_cniface_2eproto_once,
       file_level_metadata_cniface_2eproto[10]);
@@ -5836,11 +5836,11 @@ template<> PROTOBUF_NOINLINE ::cniface::Repository* Arena::CreateMaybeMessage< :
 template<> PROTOBUF_NOINLINE ::cniface::ListRepositoryResponse* Arena::CreateMaybeMessage< ::cniface::ListRepositoryResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::cniface::ListRepositoryResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::cniface::deleteFeatureRequest* Arena::CreateMaybeMessage< ::cniface::deleteFeatureRequest >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::cniface::deleteFeatureRequest >(arena);
+template<> PROTOBUF_NOINLINE ::cniface::DeleteFeatureRequest* Arena::CreateMaybeMessage< ::cniface::DeleteFeatureRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::cniface::DeleteFeatureRequest >(arena);
 }
-template<> PROTOBUF_NOINLINE ::cniface::deleteFeatureResponse* Arena::CreateMaybeMessage< ::cniface::deleteFeatureResponse >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::cniface::deleteFeatureResponse >(arena);
+template<> PROTOBUF_NOINLINE ::cniface::DeleteFeatureResponse* Arena::CreateMaybeMessage< ::cniface::DeleteFeatureResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::cniface::DeleteFeatureResponse >(arena);
 }
 template<> PROTOBUF_NOINLINE ::cniface::AddFeatureRequest* Arena::CreateMaybeMessage< ::cniface::AddFeatureRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::cniface::AddFeatureRequest >(arena);
