@@ -37,6 +37,7 @@ models/relay/*.params
 models/relay/*.so
 build/
 .pkl_memoize_py3/
+convert_model/.pkl_memoize_py3/
 .DS_Store
 **/.DS_Store
 .idea/
