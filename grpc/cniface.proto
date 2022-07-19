@@ -7,8 +7,6 @@ option objc_class_prefix = "CNIFACE";
 
 package cniface;
 
-import "google/protobuf/empty.proto";
-
 
 service DetectService {
     rpc detect (DetectRequest) returns ( DetectResponse) {}
@@ -64,84 +62,3 @@ message SimilarityResponse {
 }
 
 
-
-message Repository {
-    string name = 1;
-    int64 size = 2;
-}
-
-message ListRepositoryResponse {
-    int64 code = 1;
-    string message = 2;
-    repeated Repository repositories = 3;
-}
-
-service RepositoryService {
-    rpc listRepo (google.protobuf.Empty) returns ( ListRepositoryResponse) {}
-    rpc addRepo (AddRepoRequest) returns ( AddRepoResponse) {}
-    rpc deleteRepo (DeleteRepoRequest) returns ( DeleteRepoResponse) {}
-
-    rpc search (SearchRequest) returns ( SearchResponse) {}
-    rpc addFeature (AddFeatureRequest) returns ( AddFeatureResponse) {}
-    rpc deleteFeature (DeleteFeatureRequest) returns ( DeleteFeatureResponse) {}
-}
-
-message DeleteFeatureRequest {
-    string repoName = 1;
-    int64 featureId = 2;
-}
-
-message DeleteFeatureResponse {
-    int64 code = 1;
-    string message = 2;
-}
-
-message AddFeatureRequest {
-    string repoName = 1;
-    int64 featureId = 2;
-    string featureBase64 = 3;
-}
-
-message AddFeatureResponse {
-    int64 code = 1;
-    string message = 2;
-}
-
-message DeleteRepoRequest {
-    string repoName = 1;
-}
-
-message DeleteRepoResponse {
-    int64 code = 1;
-    string message = 2;
-}
-
-message AddRepoRequest {
-    string repoName = 1;
-}
-
-message AddRepoResponse {
-    int64 code = 1;
-    string message = 2;
-}
-
-message RepositoryRequest {
-    string repoName = 1;
-}
-
-message SearchResult {
-    int64 featureId = 1;
-    float distance = 2;
-}
-
-message SearchRequest {
-    string repoName = 1;
-    string featureBase64 = 2;
-    int64 topk = 3;
-}
-
-message SearchResponse {
-    int64 code = 1;
-    string message = 2;
-    repeated SearchResult results = 3;
-}

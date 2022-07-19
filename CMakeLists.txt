@@ -22,11 +22,6 @@ file(GLOB ARC_FACE_SRC
         ${CMAKE_CURRENT_SOURCE_DIR}/arcface/*.cpp
         )
 
-file(GLOB REPOSITORY_SRC
-        ${CMAKE_CURRENT_SOURCE_DIR}/repository/*.h
-        ${CMAKE_CURRENT_SOURCE_DIR}/repository/*.cpp
-        )
-
 file(GLOB UTILS_SRC
         ${CMAKE_CURRENT_SOURCE_DIR}/utils/*.h
         ${CMAKE_CURRENT_SOURCE_DIR}/utils/*.cpp
@@ -50,7 +45,6 @@ set(SOURCE_FILES
         ${ARC_FACE_SRC}
         ${COMMON_SRC}
         ${UTILS_SRC}
-        ${REPOSITORY_SRC}
         ${GRPC_SRC}
         ${SERVICE_SRC}
 )
@@ -67,7 +61,7 @@ link_directories(
 
 # main
 add_executable(${CMAKE_PROJECT_NAME} ${SOURCE_FILES})
-target_link_libraries(${CMAKE_PROJECT_NAME} ${OpenCV_LIBS} dl pthread tvm_runtime faiss rocksdb gflags grpc++ protobuf)
+target_link_libraries(${CMAKE_PROJECT_NAME} ${OpenCV_LIBS} dl pthread tvm_runtime rocksdb gflags grpc++ protobuf)
 
 
 # samples
@@ -82,9 +76,3 @@ target_link_libraries(recognition ${OpenCV_LIBS} dl pthread tvm_runtime)
 
 add_executable (recognition_camera ./samples/recognition_camera.cpp ${COMMON_SRC} ${UTILS_SRC} ${RETINA_FACE_SRC} ${ARC_FACE_SRC})
 target_link_libraries(recognition_camera ${OpenCV_LIBS} dl pthread tvm_runtime)
-
-add_executable (retrieval ./samples/retrieval.cpp ${COMMON_SRC} ${UTILS_SRC} ${RETINA_FACE_SRC} ${ARC_FACE_SRC})
-target_link_libraries(retrieval ${OpenCV_LIBS} dl pthread tvm_runtime faiss gflags)
-
-add_executable (repository samples/repository.cpp ${COMMON_SRC} ${UTILS_SRC} ${REPOSITORY_SRC} ${RETINA_FACE_SRC} ${ARC_FACE_SRC})
-target_link_libraries(repository ${OpenCV_LIBS} dl pthread faiss tvm_runtime gflags rocksdb)
