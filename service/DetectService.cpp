@@ -4,12 +4,19 @@
 
 #include "DetectService.h"
 #include <opencv2/highgui.hpp>
-#include <opencv2/imgproc.hpp>
 
 #include "../utils/ImageUtil.h"
 #include "../utils/base64.h"
 
-DetectService::~DetectService() = default;
+
+
+DetectService::DetectService(const string &model_dir) {
+    retinaFace = new RetinaFace(model_dir);
+}
+
+DetectService::~DetectService() {
+    delete retinaFace;
+}
 
 grpc::Status DetectService::detect(::grpc::ServerContext *context, const ::cniface::DetectRequest *request,
                                    ::cniface::DetectResponse *response) {
@@ -24,7 +31,7 @@ grpc::Status DetectService::detect(::grpc::ServerContext *context, const ::cnifa
     auto* rgb_img = (uint8_t*)malloc(img.rows * img.cols * 3 * sizeof(uint8_t));
     ImageUtil::bgr2rgb_packed(img.data, rgb_img, img.cols, img.rows);
 
-    auto anchors = retinaFace.detect(rgb_img, img.cols, img.rows, request->score());
+    auto anchors = retinaFace->detect(rgb_img, img.cols, img.rows, request->score());
 
     for (const auto& anchor : anchors) {
         auto result = response->add_results();

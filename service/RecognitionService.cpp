@@ -12,7 +12,15 @@
 
 #include "../common/common.h"
 
-RecognitionService::~RecognitionService() = default;
+
+
+RecognitionService::RecognitionService(const string &model_dir) {
+    arcFace = new ArcFace(model_dir);
+}
+
+RecognitionService::~RecognitionService() {
+    delete arcFace;
+}
 
 grpc::Status RecognitionService::extractFeature(::grpc::ServerContext *context, const ::cniface::ExtractFeatureRequest *request,
                                    ::cniface::ExtractFeatureResponse *response) {
@@ -32,7 +40,7 @@ grpc::Status RecognitionService::extractFeature(::grpc::ServerContext *context, 
     }
 
     auto* feature = new float[DEFAULT_FEATURE_DIM];
-    arcFace.recognize(img.data, img.cols, img.rows, kps, feature);
+    arcFace->recognize(img.data, img.cols, img.rows, kps, feature);
     MathUtil::normalize_L2(feature, DEFAULT_FEATURE_DIM);
     auto featureBase64 = base64_encode(feature, DEFAULT_FEATURE_DIM);
 

@@ -11,6 +11,7 @@
 
 class RecognitionService final : public cniface::RecognitionService::Service {
 public:
+    explicit RecognitionService(const std::string& model_dir);
     ~RecognitionService() override;
 
     grpc::Status extractFeature(::grpc::ServerContext *context, const ::cniface::ExtractFeatureRequest *request,
@@ -20,7 +21,7 @@ public:
                             ::cniface::SimilarityResponse *response) override;
 
 private:
-    ArcFace arcFace{"../models/relay/"};
+    ArcFace* arcFace;
 };
 
 

@@ -11,13 +11,14 @@
 
 class DetectService final : public cniface::DetectService::Service {
 public:
+    explicit DetectService(const std::string& model_dir);
     ~DetectService() override;
 
     grpc::Status detect(::grpc::ServerContext *context, const ::cniface::DetectRequest *request,
                         ::cniface::DetectResponse *response) override;
 
 private:
-    RetinaFace retinaFace{"../models/relay/"};
+    RetinaFace* retinaFace;
 };
 
 
