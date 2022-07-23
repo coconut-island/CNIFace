@@ -48,3 +48,5 @@ models/*.onnx
 
 /docker/base/deps/tvm*
 /docker/base/deps/grpc*
+
+/docker/cniface/deps/models/
