@@ -46,4 +46,5 @@ __pycache__
 models/*.onnx
 *.bak
 
-/docker/**/deps
+/docker/base/deps/tvm*
+/docker/base/deps/grpc*
