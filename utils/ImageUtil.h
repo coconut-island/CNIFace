@@ -7,6 +7,8 @@
 
 #include <cstdint>
 #include <vector>
+#include <cmath>
+#include <cstring>
 
 #include "../common/Anchor.h"
 

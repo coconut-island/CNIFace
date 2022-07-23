@@ -36,8 +36,7 @@ models/relay/*.json
 models/relay/*.params
 models/relay/*.so
 build/
-.pkl_memoize_py3/
-convert_model/.pkl_memoize_py3/
+**/.pkl_memoize_py3/
 .DS_Store
 **/.DS_Store
 .idea/
@@ -46,3 +45,5 @@ __pycache__
 
 models/*.onnx
 *.bak
+
+/docker/**/deps

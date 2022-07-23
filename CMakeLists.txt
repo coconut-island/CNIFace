@@ -1,8 +1,12 @@
-cmake_minimum_required(VERSION 3.16.5)
+cmake_minimum_required(VERSION 3.16.3)
 project(cniface)
 set(CMAKE_CXX_STANDARD 14)
 
 find_package(OpenCV REQUIRED)
+
+option(SAMPLES "compile samples" ON)
+
+message("SAMPLES=${SAMPLES}")
 
 set(SYSTEM_INCLUDE "/usr/local/include")
 set(SYSTEM_LIB "/usr/local/lib")
@@ -61,18 +65,22 @@ link_directories(
 
 # main
 add_executable(${CMAKE_PROJECT_NAME} ${SOURCE_FILES})
-target_link_libraries(${CMAKE_PROJECT_NAME} ${OpenCV_LIBS} dl pthread tvm_runtime gflags grpc++ protobuf)
-
+target_link_libraries(${CMAKE_PROJECT_NAME} ${OpenCV_LIBS} dl pthread tvm_runtime gflags grpc++ protobuf absl_synchronization)
 
 # samples
-add_executable (detect ./samples/detect.cpp ${COMMON_SRC} ${UTILS_SRC} ${RETINA_FACE_SRC})
-target_link_libraries(detect ${OpenCV_LIBS} dl pthread tvm_runtime)
+if(SAMPLES)
+    add_executable (detect ./samples/detect.cpp ${COMMON_SRC} ${UTILS_SRC} ${RETINA_FACE_SRC})
+    target_link_libraries(detect ${OpenCV_LIBS} dl pthread tvm_runtime)
 
-add_executable (detect_camera ./samples/detect_camera.cpp ${COMMON_SRC} ${UTILS_SRC} ${RETINA_FACE_SRC})
-target_link_libraries(detect_camera ${OpenCV_LIBS} dl pthread tvm_runtime)
+    add_executable (detect_camera ./samples/detect_camera.cpp ${COMMON_SRC} ${UTILS_SRC} ${RETINA_FACE_SRC})
+    target_link_libraries(detect_camera ${OpenCV_LIBS} dl pthread tvm_runtime)
 
-add_executable (recognition ./samples/recognition.cpp ${COMMON_SRC} ${UTILS_SRC} ${RETINA_FACE_SRC} ${ARC_FACE_SRC})
-target_link_libraries(recognition ${OpenCV_LIBS} dl pthread tvm_runtime)
+    add_executable (recognition ./samples/recognition.cpp ${COMMON_SRC} ${UTILS_SRC} ${RETINA_FACE_SRC} ${ARC_FACE_SRC})
+    target_link_libraries(recognition ${OpenCV_LIBS} dl pthread tvm_runtime)
 
-add_executable (recognition_camera ./samples/recognition_camera.cpp ${COMMON_SRC} ${UTILS_SRC} ${RETINA_FACE_SRC} ${ARC_FACE_SRC})
-target_link_libraries(recognition_camera ${OpenCV_LIBS} dl pthread tvm_runtime)
+    add_executable (recognition_camera ./samples/recognition_camera.cpp ${COMMON_SRC} ${UTILS_SRC} ${RETINA_FACE_SRC} ${ARC_FACE_SRC})
+    target_link_libraries(recognition_camera ${OpenCV_LIBS} dl pthread tvm_runtime)
+endif()
+
+
+install(TARGETS ${CMAKE_PROJECT_NAME} DESTINATION bin)

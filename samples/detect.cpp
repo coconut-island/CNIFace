@@ -28,7 +28,6 @@ int main() {
     free(rgb_img);
 
     CVUtil::draw_faces(img, anchors);
-    cv::imshow("draw_img", img);
-    cv::waitKey(0);
+    cv::imwrite("./images/t1_detected.jpg", img);
     return 0;
 }
