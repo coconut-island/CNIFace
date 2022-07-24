@@ -42,9 +42,11 @@ grpc::Status RecognitionService::extractFeature(::grpc::ServerContext *context, 
     auto* feature = new float[DEFAULT_FEATURE_DIM];
     arcFace->recognize(img.data, img.cols, img.rows, kps, feature);
     MathUtil::normalize_L2(feature, DEFAULT_FEATURE_DIM);
-    auto featureBase64 = base64_encode(feature, DEFAULT_FEATURE_DIM);
 
-    response->set_featurebase64(featureBase64);
+    for (int i = 0; i < DEFAULT_FEATURE_DIM; ++i) {
+        response->add_feature(feature[i]);
+    }
+
     free(rgb_img);
     return grpc::Status::OK;
 }
@@ -54,13 +56,12 @@ grpc::Status RecognitionService::similarity(::grpc::ServerContext *context, cons
     response->set_code(0);
     response->set_message("OK");
 
-    const auto& featurebase64_1 = request->featurebase64_1();
-    const auto& featurebase64_2 = request->featurebase64_2();
+    const float* feature1 = request->feature1().data();
+    const float* feature2 = request->feature2().data();
 
-    auto distance = MathUtil::inner_product(
-            (float*)base64_decode(featurebase64_1).c_str(),
-            (float*)base64_decode(featurebase64_2).c_str(),
-            DEFAULT_FEATURE_DIM);
+    auto distance = MathUtil::inner_product(feature1,
+                                            feature2,
+                                            DEFAULT_FEATURE_DIM);
 
     response->set_similarity(distance);
     return grpc::Status::OK;

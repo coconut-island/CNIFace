@@ -47,12 +47,12 @@ message ExtractFeatureRequest {
 message ExtractFeatureResponse {
     int64 code = 1;
     string message = 2;
-    string featureBase64 = 3;
+    repeated float feature = 3;
 }
 
 message SimilarityRequest {
-    string featureBase64_1 = 1;
-    string featureBase64_2 = 2;
+    repeated float feature1 = 1;
+    repeated float feature2 = 2;
 }
 
 message SimilarityResponse {

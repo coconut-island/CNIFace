@@ -944,10 +944,32 @@ class ExtractFeatureResponse final :
   // accessors -------------------------------------------------------
 
   enum : int {
+    kFeatureFieldNumber = 3,
     kMessageFieldNumber = 2,
-    kFeatureBase64FieldNumber = 3,
     kCodeFieldNumber = 1,
   };
+  // repeated float feature = 3;
+  int feature_size() const;
+  private:
+  int _internal_feature_size() const;
+  public:
+  void clear_feature();
+  private:
+  float _internal_feature(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+      _internal_feature() const;
+  void _internal_add_feature(float value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+      _internal_mutable_feature();
+  public:
+  float feature(int index) const;
+  void set_feature(int index, float value);
+  void add_feature(float value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+      feature() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+      mutable_feature();
+
   // string message = 2;
   void clear_message();
   const std::string& message() const;
@@ -960,20 +982,6 @@ class ExtractFeatureResponse final :
   const std::string& _internal_message() const;
   inline PROTOBUF_ALWAYS_INLINE void _internal_set_message(const std::string& value);
   std::string* _internal_mutable_message();
-  public:
-
-  // string featureBase64 = 3;
-  void clear_featurebase64();
-  const std::string& featurebase64() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_featurebase64(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_featurebase64();
-  PROTOBUF_NODISCARD std::string* release_featurebase64();
-  void set_allocated_featurebase64(std::string* featurebase64);
-  private:
-  const std::string& _internal_featurebase64() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_featurebase64(const std::string& value);
-  std::string* _internal_mutable_featurebase64();
   public:
 
   // int64 code = 1;
@@ -992,8 +1000,8 @@ class ExtractFeatureResponse final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< float > feature_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr message_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr featurebase64_;
   int64_t code_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_cniface_2eproto;
@@ -1122,36 +1130,52 @@ class SimilarityRequest final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kFeatureBase641FieldNumber = 1,
-    kFeatureBase642FieldNumber = 2,
+    kFeature1FieldNumber = 1,
+    kFeature2FieldNumber = 2,
   };
-  // string featureBase64_1 = 1;
-  void clear_featurebase64_1();
-  const std::string& featurebase64_1() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_featurebase64_1(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_featurebase64_1();
-  PROTOBUF_NODISCARD std::string* release_featurebase64_1();
-  void set_allocated_featurebase64_1(std::string* featurebase64_1);
+  // repeated float feature1 = 1;
+  int feature1_size() const;
   private:
-  const std::string& _internal_featurebase64_1() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_featurebase64_1(const std::string& value);
-  std::string* _internal_mutable_featurebase64_1();
+  int _internal_feature1_size() const;
   public:
+  void clear_feature1();
+  private:
+  float _internal_feature1(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+      _internal_feature1() const;
+  void _internal_add_feature1(float value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+      _internal_mutable_feature1();
+  public:
+  float feature1(int index) const;
+  void set_feature1(int index, float value);
+  void add_feature1(float value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+      feature1() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+      mutable_feature1();
 
-  // string featureBase64_2 = 2;
-  void clear_featurebase64_2();
-  const std::string& featurebase64_2() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_featurebase64_2(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_featurebase64_2();
-  PROTOBUF_NODISCARD std::string* release_featurebase64_2();
-  void set_allocated_featurebase64_2(std::string* featurebase64_2);
+  // repeated float feature2 = 2;
+  int feature2_size() const;
   private:
-  const std::string& _internal_featurebase64_2() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_featurebase64_2(const std::string& value);
-  std::string* _internal_mutable_featurebase64_2();
+  int _internal_feature2_size() const;
   public:
+  void clear_feature2();
+  private:
+  float _internal_feature2(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+      _internal_feature2() const;
+  void _internal_add_feature2(float value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+      _internal_mutable_feature2();
+  public:
+  float feature2(int index) const;
+  void set_feature2(int index, float value);
+  void add_feature2(float value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+      feature2() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+      mutable_feature2();
 
   // @@protoc_insertion_point(class_scope:cniface.SimilarityRequest)
  private:
@@ -1160,8 +1184,8 @@ class SimilarityRequest final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr featurebase64_1_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr featurebase64_2_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< float > feature1_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< float > feature2_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_cniface_2eproto;
 };
@@ -1863,161 +1887,149 @@ inline void ExtractFeatureResponse::set_allocated_message(std::string* message) 
   // @@protoc_insertion_point(field_set_allocated:cniface.ExtractFeatureResponse.message)
 }
 
-// string featureBase64 = 3;
-inline void ExtractFeatureResponse::clear_featurebase64() {
-  featurebase64_.ClearToEmpty();
+// repeated float feature = 3;
+inline int ExtractFeatureResponse::_internal_feature_size() const {
+  return feature_.size();
 }
-inline const std::string& ExtractFeatureResponse::featurebase64() const {
-  // @@protoc_insertion_point(field_get:cniface.ExtractFeatureResponse.featureBase64)
-  return _internal_featurebase64();
+inline int ExtractFeatureResponse::feature_size() const {
+  return _internal_feature_size();
 }
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void ExtractFeatureResponse::set_featurebase64(ArgT0&& arg0, ArgT... args) {
- 
- featurebase64_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:cniface.ExtractFeatureResponse.featureBase64)
+inline void ExtractFeatureResponse::clear_feature() {
+  feature_.Clear();
 }
-inline std::string* ExtractFeatureResponse::mutable_featurebase64() {
-  std::string* _s = _internal_mutable_featurebase64();
-  // @@protoc_insertion_point(field_mutable:cniface.ExtractFeatureResponse.featureBase64)
-  return _s;
+inline float ExtractFeatureResponse::_internal_feature(int index) const {
+  return feature_.Get(index);
 }
-inline const std::string& ExtractFeatureResponse::_internal_featurebase64() const {
-  return featurebase64_.Get();
+inline float ExtractFeatureResponse::feature(int index) const {
+  // @@protoc_insertion_point(field_get:cniface.ExtractFeatureResponse.feature)
+  return _internal_feature(index);
 }
-inline void ExtractFeatureResponse::_internal_set_featurebase64(const std::string& value) {
-  
-  featurebase64_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+inline void ExtractFeatureResponse::set_feature(int index, float value) {
+  feature_.Set(index, value);
+  // @@protoc_insertion_point(field_set:cniface.ExtractFeatureResponse.feature)
 }
-inline std::string* ExtractFeatureResponse::_internal_mutable_featurebase64() {
-  
-  return featurebase64_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+inline void ExtractFeatureResponse::_internal_add_feature(float value) {
+  feature_.Add(value);
 }
-inline std::string* ExtractFeatureResponse::release_featurebase64() {
-  // @@protoc_insertion_point(field_release:cniface.ExtractFeatureResponse.featureBase64)
-  return featurebase64_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+inline void ExtractFeatureResponse::add_feature(float value) {
+  _internal_add_feature(value);
+  // @@protoc_insertion_point(field_add:cniface.ExtractFeatureResponse.feature)
 }
-inline void ExtractFeatureResponse::set_allocated_featurebase64(std::string* featurebase64) {
-  if (featurebase64 != nullptr) {
-    
-  } else {
-    
-  }
-  featurebase64_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), featurebase64,
-      GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (featurebase64_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    featurebase64_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:cniface.ExtractFeatureResponse.featureBase64)
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+ExtractFeatureResponse::_internal_feature() const {
+  return feature_;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+ExtractFeatureResponse::feature() const {
+  // @@protoc_insertion_point(field_list:cniface.ExtractFeatureResponse.feature)
+  return _internal_feature();
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+ExtractFeatureResponse::_internal_mutable_feature() {
+  return &feature_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+ExtractFeatureResponse::mutable_feature() {
+  // @@protoc_insertion_point(field_mutable_list:cniface.ExtractFeatureResponse.feature)
+  return _internal_mutable_feature();
 }
 
 // -------------------------------------------------------------------
 
 // SimilarityRequest
 
-// string featureBase64_1 = 1;
-inline void SimilarityRequest::clear_featurebase64_1() {
-  featurebase64_1_.ClearToEmpty();
+// repeated float feature1 = 1;
+inline int SimilarityRequest::_internal_feature1_size() const {
+  return feature1_.size();
 }
-inline const std::string& SimilarityRequest::featurebase64_1() const {
-  // @@protoc_insertion_point(field_get:cniface.SimilarityRequest.featureBase64_1)
-  return _internal_featurebase64_1();
+inline int SimilarityRequest::feature1_size() const {
+  return _internal_feature1_size();
 }
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void SimilarityRequest::set_featurebase64_1(ArgT0&& arg0, ArgT... args) {
- 
- featurebase64_1_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:cniface.SimilarityRequest.featureBase64_1)
+inline void SimilarityRequest::clear_feature1() {
+  feature1_.Clear();
 }
-inline std::string* SimilarityRequest::mutable_featurebase64_1() {
-  std::string* _s = _internal_mutable_featurebase64_1();
-  // @@protoc_insertion_point(field_mutable:cniface.SimilarityRequest.featureBase64_1)
-  return _s;
+inline float SimilarityRequest::_internal_feature1(int index) const {
+  return feature1_.Get(index);
 }
-inline const std::string& SimilarityRequest::_internal_featurebase64_1() const {
-  return featurebase64_1_.Get();
+inline float SimilarityRequest::feature1(int index) const {
+  // @@protoc_insertion_point(field_get:cniface.SimilarityRequest.feature1)
+  return _internal_feature1(index);
 }
-inline void SimilarityRequest::_internal_set_featurebase64_1(const std::string& value) {
-  
-  featurebase64_1_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+inline void SimilarityRequest::set_feature1(int index, float value) {
+  feature1_.Set(index, value);
+  // @@protoc_insertion_point(field_set:cniface.SimilarityRequest.feature1)
 }
-inline std::string* SimilarityRequest::_internal_mutable_featurebase64_1() {
-  
-  return featurebase64_1_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+inline void SimilarityRequest::_internal_add_feature1(float value) {
+  feature1_.Add(value);
 }
-inline std::string* SimilarityRequest::release_featurebase64_1() {
-  // @@protoc_insertion_point(field_release:cniface.SimilarityRequest.featureBase64_1)
-  return featurebase64_1_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+inline void SimilarityRequest::add_feature1(float value) {
+  _internal_add_feature1(value);
+  // @@protoc_insertion_point(field_add:cniface.SimilarityRequest.feature1)
 }
-inline void SimilarityRequest::set_allocated_featurebase64_1(std::string* featurebase64_1) {
-  if (featurebase64_1 != nullptr) {
-    
-  } else {
-    
-  }
-  featurebase64_1_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), featurebase64_1,
-      GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (featurebase64_1_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    featurebase64_1_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:cniface.SimilarityRequest.featureBase64_1)
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+SimilarityRequest::_internal_feature1() const {
+  return feature1_;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+SimilarityRequest::feature1() const {
+  // @@protoc_insertion_point(field_list:cniface.SimilarityRequest.feature1)
+  return _internal_feature1();
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+SimilarityRequest::_internal_mutable_feature1() {
+  return &feature1_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+SimilarityRequest::mutable_feature1() {
+  // @@protoc_insertion_point(field_mutable_list:cniface.SimilarityRequest.feature1)
+  return _internal_mutable_feature1();
 }
 
-// string featureBase64_2 = 2;
-inline void SimilarityRequest::clear_featurebase64_2() {
-  featurebase64_2_.ClearToEmpty();
+// repeated float feature2 = 2;
+inline int SimilarityRequest::_internal_feature2_size() const {
+  return feature2_.size();
 }
-inline const std::string& SimilarityRequest::featurebase64_2() const {
-  // @@protoc_insertion_point(field_get:cniface.SimilarityRequest.featureBase64_2)
-  return _internal_featurebase64_2();
+inline int SimilarityRequest::feature2_size() const {
+  return _internal_feature2_size();
 }
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void SimilarityRequest::set_featurebase64_2(ArgT0&& arg0, ArgT... args) {
- 
- featurebase64_2_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:cniface.SimilarityRequest.featureBase64_2)
+inline void SimilarityRequest::clear_feature2() {
+  feature2_.Clear();
 }
-inline std::string* SimilarityRequest::mutable_featurebase64_2() {
-  std::string* _s = _internal_mutable_featurebase64_2();
-  // @@protoc_insertion_point(field_mutable:cniface.SimilarityRequest.featureBase64_2)
-  return _s;
+inline float SimilarityRequest::_internal_feature2(int index) const {
+  return feature2_.Get(index);
 }
-inline const std::string& SimilarityRequest::_internal_featurebase64_2() const {
-  return featurebase64_2_.Get();
+inline float SimilarityRequest::feature2(int index) const {
+  // @@protoc_insertion_point(field_get:cniface.SimilarityRequest.feature2)
+  return _internal_feature2(index);
 }
-inline void SimilarityRequest::_internal_set_featurebase64_2(const std::string& value) {
-  
-  featurebase64_2_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+inline void SimilarityRequest::set_feature2(int index, float value) {
+  feature2_.Set(index, value);
+  // @@protoc_insertion_point(field_set:cniface.SimilarityRequest.feature2)
 }
-inline std::string* SimilarityRequest::_internal_mutable_featurebase64_2() {
-  
-  return featurebase64_2_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+inline void SimilarityRequest::_internal_add_feature2(float value) {
+  feature2_.Add(value);
 }
-inline std::string* SimilarityRequest::release_featurebase64_2() {
-  // @@protoc_insertion_point(field_release:cniface.SimilarityRequest.featureBase64_2)
-  return featurebase64_2_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+inline void SimilarityRequest::add_feature2(float value) {
+  _internal_add_feature2(value);
+  // @@protoc_insertion_point(field_add:cniface.SimilarityRequest.feature2)
 }
-inline void SimilarityRequest::set_allocated_featurebase64_2(std::string* featurebase64_2) {
-  if (featurebase64_2 != nullptr) {
-    
-  } else {
-    
-  }
-  featurebase64_2_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), featurebase64_2,
-      GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (featurebase64_2_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    featurebase64_2_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:cniface.SimilarityRequest.featureBase64_2)
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+SimilarityRequest::_internal_feature2() const {
+  return feature2_;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+SimilarityRequest::feature2() const {
+  // @@protoc_insertion_point(field_list:cniface.SimilarityRequest.feature2)
+  return _internal_feature2();
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+SimilarityRequest::_internal_mutable_feature2() {
+  return &feature2_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+SimilarityRequest::mutable_feature2() {
+  // @@protoc_insertion_point(field_mutable_list:cniface.SimilarityRequest.feature2)
+  return _internal_mutable_feature2();
 }
 
 // -------------------------------------------------------------------

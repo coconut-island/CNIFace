@@ -76,8 +76,8 @@ struct ExtractFeatureRequestDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ExtractFeatureRequestDefaultTypeInternal _ExtractFeatureRequest_default_instance_;
 constexpr ExtractFeatureResponse::ExtractFeatureResponse(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : message_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , featurebase64_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  : feature_()
+  , message_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , code_(int64_t{0}){}
 struct ExtractFeatureResponseDefaultTypeInternal {
   constexpr ExtractFeatureResponseDefaultTypeInternal()
@@ -90,8 +90,8 @@ struct ExtractFeatureResponseDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ExtractFeatureResponseDefaultTypeInternal _ExtractFeatureResponse_default_instance_;
 constexpr SimilarityRequest::SimilarityRequest(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : featurebase64_1_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , featurebase64_2_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
+  : feature1_()
+  , feature2_(){}
 struct SimilarityRequestDefaultTypeInternal {
   constexpr SimilarityRequestDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -166,15 +166,15 @@ const uint32_t TableStruct_cniface_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::cniface::ExtractFeatureResponse, code_),
   PROTOBUF_FIELD_OFFSET(::cniface::ExtractFeatureResponse, message_),
-  PROTOBUF_FIELD_OFFSET(::cniface::ExtractFeatureResponse, featurebase64_),
+  PROTOBUF_FIELD_OFFSET(::cniface::ExtractFeatureResponse, feature_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::cniface::SimilarityRequest, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::cniface::SimilarityRequest, featurebase64_1_),
-  PROTOBUF_FIELD_OFFSET(::cniface::SimilarityRequest, featurebase64_2_),
+  PROTOBUF_FIELD_OFFSET(::cniface::SimilarityRequest, feature1_),
+  PROTOBUF_FIELD_OFFSET(::cniface::SimilarityRequest, feature2_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::cniface::SimilarityResponse, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -214,24 +214,24 @@ const char descriptor_table_protodef_cniface_2eproto[] PROTOBUF_SECTION_VARIABLE
   "\003\022\017\n\007message\030\002 \001(\t\022&\n\007results\030\003 \003(\0132\025.cn"
   "iface.DetectResult\"=\n\025ExtractFeatureRequ"
   "est\022\027\n\017faceImageBase64\030\001 \001(\t\022\013\n\003kps\030\002 \003("
-  "\002\"N\n\026ExtractFeatureResponse\022\014\n\004code\030\001 \001("
-  "\003\022\017\n\007message\030\002 \001(\t\022\025\n\rfeatureBase64\030\003 \001("
-  "\t\"E\n\021SimilarityRequest\022\027\n\017featureBase64_"
-  "1\030\001 \001(\t\022\027\n\017featureBase64_2\030\002 \001(\t\"G\n\022Simi"
-  "larityResponse\022\014\n\004code\030\001 \001(\003\022\017\n\007message\030"
-  "\002 \001(\t\022\022\n\nsimilarity\030\003 \001(\0022L\n\rDetectServi"
-  "ce\022;\n\006detect\022\026.cniface.DetectRequest\032\027.c"
-  "niface.DetectResponse\"\0002\262\001\n\022RecognitionS"
-  "ervice\022S\n\016extractFeature\022\036.cniface.Extra"
-  "ctFeatureRequest\032\037.cniface.ExtractFeatur"
-  "eResponse\"\000\022G\n\nsimilarity\022\032.cniface.Simi"
-  "larityRequest\032\033.cniface.SimilarityRespon"
-  "se\"\000B3\n\027cn.abellee.cniface.grpcB\014CNIFace"
-  "ProtoP\001\242\002\007CNIFACEb\006proto3"
+  "\002\"H\n\026ExtractFeatureResponse\022\014\n\004code\030\001 \001("
+  "\003\022\017\n\007message\030\002 \001(\t\022\017\n\007feature\030\003 \003(\002\"7\n\021S"
+  "imilarityRequest\022\020\n\010feature1\030\001 \003(\002\022\020\n\010fe"
+  "ature2\030\002 \003(\002\"G\n\022SimilarityResponse\022\014\n\004co"
+  "de\030\001 \001(\003\022\017\n\007message\030\002 \001(\t\022\022\n\nsimilarity\030"
+  "\003 \001(\0022L\n\rDetectService\022;\n\006detect\022\026.cnifa"
+  "ce.DetectRequest\032\027.cniface.DetectRespons"
+  "e\"\0002\262\001\n\022RecognitionService\022S\n\016extractFea"
+  "ture\022\036.cniface.ExtractFeatureRequest\032\037.c"
+  "niface.ExtractFeatureResponse\"\000\022G\n\nsimil"
+  "arity\022\032.cniface.SimilarityRequest\032\033.cnif"
+  "ace.SimilarityResponse\"\000B3\n\027cn.abellee.c"
+  "niface.grpcB\014CNIFaceProtoP\001\242\002\007CNIFACEb\006p"
+  "roto3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_cniface_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_cniface_2eproto = {
-  false, false, 865, descriptor_table_protodef_cniface_2eproto, "cniface.proto", 
+  false, false, 845, descriptor_table_protodef_cniface_2eproto, "cniface.proto", 
   &descriptor_table_cniface_2eproto_once, nullptr, 0, 7,
   schemas, file_default_instances, TableStruct_cniface_2eproto::offsets,
   file_level_metadata_cniface_2eproto, file_level_enum_descriptors_cniface_2eproto, file_level_service_descriptors_cniface_2eproto,
@@ -1362,7 +1362,8 @@ class ExtractFeatureResponse::_Internal {
 
 ExtractFeatureResponse::ExtractFeatureResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
+  feature_(arena) {
   SharedCtor();
   if (!is_message_owned) {
     RegisterArenaDtor(arena);
@@ -1370,7 +1371,8 @@ ExtractFeatureResponse::ExtractFeatureResponse(::PROTOBUF_NAMESPACE_ID::Arena* a
   // @@protoc_insertion_point(arena_constructor:cniface.ExtractFeatureResponse)
 }
 ExtractFeatureResponse::ExtractFeatureResponse(const ExtractFeatureResponse& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      feature_(from.feature_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   message_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -1378,14 +1380,6 @@ ExtractFeatureResponse::ExtractFeatureResponse(const ExtractFeatureResponse& fro
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_message().empty()) {
     message_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_message(), 
-      GetArenaForAllocation());
-  }
-  featurebase64_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    featurebase64_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_featurebase64().empty()) {
-    featurebase64_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_featurebase64(), 
       GetArenaForAllocation());
   }
   code_ = from.code_;
@@ -1396,10 +1390,6 @@ inline void ExtractFeatureResponse::SharedCtor() {
 message_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
   message_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-featurebase64_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  featurebase64_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 code_ = int64_t{0};
 }
@@ -1414,7 +1404,6 @@ ExtractFeatureResponse::~ExtractFeatureResponse() {
 inline void ExtractFeatureResponse::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   message_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  featurebase64_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void ExtractFeatureResponse::ArenaDtor(void* object) {
@@ -1433,8 +1422,8 @@ void ExtractFeatureResponse::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  feature_.Clear();
   message_.ClearToEmpty();
-  featurebase64_.ClearToEmpty();
   code_ = int64_t{0};
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
@@ -1463,13 +1452,14 @@ const char* ExtractFeatureResponse::_InternalParse(const char* ptr, ::PROTOBUF_N
         } else
           goto handle_unusual;
         continue;
-      // string featureBase64 = 3;
+      // repeated float feature = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
-          auto str = _internal_mutable_featurebase64();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cniface.ExtractFeatureResponse.featureBase64"));
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedFloatParser(_internal_mutable_feature(), ptr, ctx);
           CHK_(ptr);
+        } else if (static_cast<uint8_t>(tag) == 29) {
+          _internal_add_feature(::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr));
+          ptr += sizeof(float);
         } else
           goto handle_unusual;
         continue;
@@ -1518,14 +1508,9 @@ uint8_t* ExtractFeatureResponse::_InternalSerialize(
         2, this->_internal_message(), target);
   }
 
-  // string featureBase64 = 3;
-  if (!this->_internal_featurebase64().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_featurebase64().data(), static_cast<int>(this->_internal_featurebase64().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "cniface.ExtractFeatureResponse.featureBase64");
-    target = stream->WriteStringMaybeAliased(
-        3, this->_internal_featurebase64(), target);
+  // repeated float feature = 3;
+  if (this->_internal_feature_size() > 0) {
+    target = stream->WriteFixedPacked(3, _internal_feature(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1544,18 +1529,23 @@ size_t ExtractFeatureResponse::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  // repeated float feature = 3;
+  {
+    unsigned int count = static_cast<unsigned int>(this->_internal_feature_size());
+    size_t data_size = 4UL * count;
+    if (data_size > 0) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+            static_cast<int32_t>(data_size));
+    }
+    total_size += data_size;
+  }
+
   // string message = 2;
   if (!this->_internal_message().empty()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_message());
-  }
-
-  // string featureBase64 = 3;
-  if (!this->_internal_featurebase64().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_featurebase64());
   }
 
   // int64 code = 1;
@@ -1585,11 +1575,9 @@ void ExtractFeatureResponse::MergeFrom(const ExtractFeatureResponse& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  feature_.MergeFrom(from.feature_);
   if (!from._internal_message().empty()) {
     _internal_set_message(from._internal_message());
-  }
-  if (!from._internal_featurebase64().empty()) {
-    _internal_set_featurebase64(from._internal_featurebase64());
   }
   if (from._internal_code() != 0) {
     _internal_set_code(from._internal_code());
@@ -1613,15 +1601,11 @@ void ExtractFeatureResponse::InternalSwap(ExtractFeatureResponse* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  feature_.InternalSwap(&other->feature_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       &message_, lhs_arena,
       &other->message_, rhs_arena
-  );
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &featurebase64_, lhs_arena,
-      &other->featurebase64_, rhs_arena
   );
   swap(code_, other->code_);
 }
@@ -1640,7 +1624,9 @@ class SimilarityRequest::_Internal {
 
 SimilarityRequest::SimilarityRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
+  feature1_(arena),
+  feature2_(arena) {
   SharedCtor();
   if (!is_message_owned) {
     RegisterArenaDtor(arena);
@@ -1648,36 +1634,14 @@ SimilarityRequest::SimilarityRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   // @@protoc_insertion_point(arena_constructor:cniface.SimilarityRequest)
 }
 SimilarityRequest::SimilarityRequest(const SimilarityRequest& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      feature1_(from.feature1_),
+      feature2_(from.feature2_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  featurebase64_1_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    featurebase64_1_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_featurebase64_1().empty()) {
-    featurebase64_1_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_featurebase64_1(), 
-      GetArenaForAllocation());
-  }
-  featurebase64_2_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    featurebase64_2_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_featurebase64_2().empty()) {
-    featurebase64_2_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_featurebase64_2(), 
-      GetArenaForAllocation());
-  }
   // @@protoc_insertion_point(copy_constructor:cniface.SimilarityRequest)
 }
 
 inline void SimilarityRequest::SharedCtor() {
-featurebase64_1_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  featurebase64_1_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-featurebase64_2_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  featurebase64_2_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 SimilarityRequest::~SimilarityRequest() {
@@ -1689,8 +1653,6 @@ SimilarityRequest::~SimilarityRequest() {
 
 inline void SimilarityRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  featurebase64_1_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  featurebase64_2_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void SimilarityRequest::ArenaDtor(void* object) {
@@ -1709,8 +1671,8 @@ void SimilarityRequest::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  featurebase64_1_.ClearToEmpty();
-  featurebase64_2_.ClearToEmpty();
+  feature1_.Clear();
+  feature2_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -1720,23 +1682,25 @@ const char* SimilarityRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESP
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // string featureBase64_1 = 1;
+      // repeated float feature1 = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          auto str = _internal_mutable_featurebase64_1();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cniface.SimilarityRequest.featureBase64_1"));
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedFloatParser(_internal_mutable_feature1(), ptr, ctx);
           CHK_(ptr);
+        } else if (static_cast<uint8_t>(tag) == 13) {
+          _internal_add_feature1(::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr));
+          ptr += sizeof(float);
         } else
           goto handle_unusual;
         continue;
-      // string featureBase64_2 = 2;
+      // repeated float feature2 = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
-          auto str = _internal_mutable_featurebase64_2();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cniface.SimilarityRequest.featureBase64_2"));
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedFloatParser(_internal_mutable_feature2(), ptr, ctx);
           CHK_(ptr);
+        } else if (static_cast<uint8_t>(tag) == 21) {
+          _internal_add_feature2(::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr));
+          ptr += sizeof(float);
         } else
           goto handle_unusual;
         continue;
@@ -1769,24 +1733,14 @@ uint8_t* SimilarityRequest::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // string featureBase64_1 = 1;
-  if (!this->_internal_featurebase64_1().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_featurebase64_1().data(), static_cast<int>(this->_internal_featurebase64_1().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "cniface.SimilarityRequest.featureBase64_1");
-    target = stream->WriteStringMaybeAliased(
-        1, this->_internal_featurebase64_1(), target);
+  // repeated float feature1 = 1;
+  if (this->_internal_feature1_size() > 0) {
+    target = stream->WriteFixedPacked(1, _internal_feature1(), target);
   }
 
-  // string featureBase64_2 = 2;
-  if (!this->_internal_featurebase64_2().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_featurebase64_2().data(), static_cast<int>(this->_internal_featurebase64_2().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "cniface.SimilarityRequest.featureBase64_2");
-    target = stream->WriteStringMaybeAliased(
-        2, this->_internal_featurebase64_2(), target);
+  // repeated float feature2 = 2;
+  if (this->_internal_feature2_size() > 0) {
+    target = stream->WriteFixedPacked(2, _internal_feature2(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1805,18 +1759,28 @@ size_t SimilarityRequest::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // string featureBase64_1 = 1;
-  if (!this->_internal_featurebase64_1().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_featurebase64_1());
+  // repeated float feature1 = 1;
+  {
+    unsigned int count = static_cast<unsigned int>(this->_internal_feature1_size());
+    size_t data_size = 4UL * count;
+    if (data_size > 0) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+            static_cast<int32_t>(data_size));
+    }
+    total_size += data_size;
   }
 
-  // string featureBase64_2 = 2;
-  if (!this->_internal_featurebase64_2().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_featurebase64_2());
+  // repeated float feature2 = 2;
+  {
+    unsigned int count = static_cast<unsigned int>(this->_internal_feature2_size());
+    size_t data_size = 4UL * count;
+    if (data_size > 0) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+            static_cast<int32_t>(data_size));
+    }
+    total_size += data_size;
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
@@ -1841,12 +1805,8 @@ void SimilarityRequest::MergeFrom(const SimilarityRequest& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!from._internal_featurebase64_1().empty()) {
-    _internal_set_featurebase64_1(from._internal_featurebase64_1());
-  }
-  if (!from._internal_featurebase64_2().empty()) {
-    _internal_set_featurebase64_2(from._internal_featurebase64_2());
-  }
+  feature1_.MergeFrom(from.feature1_);
+  feature2_.MergeFrom(from.feature2_);
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -1863,19 +1823,9 @@ bool SimilarityRequest::IsInitialized() const {
 
 void SimilarityRequest::InternalSwap(SimilarityRequest* other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &featurebase64_1_, lhs_arena,
-      &other->featurebase64_1_, rhs_arena
-  );
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &featurebase64_2_, lhs_arena,
-      &other->featurebase64_2_, rhs_arena
-  );
+  feature1_.InternalSwap(&other->feature1_);
+  feature2_.InternalSwap(&other->feature2_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata SimilarityRequest::GetMetadata() const {
