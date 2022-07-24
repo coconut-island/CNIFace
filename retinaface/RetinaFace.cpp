@@ -7,7 +7,6 @@
 #include <iostream>
 #include <fstream>
 
-#include <opencv2/highgui.hpp>
 #include <tvm/runtime/registry.h>
 
 #include "../utils/ImageUtil.h"
