@@ -2,7 +2,7 @@ version: "3.9"
 services:
 
   cniface:
-    image: abelleeye/cniface:v0.0.1
+    image: abelleeye/cniface:v0.0.2
     container_name: cniface
     restart: always
     command: cniface -m /models/
