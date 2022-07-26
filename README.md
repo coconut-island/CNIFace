@@ -1,29 +1,27 @@
 # CNIFace
 
-GRPC 服务
+![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)
 
-现有功能
-1. 人脸检测
-2. 人脸特征提取
+Web server link: [CNIFacePlatform](https://github.com/coconut-island/CNIFacePlatform)
 
-一个学习实验型项目。
+This project is one **grpc server of face**!
 
-此Repo的code和model均来自于开源社区
+Implemented functionality:
+1. face detect
+2. face recognition
 
-启动项目的解决方案主要来自于 insightface，非常感谢
+# Docker
 
-## Docker 启动
+## docker
+`docker run abelleeye/cniface:v0.0.2`
 
-### docker
-`docker run abelleeye/cniface:v0.0.1`
-
-### docker-compose
+## docker-compose
 ```
 version: "3.9"
 services:
 
   cniface:
-    image: abelleeye/cniface:v0.0.1
+    image: abelleeye/cniface:v0.0.2
     container_name: cniface
     restart: always
     command: cniface -m /models/
@@ -31,12 +29,20 @@ services:
       - 22506:22506
 ```
 
+# Local Env Build
 
-## 环境搭建
+## ubuntu:20.04
 
-环境搭建请参考 docker/base 下的 Dockerfile
+Refer to link: [Dockerfile](https://github.com/coconut-island/CNIFace/blob/main/docker/base/Dockerfile)
 
-## samples
+# samples
 
-目录：samples/
+link: [Samples](https://github.com/coconut-island/CNIFace/tree/main/samples)
 
+
+# References
+
+Thanks for these source codes porviding me with knowledges to complete this repository.
+
+- [insightface](https://github.com/deepinsight/insightface)
+```
