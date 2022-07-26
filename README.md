@@ -6,9 +6,9 @@ Web server link: [CNIFacePlatform](https://github.com/coconut-island/CNIFacePlat
 
 This project is one **grpc server of face**!
 
-Implemented functionality:
-[x] face detect
-[x] face recognition
+Supported modules:
+- [x] face detect
+- [x] face recognition
 
 # Docker
 
