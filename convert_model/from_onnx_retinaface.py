@@ -1,11 +1,14 @@
+import os
 import onnx
 import tvm.relay as relay
 
 
 if __name__ == "__main__":
-    network = 'det_10g'
+    model_name = "det_10g"
 
-    model_path = './models/%s.onnx' % (network)
+    models_dir_path = os.path.abspath(os.path.dirname(os.path.abspath(__file__)) + "/../models/")
+
+    model_path =  models_dir_path + "/{}.onnx".format(model_name)
 
     image_shape = (1, 3, 640, 640)
 
@@ -23,11 +26,11 @@ if __name__ == "__main__":
 
 
     #save the relay model
-    model_path = "./models/relay/"
-    path_lib = ("%s%s.so" % (model_path, network))
+    relay_model_path = models_dir_path + "/relay/"
+    path_lib = relay_model_path + "{}.so".format(model_name)
     lib.export_library(path_lib)
 
-    with open(("%s%s.json" % (model_path, network)), "w") as fo:
+    with open(relay_model_path + "{}.json".format(model_name), "w") as fo:
         fo.write(graph)
-    with open(("%s%s.params" % (model_path, network)), "wb") as fo:
+    with open(relay_model_path + "{}.params".format(model_name), "wb") as fo:
         fo.write(relay.save_param_dict(params))

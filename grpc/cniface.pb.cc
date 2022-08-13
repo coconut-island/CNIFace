@@ -61,6 +61,51 @@ struct DetectResponseDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT DetectResponseDefaultTypeInternal _DetectResponse_default_instance_;
+constexpr DetectWithMaskRequest::DetectWithMaskRequest(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : faceimagebase64_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , score_(0){}
+struct DetectWithMaskRequestDefaultTypeInternal {
+  constexpr DetectWithMaskRequestDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~DetectWithMaskRequestDefaultTypeInternal() {}
+  union {
+    DetectWithMaskRequest _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT DetectWithMaskRequestDefaultTypeInternal _DetectWithMaskRequest_default_instance_;
+constexpr DetectWithMaskResult::DetectWithMaskResult(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : kps_()
+  , score_(0)
+  , maskscore_(0)
+  , x_(0)
+  , y_(0)
+  , w_(0)
+  , h_(0){}
+struct DetectWithMaskResultDefaultTypeInternal {
+  constexpr DetectWithMaskResultDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~DetectWithMaskResultDefaultTypeInternal() {}
+  union {
+    DetectWithMaskResult _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT DetectWithMaskResultDefaultTypeInternal _DetectWithMaskResult_default_instance_;
+constexpr DetectWithMaskResponse::DetectWithMaskResponse(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : results_()
+  , message_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , code_(int64_t{0}){}
+struct DetectWithMaskResponseDefaultTypeInternal {
+  constexpr DetectWithMaskResponseDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~DetectWithMaskResponseDefaultTypeInternal() {}
+  union {
+    DetectWithMaskResponse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT DetectWithMaskResponseDefaultTypeInternal _DetectWithMaskResponse_default_instance_;
 constexpr ExtractFeatureRequest::ExtractFeatureRequest(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : kps_()
@@ -116,7 +161,7 @@ struct SimilarityResponseDefaultTypeInternal {
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT SimilarityResponseDefaultTypeInternal _SimilarityResponse_default_instance_;
 }  // namespace cniface
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_cniface_2eproto[7];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_cniface_2eproto[10];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_cniface_2eproto = nullptr;
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_cniface_2eproto = nullptr;
 
@@ -150,6 +195,36 @@ const uint32_t TableStruct_cniface_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
   PROTOBUF_FIELD_OFFSET(::cniface::DetectResponse, code_),
   PROTOBUF_FIELD_OFFSET(::cniface::DetectResponse, message_),
   PROTOBUF_FIELD_OFFSET(::cniface::DetectResponse, results_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::cniface::DetectWithMaskRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::cniface::DetectWithMaskRequest, faceimagebase64_),
+  PROTOBUF_FIELD_OFFSET(::cniface::DetectWithMaskRequest, score_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::cniface::DetectWithMaskResult, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::cniface::DetectWithMaskResult, score_),
+  PROTOBUF_FIELD_OFFSET(::cniface::DetectWithMaskResult, maskscore_),
+  PROTOBUF_FIELD_OFFSET(::cniface::DetectWithMaskResult, x_),
+  PROTOBUF_FIELD_OFFSET(::cniface::DetectWithMaskResult, y_),
+  PROTOBUF_FIELD_OFFSET(::cniface::DetectWithMaskResult, w_),
+  PROTOBUF_FIELD_OFFSET(::cniface::DetectWithMaskResult, h_),
+  PROTOBUF_FIELD_OFFSET(::cniface::DetectWithMaskResult, kps_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::cniface::DetectWithMaskResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::cniface::DetectWithMaskResponse, code_),
+  PROTOBUF_FIELD_OFFSET(::cniface::DetectWithMaskResponse, message_),
+  PROTOBUF_FIELD_OFFSET(::cniface::DetectWithMaskResponse, results_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::cniface::ExtractFeatureRequest, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -189,16 +264,22 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 0, -1, -1, sizeof(::cniface::DetectRequest)},
   { 8, -1, -1, sizeof(::cniface::DetectResult)},
   { 20, -1, -1, sizeof(::cniface::DetectResponse)},
-  { 29, -1, -1, sizeof(::cniface::ExtractFeatureRequest)},
-  { 37, -1, -1, sizeof(::cniface::ExtractFeatureResponse)},
-  { 46, -1, -1, sizeof(::cniface::SimilarityRequest)},
-  { 54, -1, -1, sizeof(::cniface::SimilarityResponse)},
+  { 29, -1, -1, sizeof(::cniface::DetectWithMaskRequest)},
+  { 37, -1, -1, sizeof(::cniface::DetectWithMaskResult)},
+  { 50, -1, -1, sizeof(::cniface::DetectWithMaskResponse)},
+  { 59, -1, -1, sizeof(::cniface::ExtractFeatureRequest)},
+  { 67, -1, -1, sizeof(::cniface::ExtractFeatureResponse)},
+  { 76, -1, -1, sizeof(::cniface::SimilarityRequest)},
+  { 84, -1, -1, sizeof(::cniface::SimilarityResponse)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cniface::_DetectRequest_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cniface::_DetectResult_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cniface::_DetectResponse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cniface::_DetectWithMaskRequest_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cniface::_DetectWithMaskResult_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cniface::_DetectWithMaskResponse_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cniface::_ExtractFeatureRequest_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cniface::_ExtractFeatureResponse_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cniface::_SimilarityRequest_default_instance_),
@@ -212,27 +293,36 @@ const char descriptor_table_protodef_cniface_2eproto[] PROTOBUF_SECTION_VARIABLE
   "\001(\002\022\t\n\001y\030\003 \001(\002\022\t\n\001w\030\004 \001(\002\022\t\n\001h\030\005 \001(\002\022\013\n\003"
   "kps\030\006 \003(\002\"W\n\016DetectResponse\022\014\n\004code\030\001 \001("
   "\003\022\017\n\007message\030\002 \001(\t\022&\n\007results\030\003 \003(\0132\025.cn"
-  "iface.DetectResult\"=\n\025ExtractFeatureRequ"
-  "est\022\027\n\017faceImageBase64\030\001 \001(\t\022\013\n\003kps\030\002 \003("
-  "\002\"H\n\026ExtractFeatureResponse\022\014\n\004code\030\001 \001("
-  "\003\022\017\n\007message\030\002 \001(\t\022\017\n\007feature\030\003 \003(\002\"7\n\021S"
-  "imilarityRequest\022\020\n\010feature1\030\001 \003(\002\022\020\n\010fe"
-  "ature2\030\002 \003(\002\"G\n\022SimilarityResponse\022\014\n\004co"
-  "de\030\001 \001(\003\022\017\n\007message\030\002 \001(\t\022\022\n\nsimilarity\030"
-  "\003 \001(\0022L\n\rDetectService\022;\n\006detect\022\026.cnifa"
-  "ce.DetectRequest\032\027.cniface.DetectRespons"
-  "e\"\0002\262\001\n\022RecognitionService\022S\n\016extractFea"
-  "ture\022\036.cniface.ExtractFeatureRequest\032\037.c"
-  "niface.ExtractFeatureResponse\"\000\022G\n\nsimil"
-  "arity\022\032.cniface.SimilarityRequest\032\033.cnif"
-  "ace.SimilarityResponse\"\000B3\n\027cn.abellee.c"
-  "niface.grpcB\014CNIFaceProtoP\001\242\002\007CNIFACEb\006p"
-  "roto3"
+  "iface.DetectResult\"\?\n\025DetectWithMaskRequ"
+  "est\022\027\n\017faceImageBase64\030\001 \001(\t\022\r\n\005score\030\002 "
+  "\001(\002\"q\n\024DetectWithMaskResult\022\r\n\005score\030\001 \001"
+  "(\002\022\021\n\tmaskScore\030\002 \001(\002\022\t\n\001x\030\003 \001(\002\022\t\n\001y\030\004 "
+  "\001(\002\022\t\n\001w\030\005 \001(\002\022\t\n\001h\030\006 \001(\002\022\013\n\003kps\030\007 \003(\002\"g"
+  "\n\026DetectWithMaskResponse\022\014\n\004code\030\001 \001(\003\022\017"
+  "\n\007message\030\002 \001(\t\022.\n\007results\030\003 \003(\0132\035.cnifa"
+  "ce.DetectWithMaskResult\"=\n\025ExtractFeatur"
+  "eRequest\022\027\n\017faceImageBase64\030\001 \001(\t\022\013\n\003kps"
+  "\030\002 \003(\002\"H\n\026ExtractFeatureResponse\022\014\n\004code"
+  "\030\001 \001(\003\022\017\n\007message\030\002 \001(\t\022\017\n\007feature\030\003 \003(\002"
+  "\"7\n\021SimilarityRequest\022\020\n\010feature1\030\001 \003(\002\022"
+  "\020\n\010feature2\030\002 \003(\002\"G\n\022SimilarityResponse\022"
+  "\014\n\004code\030\001 \001(\003\022\017\n\007message\030\002 \001(\t\022\022\n\nsimila"
+  "rity\030\003 \001(\0022L\n\rDetectService\022;\n\006detect\022\026."
+  "cniface.DetectRequest\032\027.cniface.DetectRe"
+  "sponse\"\0002d\n\025DetectWithMaskService\022K\n\006det"
+  "ect\022\036.cniface.DetectWithMaskRequest\032\037.cn"
+  "iface.DetectWithMaskResponse\"\0002\262\001\n\022Recog"
+  "nitionService\022S\n\016extractFeature\022\036.cnifac"
+  "e.ExtractFeatureRequest\032\037.cniface.Extrac"
+  "tFeatureResponse\"\000\022G\n\nsimilarity\022\032.cnifa"
+  "ce.SimilarityRequest\032\033.cniface.Similarit"
+  "yResponse\"\000B3\n\027cn.abellee.cniface.grpcB\014"
+  "CNIFaceProtoP\001\242\002\007CNIFACEb\006proto3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_cniface_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_cniface_2eproto = {
-  false, false, 845, descriptor_table_protodef_cniface_2eproto, "cniface.proto", 
-  &descriptor_table_cniface_2eproto_once, nullptr, 0, 7,
+  false, false, 1232, descriptor_table_protodef_cniface_2eproto, "cniface.proto", 
+  &descriptor_table_cniface_2eproto_once, nullptr, 0, 10,
   schemas, file_default_instances, TableStruct_cniface_2eproto::offsets,
   file_level_metadata_cniface_2eproto, file_level_enum_descriptors_cniface_2eproto, file_level_service_descriptors_cniface_2eproto,
 };
@@ -1120,6 +1210,914 @@ void DetectResponse::InternalSwap(DetectResponse* other) {
 
 // ===================================================================
 
+class DetectWithMaskRequest::_Internal {
+ public:
+};
+
+DetectWithMaskRequest::DetectWithMaskRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:cniface.DetectWithMaskRequest)
+}
+DetectWithMaskRequest::DetectWithMaskRequest(const DetectWithMaskRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  faceimagebase64_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    faceimagebase64_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_faceimagebase64().empty()) {
+    faceimagebase64_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_faceimagebase64(), 
+      GetArenaForAllocation());
+  }
+  score_ = from.score_;
+  // @@protoc_insertion_point(copy_constructor:cniface.DetectWithMaskRequest)
+}
+
+inline void DetectWithMaskRequest::SharedCtor() {
+faceimagebase64_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  faceimagebase64_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+score_ = 0;
+}
+
+DetectWithMaskRequest::~DetectWithMaskRequest() {
+  // @@protoc_insertion_point(destructor:cniface.DetectWithMaskRequest)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void DetectWithMaskRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  faceimagebase64_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+
+void DetectWithMaskRequest::ArenaDtor(void* object) {
+  DetectWithMaskRequest* _this = reinterpret_cast< DetectWithMaskRequest* >(object);
+  (void)_this;
+}
+void DetectWithMaskRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void DetectWithMaskRequest::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void DetectWithMaskRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:cniface.DetectWithMaskRequest)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  faceimagebase64_.ClearToEmpty();
+  score_ = 0;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* DetectWithMaskRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string faceImageBase64 = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_faceimagebase64();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cniface.DetectWithMaskRequest.faceImageBase64"));
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // float score = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 21)) {
+          score_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* DetectWithMaskRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:cniface.DetectWithMaskRequest)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string faceImageBase64 = 1;
+  if (!this->_internal_faceimagebase64().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_faceimagebase64().data(), static_cast<int>(this->_internal_faceimagebase64().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "cniface.DetectWithMaskRequest.faceImageBase64");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_faceimagebase64(), target);
+  }
+
+  // float score = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_score = this->_internal_score();
+  uint32_t raw_score;
+  memcpy(&raw_score, &tmp_score, sizeof(tmp_score));
+  if (raw_score != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(2, this->_internal_score(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:cniface.DetectWithMaskRequest)
+  return target;
+}
+
+size_t DetectWithMaskRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:cniface.DetectWithMaskRequest)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string faceImageBase64 = 1;
+  if (!this->_internal_faceimagebase64().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_faceimagebase64());
+  }
+
+  // float score = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_score = this->_internal_score();
+  uint32_t raw_score;
+  memcpy(&raw_score, &tmp_score, sizeof(tmp_score));
+  if (raw_score != 0) {
+    total_size += 1 + 4;
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DetectWithMaskRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    DetectWithMaskRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DetectWithMaskRequest::GetClassData() const { return &_class_data_; }
+
+void DetectWithMaskRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<DetectWithMaskRequest *>(to)->MergeFrom(
+      static_cast<const DetectWithMaskRequest &>(from));
+}
+
+
+void DetectWithMaskRequest::MergeFrom(const DetectWithMaskRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:cniface.DetectWithMaskRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_faceimagebase64().empty()) {
+    _internal_set_faceimagebase64(from._internal_faceimagebase64());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_score = from._internal_score();
+  uint32_t raw_score;
+  memcpy(&raw_score, &tmp_score, sizeof(tmp_score));
+  if (raw_score != 0) {
+    _internal_set_score(from._internal_score());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void DetectWithMaskRequest::CopyFrom(const DetectWithMaskRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:cniface.DetectWithMaskRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool DetectWithMaskRequest::IsInitialized() const {
+  return true;
+}
+
+void DetectWithMaskRequest::InternalSwap(DetectWithMaskRequest* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &faceimagebase64_, lhs_arena,
+      &other->faceimagebase64_, rhs_arena
+  );
+  swap(score_, other->score_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata DetectWithMaskRequest::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_cniface_2eproto_getter, &descriptor_table_cniface_2eproto_once,
+      file_level_metadata_cniface_2eproto[3]);
+}
+
+// ===================================================================
+
+class DetectWithMaskResult::_Internal {
+ public:
+};
+
+DetectWithMaskResult::DetectWithMaskResult(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
+  kps_(arena) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:cniface.DetectWithMaskResult)
+}
+DetectWithMaskResult::DetectWithMaskResult(const DetectWithMaskResult& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      kps_(from.kps_) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::memcpy(&score_, &from.score_,
+    static_cast<size_t>(reinterpret_cast<char*>(&h_) -
+    reinterpret_cast<char*>(&score_)) + sizeof(h_));
+  // @@protoc_insertion_point(copy_constructor:cniface.DetectWithMaskResult)
+}
+
+inline void DetectWithMaskResult::SharedCtor() {
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&score_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&h_) -
+    reinterpret_cast<char*>(&score_)) + sizeof(h_));
+}
+
+DetectWithMaskResult::~DetectWithMaskResult() {
+  // @@protoc_insertion_point(destructor:cniface.DetectWithMaskResult)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void DetectWithMaskResult::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void DetectWithMaskResult::ArenaDtor(void* object) {
+  DetectWithMaskResult* _this = reinterpret_cast< DetectWithMaskResult* >(object);
+  (void)_this;
+}
+void DetectWithMaskResult::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void DetectWithMaskResult::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void DetectWithMaskResult::Clear() {
+// @@protoc_insertion_point(message_clear_start:cniface.DetectWithMaskResult)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  kps_.Clear();
+  ::memset(&score_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&h_) -
+      reinterpret_cast<char*>(&score_)) + sizeof(h_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* DetectWithMaskResult::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // float score = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 13)) {
+          score_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float maskScore = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 21)) {
+          maskscore_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float x = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 29)) {
+          x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float y = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 37)) {
+          y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float w = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 45)) {
+          w_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float h = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 53)) {
+          h_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // repeated float kps = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 58)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedFloatParser(_internal_mutable_kps(), ptr, ctx);
+          CHK_(ptr);
+        } else if (static_cast<uint8_t>(tag) == 61) {
+          _internal_add_kps(::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr));
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* DetectWithMaskResult::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:cniface.DetectWithMaskResult)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // float score = 1;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_score = this->_internal_score();
+  uint32_t raw_score;
+  memcpy(&raw_score, &tmp_score, sizeof(tmp_score));
+  if (raw_score != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(1, this->_internal_score(), target);
+  }
+
+  // float maskScore = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_maskscore = this->_internal_maskscore();
+  uint32_t raw_maskscore;
+  memcpy(&raw_maskscore, &tmp_maskscore, sizeof(tmp_maskscore));
+  if (raw_maskscore != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(2, this->_internal_maskscore(), target);
+  }
+
+  // float x = 3;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_x = this->_internal_x();
+  uint32_t raw_x;
+  memcpy(&raw_x, &tmp_x, sizeof(tmp_x));
+  if (raw_x != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(3, this->_internal_x(), target);
+  }
+
+  // float y = 4;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_y = this->_internal_y();
+  uint32_t raw_y;
+  memcpy(&raw_y, &tmp_y, sizeof(tmp_y));
+  if (raw_y != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(4, this->_internal_y(), target);
+  }
+
+  // float w = 5;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_w = this->_internal_w();
+  uint32_t raw_w;
+  memcpy(&raw_w, &tmp_w, sizeof(tmp_w));
+  if (raw_w != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(5, this->_internal_w(), target);
+  }
+
+  // float h = 6;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_h = this->_internal_h();
+  uint32_t raw_h;
+  memcpy(&raw_h, &tmp_h, sizeof(tmp_h));
+  if (raw_h != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(6, this->_internal_h(), target);
+  }
+
+  // repeated float kps = 7;
+  if (this->_internal_kps_size() > 0) {
+    target = stream->WriteFixedPacked(7, _internal_kps(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:cniface.DetectWithMaskResult)
+  return target;
+}
+
+size_t DetectWithMaskResult::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:cniface.DetectWithMaskResult)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated float kps = 7;
+  {
+    unsigned int count = static_cast<unsigned int>(this->_internal_kps_size());
+    size_t data_size = 4UL * count;
+    if (data_size > 0) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+            static_cast<int32_t>(data_size));
+    }
+    total_size += data_size;
+  }
+
+  // float score = 1;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_score = this->_internal_score();
+  uint32_t raw_score;
+  memcpy(&raw_score, &tmp_score, sizeof(tmp_score));
+  if (raw_score != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float maskScore = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_maskscore = this->_internal_maskscore();
+  uint32_t raw_maskscore;
+  memcpy(&raw_maskscore, &tmp_maskscore, sizeof(tmp_maskscore));
+  if (raw_maskscore != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float x = 3;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_x = this->_internal_x();
+  uint32_t raw_x;
+  memcpy(&raw_x, &tmp_x, sizeof(tmp_x));
+  if (raw_x != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float y = 4;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_y = this->_internal_y();
+  uint32_t raw_y;
+  memcpy(&raw_y, &tmp_y, sizeof(tmp_y));
+  if (raw_y != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float w = 5;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_w = this->_internal_w();
+  uint32_t raw_w;
+  memcpy(&raw_w, &tmp_w, sizeof(tmp_w));
+  if (raw_w != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float h = 6;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_h = this->_internal_h();
+  uint32_t raw_h;
+  memcpy(&raw_h, &tmp_h, sizeof(tmp_h));
+  if (raw_h != 0) {
+    total_size += 1 + 4;
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DetectWithMaskResult::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    DetectWithMaskResult::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DetectWithMaskResult::GetClassData() const { return &_class_data_; }
+
+void DetectWithMaskResult::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<DetectWithMaskResult *>(to)->MergeFrom(
+      static_cast<const DetectWithMaskResult &>(from));
+}
+
+
+void DetectWithMaskResult::MergeFrom(const DetectWithMaskResult& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:cniface.DetectWithMaskResult)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  kps_.MergeFrom(from.kps_);
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_score = from._internal_score();
+  uint32_t raw_score;
+  memcpy(&raw_score, &tmp_score, sizeof(tmp_score));
+  if (raw_score != 0) {
+    _internal_set_score(from._internal_score());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_maskscore = from._internal_maskscore();
+  uint32_t raw_maskscore;
+  memcpy(&raw_maskscore, &tmp_maskscore, sizeof(tmp_maskscore));
+  if (raw_maskscore != 0) {
+    _internal_set_maskscore(from._internal_maskscore());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_x = from._internal_x();
+  uint32_t raw_x;
+  memcpy(&raw_x, &tmp_x, sizeof(tmp_x));
+  if (raw_x != 0) {
+    _internal_set_x(from._internal_x());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_y = from._internal_y();
+  uint32_t raw_y;
+  memcpy(&raw_y, &tmp_y, sizeof(tmp_y));
+  if (raw_y != 0) {
+    _internal_set_y(from._internal_y());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_w = from._internal_w();
+  uint32_t raw_w;
+  memcpy(&raw_w, &tmp_w, sizeof(tmp_w));
+  if (raw_w != 0) {
+    _internal_set_w(from._internal_w());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_h = from._internal_h();
+  uint32_t raw_h;
+  memcpy(&raw_h, &tmp_h, sizeof(tmp_h));
+  if (raw_h != 0) {
+    _internal_set_h(from._internal_h());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void DetectWithMaskResult::CopyFrom(const DetectWithMaskResult& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:cniface.DetectWithMaskResult)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool DetectWithMaskResult::IsInitialized() const {
+  return true;
+}
+
+void DetectWithMaskResult::InternalSwap(DetectWithMaskResult* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  kps_.InternalSwap(&other->kps_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(DetectWithMaskResult, h_)
+      + sizeof(DetectWithMaskResult::h_)
+      - PROTOBUF_FIELD_OFFSET(DetectWithMaskResult, score_)>(
+          reinterpret_cast<char*>(&score_),
+          reinterpret_cast<char*>(&other->score_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata DetectWithMaskResult::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_cniface_2eproto_getter, &descriptor_table_cniface_2eproto_once,
+      file_level_metadata_cniface_2eproto[4]);
+}
+
+// ===================================================================
+
+class DetectWithMaskResponse::_Internal {
+ public:
+};
+
+DetectWithMaskResponse::DetectWithMaskResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
+  results_(arena) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:cniface.DetectWithMaskResponse)
+}
+DetectWithMaskResponse::DetectWithMaskResponse(const DetectWithMaskResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      results_(from.results_) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  message_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    message_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_message().empty()) {
+    message_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_message(), 
+      GetArenaForAllocation());
+  }
+  code_ = from.code_;
+  // @@protoc_insertion_point(copy_constructor:cniface.DetectWithMaskResponse)
+}
+
+inline void DetectWithMaskResponse::SharedCtor() {
+message_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  message_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+code_ = int64_t{0};
+}
+
+DetectWithMaskResponse::~DetectWithMaskResponse() {
+  // @@protoc_insertion_point(destructor:cniface.DetectWithMaskResponse)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void DetectWithMaskResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  message_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+
+void DetectWithMaskResponse::ArenaDtor(void* object) {
+  DetectWithMaskResponse* _this = reinterpret_cast< DetectWithMaskResponse* >(object);
+  (void)_this;
+}
+void DetectWithMaskResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void DetectWithMaskResponse::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void DetectWithMaskResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:cniface.DetectWithMaskResponse)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  results_.Clear();
+  message_.ClearToEmpty();
+  code_ = int64_t{0};
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* DetectWithMaskResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // int64 code = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          code_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string message = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_message();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cniface.DetectWithMaskResponse.message"));
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // repeated .cniface.DetectWithMaskResult results = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_results(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<26>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* DetectWithMaskResponse::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:cniface.DetectWithMaskResponse)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int64 code = 1;
+  if (this->_internal_code() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(1, this->_internal_code(), target);
+  }
+
+  // string message = 2;
+  if (!this->_internal_message().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_message().data(), static_cast<int>(this->_internal_message().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "cniface.DetectWithMaskResponse.message");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_message(), target);
+  }
+
+  // repeated .cniface.DetectWithMaskResult results = 3;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->_internal_results_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(3, this->_internal_results(i), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:cniface.DetectWithMaskResponse)
+  return target;
+}
+
+size_t DetectWithMaskResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:cniface.DetectWithMaskResponse)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated .cniface.DetectWithMaskResult results = 3;
+  total_size += 1UL * this->_internal_results_size();
+  for (const auto& msg : this->results_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  // string message = 2;
+  if (!this->_internal_message().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_message());
+  }
+
+  // int64 code = 1;
+  if (this->_internal_code() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_code());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DetectWithMaskResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    DetectWithMaskResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DetectWithMaskResponse::GetClassData() const { return &_class_data_; }
+
+void DetectWithMaskResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<DetectWithMaskResponse *>(to)->MergeFrom(
+      static_cast<const DetectWithMaskResponse &>(from));
+}
+
+
+void DetectWithMaskResponse::MergeFrom(const DetectWithMaskResponse& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:cniface.DetectWithMaskResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  results_.MergeFrom(from.results_);
+  if (!from._internal_message().empty()) {
+    _internal_set_message(from._internal_message());
+  }
+  if (from._internal_code() != 0) {
+    _internal_set_code(from._internal_code());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void DetectWithMaskResponse::CopyFrom(const DetectWithMaskResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:cniface.DetectWithMaskResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool DetectWithMaskResponse::IsInitialized() const {
+  return true;
+}
+
+void DetectWithMaskResponse::InternalSwap(DetectWithMaskResponse* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  results_.InternalSwap(&other->results_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &message_, lhs_arena,
+      &other->message_, rhs_arena
+  );
+  swap(code_, other->code_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata DetectWithMaskResponse::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_cniface_2eproto_getter, &descriptor_table_cniface_2eproto_once,
+      file_level_metadata_cniface_2eproto[5]);
+}
+
+// ===================================================================
+
 class ExtractFeatureRequest::_Internal {
  public:
 };
@@ -1351,7 +2349,7 @@ void ExtractFeatureRequest::InternalSwap(ExtractFeatureRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ExtractFeatureRequest::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_cniface_2eproto_getter, &descriptor_table_cniface_2eproto_once,
-      file_level_metadata_cniface_2eproto[3]);
+      file_level_metadata_cniface_2eproto[6]);
 }
 
 // ===================================================================
@@ -1613,7 +2611,7 @@ void ExtractFeatureResponse::InternalSwap(ExtractFeatureResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ExtractFeatureResponse::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_cniface_2eproto_getter, &descriptor_table_cniface_2eproto_once,
-      file_level_metadata_cniface_2eproto[4]);
+      file_level_metadata_cniface_2eproto[7]);
 }
 
 // ===================================================================
@@ -1831,7 +2829,7 @@ void SimilarityRequest::InternalSwap(SimilarityRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SimilarityRequest::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_cniface_2eproto_getter, &descriptor_table_cniface_2eproto_once,
-      file_level_metadata_cniface_2eproto[5]);
+      file_level_metadata_cniface_2eproto[8]);
 }
 
 // ===================================================================
@@ -2106,7 +3104,7 @@ void SimilarityResponse::InternalSwap(SimilarityResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SimilarityResponse::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_cniface_2eproto_getter, &descriptor_table_cniface_2eproto_once,
-      file_level_metadata_cniface_2eproto[6]);
+      file_level_metadata_cniface_2eproto[9]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -2120,6 +3118,15 @@ template<> PROTOBUF_NOINLINE ::cniface::DetectResult* Arena::CreateMaybeMessage<
 }
 template<> PROTOBUF_NOINLINE ::cniface::DetectResponse* Arena::CreateMaybeMessage< ::cniface::DetectResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::cniface::DetectResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::cniface::DetectWithMaskRequest* Arena::CreateMaybeMessage< ::cniface::DetectWithMaskRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::cniface::DetectWithMaskRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::cniface::DetectWithMaskResult* Arena::CreateMaybeMessage< ::cniface::DetectWithMaskResult >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::cniface::DetectWithMaskResult >(arena);
+}
+template<> PROTOBUF_NOINLINE ::cniface::DetectWithMaskResponse* Arena::CreateMaybeMessage< ::cniface::DetectWithMaskResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::cniface::DetectWithMaskResponse >(arena);
 }
 template<> PROTOBUF_NOINLINE ::cniface::ExtractFeatureRequest* Arena::CreateMaybeMessage< ::cniface::ExtractFeatureRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::cniface::ExtractFeatureRequest >(arena);

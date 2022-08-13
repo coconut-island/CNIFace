@@ -17,6 +17,7 @@ public:
     ~Anchor();
 
     float score{};
+    float mask_score{};
     float x{};
     float y{};
     float w{};

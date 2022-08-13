@@ -5,7 +5,7 @@
 #include <opencv2/highgui.hpp>
 #include <opencv2/imgproc.hpp>
 
-#include "../retinaface/RetinaFace.h"
+#include "../mnet_cov2/MNetCov2.h"
 #include "../utils/ImageUtil.h"
 #include "../utils/CVUtil.h"
 #include "../utils/CPUTimer.h"
@@ -13,7 +13,7 @@
 using namespace cv;
 
 int main() {
-    RetinaFace retinaFace("../models/relay/");
+    MNetCov2 mNetCov2("../models/relay/");
 
     VideoCapture cap(0);
     if (!cap.isOpened()) {
@@ -35,7 +35,7 @@ int main() {
         auto* bgr_img = (uint8_t*)malloc(img.rows * img.cols * 3 * sizeof(uint8_t));
         memcpy(bgr_img, img.data, img.rows * img.cols * 3 * sizeof(uint8_t));
 
-        auto anchors = retinaFace.detect(bgr_img, img.cols, img.rows, 0.5);
+        auto anchors = mNetCov2.detect(bgr_img, img.cols, img.rows, 0.5);
 
         cpuTimer.stop();
 

@@ -1,21 +1,22 @@
 import os
-import onnx
+import mxnet as mx
 import tvm.relay as relay
 
 
 if __name__ == "__main__":
-    model_name = "w600k_r50"
+    model_name = "mnet_cov2"
 
     models_dir_path = os.path.abspath(os.path.dirname(os.path.abspath(__file__)) + "/../models/")
 
     model_path =  models_dir_path + "/{}.onnx".format(model_name)
 
-    image_shape = (1, 3, 112, 112)
+    image_shape = (1, 3, 640, 640)
 
-    onnx_model = onnx.load(model_path)
+    mx_sym, args, auxs = mx.model.load_checkpoint(models_dir_path + "/" + model_name, 0)
 
-    shape_dict = {"input.1": image_shape}
-    mod, relay_params = relay.frontend.from_onnx(onnx_model, shape_dict)
+    shape_dict = {"data": image_shape}
+    mod, relay_params = relay.frontend.from_mxnet(mx_sym, shape_dict, arg_params=args, aux_params=auxs)
+
 
     func = mod["main"]
     target = "llvm"

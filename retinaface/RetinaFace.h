@@ -25,7 +25,6 @@ private:
     shared_ptr<Module> handle;
 
     string model_name = "det_10g";
-    float det_thresh = 0.5;
     float nms_thresh = 0.4;
 
     int dtype_code = kDLFloat;

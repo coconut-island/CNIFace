@@ -36,7 +36,7 @@ ArcFace::ArcFace(const string &model_dir_path) {
 
 ArcFace::~ArcFace() = default;
 
-void ArcFace::recognize(uint8_t* rgb_img, float *feature) {
+void ArcFace::recognize(const uint8_t* rgb_img, float *feature) {
     auto* input_data = (float*)malloc(input_size);
     for (int i = 0; i < input_width * input_height; i++) {
         input_data[i] = scale * ((float)rgb_img[i * 3] - mean);

@@ -21,6 +21,11 @@ file(GLOB RETINA_FACE_SRC
         ${CMAKE_CURRENT_SOURCE_DIR}/retinaface/*.cpp
         )
 
+file(GLOB MNET_COV2_FACE_SRC
+        ${CMAKE_CURRENT_SOURCE_DIR}/mnet_cov2/*.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/mnet_cov2/*.cpp
+        )
+
 file(GLOB ARC_FACE_SRC
         ${CMAKE_CURRENT_SOURCE_DIR}/arcface/*.h
         ${CMAKE_CURRENT_SOURCE_DIR}/arcface/*.cpp
@@ -46,6 +51,7 @@ set(SOURCE_FILES
         ${COMMON_SRC}
         ${UTILS_SRC}
         ${RETINA_FACE_SRC}
+        ${MNET_COV2_FACE_SRC}
         ${ARC_FACE_SRC}
         ${COMMON_SRC}
         ${UTILS_SRC}
@@ -80,6 +86,12 @@ if(SAMPLES)
 
     add_executable (recognition_camera ./samples/recognition_camera.cpp ${COMMON_SRC} ${UTILS_SRC} ${RETINA_FACE_SRC} ${ARC_FACE_SRC})
     target_link_libraries(recognition_camera ${OpenCV_LIBS} dl pthread tvm_runtime)
+
+    add_executable (detect_cov2 ./samples/detect_cov2.cpp ${COMMON_SRC} ${UTILS_SRC} ${MNET_COV2_FACE_SRC})
+    target_link_libraries(detect_cov2 ${OpenCV_LIBS} dl pthread tvm_runtime)
+
+    add_executable (detect_cov2_camera ./samples/detect_cov2_camera.cpp ${COMMON_SRC} ${UTILS_SRC} ${MNET_COV2_FACE_SRC})
+    target_link_libraries(detect_cov2_camera ${OpenCV_LIBS} dl pthread tvm_runtime)
 endif()
 
 

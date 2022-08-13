@@ -82,6 +82,67 @@ DetectService::Service::~Service() {
 }
 
 
+static const char* DetectWithMaskService_method_names[] = {
+  "/cniface.DetectWithMaskService/detect",
+};
+
+std::unique_ptr< DetectWithMaskService::Stub> DetectWithMaskService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
+  (void)options;
+  std::unique_ptr< DetectWithMaskService::Stub> stub(new DetectWithMaskService::Stub(channel, options));
+  return stub;
+}
+
+DetectWithMaskService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
+  : channel_(channel), rpcmethod_detect_(DetectWithMaskService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  {}
+
+::grpc::Status DetectWithMaskService::Stub::detect(::grpc::ClientContext* context, const ::cniface::DetectWithMaskRequest& request, ::cniface::DetectWithMaskResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::cniface::DetectWithMaskRequest, ::cniface::DetectWithMaskResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_detect_, context, request, response);
+}
+
+void DetectWithMaskService::Stub::async::detect(::grpc::ClientContext* context, const ::cniface::DetectWithMaskRequest* request, ::cniface::DetectWithMaskResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::cniface::DetectWithMaskRequest, ::cniface::DetectWithMaskResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_detect_, context, request, response, std::move(f));
+}
+
+void DetectWithMaskService::Stub::async::detect(::grpc::ClientContext* context, const ::cniface::DetectWithMaskRequest* request, ::cniface::DetectWithMaskResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_detect_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::cniface::DetectWithMaskResponse>* DetectWithMaskService::Stub::PrepareAsyncdetectRaw(::grpc::ClientContext* context, const ::cniface::DetectWithMaskRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::cniface::DetectWithMaskResponse, ::cniface::DetectWithMaskRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_detect_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::cniface::DetectWithMaskResponse>* DetectWithMaskService::Stub::AsyncdetectRaw(::grpc::ClientContext* context, const ::cniface::DetectWithMaskRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncdetectRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+DetectWithMaskService::Service::Service() {
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      DetectWithMaskService_method_names[0],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< DetectWithMaskService::Service, ::cniface::DetectWithMaskRequest, ::cniface::DetectWithMaskResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](DetectWithMaskService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::cniface::DetectWithMaskRequest* req,
+             ::cniface::DetectWithMaskResponse* resp) {
+               return service->detect(ctx, req, resp);
+             }, this)));
+}
+
+DetectWithMaskService::Service::~Service() {
+}
+
+::grpc::Status DetectWithMaskService::Service::detect(::grpc::ServerContext* context, const ::cniface::DetectWithMaskRequest* request, ::cniface::DetectWithMaskResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+
 static const char* RecognitionService_method_names[] = {
   "/cniface.RecognitionService/extractFeature",
   "/cniface.RecognitionService/similarity",

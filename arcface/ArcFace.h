@@ -19,7 +19,7 @@ public:
      * @param input_img 112 * 112 rgb img
      * @param feature 512
      */
-    void recognize(uint8_t* rgb_img, float *feature);
+    void recognize(const uint8_t* rgb_img, float *feature);
 
     /**
      * @param rgb_img source img

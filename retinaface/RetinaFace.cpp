@@ -79,7 +79,7 @@ RetinaFace::RetinaFace(const std::string &model_dir_path) {
 
 RetinaFace::~RetinaFace() = default;
 
-vector<Anchor> RetinaFace::detect(uint8_t* rgb_img, int img_width, int img_height, float score_threshold = 0.5) {
+vector<Anchor> RetinaFace::detect(uint8_t* bgr_img, int img_width, int img_height, float score_threshold = 0.5) {
     float im_ratio = (float)img_height / (float)img_width;
     float model_ratio = (float)input_height / (float)input_width;
 
@@ -94,16 +94,16 @@ vector<Anchor> RetinaFace::detect(uint8_t* rgb_img, int img_width, int img_heigh
     }
 
     auto* resized_img = (uint8_t*)malloc(new_width * new_height * 3 * sizeof(uint8_t));
-    ImageUtil::bilinear_resize(rgb_img, resized_img, img_width, img_height, new_width, new_height);
+    ImageUtil::bilinear_resize(bgr_img, resized_img, img_width, img_height, new_width, new_height);
 
     auto* resized_padding_img = (uint8_t*)malloc(input_elements * sizeof(uint8_t));
     memcpy(resized_padding_img, resized_img, new_width * new_height * 3 * sizeof(uint8_t));
 
     auto* input_data = (float*)malloc(input_size);
     for (int i = 0; i < input_width * input_height; i++) {
-        input_data[i] = scale * ((float)resized_padding_img[i * 3] - mean);
+        input_data[i] = scale * ((float)resized_padding_img[i * 3 + 2] - mean);
         input_data[i + input_width * input_height] = scale * ((float)resized_padding_img[i * 3 + 1] - mean);
-        input_data[i + input_width * input_height * 2] = scale * ((float)resized_padding_img[i * 3 + 2] - mean);
+        input_data[i + input_width * input_height * 2] = scale * ((float)resized_padding_img[i * 3] - mean);
     }
 
     auto *mod = (Module *)handle.get();
@@ -142,9 +142,9 @@ vector<Anchor> RetinaFace::detect(uint8_t* rgb_img, int img_width, int img_heigh
         auto *bbox_preds = (float *) malloc(bbox_preds_output_size);
         auto *kps_preds = (float *) malloc(kps_preds_output_size);
 
-        memcpy(scores, tvm_scores_output->data, scores_output_size);
-        memcpy(bbox_preds, tvm_bbox_preds_output->data, bbox_preds_output_size);
-        memcpy(kps_preds, tvm_kps_preds_output->data, kps_preds_output_size);
+        tvm_scores_output.CopyToBytes(scores, scores_output_size);
+        tvm_bbox_preds_output.CopyToBytes(bbox_preds, bbox_preds_output_size);
+        tvm_kps_preds_output.CopyToBytes(kps_preds, kps_preds_output_size);
 
         auto strideF = (float)stride;
         for (int j = 0; j < bbox_preds_output_shape[0] * bbox_preds_output_shape[1]; ++j) {
@@ -183,28 +183,25 @@ vector<Anchor> RetinaFace::detect(uint8_t* rgb_img, int img_width, int img_heigh
             anchors.emplace_back(anchor);
         }
 
-//        TVMObjectFree(&tvm_scores_output);
-//        TVMObjectFree(&tvm_bbox_preds_output);
-//        TVMObjectFree(&tvm_kps_preds_output);
         free(scores);
         free(bbox_preds);
         free(kps_preds);
     }
 
+    vector<Anchor> nms_anchors;
+    nms(anchors, nms_thresh, nms_anchors);
+
     float det_scale = float(new_height) / (float)img_height;
-    for (auto& anchor: anchors) {
+    for (auto& anchor: nms_anchors) {
         anchor.x = anchor.x / det_scale;
         anchor.y = anchor.y / det_scale;
-        anchor.w = anchor.w / det_scale;
-        anchor.h = anchor.h / det_scale;
+        anchor.w = anchor.w / det_scale - anchor.x;
+        anchor.h = anchor.h / det_scale - anchor.y;
 
         for (auto& kp : anchor.kps) {
             kp = kp / det_scale;
         }
     }
-
-    vector<Anchor> nms_anchors;
-    nms(anchors, nms_thresh, nms_anchors);
 
     TVMArrayFree(tvm_input_data);
     free(resized_img);

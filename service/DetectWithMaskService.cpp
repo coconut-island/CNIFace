@@ -1,25 +1,24 @@
 //
-// Created by Abel Lee on 2022/6/5.
+// Created by Abel Lee on 2022/8/14.
 //
 
-#include "DetectService.h"
+#include "DetectWithMaskService.h"
 #include <opencv2/highgui.hpp>
 
 #include "../utils/ImageUtil.h"
 #include "../utils/base64.h"
 
 
-
-DetectService::DetectService(const string &model_dir) {
-    retinaFace = new RetinaFace(model_dir);
+DetectWithMaskService::DetectWithMaskService(const string &model_dir) {
+    mNetCov2 = new MNetCov2(model_dir);
 }
 
-DetectService::~DetectService() {
-    delete retinaFace;
+DetectWithMaskService::~DetectWithMaskService() {
+    delete mNetCov2;
 }
 
-grpc::Status DetectService::detect(::grpc::ServerContext *context, const ::cniface::DetectRequest *request,
-                                   ::cniface::DetectResponse *response) {
+grpc::Status DetectWithMaskService::detect(::grpc::ServerContext *context, const ::cniface::DetectWithMaskRequest *request,
+                                   ::cniface::DetectWithMaskResponse *response) {
     response->set_code(0);
     response->set_message("OK");
 
@@ -31,7 +30,7 @@ grpc::Status DetectService::detect(::grpc::ServerContext *context, const ::cnifa
     auto* bgr_img = (uint8_t*)malloc(img.rows * img.cols * 3 * sizeof(uint8_t));
     memcpy(bgr_img, img.data, img.rows * img.cols * 3 * sizeof(uint8_t));
 
-    auto anchors = retinaFace->detect(bgr_img, img.cols, img.rows, request->score());
+    auto anchors = mNetCov2->detect(bgr_img, img.cols, img.rows, request->score());
 
     for (const auto& anchor : anchors) {
         auto result = response->add_results();
