@@ -9,6 +9,7 @@ This project is one **grpc server of face**!
 Supported modules:
 - [x] face detect
 - [x] face recognition
+- [x] face && mask detect, mnet_cov2
 
 # Docker
 
