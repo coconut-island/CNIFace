@@ -13,7 +13,7 @@ Supported modules:
 # Docker
 
 ## docker
-`docker run abelleeye/cniface:v0.0.2`
+`docker run abelleeye/cniface:latest`
 
 ## docker-compose
 ```
@@ -21,7 +21,7 @@ version: "3.9"
 services:
 
   cniface:
-    image: abelleeye/cniface:v0.0.2
+    image: abelleeye/cniface:latest
     container_name: cniface
     restart: always
     command: cniface -m /models/
