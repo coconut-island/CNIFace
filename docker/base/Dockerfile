@@ -51,3 +51,4 @@ RUN cd /tvm/python \
 
 RUN rm -rf /tvm
 RUN pip3 install onnx -i https://pypi.tuna.tsinghua.edu.cn/simple
+RUN pip3 install mxnet -i https://pypi.tuna.tsinghua.edu.cn/simple
