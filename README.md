@@ -3,6 +3,7 @@
 ![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)
 
 Web server link: [CNIFacePlatform](https://github.com/coconut-island/CNIFacePlatform)
+Web front link: [CNIFaceWeb](https://github.com/coconut-island/CNIFaceWeb)
 
 This project is one **grpc server of face**!
 
@@ -13,21 +14,11 @@ Supported modules:
 
 # Docker
 
-## docker
-`docker run abelleeye/cniface:latest`
-
 ## docker-compose
 ```
-version: "3.9"
-services:
-
-  cniface:
-    image: abelleeye/cniface:latest
-    container_name: cniface
-    restart: always
-    command: cniface -m /models/
-    ports:
-      - 22506:22506
+cd docker/cniface/
+docker-compose -f milvus-standalone-docker-compose.yml up -d 
+docker-compose up -d 
 ```
 
 # Local env build

@@ -2,9 +2,28 @@ version: "3.9"
 services:
 
   cniface:
-    image: abelleeye/cniface:v0.0.3
+    image: abelleeye/cniface:latest
     container_name: cniface
     restart: always
     command: cniface -m /models/
     ports:
       - 22506:22506
+
+  cniface-platform:
+    image: abelleeye/cniface-platform:latest
+    container_name: cniface-platform
+    environment:
+      - CNIFACE_GRPC_ADDR=static://cniface:22506
+    restart: always
+    command: java -jar cniface-platform.jar
+    ports:
+      - 22605:22605
+
+  website:
+    image: abelleeye/cniface-website:latest
+    restart: always
+    environment:
+      - CNIFACE_PLATFORM_HOST=cniface-platform
+      - CNIFACE_PLATFORM_PORT=22605
+    ports:
+      - 22815:22815
