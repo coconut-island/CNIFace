@@ -2,10 +2,11 @@
 
 ![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)
 
-Web server link: [CNIFacePlatform](https://github.com/coconut-island/CNIFacePlatform)
-Web front link: [CNIFaceWeb](https://github.com/coconut-island/CNIFaceWeb)
-
 This project is one **grpc server of face**!
+
+- Web front link: [CNIFaceWeb](https://github.com/coconut-island/CNIFaceWeb)
+
+- Web server link: [CNIFacePlatform](https://github.com/coconut-island/CNIFacePlatform)
 
 Supported modules:
 - [x] face detect
@@ -15,6 +16,7 @@ Supported modules:
 # Docker
 
 ## docker-compose
+You can run all from docker-compose
 ```
 cd docker/cniface/
 docker-compose -f milvus-standalone-docker-compose.yml up -d 
