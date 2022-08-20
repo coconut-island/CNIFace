@@ -2,6 +2,7 @@ FROM abelleeye/cniface_base:v0.0.2
 
 RUN git clone https://github.com/coconut-island/CNIFace.git
 
+RUN apt install wget -y
 RUN cd /CNIFace/models
 RUN wget https://public.dm.files.1drv.com/y4mVBYPo1YdLuzawYjUPP97n0bGQK_0n9YAo1H1M3IQ5H2ucDMxSqx0VAP5JP2acIH1zTDgpMdNPNTI6p3A5BiftmeJYvkvWRTRWT5gks08iriVd9JGpnt1u9JW8vOegSWFbLeL7FXVMqY6aNmlpwG9ma8jxRtFjRLbvXF7d6UmwtBDvcGp83ixeEBOLGYbr8UNNBpQQKXPM-LW1jvuzA3mHtZH9aJ---RsL-iHiZE0x2I -O cniface_models.tar.gz
 RUN tar zxvf ./cniface_models.tar.gz && mv ./cniface_models/* ./models/
