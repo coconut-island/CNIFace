@@ -10,7 +10,8 @@ RUN cd /CNIFace && python3 ./convert_model/from_onnx_arcface.py
 RUN cd /CNIFace && python3 ./convert_model/from_onnx_retinaface.py
 RUN cd /CNIFace && python3 ./convert_model/from_mxnet_mnet_cov2.py
 
-RUN cp -r /CNIFace/models/relay/ /models/
+RUN mkdir /models
+RUN mv /CNIFace/models/relay/* /models/
 
 RUN cd /CNIFace \
     && mkdir -p build \
