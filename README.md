@@ -39,4 +39,4 @@ link: [Samples](https://github.com/coconut-island/CNIFace/tree/main/samples)
 Thanks for these source codes porviding me with knowledges to complete this repository.
 
 - [insightface](https://github.com/deepinsight/insightface)
-```
+- [milvus](https://github.com/milvus-io/milvus)
