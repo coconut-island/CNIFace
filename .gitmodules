@@ -1,0 +1,10 @@
+[submodule "3rdparty/tvm"]
+	path = 3rdparty/tvm
+	url = https://github.com/apache/tvm
+	branch = v0.9.0
+[submodule "./grpc"]
+	branch = v1.47.0
+[submodule "3rdparty/grpc"]
+	path = 3rdparty/grpc
+	url = https://github.com/grpc/grpc
+	branch = v1.47.0
