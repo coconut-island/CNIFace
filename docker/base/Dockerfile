@@ -9,8 +9,7 @@ RUN apt update
 RUN apt install -y libopencv-dev
 
 RUN apt install -y cmake git build-essential autoconf libtool pkg-config libgflags-dev
-# RUN git clone --recurse-submodules -b v1.47.0 --depth 1 --shallow-submodules https://github.com/grpc/grpc
-COPY deps/grpc /grpc
+COPY ../../3rdparty/grpc /grpc
 RUN cd grpc \
     && mkdir -p build \
     && cd build    \
@@ -23,8 +22,7 @@ RUN rm -rf /grpc
 RUN apt install -y python3 python3-dev python3-setuptools python3-pip gcc libtinfo-dev zlib1g-dev build-essential libedit-dev libxml2-dev
 RUN apt install -y llvm clang
 
-# RUN cd / && git clone --recursive https://github.com/apache/tvm tvm
-COPY deps/tvm /tvm
+COPY ../../3rdparty/tvm /tvm
 RUN cd /tvm/3rdparty/dlpack/ \
     && mkdir -p build \
     && cd build \
