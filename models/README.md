@@ -1,6 +1,6 @@
-# Model Download
+# Model Resource
 
-链接: https://pan.baidu.com/s/14jRKMAAPYzdnNlbRfUzNAg 提取码: vamc
+link: [Models](https://github.com/coconut-island/CNIFaceResource/tree/main/models)
 
 
 # Face Datas

@@ -4,10 +4,10 @@ RUN git clone https://github.com/coconut-island/CNIFace.git
 
 RUN apt install wget -y
 RUN cd /CNIFace/models
-RUN wget https://github.com/coconut-island/CNIFaceResource/raw/main/models/det_10g.onnx
-RUN wget https://github.com/coconut-island/CNIFaceResource/raw/main/models/mnet_cov2-0000.params
-RUN wget https://github.com/coconut-island/CNIFaceResource/raw/main/models/mnet_cov2-symbol.json
-RUN wget https://github.com/coconut-island/CNIFaceResource/raw/main/models/w600k_r50.onnx
+RUN wget https://github.com/coconut-island/CNIFaceResource/raw/main/models/det_10g.onnx -O /CNIFace/models/det_10g.onnx
+RUN wget https://github.com/coconut-island/CNIFaceResource/raw/main/models/mnet_cov2-0000.params -O /CNIFace/models/mnet_cov2-0000.params
+RUN wget https://github.com/coconut-island/CNIFaceResource/raw/main/models/mnet_cov2-symbol.json -O /CNIFace/models/mnet_cov2-symbol.json
+RUN wget https://github.com/coconut-island/CNIFaceResource/raw/main/models/w600k_r50.onnx -O /CNIFace/models/w600k_r50.onnx
 
 RUN cd /CNIFace && python3 ./convert_model/from_onnx_arcface.py
 RUN cd /CNIFace && python3 ./convert_model/from_onnx_retinaface.py
