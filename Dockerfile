@@ -6,7 +6,7 @@ RUN apt install wget -y
 RUN cd /CNIFace/models
 RUN wget https://github.com/coconut-island/CNIFaceResource/raw/main/models/det_10g.onnx
 RUN wget https://github.com/coconut-island/CNIFaceResource/raw/main/models/mnet_cov2-0000.params
-RUN wget https://github.com/coconut-island/CNIFaceResource/raw/main/models/mnet_cov2-0000.json
+RUN wget https://github.com/coconut-island/CNIFaceResource/raw/main/models/mnet_cov2-symbol.json
 RUN wget https://github.com/coconut-island/CNIFaceResource/raw/main/models/w600k_r50.onnx
 
 RUN cd /CNIFace && python3 ./convert_model/from_onnx_arcface.py
