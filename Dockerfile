@@ -1,8 +1,7 @@
-FROM abelleeye/cniface_base:v0.0.2
+FROM abelleeye/cniface-base:latest
 
 RUN git clone https://github.com/coconut-island/CNIFace.git
 
-RUN apt install wget -y
 RUN cd /CNIFace/models
 RUN wget https://github.com/coconut-island/CNIFaceResource/raw/main/models/det_10g.onnx -O /CNIFace/models/det_10g.onnx
 RUN wget https://github.com/coconut-island/CNIFaceResource/raw/main/models/mnet_cov2-0000.params -O /CNIFace/models/mnet_cov2-0000.params
