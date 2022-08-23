@@ -19,8 +19,9 @@ services:
     ports:
       - 22605:22605
 
-  website:
+  cniface-website:
     image: abelleeye/cniface-website:latest
+    container_name: cniface-website
     restart: always
     environment:
       - CNIFACE_PLATFORM_HOST=cniface-platform
