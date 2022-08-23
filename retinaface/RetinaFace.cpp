@@ -8,6 +8,7 @@
 #include <fstream>
 
 #include <tvm/runtime/registry.h>
+#include <opencv2/highgui.hpp>
 
 #include "../utils/ImageUtil.h"
 
@@ -97,7 +98,25 @@ vector<Anchor> RetinaFace::detect(uint8_t* bgr_img, int img_width, int img_heigh
     ImageUtil::bilinear_resize(bgr_img, resized_img, img_width, img_height, new_width, new_height);
 
     auto* resized_padding_img = (uint8_t*)malloc(input_elements * sizeof(uint8_t));
-    memcpy(resized_padding_img, resized_img, new_width * new_height * 3 * sizeof(uint8_t));
+    // right padding
+    if (new_width < input_width) {
+        for (int j = 0; j < input_height; ++j) {
+            for (int i = 0; i < input_width; ++i) {
+                if (i < new_width) {
+                    resized_padding_img[j * input_width * 3 + 3 * i] = resized_img[j * new_width * 3 + 3 * i];
+                    resized_padding_img[j * input_width * 3 + 3 * i + 1] = resized_img[j * new_width * 3 + 3 * i + 1];
+                    resized_padding_img[j * input_width * 3 + 3 * i + 2] = resized_img[j * new_width * 3 + 3 * i + 2];
+                } else {
+                    resized_padding_img[j * input_width * 3 + 3 * i] = 0;
+                    resized_padding_img[j * input_width * 3 + 3 * i + 1] = 0;
+                    resized_padding_img[j * input_width * 3 + 3 * i + 2] = 0;
+                }
+            }
+        }
+    } else {
+        // bottom padding
+        memcpy(resized_padding_img, resized_img, new_width * new_height * 3 * sizeof(uint8_t));
+    }
 
     auto* input_data = (float*)malloc(input_size);
     for (int i = 0; i < input_width * input_height; i++) {
