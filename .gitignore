@@ -52,4 +52,5 @@ models/*.params
 /docker/base/deps/grpc*
 
 /docker/cniface/deps/models/
+/docker/volumes/
 /docker/cniface/volumes/

@@ -2,7 +2,7 @@
 
 ![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)
 
-This project is one **grpc server of face**!
+This project is one **simple face platform && grpc server**!
 
 - Web front link: [CNIFaceWeb](https://github.com/coconut-island/CNIFaceWeb)
 
@@ -18,16 +18,15 @@ Supported modules:
 ## docker-compose
 You can run all from docker-compose
 ```
-cd docker/cniface/
-docker-compose -f milvus-standalone-docker-compose.yml up -d 
-docker-compose up -d 
+wget https://github.com/coconut-island/CNIFace/raw/main/docker/docker-compose.yaml
+docker-compose up -d
 ```
 
 # Local env build
 
 ## ubuntu:20.04
 
-Refer to link: [Dockerfile](https://github.com/coconut-island/CNIFace/blob/main/docker/base/Dockerfile)
+Refer to link: [Dockerfile](https://github.com/coconut-island/CNIFaceBase/blob/main/Dockerfile)
 
 # Samples
 
