@@ -8,10 +8,24 @@
 #include <fstream>
 
 #include <tvm/runtime/registry.h>
-#include <opencv2/highgui.hpp>
 
 #include "../utils/ImageUtil.h"
 
+
+void clip_boxes(Anchor &anchor, int width, int height) {
+    if (anchor.x < 0) {
+        anchor.x = 0;
+    }
+    if (anchor.y < 0) {
+        anchor.y = 0;
+    }
+    if (anchor.x + anchor.w > width - 1) {
+        anchor.w = width - anchor.x - 1;
+    }
+    if (anchor.y + anchor.h > height - 1) {
+        anchor.y = height - anchor.h -1;
+    }
+}
 
 void RetinaFace::nms(std::vector<Anchor>& anchors, float threshold, std::vector<Anchor>& out_anchors) {
     if(anchors.empty()) {
@@ -53,7 +67,21 @@ void RetinaFace::nms(std::vector<Anchor>& anchors, float threshold, std::vector<
     }
 }
 
-RetinaFace::RetinaFace(const std::string &model_dir_path) {
+RetinaFace::RetinaFace(const string &model_dir_path) {
+    init(model_dir_path, m_default_model_name);
+}
+
+RetinaFace::RetinaFace(const std::string &model_dir_path, const string &model_name) {
+    init(model_dir_path, model_name);
+}
+
+RetinaFace::~RetinaFace() = default;
+
+void RetinaFace::init(const string &model_dir_path, const string &model_name) {
+    if (m_handle != nullptr) {
+        return;
+    }
+
     string so_lib_path = model_dir_path + model_name  + ".so";
     Module mod_syslib = Module::LoadFromFile(so_lib_path);
 
@@ -67,9 +95,9 @@ RetinaFace::RetinaFace(const std::string &model_dir_path) {
     std::string params_data((std::istreambuf_iterator<char>(params_in)), std::istreambuf_iterator<char>());
     params_in.close();
 
-    tvm::runtime::Module mod = (*Registry::Get("tvm.graph_executor.create"))(json_data, mod_syslib, device_type, device_id);
+    tvm::runtime::Module mod = (*Registry::Get("tvm.graph_executor.create"))(json_data, mod_syslib, m_device_type, m_device_id);
 
-    this->handle = std::make_shared<tvm::runtime::Module>(mod);
+    this->m_handle = std::make_shared<tvm::runtime::Module>(mod);
 
     TVMByteArray params_arr;
     params_arr.data = params_data.c_str();
@@ -78,38 +106,32 @@ RetinaFace::RetinaFace(const std::string &model_dir_path) {
     load_params(params_arr);
 }
 
-RetinaFace::~RetinaFace() = default;
-
 vector<Anchor> RetinaFace::detect(uint8_t* bgr_img, int img_width, int img_height, float score_threshold = 0.5) {
     float im_ratio = (float)img_height / (float)img_width;
-    float model_ratio = (float)input_height / (float)input_width;
+    float model_ratio = (float)m_input_height / (float)m_input_width;
 
     int new_height;
     int new_width;
     if (im_ratio > model_ratio) {
-        new_height = input_height;
+        new_height = m_input_height;
         new_width = (int)((float)new_height / im_ratio);
     } else {
-        new_width = input_width;
+        new_width = m_input_width;
         new_height = (int)((float)new_width * im_ratio);
     }
 
     auto* resized_img = (uint8_t*)malloc(new_width * new_height * 3 * sizeof(uint8_t));
     ImageUtil::bilinear_resize(bgr_img, resized_img, img_width, img_height, new_width, new_height);
 
-    auto* resized_padding_img = (uint8_t*)malloc(input_elements * sizeof(uint8_t));
+    auto* resized_padding_img = (uint8_t*)malloc(m_input_elements * sizeof(uint8_t));
     // right padding
-    if (new_width < input_width) {
-        for (int j = 0; j < input_height; ++j) {
-            for (int i = 0; i < input_width; ++i) {
+    if (new_width < m_input_width) {
+        for (int j = 0; j < m_input_height; ++j) {
+            for (int i = 0; i < m_input_width; ++i) {
                 if (i < new_width) {
-                    resized_padding_img[j * input_width * 3 + 3 * i] = resized_img[j * new_width * 3 + 3 * i];
-                    resized_padding_img[j * input_width * 3 + 3 * i + 1] = resized_img[j * new_width * 3 + 3 * i + 1];
-                    resized_padding_img[j * input_width * 3 + 3 * i + 2] = resized_img[j * new_width * 3 + 3 * i + 2];
-                } else {
-                    resized_padding_img[j * input_width * 3 + 3 * i] = 0;
-                    resized_padding_img[j * input_width * 3 + 3 * i + 1] = 0;
-                    resized_padding_img[j * input_width * 3 + 3 * i + 2] = 0;
+                    resized_padding_img[j * m_input_width * 3 + 3 * i] = resized_img[j * new_width * 3 + 3 * i];
+                    resized_padding_img[j * m_input_width * 3 + 3 * i + 1] = resized_img[j * new_width * 3 + 3 * i + 1];
+                    resized_padding_img[j * m_input_width * 3 + 3 * i + 2] = resized_img[j * new_width * 3 + 3 * i + 2];
                 }
             }
         }
@@ -118,14 +140,14 @@ vector<Anchor> RetinaFace::detect(uint8_t* bgr_img, int img_width, int img_heigh
         memcpy(resized_padding_img, resized_img, new_width * new_height * 3 * sizeof(uint8_t));
     }
 
-    auto* input_data = (float*)malloc(input_size);
-    for (int i = 0; i < input_width * input_height; i++) {
-        input_data[i] = scale * ((float)resized_padding_img[i * 3 + 2] - mean);
-        input_data[i + input_width * input_height] = scale * ((float)resized_padding_img[i * 3 + 1] - mean);
-        input_data[i + input_width * input_height * 2] = scale * ((float)resized_padding_img[i * 3] - mean);
+    auto* input_data = (float*)malloc(m_input_size);
+    for (int i = 0; i < m_input_width * m_input_height; i++) {
+        input_data[i] = m_scale * ((float)resized_padding_img[i * 3 + 2] - m_mean);
+        input_data[i + m_input_width * m_input_height] = m_scale * ((float)resized_padding_img[i * 3 + 1] - m_mean);
+        input_data[i + m_input_width * m_input_height * 2] = m_scale * ((float)resized_padding_img[i * 3] - m_mean);
     }
 
-    auto *mod = (Module *)handle.get();
+    auto *mod = (Module *)m_handle.get();
 
     PackedFunc set_input = mod->GetFunction("set_input");
     PackedFunc load_params = mod->GetFunction("load_params");
@@ -133,25 +155,25 @@ vector<Anchor> RetinaFace::detect(uint8_t* bgr_img, int img_width, int img_heigh
     PackedFunc get_output = mod->GetFunction("get_output");
 
     DLTensor* tvm_input_data;
-    int64_t in_shape[4] = { 1, input_channel, input_height, input_width };
-    TVMArrayAlloc(in_shape, in_ndim, dtype_code, dtype_bits, dtype_lanes, device_type, device_id, &tvm_input_data);
-    TVMArrayCopyFromBytes(tvm_input_data, input_data, input_size);
+    int64_t in_shape[4] = { 1, m_input_channel, m_input_height, m_input_width };
+    TVMArrayAlloc(in_shape, m_in_ndim, m_dtype_code, m_dtype_bits, m_dtype_lanes, m_device_type, m_device_id, &tvm_input_data);
+    TVMArrayCopyFromBytes(tvm_input_data, input_data, m_input_size);
 
-    set_input(input_name, tvm_input_data);
+    set_input(m_input_name, tvm_input_data);
 
     run();
 
     vector<Anchor> anchors;
 
-    for (int i = 0; i < feat_stride_fpn.size(); ++i) {
-        int stride = feat_stride_fpn[i];
+    for (int i = 0; i < m_feat_stride_fpn.size(); ++i) {
+        int stride = m_feat_stride_fpn[i];
         tvm::runtime::NDArray tvm_scores_output = get_output(i);
-        tvm::runtime::NDArray tvm_bbox_preds_output = get_output(i + fmc);
-        tvm::runtime::NDArray tvm_kps_preds_output = get_output(i + fmc * 2);
+        tvm::runtime::NDArray tvm_bbox_preds_output = get_output(i + m_output_sym);
+        tvm::runtime::NDArray tvm_kps_preds_output = get_output(i + m_output_sym * 2);
 
-        auto scores_output_shape = out_shapes[i];
-        auto bbox_preds_output_shape = out_shapes[i + fmc];
-        auto kps_preds_output_shape = out_shapes[i + fmc * 2];
+        auto scores_output_shape = m_out_shapes[i];
+        auto bbox_preds_output_shape = m_out_shapes[i + m_output_sym];
+        auto kps_preds_output_shape = m_out_shapes[i + m_output_sym * 2];
 
         auto scores_output_size = scores_output_shape[0] * scores_output_shape[1] * sizeof(float);
         auto bbox_preds_output_size = bbox_preds_output_shape[0] * bbox_preds_output_shape[1] * sizeof(float);
@@ -174,19 +196,19 @@ vector<Anchor> RetinaFace::detect(uint8_t* bgr_img, int img_width, int img_heigh
             kps_preds[j] = kps_preds[j] * strideF;
         }
 
-        int height = floor(input_height / stride);
-        int width = floor(input_width / stride);
+        int height = floor(m_input_height / stride);
+        int width = floor(m_input_width / stride);
 
         for (int idx = 0; idx < scores_output_shape[0] * scores_output_shape[1]; ++idx) {
             if (scores[idx] < score_threshold) {
                 continue;
             }
-            int x = (idx % (width * num_anchors)) / num_anchors;
-            int y = idx / (width * num_anchors);
+            int x = (idx % (width * m_num_anchors)) / m_num_anchors;
+            int y = idx / (width * m_num_anchors);
             float anchor_center[2] = { (float)x * strideF, (float)y * strideF};
 
-            int bbox_preds_dim1 = out_shapes[i + fmc][1]; // 4
-            int kps_preds_dim1 = out_shapes[i + fmc * 2][1]; // 10
+            int bbox_preds_dim1 = m_out_shapes[i + m_output_sym][1]; // 4
+            int kps_preds_dim1 = m_out_shapes[i + m_output_sym * 2][1]; // 10
 
             Anchor anchor;
             anchor.score = scores[idx];
@@ -208,7 +230,7 @@ vector<Anchor> RetinaFace::detect(uint8_t* bgr_img, int img_width, int img_heigh
     }
 
     vector<Anchor> nms_anchors;
-    nms(anchors, nms_thresh, nms_anchors);
+    nms(anchors, m_nms_thresh, nms_anchors);
 
     float det_scale = float(new_height) / (float)img_height;
     for (auto& anchor: nms_anchors) {
@@ -216,6 +238,8 @@ vector<Anchor> RetinaFace::detect(uint8_t* bgr_img, int img_width, int img_heigh
         anchor.y = anchor.y / det_scale;
         anchor.w = anchor.w / det_scale - anchor.x;
         anchor.h = anchor.h / det_scale - anchor.y;
+
+        clip_boxes(anchor, m_input_width, m_input_height);
 
         for (auto& kp : anchor.kps) {
             kp = kp / det_scale;

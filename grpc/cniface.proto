@@ -13,8 +13,9 @@ service DetectService {
 }
 
 message DetectRequest {
-    string faceImageBase64 = 1;
-    float score = 2;
+    string model = 1;
+    string faceImageBase64 = 2;
+    float score = 3;
 }
 
 message DetectResult {
@@ -33,40 +34,15 @@ message DetectResponse {
 }
 
 
-service DetectWithMaskService {
-    rpc detect (DetectWithMaskRequest) returns ( DetectWithMaskResponse) {}
-}
-
-message DetectWithMaskRequest {
-    string faceImageBase64 = 1;
-    float score = 2;
-}
-
-message DetectWithMaskResult {
-    float score = 1;
-    float maskScore = 2;
-    float x = 3;
-    float y = 4;
-    float w = 5;
-    float h = 6;
-    repeated float kps = 7;
-}
-
-message DetectWithMaskResponse {
-    int64 code = 1;
-    string message = 2;
-    repeated DetectWithMaskResult results = 3;
-}
-
-
 service RecognitionService {
     rpc extractFeature (ExtractFeatureRequest) returns ( ExtractFeatureResponse) {}
     rpc similarity (SimilarityRequest) returns ( SimilarityResponse) {}
 }
 
 message ExtractFeatureRequest {
-    string faceImageBase64 = 1;
-    repeated float kps = 2;
+    string model = 1;
+    string faceImageBase64 = 2;
+    repeated float kps = 3;
 }
 
 message ExtractFeatureResponse {

@@ -15,17 +15,21 @@
 
 
 RecognitionService::RecognitionService(const string &model_dir) {
-    arcFace = new ArcFace(model_dir);
+    m_w600k_r50 = new ArcFace(model_dir);
+    m_w600k_mbf = new ArcFace(model_dir, "w600k_mbf");
 }
 
 RecognitionService::~RecognitionService() {
-    delete arcFace;
+    delete m_w600k_r50;
+    delete m_w600k_mbf;
 }
 
 grpc::Status RecognitionService::extractFeature(::grpc::ServerContext *context, const ::cniface::ExtractFeatureRequest *request,
                                    ::cniface::ExtractFeatureResponse *response) {
     response->set_code(0);
     response->set_message("OK");
+    const auto& model = request->model();
+
     const auto& faceImageBase64 = request->faceimagebase64();
     auto imgStr = base64_decode(faceImageBase64);
     std::vector<char> base64_img(imgStr.begin(), imgStr.end());
@@ -40,7 +44,13 @@ grpc::Status RecognitionService::extractFeature(::grpc::ServerContext *context, 
     }
 
     auto* feature = new float[DEFAULT_FEATURE_DIM];
-    arcFace->recognize(img.data, img.cols, img.rows, kps, feature);
+
+    if (model == "w600k_mbf") {
+        m_w600k_mbf->recognize(img.data, img.cols, img.rows, kps, feature);
+    } else {
+        m_w600k_r50->recognize(img.data, img.cols, img.rows, kps, feature);
+    }
+
     MathUtil::normalize_L2(feature, DEFAULT_FEATURE_DIM);
 
     for (int i = 0; i < DEFAULT_FEATURE_DIM; ++i) {

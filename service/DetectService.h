@@ -7,6 +7,7 @@
 
 #include "../grpc/cniface.grpc.pb.h"
 #include "../retinaface/RetinaFace.h"
+#include "../mnet_cov2/MNetCov2.h"
 
 
 class DetectService final : public cniface::DetectService::Service {
@@ -18,7 +19,9 @@ public:
                         ::cniface::DetectResponse *response) override;
 
 private:
-    RetinaFace* retinaFace;
+    RetinaFace* m_retinaFace10g;
+    RetinaFace* m_retinaFace500m;
+    MNetCov2* m_mNetCov2;
 };
 
 

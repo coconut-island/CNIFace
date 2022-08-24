@@ -21,7 +21,8 @@ public:
                             ::cniface::SimilarityResponse *response) override;
 
 private:
-    ArcFace* arcFace;
+    ArcFace* m_w600k_r50;
+    ArcFace* m_w600k_mbf;
 };
 
 

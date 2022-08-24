@@ -18,41 +18,46 @@ using namespace tvm::runtime;
 class RetinaFace {
 public:
     explicit RetinaFace(const std::string& model_dir_path);
+    explicit RetinaFace(const std::string& model_dir_path, const std::string& model_name);
     ~RetinaFace();
     vector<Anchor> detect(uint8_t* rgb_img, int img_width, int img_height, float score_threshold);
     static void nms(std::vector<Anchor>& anchors, float threshold, std::vector<Anchor>& out_anchors);
+
 private:
-    shared_ptr<Module> handle;
+    void init(const std::string& model_dir_path, const std::string& model_name);
 
-    string model_name = "det_10g";
-    float nms_thresh = 0.4;
+private:
+    shared_ptr<Module> m_handle;
 
-    int dtype_code = kDLFloat;
-    int dtype_bits = 32;
-    int dtype_lanes = 1;
-    int device_type = kDLCPU;
-    int device_id = 0;
-    int in_ndim = 4;
+    string m_default_model_name = "det_10g";
+    float m_nms_thresh = 0.4;
 
-    float mean = 127.5;
-    float scale = 1 / 128.0;
-    int num_anchors = 2;
+    int m_dtype_code = kDLFloat;
+    int m_dtype_bits = 32;
+    int m_dtype_lanes = 1;
+    int m_device_type = kDLCPU;
+    int m_device_id = 0;
+    int m_in_ndim = 4;
 
-    string input_name = "input.1";
-    vector<string> output_names = {"448", "471", "494", "451", "474", "497", "454", "477", "500"};
-    int64_t out_shapes[9][2] = {
+    float m_mean = 127.5;
+    float m_scale = 1 / 128.0;
+    int m_num_anchors = 2;
+
+    string m_input_name = "input.1";
+    int64_t m_out_shapes[9][2] = {
             {12800, 1}, {3200, 1}, {800, 1},
             {12800, 4}, {3200, 4}, {800, 4},
             {12800, 10}, {3200, 10}, {800, 10}
     };
-    int fmc = 3;
-    vector<int> feat_stride_fpn = { 8, 16, 32 };
 
-    int input_height = 640;
-    int input_width = 640;
-    int input_channel = 3;
-    size_t input_elements = input_height * input_width * input_channel;
-    size_t input_size = input_elements * sizeof(float);
+    int m_output_sym = 3;
+    vector<int> m_feat_stride_fpn = { 8, 16, 32 };
+
+    int m_input_height = 640;
+    int m_input_width = 640;
+    int m_input_channel = 3;
+    size_t m_input_elements = m_input_height * m_input_width * m_input_channel;
+    size_t m_input_size = m_input_elements * sizeof(float);
 };
 
 

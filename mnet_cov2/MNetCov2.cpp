@@ -142,7 +142,6 @@ vector<anchor_box> generate_anchors(int base_size = 16, const vector<float>& rat
 vector<vector<anchor_box>> generate_anchors_fpn(bool dense_anchor = false, const vector<anchor_cfg>& cfg = {}) {
     //Generate anchor (reference) windows by enumerating aspect ratios X
     //scales wrt a reference (0, 0, 15, 15) window.
-
     vector<vector<anchor_box>> anchors;
     for (const auto& tmp : cfg) {
         //stride从小到大[32 16 8]
@@ -243,22 +242,22 @@ void MNetCov2::nms(std::vector<Anchor>& anchors, float threshold, std::vector<An
 }
 
 MNetCov2::MNetCov2(const std::string &model_dir_path) {
-    string so_lib_path = model_dir_path + model_name  + ".so";
+    string so_lib_path = model_dir_path + m_model_name  + ".so";
     Module mod_syslib = Module::LoadFromFile(so_lib_path);
 
     // json graph
-    std::ifstream json_in(model_dir_path + model_name + ".json", std::ios::in);
+    std::ifstream json_in(model_dir_path + m_model_name + ".json", std::ios::in);
     std::string json_data((std::istreambuf_iterator<char>(json_in)), std::istreambuf_iterator<char>());
     json_in.close();
 
     // parameters in binary
-    std::ifstream params_in(model_dir_path + model_name + ".params", std::ios::binary);
+    std::ifstream params_in(model_dir_path + m_model_name + ".params", std::ios::binary);
     std::string params_data((std::istreambuf_iterator<char>(params_in)), std::istreambuf_iterator<char>());
     params_in.close();
 
-    tvm::runtime::Module mod = (*Registry::Get("tvm.graph_executor.create"))(json_data, mod_syslib, device_type, device_id);
+    tvm::runtime::Module mod = (*Registry::Get("tvm.graph_executor.create"))(json_data, mod_syslib, m_device_type, m_device_id);
 
-    this->handle = std::make_shared<tvm::runtime::Module>(mod);
+    this->m_handle = std::make_shared<tvm::runtime::Module>(mod);
 
     TVMByteArray params_arr;
     params_arr.data = params_data.c_str();
@@ -267,40 +266,40 @@ MNetCov2::MNetCov2(const std::string &model_dir_path) {
     load_params(params_arr);
 
 
-    _ratio = {1.0};
+    vector<float> ratio = {1.0};
     anchor_cfg tmp;
     tmp.SCALES = {32, 16};
     tmp.BASE_SIZE = 16;
-    tmp.RATIOS = _ratio;
+    tmp.RATIOS = ratio;
     tmp.ALLOWED_BORDER = 9999;
     tmp.STRIDE = 32;
-    cfg.push_back(tmp);
+    m_cfg.push_back(tmp);
 
     tmp.SCALES = {8, 4};
     tmp.BASE_SIZE = 16;
-    tmp.RATIOS = _ratio;
+    tmp.RATIOS = ratio;
     tmp.ALLOWED_BORDER = 9999;
     tmp.STRIDE = 16;
-    cfg.push_back(tmp);
+    m_cfg.push_back(tmp);
 
     tmp.SCALES = {2, 1};
     tmp.BASE_SIZE = 16;
-    tmp.RATIOS = _ratio;
+    tmp.RATIOS = ratio;
     tmp.ALLOWED_BORDER = 9999;
     tmp.STRIDE = 8;
-    cfg.push_back(tmp);
+    m_cfg.push_back(tmp);
 
     vector<int> outputW = { 20, 40, 80 };
     vector<int> outputH = { 20, 40, 80 };
 
     bool dense_anchor = false;
-    vector<vector<anchor_box>> anchors_fpn = generate_anchors_fpn(dense_anchor, cfg);
+    vector<vector<anchor_box>> anchors_fpn = generate_anchors_fpn(dense_anchor, m_cfg);
     for(size_t i = 0; i < anchors_fpn.size(); i++) {
-        string key = "stride" + std::to_string(feat_stride_fpn[i]);
-        int stride = feat_stride_fpn[i];
-        _anchors_fpn[key] = anchors_fpn[i];
-        _num_anchors[key] = anchors_fpn[i].size();
-        _anchors[key] = anchors_plane(outputH[i], outputW[i], stride, _anchors_fpn[key]);
+        string key = "stride" + std::to_string(m_feat_stride_fpn[i]);
+        int stride = m_feat_stride_fpn[i];
+        m_anchors_fpn[key] = anchors_fpn[i];
+        m_num_anchors[key] = anchors_fpn[i].size();
+        m_anchors[key] = anchors_plane(outputH[i], outputW[i], stride, m_anchors_fpn[key]);
     }
 }
 
@@ -308,34 +307,30 @@ MNetCov2::~MNetCov2() = default;
 
 vector<Anchor> MNetCov2::detect(uint8_t* bgr_img, int img_width, int img_height, float score_threshold = 0.5) {
     float im_ratio = (float)img_height / (float)img_width;
-    float model_ratio = (float)input_height / (float)input_width;
+    float model_ratio = (float)m_input_height / (float)m_input_width;
 
     int new_height;
     int new_width;
     if (im_ratio > model_ratio) {
-        new_height = input_height;
+        new_height = m_input_height;
         new_width = (int)((float)new_height / im_ratio);
     } else {
-        new_width = input_width;
+        new_width = m_input_width;
         new_height = (int)((float)new_width * im_ratio);
     }
 
     auto* resized_img = (uint8_t*)malloc(new_width * new_height * 3 * sizeof(uint8_t));
     ImageUtil::bilinear_resize(bgr_img, resized_img, img_width, img_height, new_width, new_height);
 
-    auto* resized_padding_img = (uint8_t*)malloc(input_elements * sizeof(uint8_t));
+    auto* resized_padding_img = (uint8_t*)malloc(m_input_elements * sizeof(uint8_t));
     // right padding
-    if (new_width < input_width) {
-        for (int j = 0; j < input_height; ++j) {
-            for (int i = 0; i < input_width; ++i) {
+    if (new_width < m_input_width) {
+        for (int j = 0; j < m_input_height; ++j) {
+            for (int i = 0; i < m_input_width; ++i) {
                 if (i < new_width) {
-                    resized_padding_img[j * input_width * 3 + 3 * i] = resized_img[j * new_width * 3 + 3 * i];
-                    resized_padding_img[j * input_width * 3 + 3 * i + 1] = resized_img[j * new_width * 3 + 3 * i + 1];
-                    resized_padding_img[j * input_width * 3 + 3 * i + 2] = resized_img[j * new_width * 3 + 3 * i + 2];
-                } else {
-                    resized_padding_img[j * input_width * 3 + 3 * i] = 0;
-                    resized_padding_img[j * input_width * 3 + 3 * i + 1] = 0;
-                    resized_padding_img[j * input_width * 3 + 3 * i + 2] = 0;
+                    resized_padding_img[j * m_input_width * 3 + 3 * i] = resized_img[j * new_width * 3 + 3 * i];
+                    resized_padding_img[j * m_input_width * 3 + 3 * i + 1] = resized_img[j * new_width * 3 + 3 * i + 1];
+                    resized_padding_img[j * m_input_width * 3 + 3 * i + 2] = resized_img[j * new_width * 3 + 3 * i + 2];
                 }
             }
         }
@@ -344,14 +339,14 @@ vector<Anchor> MNetCov2::detect(uint8_t* bgr_img, int img_width, int img_height,
         memcpy(resized_padding_img, resized_img, new_width * new_height * 3 * sizeof(uint8_t));
     }
 
-    auto* input_data = (float*)malloc(input_size);
-    for (int i = 0; i < input_width * input_height; i++) {
-        input_data[i] = scale * ((float) resized_padding_img[i * 3 + 2] - mean);
-        input_data[i + input_width * input_height] = scale * ((float) resized_padding_img[i * 3 + 1] - mean);
-        input_data[i + input_width * input_height * 2] = scale * ((float) resized_padding_img[i * 3] - mean);
+    auto* input_data = (float*)malloc(m_input_size);
+    for (int i = 0; i < m_input_width * m_input_height; i++) {
+        input_data[i] = m_scale * ((float) resized_padding_img[i * 3 + 2] - m_mean);
+        input_data[i + m_input_width * m_input_height] = m_scale * ((float) resized_padding_img[i * 3 + 1] - m_mean);
+        input_data[i + m_input_width * m_input_height * 2] = m_scale * ((float) resized_padding_img[i * 3] - m_mean);
     }
 
-    auto *mod = (Module *)handle.get();
+    auto *mod = (Module *)m_handle.get();
 
     PackedFunc set_input = mod->GetFunction("set_input");
     PackedFunc load_params = mod->GetFunction("load_params");
@@ -359,25 +354,25 @@ vector<Anchor> MNetCov2::detect(uint8_t* bgr_img, int img_width, int img_height,
     PackedFunc get_output = mod->GetFunction("get_output");
 
     DLTensor* tvm_input_data;
-    int64_t in_shape[4] = { 1, input_channel, input_height, input_width };
-    TVMArrayAlloc(in_shape, in_ndim, dtype_code, dtype_bits, dtype_lanes, device_type, device_id, &tvm_input_data);
-    TVMArrayCopyFromBytes(tvm_input_data, input_data, input_size);
+    int64_t in_shape[4] = { 1, m_input_channel, m_input_height, m_input_width };
+    TVMArrayAlloc(in_shape, m_in_ndim, m_dtype_code, m_dtype_bits, m_dtype_lanes, m_device_type, m_device_id, &tvm_input_data);
+    TVMArrayCopyFromBytes(tvm_input_data, input_data, m_input_size);
 
-    set_input(input_name, tvm_input_data);
+    set_input(m_input_name, tvm_input_data);
 
     run();
 
     vector<Anchor> anchors;
 
-    for (int i = 0; i < feat_stride_fpn.size(); ++i) {
-        int stride = feat_stride_fpn[i];
+    for (int i = 0; i < m_feat_stride_fpn.size(); ++i) {
+        int stride = m_feat_stride_fpn[i];
 
-        string key = "stride" + std::to_string(feat_stride_fpn[i]);
+        string key = "stride" + std::to_string(m_feat_stride_fpn[i]);
 
-        tvm::runtime::NDArray tvm_scores_output = get_output(i * output_sym);
-        tvm::runtime::NDArray tvm_bbox_preds_output = get_output(i * output_sym + 1);
-        tvm::runtime::NDArray tvm_kps_preds_output = get_output(i * output_sym + 2);
-        tvm::runtime::NDArray tvm_mask_scores_output = get_output(i * output_sym + 3);
+        tvm::runtime::NDArray tvm_scores_output = get_output(i * m_output_sym);
+        tvm::runtime::NDArray tvm_bbox_preds_output = get_output(i * m_output_sym + 1);
+        tvm::runtime::NDArray tvm_kps_preds_output = get_output(i * m_output_sym + 2);
+        tvm::runtime::NDArray tvm_mask_scores_output = get_output(i * m_output_sym + 3);
 
         auto scores_output_shape = tvm_scores_output->shape;
         auto bbox_preds_output_shape = tvm_bbox_preds_output->shape;
@@ -385,7 +380,7 @@ vector<Anchor> MNetCov2::detect(uint8_t* bgr_img, int img_width, int img_height,
         auto mask_scores_output_shape = tvm_mask_scores_output->shape;
 
         // 存储顺序 h * w * num_anchor
-        vector<anchor_box> anchor_boxes = _anchors[key];
+        vector<anchor_box> anchor_boxes = m_anchors[key];
 
         auto scores_output_size = scores_output_shape[0] * scores_output_shape[1] * scores_output_shape[2] * scores_output_shape[3] * sizeof(float);
         auto bbox_preds_output_size = bbox_preds_output_shape[0] * bbox_preds_output_shape[1] * bbox_preds_output_shape[2] * bbox_preds_output_shape[3] * sizeof(float);
@@ -403,10 +398,10 @@ vector<Anchor> MNetCov2::detect(uint8_t* bgr_img, int img_width, int img_height,
         tvm_mask_scores_output.CopyToBytes(mask_scores, mask_scores_output_size);
 
         int count = scores_output_shape[2] * scores_output_shape[3];
-        size_t num_anchor = _num_anchors[key];
+        size_t num_anchor = m_num_anchors[key];
 
-        auto _scores = scores + (scores_output_shape[0] * scores_output_shape[1] * scores_output_shape[2] * scores_output_shape[3] / num_anchors);
-        auto _mask_scores = mask_scores + (mask_scores_output_shape[0] * mask_scores_output_shape[1] * mask_scores_output_shape[2] * mask_scores_output_shape[3] * num_anchors / 3);
+        auto _scores = scores + (scores_output_shape[0] * scores_output_shape[1] * scores_output_shape[2] * scores_output_shape[3] / num_anchor);
+        auto _mask_scores = mask_scores + (mask_scores_output_shape[0] * mask_scores_output_shape[1] * mask_scores_output_shape[2] * mask_scores_output_shape[3] * num_anchor / 3);
 
         for (size_t num = 0; num < num_anchor; num++) {
             for (size_t j = 0; j < count; j++) {
@@ -423,7 +418,7 @@ vector<Anchor> MNetCov2::detect(uint8_t* bgr_img, int img_width, int img_height,
                 anchor.h = bbox_preds[j + count * (3 + num * 4)];
 
                 anchor_box rect = bbox_pred(anchor_boxes[j + count * num], anchor);
-                clip_boxes(rect, input_width, input_height);
+                clip_boxes(rect, m_input_width, m_input_height);
 
                 anchor.x = rect.x1;
                 anchor.y = rect.y1;
@@ -431,8 +426,8 @@ vector<Anchor> MNetCov2::detect(uint8_t* bgr_img, int img_width, int img_height,
                 anchor.h = rect.y2;
 
                 for(size_t k = 0; k < 5; k++) {
-                    anchor.kps[k * 2] = kps_preds[j + count * (num * 10 + k * 2)] * landmark_std;
-                    anchor.kps[k * 2 + 1] = kps_preds[j + count * (num * 10 + k * 2 + 1)] * landmark_std;
+                    anchor.kps[k * 2] = kps_preds[j + count * (num * 10 + k * 2)] * m_landmark_std;
+                    anchor.kps[k * 2 + 1] = kps_preds[j + count * (num * 10 + k * 2 + 1)] * m_landmark_std;
                 }
 
                 landmark_pred(anchor_boxes[j + count * num], anchor.kps);
@@ -451,7 +446,7 @@ vector<Anchor> MNetCov2::detect(uint8_t* bgr_img, int img_width, int img_height,
     }
 
     vector<Anchor> nms_anchors;
-    nms(anchors, nms_thresh, nms_anchors);
+    nms(anchors, m_nms_thresh, nms_anchors);
 
     float det_scale = float(new_height) / (float)img_height;
     for (auto& anchor: nms_anchors) {

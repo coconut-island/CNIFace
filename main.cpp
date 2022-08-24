@@ -3,7 +3,6 @@
 #include <grpcpp/server_builder.h>
 
 #include "./service/DetectService.h"
-#include "./service/DetectWithMaskService.h"
 #include "./service/RecognitionService.h"
 
 
@@ -47,13 +46,11 @@ int main(int argc, char *argv[]) {
 
     std::string server_address("0.0.0.0:" + port);
     DetectService detectService(model_dir);
-    DetectWithMaskService detectWithMaskService(model_dir);
     RecognitionService recognitionService(model_dir);
 
     grpc::ServerBuilder builder;
     builder.AddListeningPort(server_address, grpc::InsecureServerCredentials());
     builder.RegisterService(&detectService);
-    builder.RegisterService(&detectWithMaskService);
     builder.RegisterService(&recognitionService);
     std::unique_ptr<grpc::Server> server(builder.BuildAndStart());
     std::cout << "Server listening on " << server_address << std::endl;

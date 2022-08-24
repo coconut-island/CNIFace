@@ -1,3 +1,5 @@
+name: CNIFace CI
+
 on:
   push:
     branches: [main]
