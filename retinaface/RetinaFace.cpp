@@ -12,7 +12,7 @@
 #include "../utils/ImageUtil.h"
 
 
-void clip_boxes(Anchor &anchor, int width, int height) {
+void clip_boxes(Anchor &anchor, float width, float height) {
     if (anchor.x < 0) {
         anchor.x = 0;
     }
@@ -239,7 +239,7 @@ vector<Anchor> RetinaFace::detect(uint8_t* bgr_img, int img_width, int img_heigh
         anchor.w = anchor.w / det_scale - anchor.x;
         anchor.h = anchor.h / det_scale - anchor.y;
 
-        clip_boxes(anchor, m_input_width, m_input_height);
+        clip_boxes(anchor, img_width, img_height);
 
         for (auto& kp : anchor.kps) {
             kp = kp / det_scale;
