@@ -38,7 +38,8 @@ constexpr DetectResult::DetectResult(
   , x_(0)
   , y_(0)
   , w_(0)
-  , h_(0){}
+  , h_(0)
+  , maskscore_(0){}
 struct DetectResultDefaultTypeInternal {
   constexpr DetectResultDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -144,6 +145,7 @@ const uint32_t TableStruct_cniface_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
   PROTOBUF_FIELD_OFFSET(::cniface::DetectResult, w_),
   PROTOBUF_FIELD_OFFSET(::cniface::DetectResult, h_),
   PROTOBUF_FIELD_OFFSET(::cniface::DetectResult, kps_),
+  PROTOBUF_FIELD_OFFSET(::cniface::DetectResult, maskscore_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::cniface::DetectResponse, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -192,11 +194,11 @@ const uint32_t TableStruct_cniface_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::cniface::DetectRequest)},
   { 9, -1, -1, sizeof(::cniface::DetectResult)},
-  { 21, -1, -1, sizeof(::cniface::DetectResponse)},
-  { 30, -1, -1, sizeof(::cniface::ExtractFeatureRequest)},
-  { 39, -1, -1, sizeof(::cniface::ExtractFeatureResponse)},
-  { 48, -1, -1, sizeof(::cniface::SimilarityRequest)},
-  { 56, -1, -1, sizeof(::cniface::SimilarityResponse)},
+  { 22, -1, -1, sizeof(::cniface::DetectResponse)},
+  { 31, -1, -1, sizeof(::cniface::ExtractFeatureRequest)},
+  { 40, -1, -1, sizeof(::cniface::ExtractFeatureResponse)},
+  { 49, -1, -1, sizeof(::cniface::SimilarityRequest)},
+  { 57, -1, -1, sizeof(::cniface::SimilarityResponse)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -212,30 +214,31 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 const char descriptor_table_protodef_cniface_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\rcniface.proto\022\007cniface\"F\n\rDetectReques"
   "t\022\r\n\005model\030\001 \001(\t\022\027\n\017faceImageBase64\030\002 \001("
-  "\t\022\r\n\005score\030\003 \001(\002\"V\n\014DetectResult\022\r\n\005scor"
+  "\t\022\r\n\005score\030\003 \001(\002\"i\n\014DetectResult\022\r\n\005scor"
   "e\030\001 \001(\002\022\t\n\001x\030\002 \001(\002\022\t\n\001y\030\003 \001(\002\022\t\n\001w\030\004 \001(\002"
-  "\022\t\n\001h\030\005 \001(\002\022\013\n\003kps\030\006 \003(\002\"W\n\016DetectRespon"
-  "se\022\014\n\004code\030\001 \001(\003\022\017\n\007message\030\002 \001(\t\022&\n\007res"
-  "ults\030\003 \003(\0132\025.cniface.DetectResult\"L\n\025Ext"
-  "ractFeatureRequest\022\r\n\005model\030\001 \001(\t\022\027\n\017fac"
-  "eImageBase64\030\002 \001(\t\022\013\n\003kps\030\003 \003(\002\"H\n\026Extra"
-  "ctFeatureResponse\022\014\n\004code\030\001 \001(\003\022\017\n\007messa"
-  "ge\030\002 \001(\t\022\017\n\007feature\030\003 \003(\002\"7\n\021SimilarityR"
-  "equest\022\020\n\010feature1\030\001 \003(\002\022\020\n\010feature2\030\002 \003"
-  "(\002\"G\n\022SimilarityResponse\022\014\n\004code\030\001 \001(\003\022\017"
-  "\n\007message\030\002 \001(\t\022\022\n\nsimilarity\030\003 \001(\0022L\n\rD"
-  "etectService\022;\n\006detect\022\026.cniface.DetectR"
-  "equest\032\027.cniface.DetectResponse\"\0002\262\001\n\022Re"
-  "cognitionService\022S\n\016extractFeature\022\036.cni"
-  "face.ExtractFeatureRequest\032\037.cniface.Ext"
-  "ractFeatureResponse\"\000\022G\n\nsimilarity\022\032.cn"
-  "iface.SimilarityRequest\032\033.cniface.Simila"
-  "rityResponse\"\000B3\n\027cn.abellee.cniface.grp"
-  "cB\014CNIFaceProtoP\001\242\002\007CNIFACEb\006proto3"
+  "\022\t\n\001h\030\005 \001(\002\022\013\n\003kps\030\006 \003(\002\022\021\n\tmaskScore\030\007 "
+  "\001(\002\"W\n\016DetectResponse\022\014\n\004code\030\001 \001(\003\022\017\n\007m"
+  "essage\030\002 \001(\t\022&\n\007results\030\003 \003(\0132\025.cniface."
+  "DetectResult\"L\n\025ExtractFeatureRequest\022\r\n"
+  "\005model\030\001 \001(\t\022\027\n\017faceImageBase64\030\002 \001(\t\022\013\n"
+  "\003kps\030\003 \003(\002\"H\n\026ExtractFeatureResponse\022\014\n\004"
+  "code\030\001 \001(\003\022\017\n\007message\030\002 \001(\t\022\017\n\007feature\030\003"
+  " \003(\002\"7\n\021SimilarityRequest\022\020\n\010feature1\030\001 "
+  "\003(\002\022\020\n\010feature2\030\002 \003(\002\"G\n\022SimilarityRespo"
+  "nse\022\014\n\004code\030\001 \001(\003\022\017\n\007message\030\002 \001(\t\022\022\n\nsi"
+  "milarity\030\003 \001(\0022L\n\rDetectService\022;\n\006detec"
+  "t\022\026.cniface.DetectRequest\032\027.cniface.Dete"
+  "ctResponse\"\0002\262\001\n\022RecognitionService\022S\n\016e"
+  "xtractFeature\022\036.cniface.ExtractFeatureRe"
+  "quest\032\037.cniface.ExtractFeatureResponse\"\000"
+  "\022G\n\nsimilarity\022\032.cniface.SimilarityReque"
+  "st\032\033.cniface.SimilarityResponse\"\000B3\n\027cn."
+  "abellee.cniface.grpcB\014CNIFaceProtoP\001\242\002\007C"
+  "NIFACEb\006proto3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_cniface_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_cniface_2eproto = {
-  false, false, 875, descriptor_table_protodef_cniface_2eproto, "cniface.proto", 
+  false, false, 894, descriptor_table_protodef_cniface_2eproto, "cniface.proto", 
   &descriptor_table_cniface_2eproto_once, nullptr, 0, 7,
   schemas, file_default_instances, TableStruct_cniface_2eproto::offsets,
   file_level_metadata_cniface_2eproto, file_level_enum_descriptors_cniface_2eproto, file_level_service_descriptors_cniface_2eproto,
@@ -559,16 +562,16 @@ DetectResult::DetectResult(const DetectResult& from)
       kps_(from.kps_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::memcpy(&score_, &from.score_,
-    static_cast<size_t>(reinterpret_cast<char*>(&h_) -
-    reinterpret_cast<char*>(&score_)) + sizeof(h_));
+    static_cast<size_t>(reinterpret_cast<char*>(&maskscore_) -
+    reinterpret_cast<char*>(&score_)) + sizeof(maskscore_));
   // @@protoc_insertion_point(copy_constructor:cniface.DetectResult)
 }
 
 inline void DetectResult::SharedCtor() {
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
     reinterpret_cast<char*>(&score_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&h_) -
-    reinterpret_cast<char*>(&score_)) + sizeof(h_));
+    0, static_cast<size_t>(reinterpret_cast<char*>(&maskscore_) -
+    reinterpret_cast<char*>(&score_)) + sizeof(maskscore_));
 }
 
 DetectResult::~DetectResult() {
@@ -600,8 +603,8 @@ void DetectResult::Clear() {
 
   kps_.Clear();
   ::memset(&score_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&h_) -
-      reinterpret_cast<char*>(&score_)) + sizeof(h_));
+      reinterpret_cast<char*>(&maskscore_) -
+      reinterpret_cast<char*>(&score_)) + sizeof(maskscore_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -658,6 +661,14 @@ const char* DetectResult::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_I
           CHK_(ptr);
         } else if (static_cast<uint8_t>(tag) == 53) {
           _internal_add_kps(::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr));
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float maskScore = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 61)) {
+          maskscore_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
         } else
           goto handle_unusual;
@@ -746,6 +757,16 @@ uint8_t* DetectResult::_InternalSerialize(
     target = stream->WriteFixedPacked(6, _internal_kps(), target);
   }
 
+  // float maskScore = 7;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_maskscore = this->_internal_maskscore();
+  uint32_t raw_maskscore;
+  memcpy(&raw_maskscore, &tmp_maskscore, sizeof(tmp_maskscore));
+  if (raw_maskscore != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(7, this->_internal_maskscore(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -819,6 +840,15 @@ size_t DetectResult::ByteSizeLong() const {
     total_size += 1 + 4;
   }
 
+  // float maskScore = 7;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_maskscore = this->_internal_maskscore();
+  uint32_t raw_maskscore;
+  memcpy(&raw_maskscore, &tmp_maskscore, sizeof(tmp_maskscore));
+  if (raw_maskscore != 0) {
+    total_size += 1 + 4;
+  }
+
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
@@ -877,6 +907,13 @@ void DetectResult::MergeFrom(const DetectResult& from) {
   if (raw_h != 0) {
     _internal_set_h(from._internal_h());
   }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_maskscore = from._internal_maskscore();
+  uint32_t raw_maskscore;
+  memcpy(&raw_maskscore, &tmp_maskscore, sizeof(tmp_maskscore));
+  if (raw_maskscore != 0) {
+    _internal_set_maskscore(from._internal_maskscore());
+  }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -896,8 +933,8 @@ void DetectResult::InternalSwap(DetectResult* other) {
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   kps_.InternalSwap(&other->kps_);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(DetectResult, h_)
-      + sizeof(DetectResult::h_)
+      PROTOBUF_FIELD_OFFSET(DetectResult, maskscore_)
+      + sizeof(DetectResult::maskscore_)
       - PROTOBUF_FIELD_OFFSET(DetectResult, score_)>(
           reinterpret_cast<char*>(&score_),
           reinterpret_cast<char*>(&other->score_));

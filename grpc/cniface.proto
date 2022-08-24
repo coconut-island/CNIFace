@@ -25,6 +25,7 @@ message DetectResult {
     float w = 4;
     float h = 5;
     repeated float kps = 6;
+    float maskScore = 7;
 }
 
 message DetectResponse {

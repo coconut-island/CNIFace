@@ -10,10 +10,10 @@ RUN wget https://github.com/coconut-island/CNIFaceResource/raw/main/models/w600k
 RUN wget https://github.com/coconut-island/CNIFaceResource/raw/main/models/det_500m.onnx -O /CNIFace/models/det_500m.onnx
 RUN wget https://github.com/coconut-island/CNIFaceResource/raw/main/models/w600k_mbf.onnx -O /CNIFace/models/w600k_mbf.onnx
 
-RUN cd /CNIFace && python3 ./convert_model/from_onnx_arcface_r50.py
+RUN cd /CNIFace && python3 ./convert_model/from_onnx_arcface_w600k_r50.py
 RUN cd /CNIFace && python3 ./convert_model/from_onnx_retinaface_det_10g.py
 RUN cd /CNIFace && python3 ./convert_model/from_mxnet_mnet_cov2.py
-RUN cd /CNIFace && python3 ./convert_model/from_onnx_arcface_mbf.py
+RUN cd /CNIFace && python3 ./convert_model/from_onnx_arcface_w600k_mbf.py
 RUN cd /CNIFace && python3 ./convert_model/from_onnx_retinaface_det_500m.py
 
 RUN cp -r /CNIFace/models/relay/ /models/

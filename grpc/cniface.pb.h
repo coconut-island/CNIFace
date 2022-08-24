@@ -395,6 +395,7 @@ class DetectResult final :
     kYFieldNumber = 3,
     kWFieldNumber = 4,
     kHFieldNumber = 5,
+    kMaskScoreFieldNumber = 7,
   };
   // repeated float kps = 6;
   int kps_size() const;
@@ -463,6 +464,15 @@ class DetectResult final :
   void _internal_set_h(float value);
   public:
 
+  // float maskScore = 7;
+  void clear_maskscore();
+  float maskscore() const;
+  void set_maskscore(float value);
+  private:
+  float _internal_maskscore() const;
+  void _internal_set_maskscore(float value);
+  public:
+
   // @@protoc_insertion_point(class_scope:cniface.DetectResult)
  private:
   class _Internal;
@@ -476,6 +486,7 @@ class DetectResult final :
   float y_;
   float w_;
   float h_;
+  float maskscore_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_cniface_2eproto;
 };
@@ -1676,6 +1687,26 @@ inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
 DetectResult::mutable_kps() {
   // @@protoc_insertion_point(field_mutable_list:cniface.DetectResult.kps)
   return _internal_mutable_kps();
+}
+
+// float maskScore = 7;
+inline void DetectResult::clear_maskscore() {
+  maskscore_ = 0;
+}
+inline float DetectResult::_internal_maskscore() const {
+  return maskscore_;
+}
+inline float DetectResult::maskscore() const {
+  // @@protoc_insertion_point(field_get:cniface.DetectResult.maskScore)
+  return _internal_maskscore();
+}
+inline void DetectResult::_internal_set_maskscore(float value) {
+  
+  maskscore_ = value;
+}
+inline void DetectResult::set_maskscore(float value) {
+  _internal_set_maskscore(value);
+  // @@protoc_insertion_point(field_set:cniface.DetectResult.maskScore)
 }
 
 // -------------------------------------------------------------------
