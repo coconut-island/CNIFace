@@ -49,6 +49,7 @@ grpc::Status DetectService::detect(::grpc::ServerContext *context, const ::cnifa
 
     for (const auto& anchor : anchors) {
         auto result = response->add_results();
+        result->set_maskscore(anchor.mask_score);
         result->set_score(anchor.score);
         result->set_x(anchor.x);
         result->set_y(anchor.y);
