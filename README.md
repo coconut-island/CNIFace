@@ -12,6 +12,7 @@ Supported modules:
 - [x] face detect
 - [x] face recognition
 - [x] face && mask detect, mnet_cov2
+- [x] attribute gender and age
 
 # Docker
 
