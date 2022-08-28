@@ -29,7 +29,7 @@ message DetectResult {
 }
 
 message DetectResponse {
-    int64 code = 1;
+    int32 code = 1;
     string message = 2;
     repeated DetectResult results = 3;
 }
@@ -47,7 +47,7 @@ message ExtractFeatureRequest {
 }
 
 message ExtractFeatureResponse {
-    int64 code = 1;
+    int32 code = 1;
     string message = 2;
     repeated float feature = 3;
 }
@@ -58,9 +58,26 @@ message SimilarityRequest {
 }
 
 message SimilarityResponse {
-    int64 code = 1;
+    int32 code = 1;
     string message = 2;
     float similarity = 3;
 }
 
+
+service AttributeService {
+    rpc genderAge (GenderAgeRequest) returns ( GenderAgeResponse) {}
+}
+
+message GenderAgeRequest {
+    string model = 1;
+    string faceImageBase64 = 2;
+    repeated float kps = 3;
+}
+
+message GenderAgeResponse {
+    int32 code = 1;
+    string message = 2;
+    int32 gender = 3;
+    int32 age = 4;
+}
 

@@ -1,25 +1,21 @@
 //
-// Created by Abel Lee on 2022/5/28.
+// Created by Abel Lee on 2022/8/25.
 //
-
+#include "GenderAge.h"
 #include <fstream>
 
 #include <tvm/runtime/registry.h>
 
-#include "ArcFace.h"
 #include "../utils/ImageUtil.h"
 
-ArcFace::ArcFace(const string &model_dir_path) {
+
+GenderAge::GenderAge(const string &model_dir_path) {
     init(model_dir_path, m_default_model_name);
 }
 
-ArcFace::ArcFace(const string &model_dir_path, const string &model_name) {
-    init(model_dir_path, model_name);
-}
+GenderAge::~GenderAge() = default;
 
-ArcFace::~ArcFace() = default;
-
-void ArcFace::init(const std::string &model_dir_path, const std::string &model_name) {
+void GenderAge::init(const string &model_dir_path, const string &model_name) {
     string so_lib_path = model_dir_path + model_name  + ".so";
     Module mod_syslib = Module::LoadFromFile(so_lib_path);
 
@@ -44,12 +40,12 @@ void ArcFace::init(const std::string &model_dir_path, const std::string &model_n
     load_params(params_arr);
 }
 
-void ArcFace::recognize(const uint8_t* rgb_img, float *feature) {
+GenderAgeResult GenderAge::infer(const uint8_t *bgr_img) {
     auto* input_data = (float*)malloc(m_input_size);
     for (int i = 0; i < m_input_width * m_input_height; i++) {
-        input_data[i] = m_scale * ((float)rgb_img[i * 3] - m_mean);
-        input_data[i + m_input_width * m_input_height] = m_scale * ((float)rgb_img[i * 3 + 1] - m_mean);
-        input_data[i + m_input_width * m_input_height * 2] = m_scale * ((float)rgb_img[i * 3 + 2] - m_mean);
+        input_data[i] = m_scale * ((float)bgr_img[i * 3 + 2] - m_mean);
+        input_data[i + m_input_width * m_input_height] = m_scale * ((float)bgr_img[i * 3 + 1] - m_mean);
+        input_data[i + m_input_width * m_input_height * 2] = m_scale * ((float)bgr_img[i * 3] - m_mean);
     }
 
     auto *mod = (Module *)m_handle.get();
@@ -70,16 +66,23 @@ void ArcFace::recognize(const uint8_t* rgb_img, float *feature) {
 
     tvm::runtime::NDArray tvm_output_data = get_output(0);
 
-    memcpy(feature, tvm_output_data->data, m_out_shapes[0] * m_out_shapes[1] * sizeof(float));
+    auto output_data = (float*)malloc(m_out_shapes[0] * m_out_shapes[1] * sizeof(float));
+    memcpy(output_data, tvm_output_data->data, m_out_shapes[0] * m_out_shapes[1] * sizeof(float));
 
+    GenderAgeResult genderAgeResult{};
+    genderAgeResult.gender = output_data[0] > output_data[1] ? 0 : 1;
+    genderAgeResult.age = int(std::round(output_data[1] * 100.0f));
+    free(output_data);
     TVMArrayFree(tvm_input_data);
     free(input_data);
+
+    return genderAgeResult;
 }
 
-void ArcFace::recognize(const uint8_t* rgb_img, int img_width, int img_height, const vector<float>& kps, float *feature) {
+GenderAgeResult GenderAge::infer(const uint8_t *bgr_img, int img_width, int img_height, const vector<float>& kps) {
     assert(kps.size() == 10);
 
-    auto dst = m_coordinates_112_112;
+    auto dst = m_coordinates_96_96;
 
     float src[10];
     for (int i = 0; i < 5; i++) {
@@ -90,14 +93,10 @@ void ArcFace::recognize(const uint8_t* rgb_img, int img_width, int img_height, c
     float M[6];
     ImageUtil::getAffineMatrix(src, dst, M);
     auto* input_img = (uint8_t*)malloc(m_input_elements * sizeof(uint8_t));
-    ImageUtil::warpAffineMatrix(rgb_img, input_img, img_width, img_height, m_input_width, m_input_height, M);
+    ImageUtil::warpAffineMatrix(bgr_img, input_img, img_width, img_height, m_input_width, m_input_height, M);
 
-    recognize(input_img, feature);
+    auto result = infer(input_img);
     free(input_img);
+
+    return result;
 }
-
-size_t ArcFace::getFeatureSize() const {
-    return m_feature_size;
-}
-
-

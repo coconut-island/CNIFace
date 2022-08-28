@@ -31,6 +31,11 @@ file(GLOB ARC_FACE_SRC
         ${CMAKE_CURRENT_SOURCE_DIR}/arcface/*.cpp
         )
 
+file(GLOB GENDER_AGE_SRC
+        ${CMAKE_CURRENT_SOURCE_DIR}/genderage/*.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/genderage/*.cpp
+        )
+
 file(GLOB UTILS_SRC
         ${CMAKE_CURRENT_SOURCE_DIR}/utils/*.h
         ${CMAKE_CURRENT_SOURCE_DIR}/utils/*.cpp
@@ -53,6 +58,7 @@ set(SOURCE_FILES
         ${RETINA_FACE_SRC}
         ${MNET_COV2_FACE_SRC}
         ${ARC_FACE_SRC}
+        ${GENDER_AGE_SRC}
         ${COMMON_SRC}
         ${UTILS_SRC}
         ${GRPC_SRC}
@@ -92,6 +98,9 @@ if(SAMPLES)
 
     add_executable (detect_cov2_camera ./samples/detect_cov2_camera.cpp ${COMMON_SRC} ${UTILS_SRC} ${MNET_COV2_FACE_SRC})
     target_link_libraries(detect_cov2_camera ${OpenCV_LIBS} dl pthread tvm_runtime)
+
+    add_executable (attribute ./samples/attribute.cpp ${COMMON_SRC} ${UTILS_SRC} ${RETINA_FACE_SRC} ${GENDER_AGE_SRC})
+    target_link_libraries(attribute ${OpenCV_LIBS} dl pthread tvm_runtime)
 endif()
 
 

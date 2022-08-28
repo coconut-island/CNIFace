@@ -185,5 +185,66 @@ RecognitionService::Service::~Service() {
 }
 
 
+static const char* AttributeService_method_names[] = {
+  "/cniface.AttributeService/genderAge",
+};
+
+std::unique_ptr< AttributeService::Stub> AttributeService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
+  (void)options;
+  std::unique_ptr< AttributeService::Stub> stub(new AttributeService::Stub(channel, options));
+  return stub;
+}
+
+AttributeService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
+  : channel_(channel), rpcmethod_genderAge_(AttributeService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  {}
+
+::grpc::Status AttributeService::Stub::genderAge(::grpc::ClientContext* context, const ::cniface::GenderAgeRequest& request, ::cniface::GenderAgeResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::cniface::GenderAgeRequest, ::cniface::GenderAgeResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_genderAge_, context, request, response);
+}
+
+void AttributeService::Stub::async::genderAge(::grpc::ClientContext* context, const ::cniface::GenderAgeRequest* request, ::cniface::GenderAgeResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::cniface::GenderAgeRequest, ::cniface::GenderAgeResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_genderAge_, context, request, response, std::move(f));
+}
+
+void AttributeService::Stub::async::genderAge(::grpc::ClientContext* context, const ::cniface::GenderAgeRequest* request, ::cniface::GenderAgeResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_genderAge_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::cniface::GenderAgeResponse>* AttributeService::Stub::PrepareAsyncgenderAgeRaw(::grpc::ClientContext* context, const ::cniface::GenderAgeRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::cniface::GenderAgeResponse, ::cniface::GenderAgeRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_genderAge_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::cniface::GenderAgeResponse>* AttributeService::Stub::AsyncgenderAgeRaw(::grpc::ClientContext* context, const ::cniface::GenderAgeRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncgenderAgeRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+AttributeService::Service::Service() {
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      AttributeService_method_names[0],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< AttributeService::Service, ::cniface::GenderAgeRequest, ::cniface::GenderAgeResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](AttributeService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::cniface::GenderAgeRequest* req,
+             ::cniface::GenderAgeResponse* resp) {
+               return service->genderAge(ctx, req, resp);
+             }, this)));
+}
+
+AttributeService::Service::~Service() {
+}
+
+::grpc::Status AttributeService::Service::genderAge(::grpc::ServerContext* context, const ::cniface::GenderAgeRequest* request, ::cniface::GenderAgeResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+
 }  // namespace cniface
 

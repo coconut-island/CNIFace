@@ -29,7 +29,7 @@ public:
      * @param kps anchor.kps
      * @param feature 512
      */
-    void recognize(uint8_t* rgb_img, int img_width, int img_height, const vector<float>& kps, float* feature);
+    void recognize(const uint8_t* rgb_img, int img_width, int img_height, const vector<float>& kps, float* feature);
 
     size_t getFeatureSize() const;
 

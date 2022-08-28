@@ -53,7 +53,7 @@ constexpr DetectResponse::DetectResponse(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : results_()
   , message_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , code_(int64_t{0}){}
+  , code_(0){}
 struct DetectResponseDefaultTypeInternal {
   constexpr DetectResponseDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -81,7 +81,7 @@ constexpr ExtractFeatureResponse::ExtractFeatureResponse(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : feature_()
   , message_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , code_(int64_t{0}){}
+  , code_(0){}
 struct ExtractFeatureResponseDefaultTypeInternal {
   constexpr ExtractFeatureResponseDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -107,7 +107,7 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT SimilarityRequestDefaultTypeInt
 constexpr SimilarityResponse::SimilarityResponse(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : message_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , code_(int64_t{0})
+  , code_(0)
   , similarity_(0){}
 struct SimilarityResponseDefaultTypeInternal {
   constexpr SimilarityResponseDefaultTypeInternal()
@@ -118,8 +118,37 @@ struct SimilarityResponseDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT SimilarityResponseDefaultTypeInternal _SimilarityResponse_default_instance_;
+constexpr GenderAgeRequest::GenderAgeRequest(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : kps_()
+  , model_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , faceimagebase64_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
+struct GenderAgeRequestDefaultTypeInternal {
+  constexpr GenderAgeRequestDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~GenderAgeRequestDefaultTypeInternal() {}
+  union {
+    GenderAgeRequest _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT GenderAgeRequestDefaultTypeInternal _GenderAgeRequest_default_instance_;
+constexpr GenderAgeResponse::GenderAgeResponse(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : message_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , code_(0)
+  , gender_(0)
+  , age_(0){}
+struct GenderAgeResponseDefaultTypeInternal {
+  constexpr GenderAgeResponseDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~GenderAgeResponseDefaultTypeInternal() {}
+  union {
+    GenderAgeResponse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT GenderAgeResponseDefaultTypeInternal _GenderAgeResponse_default_instance_;
 }  // namespace cniface
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_cniface_2eproto[7];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_cniface_2eproto[9];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_cniface_2eproto = nullptr;
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_cniface_2eproto = nullptr;
 
@@ -190,6 +219,25 @@ const uint32_t TableStruct_cniface_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
   PROTOBUF_FIELD_OFFSET(::cniface::SimilarityResponse, code_),
   PROTOBUF_FIELD_OFFSET(::cniface::SimilarityResponse, message_),
   PROTOBUF_FIELD_OFFSET(::cniface::SimilarityResponse, similarity_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::cniface::GenderAgeRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::cniface::GenderAgeRequest, model_),
+  PROTOBUF_FIELD_OFFSET(::cniface::GenderAgeRequest, faceimagebase64_),
+  PROTOBUF_FIELD_OFFSET(::cniface::GenderAgeRequest, kps_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::cniface::GenderAgeResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::cniface::GenderAgeResponse, code_),
+  PROTOBUF_FIELD_OFFSET(::cniface::GenderAgeResponse, message_),
+  PROTOBUF_FIELD_OFFSET(::cniface::GenderAgeResponse, gender_),
+  PROTOBUF_FIELD_OFFSET(::cniface::GenderAgeResponse, age_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::cniface::DetectRequest)},
@@ -199,6 +247,8 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 40, -1, -1, sizeof(::cniface::ExtractFeatureResponse)},
   { 49, -1, -1, sizeof(::cniface::SimilarityRequest)},
   { 57, -1, -1, sizeof(::cniface::SimilarityResponse)},
+  { 66, -1, -1, sizeof(::cniface::GenderAgeRequest)},
+  { 75, -1, -1, sizeof(::cniface::GenderAgeResponse)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -209,6 +259,8 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cniface::_ExtractFeatureResponse_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cniface::_SimilarityRequest_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cniface::_SimilarityResponse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cniface::_GenderAgeRequest_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::cniface::_GenderAgeResponse_default_instance_),
 };
 
 const char descriptor_table_protodef_cniface_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -217,29 +269,35 @@ const char descriptor_table_protodef_cniface_2eproto[] PROTOBUF_SECTION_VARIABLE
   "\t\022\r\n\005score\030\003 \001(\002\"i\n\014DetectResult\022\r\n\005scor"
   "e\030\001 \001(\002\022\t\n\001x\030\002 \001(\002\022\t\n\001y\030\003 \001(\002\022\t\n\001w\030\004 \001(\002"
   "\022\t\n\001h\030\005 \001(\002\022\013\n\003kps\030\006 \003(\002\022\021\n\tmaskScore\030\007 "
-  "\001(\002\"W\n\016DetectResponse\022\014\n\004code\030\001 \001(\003\022\017\n\007m"
+  "\001(\002\"W\n\016DetectResponse\022\014\n\004code\030\001 \001(\005\022\017\n\007m"
   "essage\030\002 \001(\t\022&\n\007results\030\003 \003(\0132\025.cniface."
   "DetectResult\"L\n\025ExtractFeatureRequest\022\r\n"
   "\005model\030\001 \001(\t\022\027\n\017faceImageBase64\030\002 \001(\t\022\013\n"
   "\003kps\030\003 \003(\002\"H\n\026ExtractFeatureResponse\022\014\n\004"
-  "code\030\001 \001(\003\022\017\n\007message\030\002 \001(\t\022\017\n\007feature\030\003"
+  "code\030\001 \001(\005\022\017\n\007message\030\002 \001(\t\022\017\n\007feature\030\003"
   " \003(\002\"7\n\021SimilarityRequest\022\020\n\010feature1\030\001 "
   "\003(\002\022\020\n\010feature2\030\002 \003(\002\"G\n\022SimilarityRespo"
-  "nse\022\014\n\004code\030\001 \001(\003\022\017\n\007message\030\002 \001(\t\022\022\n\nsi"
-  "milarity\030\003 \001(\0022L\n\rDetectService\022;\n\006detec"
-  "t\022\026.cniface.DetectRequest\032\027.cniface.Dete"
-  "ctResponse\"\0002\262\001\n\022RecognitionService\022S\n\016e"
-  "xtractFeature\022\036.cniface.ExtractFeatureRe"
-  "quest\032\037.cniface.ExtractFeatureResponse\"\000"
-  "\022G\n\nsimilarity\022\032.cniface.SimilarityReque"
-  "st\032\033.cniface.SimilarityResponse\"\000B3\n\027cn."
-  "abellee.cniface.grpcB\014CNIFaceProtoP\001\242\002\007C"
-  "NIFACEb\006proto3"
+  "nse\022\014\n\004code\030\001 \001(\005\022\017\n\007message\030\002 \001(\t\022\022\n\nsi"
+  "milarity\030\003 \001(\002\"G\n\020GenderAgeRequest\022\r\n\005mo"
+  "del\030\001 \001(\t\022\027\n\017faceImageBase64\030\002 \001(\t\022\013\n\003kp"
+  "s\030\003 \003(\002\"O\n\021GenderAgeResponse\022\014\n\004code\030\001 \001"
+  "(\005\022\017\n\007message\030\002 \001(\t\022\016\n\006gender\030\003 \001(\005\022\013\n\003a"
+  "ge\030\004 \001(\0052L\n\rDetectService\022;\n\006detect\022\026.cn"
+  "iface.DetectRequest\032\027.cniface.DetectResp"
+  "onse\"\0002\262\001\n\022RecognitionService\022S\n\016extract"
+  "Feature\022\036.cniface.ExtractFeatureRequest\032"
+  "\037.cniface.ExtractFeatureResponse\"\000\022G\n\nsi"
+  "milarity\022\032.cniface.SimilarityRequest\032\033.c"
+  "niface.SimilarityResponse\"\0002X\n\020Attribute"
+  "Service\022D\n\tgenderAge\022\031.cniface.GenderAge"
+  "Request\032\032.cniface.GenderAgeResponse\"\000B3\n"
+  "\027cn.abellee.cniface.grpcB\014CNIFaceProtoP\001"
+  "\242\002\007CNIFACEb\006proto3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_cniface_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_cniface_2eproto = {
-  false, false, 894, descriptor_table_protodef_cniface_2eproto, "cniface.proto", 
-  &descriptor_table_cniface_2eproto_once, nullptr, 0, 7,
+  false, false, 1138, descriptor_table_protodef_cniface_2eproto, "cniface.proto", 
+  &descriptor_table_cniface_2eproto_once, nullptr, 0, 9,
   schemas, file_default_instances, TableStruct_cniface_2eproto::offsets,
   file_level_metadata_cniface_2eproto, file_level_enum_descriptors_cniface_2eproto, file_level_service_descriptors_cniface_2eproto,
 };
@@ -983,7 +1041,7 @@ message_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlre
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
   message_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-code_ = int64_t{0};
+code_ = 0;
 }
 
 DetectResponse::~DetectResponse() {
@@ -1016,7 +1074,7 @@ void DetectResponse::Clear() {
 
   results_.Clear();
   message_.ClearToEmpty();
-  code_ = int64_t{0};
+  code_ = 0;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -1026,10 +1084,10 @@ const char* DetectResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // int64 code = 1;
+      // int32 code = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
-          code_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          code_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -1086,10 +1144,10 @@ uint8_t* DetectResponse::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // int64 code = 1;
+  // int32 code = 1;
   if (this->_internal_code() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(1, this->_internal_code(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_code(), target);
   }
 
   // string message = 2;
@@ -1140,9 +1198,9 @@ size_t DetectResponse::ByteSizeLong() const {
         this->_internal_message());
   }
 
-  // int64 code = 1;
+  // int32 code = 1;
   if (this->_internal_code() != 0) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_code());
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_code());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
@@ -1530,7 +1588,7 @@ message_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlre
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
   message_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-code_ = int64_t{0};
+code_ = 0;
 }
 
 ExtractFeatureResponse::~ExtractFeatureResponse() {
@@ -1563,7 +1621,7 @@ void ExtractFeatureResponse::Clear() {
 
   feature_.Clear();
   message_.ClearToEmpty();
-  code_ = int64_t{0};
+  code_ = 0;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -1573,10 +1631,10 @@ const char* ExtractFeatureResponse::_InternalParse(const char* ptr, ::PROTOBUF_N
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // int64 code = 1;
+      // int32 code = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
-          code_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          code_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -1631,10 +1689,10 @@ uint8_t* ExtractFeatureResponse::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // int64 code = 1;
+  // int32 code = 1;
   if (this->_internal_code() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(1, this->_internal_code(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_code(), target);
   }
 
   // string message = 2;
@@ -1687,9 +1745,9 @@ size_t ExtractFeatureResponse::ByteSizeLong() const {
         this->_internal_message());
   }
 
-  // int64 code = 1;
+  // int32 code = 1;
   if (this->_internal_code() != 0) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_code());
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_code());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
@@ -2057,10 +2115,10 @@ const char* SimilarityResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMES
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // int64 code = 1;
+      // int32 code = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
-          code_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          code_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -2112,10 +2170,10 @@ uint8_t* SimilarityResponse::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // int64 code = 1;
+  // int32 code = 1;
   if (this->_internal_code() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(1, this->_internal_code(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_code(), target);
   }
 
   // string message = 2;
@@ -2161,9 +2219,9 @@ size_t SimilarityResponse::ByteSizeLong() const {
         this->_internal_message());
   }
 
-  // int64 code = 1;
+  // int32 code = 1;
   if (this->_internal_code() != 0) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_code());
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_code());
   }
 
   // float similarity = 3;
@@ -2248,6 +2306,576 @@ void SimilarityResponse::InternalSwap(SimilarityResponse* other) {
       file_level_metadata_cniface_2eproto[6]);
 }
 
+// ===================================================================
+
+class GenderAgeRequest::_Internal {
+ public:
+};
+
+GenderAgeRequest::GenderAgeRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
+  kps_(arena) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:cniface.GenderAgeRequest)
+}
+GenderAgeRequest::GenderAgeRequest(const GenderAgeRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      kps_(from.kps_) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  model_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    model_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_model().empty()) {
+    model_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_model(), 
+      GetArenaForAllocation());
+  }
+  faceimagebase64_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    faceimagebase64_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_faceimagebase64().empty()) {
+    faceimagebase64_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_faceimagebase64(), 
+      GetArenaForAllocation());
+  }
+  // @@protoc_insertion_point(copy_constructor:cniface.GenderAgeRequest)
+}
+
+inline void GenderAgeRequest::SharedCtor() {
+model_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  model_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+faceimagebase64_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  faceimagebase64_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+GenderAgeRequest::~GenderAgeRequest() {
+  // @@protoc_insertion_point(destructor:cniface.GenderAgeRequest)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void GenderAgeRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  model_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  faceimagebase64_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+
+void GenderAgeRequest::ArenaDtor(void* object) {
+  GenderAgeRequest* _this = reinterpret_cast< GenderAgeRequest* >(object);
+  (void)_this;
+}
+void GenderAgeRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void GenderAgeRequest::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void GenderAgeRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:cniface.GenderAgeRequest)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  kps_.Clear();
+  model_.ClearToEmpty();
+  faceimagebase64_.ClearToEmpty();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* GenderAgeRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string model = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_model();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cniface.GenderAgeRequest.model"));
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string faceImageBase64 = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_faceimagebase64();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cniface.GenderAgeRequest.faceImageBase64"));
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // repeated float kps = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedFloatParser(_internal_mutable_kps(), ptr, ctx);
+          CHK_(ptr);
+        } else if (static_cast<uint8_t>(tag) == 29) {
+          _internal_add_kps(::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr));
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* GenderAgeRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:cniface.GenderAgeRequest)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string model = 1;
+  if (!this->_internal_model().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_model().data(), static_cast<int>(this->_internal_model().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "cniface.GenderAgeRequest.model");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_model(), target);
+  }
+
+  // string faceImageBase64 = 2;
+  if (!this->_internal_faceimagebase64().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_faceimagebase64().data(), static_cast<int>(this->_internal_faceimagebase64().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "cniface.GenderAgeRequest.faceImageBase64");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_faceimagebase64(), target);
+  }
+
+  // repeated float kps = 3;
+  if (this->_internal_kps_size() > 0) {
+    target = stream->WriteFixedPacked(3, _internal_kps(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:cniface.GenderAgeRequest)
+  return target;
+}
+
+size_t GenderAgeRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:cniface.GenderAgeRequest)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated float kps = 3;
+  {
+    unsigned int count = static_cast<unsigned int>(this->_internal_kps_size());
+    size_t data_size = 4UL * count;
+    if (data_size > 0) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+            static_cast<int32_t>(data_size));
+    }
+    total_size += data_size;
+  }
+
+  // string model = 1;
+  if (!this->_internal_model().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_model());
+  }
+
+  // string faceImageBase64 = 2;
+  if (!this->_internal_faceimagebase64().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_faceimagebase64());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData GenderAgeRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    GenderAgeRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GenderAgeRequest::GetClassData() const { return &_class_data_; }
+
+void GenderAgeRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<GenderAgeRequest *>(to)->MergeFrom(
+      static_cast<const GenderAgeRequest &>(from));
+}
+
+
+void GenderAgeRequest::MergeFrom(const GenderAgeRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:cniface.GenderAgeRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  kps_.MergeFrom(from.kps_);
+  if (!from._internal_model().empty()) {
+    _internal_set_model(from._internal_model());
+  }
+  if (!from._internal_faceimagebase64().empty()) {
+    _internal_set_faceimagebase64(from._internal_faceimagebase64());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void GenderAgeRequest::CopyFrom(const GenderAgeRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:cniface.GenderAgeRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool GenderAgeRequest::IsInitialized() const {
+  return true;
+}
+
+void GenderAgeRequest::InternalSwap(GenderAgeRequest* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  kps_.InternalSwap(&other->kps_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &model_, lhs_arena,
+      &other->model_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &faceimagebase64_, lhs_arena,
+      &other->faceimagebase64_, rhs_arena
+  );
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata GenderAgeRequest::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_cniface_2eproto_getter, &descriptor_table_cniface_2eproto_once,
+      file_level_metadata_cniface_2eproto[7]);
+}
+
+// ===================================================================
+
+class GenderAgeResponse::_Internal {
+ public:
+};
+
+GenderAgeResponse::GenderAgeResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:cniface.GenderAgeResponse)
+}
+GenderAgeResponse::GenderAgeResponse(const GenderAgeResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  message_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    message_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_message().empty()) {
+    message_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_message(), 
+      GetArenaForAllocation());
+  }
+  ::memcpy(&code_, &from.code_,
+    static_cast<size_t>(reinterpret_cast<char*>(&age_) -
+    reinterpret_cast<char*>(&code_)) + sizeof(age_));
+  // @@protoc_insertion_point(copy_constructor:cniface.GenderAgeResponse)
+}
+
+inline void GenderAgeResponse::SharedCtor() {
+message_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  message_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&code_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&age_) -
+    reinterpret_cast<char*>(&code_)) + sizeof(age_));
+}
+
+GenderAgeResponse::~GenderAgeResponse() {
+  // @@protoc_insertion_point(destructor:cniface.GenderAgeResponse)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void GenderAgeResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  message_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+
+void GenderAgeResponse::ArenaDtor(void* object) {
+  GenderAgeResponse* _this = reinterpret_cast< GenderAgeResponse* >(object);
+  (void)_this;
+}
+void GenderAgeResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void GenderAgeResponse::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void GenderAgeResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:cniface.GenderAgeResponse)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  message_.ClearToEmpty();
+  ::memset(&code_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&age_) -
+      reinterpret_cast<char*>(&code_)) + sizeof(age_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* GenderAgeResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // int32 code = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          code_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string message = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_message();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "cniface.GenderAgeResponse.message"));
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 gender = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+          gender_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 age = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
+          age_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* GenderAgeResponse::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:cniface.GenderAgeResponse)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 code = 1;
+  if (this->_internal_code() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_code(), target);
+  }
+
+  // string message = 2;
+  if (!this->_internal_message().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_message().data(), static_cast<int>(this->_internal_message().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "cniface.GenderAgeResponse.message");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_message(), target);
+  }
+
+  // int32 gender = 3;
+  if (this->_internal_gender() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_gender(), target);
+  }
+
+  // int32 age = 4;
+  if (this->_internal_age() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(4, this->_internal_age(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:cniface.GenderAgeResponse)
+  return target;
+}
+
+size_t GenderAgeResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:cniface.GenderAgeResponse)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string message = 2;
+  if (!this->_internal_message().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_message());
+  }
+
+  // int32 code = 1;
+  if (this->_internal_code() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_code());
+  }
+
+  // int32 gender = 3;
+  if (this->_internal_gender() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_gender());
+  }
+
+  // int32 age = 4;
+  if (this->_internal_age() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_age());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData GenderAgeResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    GenderAgeResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GenderAgeResponse::GetClassData() const { return &_class_data_; }
+
+void GenderAgeResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<GenderAgeResponse *>(to)->MergeFrom(
+      static_cast<const GenderAgeResponse &>(from));
+}
+
+
+void GenderAgeResponse::MergeFrom(const GenderAgeResponse& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:cniface.GenderAgeResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_message().empty()) {
+    _internal_set_message(from._internal_message());
+  }
+  if (from._internal_code() != 0) {
+    _internal_set_code(from._internal_code());
+  }
+  if (from._internal_gender() != 0) {
+    _internal_set_gender(from._internal_gender());
+  }
+  if (from._internal_age() != 0) {
+    _internal_set_age(from._internal_age());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void GenderAgeResponse::CopyFrom(const GenderAgeResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:cniface.GenderAgeResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool GenderAgeResponse::IsInitialized() const {
+  return true;
+}
+
+void GenderAgeResponse::InternalSwap(GenderAgeResponse* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &message_, lhs_arena,
+      &other->message_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(GenderAgeResponse, age_)
+      + sizeof(GenderAgeResponse::age_)
+      - PROTOBUF_FIELD_OFFSET(GenderAgeResponse, code_)>(
+          reinterpret_cast<char*>(&code_),
+          reinterpret_cast<char*>(&other->code_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata GenderAgeResponse::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_cniface_2eproto_getter, &descriptor_table_cniface_2eproto_once,
+      file_level_metadata_cniface_2eproto[8]);
+}
+
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace cniface
 PROTOBUF_NAMESPACE_OPEN
@@ -2271,6 +2899,12 @@ template<> PROTOBUF_NOINLINE ::cniface::SimilarityRequest* Arena::CreateMaybeMes
 }
 template<> PROTOBUF_NOINLINE ::cniface::SimilarityResponse* Arena::CreateMaybeMessage< ::cniface::SimilarityResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::cniface::SimilarityResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::cniface::GenderAgeRequest* Arena::CreateMaybeMessage< ::cniface::GenderAgeRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::cniface::GenderAgeRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::cniface::GenderAgeResponse* Arena::CreateMaybeMessage< ::cniface::GenderAgeResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::cniface::GenderAgeResponse >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

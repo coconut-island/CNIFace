@@ -4,6 +4,7 @@
 
 #include "./service/DetectService.h"
 #include "./service/RecognitionService.h"
+#include "./service/AttributeService.h"
 
 
 #define DEFAULT_MODEL_DIR_PATH "../models/relay/"
@@ -47,11 +48,13 @@ int main(int argc, char *argv[]) {
     std::string server_address("0.0.0.0:" + port);
     DetectService detectService(model_dir);
     RecognitionService recognitionService(model_dir);
+    AttributeService attributeService(model_dir);
 
     grpc::ServerBuilder builder;
     builder.AddListeningPort(server_address, grpc::InsecureServerCredentials());
     builder.RegisterService(&detectService);
     builder.RegisterService(&recognitionService);
+    builder.RegisterService(&attributeService);
     std::unique_ptr<grpc::Server> server(builder.BuildAndStart());
     std::cout << "Server listening on " << server_address << std::endl;
     server->Wait();

@@ -46,7 +46,7 @@ struct TableStruct_cniface_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[7]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[9]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -69,6 +69,12 @@ extern ExtractFeatureRequestDefaultTypeInternal _ExtractFeatureRequest_default_i
 class ExtractFeatureResponse;
 struct ExtractFeatureResponseDefaultTypeInternal;
 extern ExtractFeatureResponseDefaultTypeInternal _ExtractFeatureResponse_default_instance_;
+class GenderAgeRequest;
+struct GenderAgeRequestDefaultTypeInternal;
+extern GenderAgeRequestDefaultTypeInternal _GenderAgeRequest_default_instance_;
+class GenderAgeResponse;
+struct GenderAgeResponseDefaultTypeInternal;
+extern GenderAgeResponseDefaultTypeInternal _GenderAgeResponse_default_instance_;
 class SimilarityRequest;
 struct SimilarityRequestDefaultTypeInternal;
 extern SimilarityRequestDefaultTypeInternal _SimilarityRequest_default_instance_;
@@ -82,6 +88,8 @@ template<> ::cniface::DetectResponse* Arena::CreateMaybeMessage<::cniface::Detec
 template<> ::cniface::DetectResult* Arena::CreateMaybeMessage<::cniface::DetectResult>(Arena*);
 template<> ::cniface::ExtractFeatureRequest* Arena::CreateMaybeMessage<::cniface::ExtractFeatureRequest>(Arena*);
 template<> ::cniface::ExtractFeatureResponse* Arena::CreateMaybeMessage<::cniface::ExtractFeatureResponse>(Arena*);
+template<> ::cniface::GenderAgeRequest* Arena::CreateMaybeMessage<::cniface::GenderAgeRequest>(Arena*);
+template<> ::cniface::GenderAgeResponse* Arena::CreateMaybeMessage<::cniface::GenderAgeResponse>(Arena*);
 template<> ::cniface::SimilarityRequest* Arena::CreateMaybeMessage<::cniface::SimilarityRequest>(Arena*);
 template<> ::cniface::SimilarityResponse* Arena::CreateMaybeMessage<::cniface::SimilarityResponse>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
@@ -650,13 +658,13 @@ class DetectResponse final :
   std::string* _internal_mutable_message();
   public:
 
-  // int64 code = 1;
+  // int32 code = 1;
   void clear_code();
-  int64_t code() const;
-  void set_code(int64_t value);
+  int32_t code() const;
+  void set_code(int32_t value);
   private:
-  int64_t _internal_code() const;
-  void _internal_set_code(int64_t value);
+  int32_t _internal_code() const;
+  void _internal_set_code(int32_t value);
   public:
 
   // @@protoc_insertion_point(class_scope:cniface.DetectResponse)
@@ -668,7 +676,7 @@ class DetectResponse final :
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::cniface::DetectResult > results_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr message_;
-  int64_t code_;
+  int32_t code_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_cniface_2eproto;
 };
@@ -1027,13 +1035,13 @@ class ExtractFeatureResponse final :
   std::string* _internal_mutable_message();
   public:
 
-  // int64 code = 1;
+  // int32 code = 1;
   void clear_code();
-  int64_t code() const;
-  void set_code(int64_t value);
+  int32_t code() const;
+  void set_code(int32_t value);
   private:
-  int64_t _internal_code() const;
-  void _internal_set_code(int64_t value);
+  int32_t _internal_code() const;
+  void _internal_set_code(int32_t value);
   public:
 
   // @@protoc_insertion_point(class_scope:cniface.ExtractFeatureResponse)
@@ -1045,7 +1053,7 @@ class ExtractFeatureResponse final :
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< float > feature_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr message_;
-  int64_t code_;
+  int32_t code_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_cniface_2eproto;
 };
@@ -1374,13 +1382,13 @@ class SimilarityResponse final :
   std::string* _internal_mutable_message();
   public:
 
-  // int64 code = 1;
+  // int32 code = 1;
   void clear_code();
-  int64_t code() const;
-  void set_code(int64_t value);
+  int32_t code() const;
+  void set_code(int32_t value);
   private:
-  int64_t _internal_code() const;
-  void _internal_set_code(int64_t value);
+  int32_t _internal_code() const;
+  void _internal_set_code(int32_t value);
   public:
 
   // float similarity = 3;
@@ -1400,8 +1408,383 @@ class SimilarityResponse final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr message_;
-  int64_t code_;
+  int32_t code_;
   float similarity_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_cniface_2eproto;
+};
+// -------------------------------------------------------------------
+
+class GenderAgeRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cniface.GenderAgeRequest) */ {
+ public:
+  inline GenderAgeRequest() : GenderAgeRequest(nullptr) {}
+  ~GenderAgeRequest() override;
+  explicit constexpr GenderAgeRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  GenderAgeRequest(const GenderAgeRequest& from);
+  GenderAgeRequest(GenderAgeRequest&& from) noexcept
+    : GenderAgeRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline GenderAgeRequest& operator=(const GenderAgeRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline GenderAgeRequest& operator=(GenderAgeRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const GenderAgeRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const GenderAgeRequest* internal_default_instance() {
+    return reinterpret_cast<const GenderAgeRequest*>(
+               &_GenderAgeRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    7;
+
+  friend void swap(GenderAgeRequest& a, GenderAgeRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(GenderAgeRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(GenderAgeRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  GenderAgeRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<GenderAgeRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const GenderAgeRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const GenderAgeRequest& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(GenderAgeRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cniface.GenderAgeRequest";
+  }
+  protected:
+  explicit GenderAgeRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kKpsFieldNumber = 3,
+    kModelFieldNumber = 1,
+    kFaceImageBase64FieldNumber = 2,
+  };
+  // repeated float kps = 3;
+  int kps_size() const;
+  private:
+  int _internal_kps_size() const;
+  public:
+  void clear_kps();
+  private:
+  float _internal_kps(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+      _internal_kps() const;
+  void _internal_add_kps(float value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+      _internal_mutable_kps();
+  public:
+  float kps(int index) const;
+  void set_kps(int index, float value);
+  void add_kps(float value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+      kps() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+      mutable_kps();
+
+  // string model = 1;
+  void clear_model();
+  const std::string& model() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_model(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_model();
+  PROTOBUF_NODISCARD std::string* release_model();
+  void set_allocated_model(std::string* model);
+  private:
+  const std::string& _internal_model() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_model(const std::string& value);
+  std::string* _internal_mutable_model();
+  public:
+
+  // string faceImageBase64 = 2;
+  void clear_faceimagebase64();
+  const std::string& faceimagebase64() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_faceimagebase64(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_faceimagebase64();
+  PROTOBUF_NODISCARD std::string* release_faceimagebase64();
+  void set_allocated_faceimagebase64(std::string* faceimagebase64);
+  private:
+  const std::string& _internal_faceimagebase64() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_faceimagebase64(const std::string& value);
+  std::string* _internal_mutable_faceimagebase64();
+  public:
+
+  // @@protoc_insertion_point(class_scope:cniface.GenderAgeRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< float > kps_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr model_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr faceimagebase64_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_cniface_2eproto;
+};
+// -------------------------------------------------------------------
+
+class GenderAgeResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cniface.GenderAgeResponse) */ {
+ public:
+  inline GenderAgeResponse() : GenderAgeResponse(nullptr) {}
+  ~GenderAgeResponse() override;
+  explicit constexpr GenderAgeResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  GenderAgeResponse(const GenderAgeResponse& from);
+  GenderAgeResponse(GenderAgeResponse&& from) noexcept
+    : GenderAgeResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline GenderAgeResponse& operator=(const GenderAgeResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline GenderAgeResponse& operator=(GenderAgeResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const GenderAgeResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const GenderAgeResponse* internal_default_instance() {
+    return reinterpret_cast<const GenderAgeResponse*>(
+               &_GenderAgeResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    8;
+
+  friend void swap(GenderAgeResponse& a, GenderAgeResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(GenderAgeResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(GenderAgeResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  GenderAgeResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<GenderAgeResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const GenderAgeResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const GenderAgeResponse& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(GenderAgeResponse* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cniface.GenderAgeResponse";
+  }
+  protected:
+  explicit GenderAgeResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kMessageFieldNumber = 2,
+    kCodeFieldNumber = 1,
+    kGenderFieldNumber = 3,
+    kAgeFieldNumber = 4,
+  };
+  // string message = 2;
+  void clear_message();
+  const std::string& message() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_message(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_message();
+  PROTOBUF_NODISCARD std::string* release_message();
+  void set_allocated_message(std::string* message);
+  private:
+  const std::string& _internal_message() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_message(const std::string& value);
+  std::string* _internal_mutable_message();
+  public:
+
+  // int32 code = 1;
+  void clear_code();
+  int32_t code() const;
+  void set_code(int32_t value);
+  private:
+  int32_t _internal_code() const;
+  void _internal_set_code(int32_t value);
+  public:
+
+  // int32 gender = 3;
+  void clear_gender();
+  int32_t gender() const;
+  void set_gender(int32_t value);
+  private:
+  int32_t _internal_gender() const;
+  void _internal_set_gender(int32_t value);
+  public:
+
+  // int32 age = 4;
+  void clear_age();
+  int32_t age() const;
+  void set_age(int32_t value);
+  private:
+  int32_t _internal_age() const;
+  void _internal_set_age(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:cniface.GenderAgeResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr message_;
+  int32_t code_;
+  int32_t gender_;
+  int32_t age_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_cniface_2eproto;
 };
@@ -1713,22 +2096,22 @@ inline void DetectResult::set_maskscore(float value) {
 
 // DetectResponse
 
-// int64 code = 1;
+// int32 code = 1;
 inline void DetectResponse::clear_code() {
-  code_ = int64_t{0};
+  code_ = 0;
 }
-inline int64_t DetectResponse::_internal_code() const {
+inline int32_t DetectResponse::_internal_code() const {
   return code_;
 }
-inline int64_t DetectResponse::code() const {
+inline int32_t DetectResponse::code() const {
   // @@protoc_insertion_point(field_get:cniface.DetectResponse.code)
   return _internal_code();
 }
-inline void DetectResponse::_internal_set_code(int64_t value) {
+inline void DetectResponse::_internal_set_code(int32_t value) {
   
   code_ = value;
 }
-inline void DetectResponse::set_code(int64_t value) {
+inline void DetectResponse::set_code(int32_t value) {
   _internal_set_code(value);
   // @@protoc_insertion_point(field_set:cniface.DetectResponse.code)
 }
@@ -1981,22 +2364,22 @@ ExtractFeatureRequest::mutable_kps() {
 
 // ExtractFeatureResponse
 
-// int64 code = 1;
+// int32 code = 1;
 inline void ExtractFeatureResponse::clear_code() {
-  code_ = int64_t{0};
+  code_ = 0;
 }
-inline int64_t ExtractFeatureResponse::_internal_code() const {
+inline int32_t ExtractFeatureResponse::_internal_code() const {
   return code_;
 }
-inline int64_t ExtractFeatureResponse::code() const {
+inline int32_t ExtractFeatureResponse::code() const {
   // @@protoc_insertion_point(field_get:cniface.ExtractFeatureResponse.code)
   return _internal_code();
 }
-inline void ExtractFeatureResponse::_internal_set_code(int64_t value) {
+inline void ExtractFeatureResponse::_internal_set_code(int32_t value) {
   
   code_ = value;
 }
-inline void ExtractFeatureResponse::set_code(int64_t value) {
+inline void ExtractFeatureResponse::set_code(int32_t value) {
   _internal_set_code(value);
   // @@protoc_insertion_point(field_set:cniface.ExtractFeatureResponse.code)
 }
@@ -2201,22 +2584,22 @@ SimilarityRequest::mutable_feature2() {
 
 // SimilarityResponse
 
-// int64 code = 1;
+// int32 code = 1;
 inline void SimilarityResponse::clear_code() {
-  code_ = int64_t{0};
+  code_ = 0;
 }
-inline int64_t SimilarityResponse::_internal_code() const {
+inline int32_t SimilarityResponse::_internal_code() const {
   return code_;
 }
-inline int64_t SimilarityResponse::code() const {
+inline int32_t SimilarityResponse::code() const {
   // @@protoc_insertion_point(field_get:cniface.SimilarityResponse.code)
   return _internal_code();
 }
-inline void SimilarityResponse::_internal_set_code(int64_t value) {
+inline void SimilarityResponse::_internal_set_code(int32_t value) {
   
   code_ = value;
 }
-inline void SimilarityResponse::set_code(int64_t value) {
+inline void SimilarityResponse::set_code(int32_t value) {
   _internal_set_code(value);
   // @@protoc_insertion_point(field_set:cniface.SimilarityResponse.code)
 }
@@ -2292,9 +2675,281 @@ inline void SimilarityResponse::set_similarity(float value) {
   // @@protoc_insertion_point(field_set:cniface.SimilarityResponse.similarity)
 }
 
+// -------------------------------------------------------------------
+
+// GenderAgeRequest
+
+// string model = 1;
+inline void GenderAgeRequest::clear_model() {
+  model_.ClearToEmpty();
+}
+inline const std::string& GenderAgeRequest::model() const {
+  // @@protoc_insertion_point(field_get:cniface.GenderAgeRequest.model)
+  return _internal_model();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void GenderAgeRequest::set_model(ArgT0&& arg0, ArgT... args) {
+ 
+ model_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:cniface.GenderAgeRequest.model)
+}
+inline std::string* GenderAgeRequest::mutable_model() {
+  std::string* _s = _internal_mutable_model();
+  // @@protoc_insertion_point(field_mutable:cniface.GenderAgeRequest.model)
+  return _s;
+}
+inline const std::string& GenderAgeRequest::_internal_model() const {
+  return model_.Get();
+}
+inline void GenderAgeRequest::_internal_set_model(const std::string& value) {
+  
+  model_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* GenderAgeRequest::_internal_mutable_model() {
+  
+  return model_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* GenderAgeRequest::release_model() {
+  // @@protoc_insertion_point(field_release:cniface.GenderAgeRequest.model)
+  return model_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void GenderAgeRequest::set_allocated_model(std::string* model) {
+  if (model != nullptr) {
+    
+  } else {
+    
+  }
+  model_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), model,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (model_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    model_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:cniface.GenderAgeRequest.model)
+}
+
+// string faceImageBase64 = 2;
+inline void GenderAgeRequest::clear_faceimagebase64() {
+  faceimagebase64_.ClearToEmpty();
+}
+inline const std::string& GenderAgeRequest::faceimagebase64() const {
+  // @@protoc_insertion_point(field_get:cniface.GenderAgeRequest.faceImageBase64)
+  return _internal_faceimagebase64();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void GenderAgeRequest::set_faceimagebase64(ArgT0&& arg0, ArgT... args) {
+ 
+ faceimagebase64_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:cniface.GenderAgeRequest.faceImageBase64)
+}
+inline std::string* GenderAgeRequest::mutable_faceimagebase64() {
+  std::string* _s = _internal_mutable_faceimagebase64();
+  // @@protoc_insertion_point(field_mutable:cniface.GenderAgeRequest.faceImageBase64)
+  return _s;
+}
+inline const std::string& GenderAgeRequest::_internal_faceimagebase64() const {
+  return faceimagebase64_.Get();
+}
+inline void GenderAgeRequest::_internal_set_faceimagebase64(const std::string& value) {
+  
+  faceimagebase64_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* GenderAgeRequest::_internal_mutable_faceimagebase64() {
+  
+  return faceimagebase64_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* GenderAgeRequest::release_faceimagebase64() {
+  // @@protoc_insertion_point(field_release:cniface.GenderAgeRequest.faceImageBase64)
+  return faceimagebase64_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void GenderAgeRequest::set_allocated_faceimagebase64(std::string* faceimagebase64) {
+  if (faceimagebase64 != nullptr) {
+    
+  } else {
+    
+  }
+  faceimagebase64_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), faceimagebase64,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (faceimagebase64_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    faceimagebase64_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:cniface.GenderAgeRequest.faceImageBase64)
+}
+
+// repeated float kps = 3;
+inline int GenderAgeRequest::_internal_kps_size() const {
+  return kps_.size();
+}
+inline int GenderAgeRequest::kps_size() const {
+  return _internal_kps_size();
+}
+inline void GenderAgeRequest::clear_kps() {
+  kps_.Clear();
+}
+inline float GenderAgeRequest::_internal_kps(int index) const {
+  return kps_.Get(index);
+}
+inline float GenderAgeRequest::kps(int index) const {
+  // @@protoc_insertion_point(field_get:cniface.GenderAgeRequest.kps)
+  return _internal_kps(index);
+}
+inline void GenderAgeRequest::set_kps(int index, float value) {
+  kps_.Set(index, value);
+  // @@protoc_insertion_point(field_set:cniface.GenderAgeRequest.kps)
+}
+inline void GenderAgeRequest::_internal_add_kps(float value) {
+  kps_.Add(value);
+}
+inline void GenderAgeRequest::add_kps(float value) {
+  _internal_add_kps(value);
+  // @@protoc_insertion_point(field_add:cniface.GenderAgeRequest.kps)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+GenderAgeRequest::_internal_kps() const {
+  return kps_;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+GenderAgeRequest::kps() const {
+  // @@protoc_insertion_point(field_list:cniface.GenderAgeRequest.kps)
+  return _internal_kps();
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+GenderAgeRequest::_internal_mutable_kps() {
+  return &kps_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+GenderAgeRequest::mutable_kps() {
+  // @@protoc_insertion_point(field_mutable_list:cniface.GenderAgeRequest.kps)
+  return _internal_mutable_kps();
+}
+
+// -------------------------------------------------------------------
+
+// GenderAgeResponse
+
+// int32 code = 1;
+inline void GenderAgeResponse::clear_code() {
+  code_ = 0;
+}
+inline int32_t GenderAgeResponse::_internal_code() const {
+  return code_;
+}
+inline int32_t GenderAgeResponse::code() const {
+  // @@protoc_insertion_point(field_get:cniface.GenderAgeResponse.code)
+  return _internal_code();
+}
+inline void GenderAgeResponse::_internal_set_code(int32_t value) {
+  
+  code_ = value;
+}
+inline void GenderAgeResponse::set_code(int32_t value) {
+  _internal_set_code(value);
+  // @@protoc_insertion_point(field_set:cniface.GenderAgeResponse.code)
+}
+
+// string message = 2;
+inline void GenderAgeResponse::clear_message() {
+  message_.ClearToEmpty();
+}
+inline const std::string& GenderAgeResponse::message() const {
+  // @@protoc_insertion_point(field_get:cniface.GenderAgeResponse.message)
+  return _internal_message();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void GenderAgeResponse::set_message(ArgT0&& arg0, ArgT... args) {
+ 
+ message_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:cniface.GenderAgeResponse.message)
+}
+inline std::string* GenderAgeResponse::mutable_message() {
+  std::string* _s = _internal_mutable_message();
+  // @@protoc_insertion_point(field_mutable:cniface.GenderAgeResponse.message)
+  return _s;
+}
+inline const std::string& GenderAgeResponse::_internal_message() const {
+  return message_.Get();
+}
+inline void GenderAgeResponse::_internal_set_message(const std::string& value) {
+  
+  message_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* GenderAgeResponse::_internal_mutable_message() {
+  
+  return message_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* GenderAgeResponse::release_message() {
+  // @@protoc_insertion_point(field_release:cniface.GenderAgeResponse.message)
+  return message_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void GenderAgeResponse::set_allocated_message(std::string* message) {
+  if (message != nullptr) {
+    
+  } else {
+    
+  }
+  message_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), message,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (message_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    message_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:cniface.GenderAgeResponse.message)
+}
+
+// int32 gender = 3;
+inline void GenderAgeResponse::clear_gender() {
+  gender_ = 0;
+}
+inline int32_t GenderAgeResponse::_internal_gender() const {
+  return gender_;
+}
+inline int32_t GenderAgeResponse::gender() const {
+  // @@protoc_insertion_point(field_get:cniface.GenderAgeResponse.gender)
+  return _internal_gender();
+}
+inline void GenderAgeResponse::_internal_set_gender(int32_t value) {
+  
+  gender_ = value;
+}
+inline void GenderAgeResponse::set_gender(int32_t value) {
+  _internal_set_gender(value);
+  // @@protoc_insertion_point(field_set:cniface.GenderAgeResponse.gender)
+}
+
+// int32 age = 4;
+inline void GenderAgeResponse::clear_age() {
+  age_ = 0;
+}
+inline int32_t GenderAgeResponse::_internal_age() const {
+  return age_;
+}
+inline int32_t GenderAgeResponse::age() const {
+  // @@protoc_insertion_point(field_get:cniface.GenderAgeResponse.age)
+  return _internal_age();
+}
+inline void GenderAgeResponse::_internal_set_age(int32_t value) {
+  
+  age_ = value;
+}
+inline void GenderAgeResponse::set_age(int32_t value) {
+  _internal_set_age(value);
+  // @@protoc_insertion_point(field_set:cniface.GenderAgeResponse.age)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
