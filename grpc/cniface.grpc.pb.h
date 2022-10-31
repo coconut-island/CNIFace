@@ -805,6 +805,1155 @@ class AttributeService final {
   typedef WithStreamedUnaryMethod_genderAge<Service > StreamedService;
 };
 
+class RepositoryService final {
+ public:
+  static constexpr char const* service_full_name() {
+    return "cniface.RepositoryService";
+  }
+  class StubInterface {
+   public:
+    virtual ~StubInterface() {}
+    virtual ::grpc::Status createRepository(::grpc::ClientContext* context, const ::cniface::CreateRepositoryRequest& request, ::cniface::CreateRepositoryResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cniface::CreateRepositoryResponse>> AsynccreateRepository(::grpc::ClientContext* context, const ::cniface::CreateRepositoryRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cniface::CreateRepositoryResponse>>(AsynccreateRepositoryRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cniface::CreateRepositoryResponse>> PrepareAsynccreateRepository(::grpc::ClientContext* context, const ::cniface::CreateRepositoryRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cniface::CreateRepositoryResponse>>(PrepareAsynccreateRepositoryRaw(context, request, cq));
+    }
+    virtual ::grpc::Status deleteRepository(::grpc::ClientContext* context, const ::cniface::DeleteRepositoryRequest& request, ::cniface::DeleteRepositoryResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cniface::DeleteRepositoryResponse>> AsyncdeleteRepository(::grpc::ClientContext* context, const ::cniface::DeleteRepositoryRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cniface::DeleteRepositoryResponse>>(AsyncdeleteRepositoryRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cniface::DeleteRepositoryResponse>> PrepareAsyncdeleteRepository(::grpc::ClientContext* context, const ::cniface::DeleteRepositoryRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cniface::DeleteRepositoryResponse>>(PrepareAsyncdeleteRepositoryRaw(context, request, cq));
+    }
+    virtual ::grpc::Status existRepository(::grpc::ClientContext* context, const ::cniface::ExistRepositoryRequest& request, ::cniface::ExistRepositoryResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cniface::ExistRepositoryResponse>> AsyncexistRepository(::grpc::ClientContext* context, const ::cniface::ExistRepositoryRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cniface::ExistRepositoryResponse>>(AsyncexistRepositoryRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cniface::ExistRepositoryResponse>> PrepareAsyncexistRepository(::grpc::ClientContext* context, const ::cniface::ExistRepositoryRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cniface::ExistRepositoryResponse>>(PrepareAsyncexistRepositoryRaw(context, request, cq));
+    }
+    virtual ::grpc::Status listRepository(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::cniface::ListRepositoryResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cniface::ListRepositoryResponse>> AsynclistRepository(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cniface::ListRepositoryResponse>>(AsynclistRepositoryRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cniface::ListRepositoryResponse>> PrepareAsynclistRepository(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cniface::ListRepositoryResponse>>(PrepareAsynclistRepositoryRaw(context, request, cq));
+    }
+    virtual ::grpc::Status addOrUpdateItem(::grpc::ClientContext* context, const ::cniface::AddOrUpdateItemRequest& request, ::cniface::AddOrUpdateItemResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cniface::AddOrUpdateItemResponse>> AsyncaddOrUpdateItem(::grpc::ClientContext* context, const ::cniface::AddOrUpdateItemRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cniface::AddOrUpdateItemResponse>>(AsyncaddOrUpdateItemRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cniface::AddOrUpdateItemResponse>> PrepareAsyncaddOrUpdateItem(::grpc::ClientContext* context, const ::cniface::AddOrUpdateItemRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cniface::AddOrUpdateItemResponse>>(PrepareAsyncaddOrUpdateItemRaw(context, request, cq));
+    }
+    virtual ::grpc::Status deleteItem(::grpc::ClientContext* context, const ::cniface::DeleteItemRequest& request, ::cniface::DeleteItemResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cniface::DeleteItemResponse>> AsyncdeleteItem(::grpc::ClientContext* context, const ::cniface::DeleteItemRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cniface::DeleteItemResponse>>(AsyncdeleteItemRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cniface::DeleteItemResponse>> PrepareAsyncdeleteItem(::grpc::ClientContext* context, const ::cniface::DeleteItemRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cniface::DeleteItemResponse>>(PrepareAsyncdeleteItemRaw(context, request, cq));
+    }
+    virtual ::grpc::Status search(::grpc::ClientContext* context, const ::cniface::SearchRequest& request, ::cniface::SearchResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cniface::SearchResponse>> Asyncsearch(::grpc::ClientContext* context, const ::cniface::SearchRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cniface::SearchResponse>>(AsyncsearchRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cniface::SearchResponse>> PrepareAsyncsearch(::grpc::ClientContext* context, const ::cniface::SearchRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cniface::SearchResponse>>(PrepareAsyncsearchRaw(context, request, cq));
+    }
+    class async_interface {
+     public:
+      virtual ~async_interface() {}
+      virtual void createRepository(::grpc::ClientContext* context, const ::cniface::CreateRepositoryRequest* request, ::cniface::CreateRepositoryResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void createRepository(::grpc::ClientContext* context, const ::cniface::CreateRepositoryRequest* request, ::cniface::CreateRepositoryResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void deleteRepository(::grpc::ClientContext* context, const ::cniface::DeleteRepositoryRequest* request, ::cniface::DeleteRepositoryResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void deleteRepository(::grpc::ClientContext* context, const ::cniface::DeleteRepositoryRequest* request, ::cniface::DeleteRepositoryResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void existRepository(::grpc::ClientContext* context, const ::cniface::ExistRepositoryRequest* request, ::cniface::ExistRepositoryResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void existRepository(::grpc::ClientContext* context, const ::cniface::ExistRepositoryRequest* request, ::cniface::ExistRepositoryResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void listRepository(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::cniface::ListRepositoryResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void listRepository(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::cniface::ListRepositoryResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void addOrUpdateItem(::grpc::ClientContext* context, const ::cniface::AddOrUpdateItemRequest* request, ::cniface::AddOrUpdateItemResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void addOrUpdateItem(::grpc::ClientContext* context, const ::cniface::AddOrUpdateItemRequest* request, ::cniface::AddOrUpdateItemResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void deleteItem(::grpc::ClientContext* context, const ::cniface::DeleteItemRequest* request, ::cniface::DeleteItemResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void deleteItem(::grpc::ClientContext* context, const ::cniface::DeleteItemRequest* request, ::cniface::DeleteItemResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void search(::grpc::ClientContext* context, const ::cniface::SearchRequest* request, ::cniface::SearchResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void search(::grpc::ClientContext* context, const ::cniface::SearchRequest* request, ::cniface::SearchResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+    };
+    typedef class async_interface experimental_async_interface;
+    virtual class async_interface* async() { return nullptr; }
+    class async_interface* experimental_async() { return async(); }
+   private:
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::cniface::CreateRepositoryResponse>* AsynccreateRepositoryRaw(::grpc::ClientContext* context, const ::cniface::CreateRepositoryRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::cniface::CreateRepositoryResponse>* PrepareAsynccreateRepositoryRaw(::grpc::ClientContext* context, const ::cniface::CreateRepositoryRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::cniface::DeleteRepositoryResponse>* AsyncdeleteRepositoryRaw(::grpc::ClientContext* context, const ::cniface::DeleteRepositoryRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::cniface::DeleteRepositoryResponse>* PrepareAsyncdeleteRepositoryRaw(::grpc::ClientContext* context, const ::cniface::DeleteRepositoryRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::cniface::ExistRepositoryResponse>* AsyncexistRepositoryRaw(::grpc::ClientContext* context, const ::cniface::ExistRepositoryRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::cniface::ExistRepositoryResponse>* PrepareAsyncexistRepositoryRaw(::grpc::ClientContext* context, const ::cniface::ExistRepositoryRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::cniface::ListRepositoryResponse>* AsynclistRepositoryRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::cniface::ListRepositoryResponse>* PrepareAsynclistRepositoryRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::cniface::AddOrUpdateItemResponse>* AsyncaddOrUpdateItemRaw(::grpc::ClientContext* context, const ::cniface::AddOrUpdateItemRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::cniface::AddOrUpdateItemResponse>* PrepareAsyncaddOrUpdateItemRaw(::grpc::ClientContext* context, const ::cniface::AddOrUpdateItemRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::cniface::DeleteItemResponse>* AsyncdeleteItemRaw(::grpc::ClientContext* context, const ::cniface::DeleteItemRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::cniface::DeleteItemResponse>* PrepareAsyncdeleteItemRaw(::grpc::ClientContext* context, const ::cniface::DeleteItemRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::cniface::SearchResponse>* AsyncsearchRaw(::grpc::ClientContext* context, const ::cniface::SearchRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::cniface::SearchResponse>* PrepareAsyncsearchRaw(::grpc::ClientContext* context, const ::cniface::SearchRequest& request, ::grpc::CompletionQueue* cq) = 0;
+  };
+  class Stub final : public StubInterface {
+   public:
+    Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
+    ::grpc::Status createRepository(::grpc::ClientContext* context, const ::cniface::CreateRepositoryRequest& request, ::cniface::CreateRepositoryResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cniface::CreateRepositoryResponse>> AsynccreateRepository(::grpc::ClientContext* context, const ::cniface::CreateRepositoryRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cniface::CreateRepositoryResponse>>(AsynccreateRepositoryRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cniface::CreateRepositoryResponse>> PrepareAsynccreateRepository(::grpc::ClientContext* context, const ::cniface::CreateRepositoryRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cniface::CreateRepositoryResponse>>(PrepareAsynccreateRepositoryRaw(context, request, cq));
+    }
+    ::grpc::Status deleteRepository(::grpc::ClientContext* context, const ::cniface::DeleteRepositoryRequest& request, ::cniface::DeleteRepositoryResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cniface::DeleteRepositoryResponse>> AsyncdeleteRepository(::grpc::ClientContext* context, const ::cniface::DeleteRepositoryRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cniface::DeleteRepositoryResponse>>(AsyncdeleteRepositoryRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cniface::DeleteRepositoryResponse>> PrepareAsyncdeleteRepository(::grpc::ClientContext* context, const ::cniface::DeleteRepositoryRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cniface::DeleteRepositoryResponse>>(PrepareAsyncdeleteRepositoryRaw(context, request, cq));
+    }
+    ::grpc::Status existRepository(::grpc::ClientContext* context, const ::cniface::ExistRepositoryRequest& request, ::cniface::ExistRepositoryResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cniface::ExistRepositoryResponse>> AsyncexistRepository(::grpc::ClientContext* context, const ::cniface::ExistRepositoryRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cniface::ExistRepositoryResponse>>(AsyncexistRepositoryRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cniface::ExistRepositoryResponse>> PrepareAsyncexistRepository(::grpc::ClientContext* context, const ::cniface::ExistRepositoryRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cniface::ExistRepositoryResponse>>(PrepareAsyncexistRepositoryRaw(context, request, cq));
+    }
+    ::grpc::Status listRepository(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::cniface::ListRepositoryResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cniface::ListRepositoryResponse>> AsynclistRepository(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cniface::ListRepositoryResponse>>(AsynclistRepositoryRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cniface::ListRepositoryResponse>> PrepareAsynclistRepository(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cniface::ListRepositoryResponse>>(PrepareAsynclistRepositoryRaw(context, request, cq));
+    }
+    ::grpc::Status addOrUpdateItem(::grpc::ClientContext* context, const ::cniface::AddOrUpdateItemRequest& request, ::cniface::AddOrUpdateItemResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cniface::AddOrUpdateItemResponse>> AsyncaddOrUpdateItem(::grpc::ClientContext* context, const ::cniface::AddOrUpdateItemRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cniface::AddOrUpdateItemResponse>>(AsyncaddOrUpdateItemRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cniface::AddOrUpdateItemResponse>> PrepareAsyncaddOrUpdateItem(::grpc::ClientContext* context, const ::cniface::AddOrUpdateItemRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cniface::AddOrUpdateItemResponse>>(PrepareAsyncaddOrUpdateItemRaw(context, request, cq));
+    }
+    ::grpc::Status deleteItem(::grpc::ClientContext* context, const ::cniface::DeleteItemRequest& request, ::cniface::DeleteItemResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cniface::DeleteItemResponse>> AsyncdeleteItem(::grpc::ClientContext* context, const ::cniface::DeleteItemRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cniface::DeleteItemResponse>>(AsyncdeleteItemRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cniface::DeleteItemResponse>> PrepareAsyncdeleteItem(::grpc::ClientContext* context, const ::cniface::DeleteItemRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cniface::DeleteItemResponse>>(PrepareAsyncdeleteItemRaw(context, request, cq));
+    }
+    ::grpc::Status search(::grpc::ClientContext* context, const ::cniface::SearchRequest& request, ::cniface::SearchResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cniface::SearchResponse>> Asyncsearch(::grpc::ClientContext* context, const ::cniface::SearchRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cniface::SearchResponse>>(AsyncsearchRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cniface::SearchResponse>> PrepareAsyncsearch(::grpc::ClientContext* context, const ::cniface::SearchRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cniface::SearchResponse>>(PrepareAsyncsearchRaw(context, request, cq));
+    }
+    class async final :
+      public StubInterface::async_interface {
+     public:
+      void createRepository(::grpc::ClientContext* context, const ::cniface::CreateRepositoryRequest* request, ::cniface::CreateRepositoryResponse* response, std::function<void(::grpc::Status)>) override;
+      void createRepository(::grpc::ClientContext* context, const ::cniface::CreateRepositoryRequest* request, ::cniface::CreateRepositoryResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void deleteRepository(::grpc::ClientContext* context, const ::cniface::DeleteRepositoryRequest* request, ::cniface::DeleteRepositoryResponse* response, std::function<void(::grpc::Status)>) override;
+      void deleteRepository(::grpc::ClientContext* context, const ::cniface::DeleteRepositoryRequest* request, ::cniface::DeleteRepositoryResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void existRepository(::grpc::ClientContext* context, const ::cniface::ExistRepositoryRequest* request, ::cniface::ExistRepositoryResponse* response, std::function<void(::grpc::Status)>) override;
+      void existRepository(::grpc::ClientContext* context, const ::cniface::ExistRepositoryRequest* request, ::cniface::ExistRepositoryResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void listRepository(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::cniface::ListRepositoryResponse* response, std::function<void(::grpc::Status)>) override;
+      void listRepository(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::cniface::ListRepositoryResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void addOrUpdateItem(::grpc::ClientContext* context, const ::cniface::AddOrUpdateItemRequest* request, ::cniface::AddOrUpdateItemResponse* response, std::function<void(::grpc::Status)>) override;
+      void addOrUpdateItem(::grpc::ClientContext* context, const ::cniface::AddOrUpdateItemRequest* request, ::cniface::AddOrUpdateItemResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void deleteItem(::grpc::ClientContext* context, const ::cniface::DeleteItemRequest* request, ::cniface::DeleteItemResponse* response, std::function<void(::grpc::Status)>) override;
+      void deleteItem(::grpc::ClientContext* context, const ::cniface::DeleteItemRequest* request, ::cniface::DeleteItemResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void search(::grpc::ClientContext* context, const ::cniface::SearchRequest* request, ::cniface::SearchResponse* response, std::function<void(::grpc::Status)>) override;
+      void search(::grpc::ClientContext* context, const ::cniface::SearchRequest* request, ::cniface::SearchResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+     private:
+      friend class Stub;
+      explicit async(Stub* stub): stub_(stub) { }
+      Stub* stub() { return stub_; }
+      Stub* stub_;
+    };
+    class async* async() override { return &async_stub_; }
+
+   private:
+    std::shared_ptr< ::grpc::ChannelInterface> channel_;
+    class async async_stub_{this};
+    ::grpc::ClientAsyncResponseReader< ::cniface::CreateRepositoryResponse>* AsynccreateRepositoryRaw(::grpc::ClientContext* context, const ::cniface::CreateRepositoryRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::cniface::CreateRepositoryResponse>* PrepareAsynccreateRepositoryRaw(::grpc::ClientContext* context, const ::cniface::CreateRepositoryRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::cniface::DeleteRepositoryResponse>* AsyncdeleteRepositoryRaw(::grpc::ClientContext* context, const ::cniface::DeleteRepositoryRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::cniface::DeleteRepositoryResponse>* PrepareAsyncdeleteRepositoryRaw(::grpc::ClientContext* context, const ::cniface::DeleteRepositoryRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::cniface::ExistRepositoryResponse>* AsyncexistRepositoryRaw(::grpc::ClientContext* context, const ::cniface::ExistRepositoryRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::cniface::ExistRepositoryResponse>* PrepareAsyncexistRepositoryRaw(::grpc::ClientContext* context, const ::cniface::ExistRepositoryRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::cniface::ListRepositoryResponse>* AsynclistRepositoryRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::cniface::ListRepositoryResponse>* PrepareAsynclistRepositoryRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::cniface::AddOrUpdateItemResponse>* AsyncaddOrUpdateItemRaw(::grpc::ClientContext* context, const ::cniface::AddOrUpdateItemRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::cniface::AddOrUpdateItemResponse>* PrepareAsyncaddOrUpdateItemRaw(::grpc::ClientContext* context, const ::cniface::AddOrUpdateItemRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::cniface::DeleteItemResponse>* AsyncdeleteItemRaw(::grpc::ClientContext* context, const ::cniface::DeleteItemRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::cniface::DeleteItemResponse>* PrepareAsyncdeleteItemRaw(::grpc::ClientContext* context, const ::cniface::DeleteItemRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::cniface::SearchResponse>* AsyncsearchRaw(::grpc::ClientContext* context, const ::cniface::SearchRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::cniface::SearchResponse>* PrepareAsyncsearchRaw(::grpc::ClientContext* context, const ::cniface::SearchRequest& request, ::grpc::CompletionQueue* cq) override;
+    const ::grpc::internal::RpcMethod rpcmethod_createRepository_;
+    const ::grpc::internal::RpcMethod rpcmethod_deleteRepository_;
+    const ::grpc::internal::RpcMethod rpcmethod_existRepository_;
+    const ::grpc::internal::RpcMethod rpcmethod_listRepository_;
+    const ::grpc::internal::RpcMethod rpcmethod_addOrUpdateItem_;
+    const ::grpc::internal::RpcMethod rpcmethod_deleteItem_;
+    const ::grpc::internal::RpcMethod rpcmethod_search_;
+  };
+  static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
+
+  class Service : public ::grpc::Service {
+   public:
+    Service();
+    virtual ~Service();
+    virtual ::grpc::Status createRepository(::grpc::ServerContext* context, const ::cniface::CreateRepositoryRequest* request, ::cniface::CreateRepositoryResponse* response);
+    virtual ::grpc::Status deleteRepository(::grpc::ServerContext* context, const ::cniface::DeleteRepositoryRequest* request, ::cniface::DeleteRepositoryResponse* response);
+    virtual ::grpc::Status existRepository(::grpc::ServerContext* context, const ::cniface::ExistRepositoryRequest* request, ::cniface::ExistRepositoryResponse* response);
+    virtual ::grpc::Status listRepository(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::cniface::ListRepositoryResponse* response);
+    virtual ::grpc::Status addOrUpdateItem(::grpc::ServerContext* context, const ::cniface::AddOrUpdateItemRequest* request, ::cniface::AddOrUpdateItemResponse* response);
+    virtual ::grpc::Status deleteItem(::grpc::ServerContext* context, const ::cniface::DeleteItemRequest* request, ::cniface::DeleteItemResponse* response);
+    virtual ::grpc::Status search(::grpc::ServerContext* context, const ::cniface::SearchRequest* request, ::cniface::SearchResponse* response);
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_createRepository : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_createRepository() {
+      ::grpc::Service::MarkMethodAsync(0);
+    }
+    ~WithAsyncMethod_createRepository() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status createRepository(::grpc::ServerContext* /*context*/, const ::cniface::CreateRepositoryRequest* /*request*/, ::cniface::CreateRepositoryResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestcreateRepository(::grpc::ServerContext* context, ::cniface::CreateRepositoryRequest* request, ::grpc::ServerAsyncResponseWriter< ::cniface::CreateRepositoryResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_deleteRepository : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_deleteRepository() {
+      ::grpc::Service::MarkMethodAsync(1);
+    }
+    ~WithAsyncMethod_deleteRepository() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status deleteRepository(::grpc::ServerContext* /*context*/, const ::cniface::DeleteRepositoryRequest* /*request*/, ::cniface::DeleteRepositoryResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestdeleteRepository(::grpc::ServerContext* context, ::cniface::DeleteRepositoryRequest* request, ::grpc::ServerAsyncResponseWriter< ::cniface::DeleteRepositoryResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_existRepository : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_existRepository() {
+      ::grpc::Service::MarkMethodAsync(2);
+    }
+    ~WithAsyncMethod_existRepository() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status existRepository(::grpc::ServerContext* /*context*/, const ::cniface::ExistRepositoryRequest* /*request*/, ::cniface::ExistRepositoryResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestexistRepository(::grpc::ServerContext* context, ::cniface::ExistRepositoryRequest* request, ::grpc::ServerAsyncResponseWriter< ::cniface::ExistRepositoryResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_listRepository : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_listRepository() {
+      ::grpc::Service::MarkMethodAsync(3);
+    }
+    ~WithAsyncMethod_listRepository() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status listRepository(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::cniface::ListRepositoryResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestlistRepository(::grpc::ServerContext* context, ::google::protobuf::Empty* request, ::grpc::ServerAsyncResponseWriter< ::cniface::ListRepositoryResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_addOrUpdateItem : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_addOrUpdateItem() {
+      ::grpc::Service::MarkMethodAsync(4);
+    }
+    ~WithAsyncMethod_addOrUpdateItem() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status addOrUpdateItem(::grpc::ServerContext* /*context*/, const ::cniface::AddOrUpdateItemRequest* /*request*/, ::cniface::AddOrUpdateItemResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestaddOrUpdateItem(::grpc::ServerContext* context, ::cniface::AddOrUpdateItemRequest* request, ::grpc::ServerAsyncResponseWriter< ::cniface::AddOrUpdateItemResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_deleteItem : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_deleteItem() {
+      ::grpc::Service::MarkMethodAsync(5);
+    }
+    ~WithAsyncMethod_deleteItem() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status deleteItem(::grpc::ServerContext* /*context*/, const ::cniface::DeleteItemRequest* /*request*/, ::cniface::DeleteItemResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestdeleteItem(::grpc::ServerContext* context, ::cniface::DeleteItemRequest* request, ::grpc::ServerAsyncResponseWriter< ::cniface::DeleteItemResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_search : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_search() {
+      ::grpc::Service::MarkMethodAsync(6);
+    }
+    ~WithAsyncMethod_search() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status search(::grpc::ServerContext* /*context*/, const ::cniface::SearchRequest* /*request*/, ::cniface::SearchResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void Requestsearch(::grpc::ServerContext* context, ::cniface::SearchRequest* request, ::grpc::ServerAsyncResponseWriter< ::cniface::SearchResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_createRepository<WithAsyncMethod_deleteRepository<WithAsyncMethod_existRepository<WithAsyncMethod_listRepository<WithAsyncMethod_addOrUpdateItem<WithAsyncMethod_deleteItem<WithAsyncMethod_search<Service > > > > > > > AsyncService;
+  template <class BaseClass>
+  class WithCallbackMethod_createRepository : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_createRepository() {
+      ::grpc::Service::MarkMethodCallback(0,
+          new ::grpc::internal::CallbackUnaryHandler< ::cniface::CreateRepositoryRequest, ::cniface::CreateRepositoryResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::cniface::CreateRepositoryRequest* request, ::cniface::CreateRepositoryResponse* response) { return this->createRepository(context, request, response); }));}
+    void SetMessageAllocatorFor_createRepository(
+        ::grpc::MessageAllocator< ::cniface::CreateRepositoryRequest, ::cniface::CreateRepositoryResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(0);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::cniface::CreateRepositoryRequest, ::cniface::CreateRepositoryResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_createRepository() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status createRepository(::grpc::ServerContext* /*context*/, const ::cniface::CreateRepositoryRequest* /*request*/, ::cniface::CreateRepositoryResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* createRepository(
+      ::grpc::CallbackServerContext* /*context*/, const ::cniface::CreateRepositoryRequest* /*request*/, ::cniface::CreateRepositoryResponse* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithCallbackMethod_deleteRepository : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_deleteRepository() {
+      ::grpc::Service::MarkMethodCallback(1,
+          new ::grpc::internal::CallbackUnaryHandler< ::cniface::DeleteRepositoryRequest, ::cniface::DeleteRepositoryResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::cniface::DeleteRepositoryRequest* request, ::cniface::DeleteRepositoryResponse* response) { return this->deleteRepository(context, request, response); }));}
+    void SetMessageAllocatorFor_deleteRepository(
+        ::grpc::MessageAllocator< ::cniface::DeleteRepositoryRequest, ::cniface::DeleteRepositoryResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(1);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::cniface::DeleteRepositoryRequest, ::cniface::DeleteRepositoryResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_deleteRepository() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status deleteRepository(::grpc::ServerContext* /*context*/, const ::cniface::DeleteRepositoryRequest* /*request*/, ::cniface::DeleteRepositoryResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* deleteRepository(
+      ::grpc::CallbackServerContext* /*context*/, const ::cniface::DeleteRepositoryRequest* /*request*/, ::cniface::DeleteRepositoryResponse* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithCallbackMethod_existRepository : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_existRepository() {
+      ::grpc::Service::MarkMethodCallback(2,
+          new ::grpc::internal::CallbackUnaryHandler< ::cniface::ExistRepositoryRequest, ::cniface::ExistRepositoryResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::cniface::ExistRepositoryRequest* request, ::cniface::ExistRepositoryResponse* response) { return this->existRepository(context, request, response); }));}
+    void SetMessageAllocatorFor_existRepository(
+        ::grpc::MessageAllocator< ::cniface::ExistRepositoryRequest, ::cniface::ExistRepositoryResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(2);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::cniface::ExistRepositoryRequest, ::cniface::ExistRepositoryResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_existRepository() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status existRepository(::grpc::ServerContext* /*context*/, const ::cniface::ExistRepositoryRequest* /*request*/, ::cniface::ExistRepositoryResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* existRepository(
+      ::grpc::CallbackServerContext* /*context*/, const ::cniface::ExistRepositoryRequest* /*request*/, ::cniface::ExistRepositoryResponse* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithCallbackMethod_listRepository : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_listRepository() {
+      ::grpc::Service::MarkMethodCallback(3,
+          new ::grpc::internal::CallbackUnaryHandler< ::google::protobuf::Empty, ::cniface::ListRepositoryResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::google::protobuf::Empty* request, ::cniface::ListRepositoryResponse* response) { return this->listRepository(context, request, response); }));}
+    void SetMessageAllocatorFor_listRepository(
+        ::grpc::MessageAllocator< ::google::protobuf::Empty, ::cniface::ListRepositoryResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(3);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::google::protobuf::Empty, ::cniface::ListRepositoryResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_listRepository() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status listRepository(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::cniface::ListRepositoryResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* listRepository(
+      ::grpc::CallbackServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::cniface::ListRepositoryResponse* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithCallbackMethod_addOrUpdateItem : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_addOrUpdateItem() {
+      ::grpc::Service::MarkMethodCallback(4,
+          new ::grpc::internal::CallbackUnaryHandler< ::cniface::AddOrUpdateItemRequest, ::cniface::AddOrUpdateItemResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::cniface::AddOrUpdateItemRequest* request, ::cniface::AddOrUpdateItemResponse* response) { return this->addOrUpdateItem(context, request, response); }));}
+    void SetMessageAllocatorFor_addOrUpdateItem(
+        ::grpc::MessageAllocator< ::cniface::AddOrUpdateItemRequest, ::cniface::AddOrUpdateItemResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(4);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::cniface::AddOrUpdateItemRequest, ::cniface::AddOrUpdateItemResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_addOrUpdateItem() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status addOrUpdateItem(::grpc::ServerContext* /*context*/, const ::cniface::AddOrUpdateItemRequest* /*request*/, ::cniface::AddOrUpdateItemResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* addOrUpdateItem(
+      ::grpc::CallbackServerContext* /*context*/, const ::cniface::AddOrUpdateItemRequest* /*request*/, ::cniface::AddOrUpdateItemResponse* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithCallbackMethod_deleteItem : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_deleteItem() {
+      ::grpc::Service::MarkMethodCallback(5,
+          new ::grpc::internal::CallbackUnaryHandler< ::cniface::DeleteItemRequest, ::cniface::DeleteItemResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::cniface::DeleteItemRequest* request, ::cniface::DeleteItemResponse* response) { return this->deleteItem(context, request, response); }));}
+    void SetMessageAllocatorFor_deleteItem(
+        ::grpc::MessageAllocator< ::cniface::DeleteItemRequest, ::cniface::DeleteItemResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(5);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::cniface::DeleteItemRequest, ::cniface::DeleteItemResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_deleteItem() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status deleteItem(::grpc::ServerContext* /*context*/, const ::cniface::DeleteItemRequest* /*request*/, ::cniface::DeleteItemResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* deleteItem(
+      ::grpc::CallbackServerContext* /*context*/, const ::cniface::DeleteItemRequest* /*request*/, ::cniface::DeleteItemResponse* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithCallbackMethod_search : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_search() {
+      ::grpc::Service::MarkMethodCallback(6,
+          new ::grpc::internal::CallbackUnaryHandler< ::cniface::SearchRequest, ::cniface::SearchResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::cniface::SearchRequest* request, ::cniface::SearchResponse* response) { return this->search(context, request, response); }));}
+    void SetMessageAllocatorFor_search(
+        ::grpc::MessageAllocator< ::cniface::SearchRequest, ::cniface::SearchResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(6);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::cniface::SearchRequest, ::cniface::SearchResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_search() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status search(::grpc::ServerContext* /*context*/, const ::cniface::SearchRequest* /*request*/, ::cniface::SearchResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* search(
+      ::grpc::CallbackServerContext* /*context*/, const ::cniface::SearchRequest* /*request*/, ::cniface::SearchResponse* /*response*/)  { return nullptr; }
+  };
+  typedef WithCallbackMethod_createRepository<WithCallbackMethod_deleteRepository<WithCallbackMethod_existRepository<WithCallbackMethod_listRepository<WithCallbackMethod_addOrUpdateItem<WithCallbackMethod_deleteItem<WithCallbackMethod_search<Service > > > > > > > CallbackService;
+  typedef CallbackService ExperimentalCallbackService;
+  template <class BaseClass>
+  class WithGenericMethod_createRepository : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_createRepository() {
+      ::grpc::Service::MarkMethodGeneric(0);
+    }
+    ~WithGenericMethod_createRepository() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status createRepository(::grpc::ServerContext* /*context*/, const ::cniface::CreateRepositoryRequest* /*request*/, ::cniface::CreateRepositoryResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_deleteRepository : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_deleteRepository() {
+      ::grpc::Service::MarkMethodGeneric(1);
+    }
+    ~WithGenericMethod_deleteRepository() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status deleteRepository(::grpc::ServerContext* /*context*/, const ::cniface::DeleteRepositoryRequest* /*request*/, ::cniface::DeleteRepositoryResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_existRepository : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_existRepository() {
+      ::grpc::Service::MarkMethodGeneric(2);
+    }
+    ~WithGenericMethod_existRepository() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status existRepository(::grpc::ServerContext* /*context*/, const ::cniface::ExistRepositoryRequest* /*request*/, ::cniface::ExistRepositoryResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_listRepository : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_listRepository() {
+      ::grpc::Service::MarkMethodGeneric(3);
+    }
+    ~WithGenericMethod_listRepository() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status listRepository(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::cniface::ListRepositoryResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_addOrUpdateItem : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_addOrUpdateItem() {
+      ::grpc::Service::MarkMethodGeneric(4);
+    }
+    ~WithGenericMethod_addOrUpdateItem() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status addOrUpdateItem(::grpc::ServerContext* /*context*/, const ::cniface::AddOrUpdateItemRequest* /*request*/, ::cniface::AddOrUpdateItemResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_deleteItem : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_deleteItem() {
+      ::grpc::Service::MarkMethodGeneric(5);
+    }
+    ~WithGenericMethod_deleteItem() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status deleteItem(::grpc::ServerContext* /*context*/, const ::cniface::DeleteItemRequest* /*request*/, ::cniface::DeleteItemResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_search : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_search() {
+      ::grpc::Service::MarkMethodGeneric(6);
+    }
+    ~WithGenericMethod_search() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status search(::grpc::ServerContext* /*context*/, const ::cniface::SearchRequest* /*request*/, ::cniface::SearchResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_createRepository : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_createRepository() {
+      ::grpc::Service::MarkMethodRaw(0);
+    }
+    ~WithRawMethod_createRepository() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status createRepository(::grpc::ServerContext* /*context*/, const ::cniface::CreateRepositoryRequest* /*request*/, ::cniface::CreateRepositoryResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestcreateRepository(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_deleteRepository : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_deleteRepository() {
+      ::grpc::Service::MarkMethodRaw(1);
+    }
+    ~WithRawMethod_deleteRepository() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status deleteRepository(::grpc::ServerContext* /*context*/, const ::cniface::DeleteRepositoryRequest* /*request*/, ::cniface::DeleteRepositoryResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestdeleteRepository(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_existRepository : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_existRepository() {
+      ::grpc::Service::MarkMethodRaw(2);
+    }
+    ~WithRawMethod_existRepository() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status existRepository(::grpc::ServerContext* /*context*/, const ::cniface::ExistRepositoryRequest* /*request*/, ::cniface::ExistRepositoryResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestexistRepository(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_listRepository : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_listRepository() {
+      ::grpc::Service::MarkMethodRaw(3);
+    }
+    ~WithRawMethod_listRepository() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status listRepository(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::cniface::ListRepositoryResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestlistRepository(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_addOrUpdateItem : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_addOrUpdateItem() {
+      ::grpc::Service::MarkMethodRaw(4);
+    }
+    ~WithRawMethod_addOrUpdateItem() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status addOrUpdateItem(::grpc::ServerContext* /*context*/, const ::cniface::AddOrUpdateItemRequest* /*request*/, ::cniface::AddOrUpdateItemResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestaddOrUpdateItem(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_deleteItem : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_deleteItem() {
+      ::grpc::Service::MarkMethodRaw(5);
+    }
+    ~WithRawMethod_deleteItem() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status deleteItem(::grpc::ServerContext* /*context*/, const ::cniface::DeleteItemRequest* /*request*/, ::cniface::DeleteItemResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestdeleteItem(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_search : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_search() {
+      ::grpc::Service::MarkMethodRaw(6);
+    }
+    ~WithRawMethod_search() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status search(::grpc::ServerContext* /*context*/, const ::cniface::SearchRequest* /*request*/, ::cniface::SearchResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void Requestsearch(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_createRepository : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_createRepository() {
+      ::grpc::Service::MarkMethodRawCallback(0,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->createRepository(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_createRepository() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status createRepository(::grpc::ServerContext* /*context*/, const ::cniface::CreateRepositoryRequest* /*request*/, ::cniface::CreateRepositoryResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* createRepository(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_deleteRepository : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_deleteRepository() {
+      ::grpc::Service::MarkMethodRawCallback(1,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->deleteRepository(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_deleteRepository() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status deleteRepository(::grpc::ServerContext* /*context*/, const ::cniface::DeleteRepositoryRequest* /*request*/, ::cniface::DeleteRepositoryResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* deleteRepository(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_existRepository : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_existRepository() {
+      ::grpc::Service::MarkMethodRawCallback(2,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->existRepository(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_existRepository() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status existRepository(::grpc::ServerContext* /*context*/, const ::cniface::ExistRepositoryRequest* /*request*/, ::cniface::ExistRepositoryResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* existRepository(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_listRepository : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_listRepository() {
+      ::grpc::Service::MarkMethodRawCallback(3,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->listRepository(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_listRepository() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status listRepository(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::cniface::ListRepositoryResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* listRepository(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_addOrUpdateItem : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_addOrUpdateItem() {
+      ::grpc::Service::MarkMethodRawCallback(4,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->addOrUpdateItem(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_addOrUpdateItem() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status addOrUpdateItem(::grpc::ServerContext* /*context*/, const ::cniface::AddOrUpdateItemRequest* /*request*/, ::cniface::AddOrUpdateItemResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* addOrUpdateItem(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_deleteItem : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_deleteItem() {
+      ::grpc::Service::MarkMethodRawCallback(5,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->deleteItem(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_deleteItem() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status deleteItem(::grpc::ServerContext* /*context*/, const ::cniface::DeleteItemRequest* /*request*/, ::cniface::DeleteItemResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* deleteItem(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_search : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_search() {
+      ::grpc::Service::MarkMethodRawCallback(6,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->search(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_search() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status search(::grpc::ServerContext* /*context*/, const ::cniface::SearchRequest* /*request*/, ::cniface::SearchResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* search(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_createRepository : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_createRepository() {
+      ::grpc::Service::MarkMethodStreamed(0,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::cniface::CreateRepositoryRequest, ::cniface::CreateRepositoryResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::cniface::CreateRepositoryRequest, ::cniface::CreateRepositoryResponse>* streamer) {
+                       return this->StreamedcreateRepository(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_createRepository() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status createRepository(::grpc::ServerContext* /*context*/, const ::cniface::CreateRepositoryRequest* /*request*/, ::cniface::CreateRepositoryResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedcreateRepository(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::cniface::CreateRepositoryRequest,::cniface::CreateRepositoryResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_deleteRepository : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_deleteRepository() {
+      ::grpc::Service::MarkMethodStreamed(1,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::cniface::DeleteRepositoryRequest, ::cniface::DeleteRepositoryResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::cniface::DeleteRepositoryRequest, ::cniface::DeleteRepositoryResponse>* streamer) {
+                       return this->StreameddeleteRepository(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_deleteRepository() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status deleteRepository(::grpc::ServerContext* /*context*/, const ::cniface::DeleteRepositoryRequest* /*request*/, ::cniface::DeleteRepositoryResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreameddeleteRepository(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::cniface::DeleteRepositoryRequest,::cniface::DeleteRepositoryResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_existRepository : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_existRepository() {
+      ::grpc::Service::MarkMethodStreamed(2,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::cniface::ExistRepositoryRequest, ::cniface::ExistRepositoryResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::cniface::ExistRepositoryRequest, ::cniface::ExistRepositoryResponse>* streamer) {
+                       return this->StreamedexistRepository(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_existRepository() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status existRepository(::grpc::ServerContext* /*context*/, const ::cniface::ExistRepositoryRequest* /*request*/, ::cniface::ExistRepositoryResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedexistRepository(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::cniface::ExistRepositoryRequest,::cniface::ExistRepositoryResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_listRepository : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_listRepository() {
+      ::grpc::Service::MarkMethodStreamed(3,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::google::protobuf::Empty, ::cniface::ListRepositoryResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::google::protobuf::Empty, ::cniface::ListRepositoryResponse>* streamer) {
+                       return this->StreamedlistRepository(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_listRepository() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status listRepository(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::cniface::ListRepositoryResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedlistRepository(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::google::protobuf::Empty,::cniface::ListRepositoryResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_addOrUpdateItem : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_addOrUpdateItem() {
+      ::grpc::Service::MarkMethodStreamed(4,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::cniface::AddOrUpdateItemRequest, ::cniface::AddOrUpdateItemResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::cniface::AddOrUpdateItemRequest, ::cniface::AddOrUpdateItemResponse>* streamer) {
+                       return this->StreamedaddOrUpdateItem(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_addOrUpdateItem() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status addOrUpdateItem(::grpc::ServerContext* /*context*/, const ::cniface::AddOrUpdateItemRequest* /*request*/, ::cniface::AddOrUpdateItemResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedaddOrUpdateItem(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::cniface::AddOrUpdateItemRequest,::cniface::AddOrUpdateItemResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_deleteItem : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_deleteItem() {
+      ::grpc::Service::MarkMethodStreamed(5,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::cniface::DeleteItemRequest, ::cniface::DeleteItemResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::cniface::DeleteItemRequest, ::cniface::DeleteItemResponse>* streamer) {
+                       return this->StreameddeleteItem(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_deleteItem() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status deleteItem(::grpc::ServerContext* /*context*/, const ::cniface::DeleteItemRequest* /*request*/, ::cniface::DeleteItemResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreameddeleteItem(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::cniface::DeleteItemRequest,::cniface::DeleteItemResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_search : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_search() {
+      ::grpc::Service::MarkMethodStreamed(6,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::cniface::SearchRequest, ::cniface::SearchResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::cniface::SearchRequest, ::cniface::SearchResponse>* streamer) {
+                       return this->Streamedsearch(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_search() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status search(::grpc::ServerContext* /*context*/, const ::cniface::SearchRequest* /*request*/, ::cniface::SearchResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status Streamedsearch(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::cniface::SearchRequest,::cniface::SearchResponse>* server_unary_streamer) = 0;
+  };
+  typedef WithStreamedUnaryMethod_createRepository<WithStreamedUnaryMethod_deleteRepository<WithStreamedUnaryMethod_existRepository<WithStreamedUnaryMethod_listRepository<WithStreamedUnaryMethod_addOrUpdateItem<WithStreamedUnaryMethod_deleteItem<WithStreamedUnaryMethod_search<Service > > > > > > > StreamedUnaryService;
+  typedef Service SplitStreamedService;
+  typedef WithStreamedUnaryMethod_createRepository<WithStreamedUnaryMethod_deleteRepository<WithStreamedUnaryMethod_existRepository<WithStreamedUnaryMethod_listRepository<WithStreamedUnaryMethod_addOrUpdateItem<WithStreamedUnaryMethod_deleteItem<WithStreamedUnaryMethod_search<Service > > > > > > > StreamedService;
+};
+
 }  // namespace cniface
 
 

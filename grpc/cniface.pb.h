@@ -31,6 +31,7 @@
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
 #include <google/protobuf/unknown_field_set.h>
+#include <google/protobuf/empty.pb.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 #define PROTOBUF_INTERNAL_EXPORT_cniface_2eproto
@@ -46,7 +47,7 @@ struct TableStruct_cniface_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[9]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[23]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -54,6 +55,30 @@ struct TableStruct_cniface_2eproto {
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_cniface_2eproto;
 namespace cniface {
+class AddOrUpdateItemRequest;
+struct AddOrUpdateItemRequestDefaultTypeInternal;
+extern AddOrUpdateItemRequestDefaultTypeInternal _AddOrUpdateItemRequest_default_instance_;
+class AddOrUpdateItemResponse;
+struct AddOrUpdateItemResponseDefaultTypeInternal;
+extern AddOrUpdateItemResponseDefaultTypeInternal _AddOrUpdateItemResponse_default_instance_;
+class CreateRepositoryRequest;
+struct CreateRepositoryRequestDefaultTypeInternal;
+extern CreateRepositoryRequestDefaultTypeInternal _CreateRepositoryRequest_default_instance_;
+class CreateRepositoryResponse;
+struct CreateRepositoryResponseDefaultTypeInternal;
+extern CreateRepositoryResponseDefaultTypeInternal _CreateRepositoryResponse_default_instance_;
+class DeleteItemRequest;
+struct DeleteItemRequestDefaultTypeInternal;
+extern DeleteItemRequestDefaultTypeInternal _DeleteItemRequest_default_instance_;
+class DeleteItemResponse;
+struct DeleteItemResponseDefaultTypeInternal;
+extern DeleteItemResponseDefaultTypeInternal _DeleteItemResponse_default_instance_;
+class DeleteRepositoryRequest;
+struct DeleteRepositoryRequestDefaultTypeInternal;
+extern DeleteRepositoryRequestDefaultTypeInternal _DeleteRepositoryRequest_default_instance_;
+class DeleteRepositoryResponse;
+struct DeleteRepositoryResponseDefaultTypeInternal;
+extern DeleteRepositoryResponseDefaultTypeInternal _DeleteRepositoryResponse_default_instance_;
 class DetectRequest;
 struct DetectRequestDefaultTypeInternal;
 extern DetectRequestDefaultTypeInternal _DetectRequest_default_instance_;
@@ -63,6 +88,12 @@ extern DetectResponseDefaultTypeInternal _DetectResponse_default_instance_;
 class DetectResult;
 struct DetectResultDefaultTypeInternal;
 extern DetectResultDefaultTypeInternal _DetectResult_default_instance_;
+class ExistRepositoryRequest;
+struct ExistRepositoryRequestDefaultTypeInternal;
+extern ExistRepositoryRequestDefaultTypeInternal _ExistRepositoryRequest_default_instance_;
+class ExistRepositoryResponse;
+struct ExistRepositoryResponseDefaultTypeInternal;
+extern ExistRepositoryResponseDefaultTypeInternal _ExistRepositoryResponse_default_instance_;
 class ExtractFeatureRequest;
 struct ExtractFeatureRequestDefaultTypeInternal;
 extern ExtractFeatureRequestDefaultTypeInternal _ExtractFeatureRequest_default_instance_;
@@ -75,6 +106,18 @@ extern GenderAgeRequestDefaultTypeInternal _GenderAgeRequest_default_instance_;
 class GenderAgeResponse;
 struct GenderAgeResponseDefaultTypeInternal;
 extern GenderAgeResponseDefaultTypeInternal _GenderAgeResponse_default_instance_;
+class ListRepositoryResponse;
+struct ListRepositoryResponseDefaultTypeInternal;
+extern ListRepositoryResponseDefaultTypeInternal _ListRepositoryResponse_default_instance_;
+class SearchRequest;
+struct SearchRequestDefaultTypeInternal;
+extern SearchRequestDefaultTypeInternal _SearchRequest_default_instance_;
+class SearchResponse;
+struct SearchResponseDefaultTypeInternal;
+extern SearchResponseDefaultTypeInternal _SearchResponse_default_instance_;
+class SearchResponseItem;
+struct SearchResponseItemDefaultTypeInternal;
+extern SearchResponseItemDefaultTypeInternal _SearchResponseItem_default_instance_;
 class SimilarityRequest;
 struct SimilarityRequestDefaultTypeInternal;
 extern SimilarityRequestDefaultTypeInternal _SimilarityRequest_default_instance_;
@@ -83,13 +126,27 @@ struct SimilarityResponseDefaultTypeInternal;
 extern SimilarityResponseDefaultTypeInternal _SimilarityResponse_default_instance_;
 }  // namespace cniface
 PROTOBUF_NAMESPACE_OPEN
+template<> ::cniface::AddOrUpdateItemRequest* Arena::CreateMaybeMessage<::cniface::AddOrUpdateItemRequest>(Arena*);
+template<> ::cniface::AddOrUpdateItemResponse* Arena::CreateMaybeMessage<::cniface::AddOrUpdateItemResponse>(Arena*);
+template<> ::cniface::CreateRepositoryRequest* Arena::CreateMaybeMessage<::cniface::CreateRepositoryRequest>(Arena*);
+template<> ::cniface::CreateRepositoryResponse* Arena::CreateMaybeMessage<::cniface::CreateRepositoryResponse>(Arena*);
+template<> ::cniface::DeleteItemRequest* Arena::CreateMaybeMessage<::cniface::DeleteItemRequest>(Arena*);
+template<> ::cniface::DeleteItemResponse* Arena::CreateMaybeMessage<::cniface::DeleteItemResponse>(Arena*);
+template<> ::cniface::DeleteRepositoryRequest* Arena::CreateMaybeMessage<::cniface::DeleteRepositoryRequest>(Arena*);
+template<> ::cniface::DeleteRepositoryResponse* Arena::CreateMaybeMessage<::cniface::DeleteRepositoryResponse>(Arena*);
 template<> ::cniface::DetectRequest* Arena::CreateMaybeMessage<::cniface::DetectRequest>(Arena*);
 template<> ::cniface::DetectResponse* Arena::CreateMaybeMessage<::cniface::DetectResponse>(Arena*);
 template<> ::cniface::DetectResult* Arena::CreateMaybeMessage<::cniface::DetectResult>(Arena*);
+template<> ::cniface::ExistRepositoryRequest* Arena::CreateMaybeMessage<::cniface::ExistRepositoryRequest>(Arena*);
+template<> ::cniface::ExistRepositoryResponse* Arena::CreateMaybeMessage<::cniface::ExistRepositoryResponse>(Arena*);
 template<> ::cniface::ExtractFeatureRequest* Arena::CreateMaybeMessage<::cniface::ExtractFeatureRequest>(Arena*);
 template<> ::cniface::ExtractFeatureResponse* Arena::CreateMaybeMessage<::cniface::ExtractFeatureResponse>(Arena*);
 template<> ::cniface::GenderAgeRequest* Arena::CreateMaybeMessage<::cniface::GenderAgeRequest>(Arena*);
 template<> ::cniface::GenderAgeResponse* Arena::CreateMaybeMessage<::cniface::GenderAgeResponse>(Arena*);
+template<> ::cniface::ListRepositoryResponse* Arena::CreateMaybeMessage<::cniface::ListRepositoryResponse>(Arena*);
+template<> ::cniface::SearchRequest* Arena::CreateMaybeMessage<::cniface::SearchRequest>(Arena*);
+template<> ::cniface::SearchResponse* Arena::CreateMaybeMessage<::cniface::SearchResponse>(Arena*);
+template<> ::cniface::SearchResponseItem* Arena::CreateMaybeMessage<::cniface::SearchResponseItem>(Arena*);
 template<> ::cniface::SimilarityRequest* Arena::CreateMaybeMessage<::cniface::SimilarityRequest>(Arena*);
 template<> ::cniface::SimilarityResponse* Arena::CreateMaybeMessage<::cniface::SimilarityResponse>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
@@ -222,6 +279,7 @@ class DetectRequest final :
     kModelFieldNumber = 1,
     kFaceImageBase64FieldNumber = 2,
     kScoreFieldNumber = 3,
+    kIsReturnRecognitionSubImageFieldNumber = 4,
   };
   // string model = 1;
   void clear_model();
@@ -260,6 +318,15 @@ class DetectRequest final :
   void _internal_set_score(float value);
   public:
 
+  // bool isReturnRecognitionSubImage = 4;
+  void clear_isreturnrecognitionsubimage();
+  bool isreturnrecognitionsubimage() const;
+  void set_isreturnrecognitionsubimage(bool value);
+  private:
+  bool _internal_isreturnrecognitionsubimage() const;
+  void _internal_set_isreturnrecognitionsubimage(bool value);
+  public:
+
   // @@protoc_insertion_point(class_scope:cniface.DetectRequest)
  private:
   class _Internal;
@@ -270,6 +337,7 @@ class DetectRequest final :
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr model_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr faceimagebase64_;
   float score_;
+  bool isreturnrecognitionsubimage_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_cniface_2eproto;
 };
@@ -398,6 +466,7 @@ class DetectResult final :
 
   enum : int {
     kKpsFieldNumber = 6,
+    kSubImageBase64FieldNumber = 8,
     kScoreFieldNumber = 1,
     kXFieldNumber = 2,
     kYFieldNumber = 3,
@@ -426,6 +495,20 @@ class DetectResult final :
       kps() const;
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
       mutable_kps();
+
+  // string subImageBase64 = 8;
+  void clear_subimagebase64();
+  const std::string& subimagebase64() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_subimagebase64(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_subimagebase64();
+  PROTOBUF_NODISCARD std::string* release_subimagebase64();
+  void set_allocated_subimagebase64(std::string* subimagebase64);
+  private:
+  const std::string& _internal_subimagebase64() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_subimagebase64(const std::string& value);
+  std::string* _internal_mutable_subimagebase64();
+  public:
 
   // float score = 1;
   void clear_score();
@@ -489,6 +572,7 @@ class DetectResult final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< float > kps_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr subimagebase64_;
   float score_;
   float x_;
   float y_;
@@ -807,6 +891,7 @@ class ExtractFeatureRequest final :
     kKpsFieldNumber = 3,
     kModelFieldNumber = 1,
     kFaceImageBase64FieldNumber = 2,
+    kIsDoNormalizeL2FieldNumber = 4,
   };
   // repeated float kps = 3;
   int kps_size() const;
@@ -858,6 +943,15 @@ class ExtractFeatureRequest final :
   std::string* _internal_mutable_faceimagebase64();
   public:
 
+  // bool isDoNormalizeL2 = 4;
+  void clear_isdonormalizel2();
+  bool isdonormalizel2() const;
+  void set_isdonormalizel2(bool value);
+  private:
+  bool _internal_isdonormalizel2() const;
+  void _internal_set_isdonormalizel2(bool value);
+  public:
+
   // @@protoc_insertion_point(class_scope:cniface.ExtractFeatureRequest)
  private:
   class _Internal;
@@ -868,6 +962,7 @@ class ExtractFeatureRequest final :
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< float > kps_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr model_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr faceimagebase64_;
+  bool isdonormalizel2_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_cniface_2eproto;
 };
@@ -1788,6 +1883,2341 @@ class GenderAgeResponse final :
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_cniface_2eproto;
 };
+// -------------------------------------------------------------------
+
+class CreateRepositoryRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cniface.CreateRepositoryRequest) */ {
+ public:
+  inline CreateRepositoryRequest() : CreateRepositoryRequest(nullptr) {}
+  ~CreateRepositoryRequest() override;
+  explicit constexpr CreateRepositoryRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  CreateRepositoryRequest(const CreateRepositoryRequest& from);
+  CreateRepositoryRequest(CreateRepositoryRequest&& from) noexcept
+    : CreateRepositoryRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline CreateRepositoryRequest& operator=(const CreateRepositoryRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline CreateRepositoryRequest& operator=(CreateRepositoryRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const CreateRepositoryRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const CreateRepositoryRequest* internal_default_instance() {
+    return reinterpret_cast<const CreateRepositoryRequest*>(
+               &_CreateRepositoryRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    9;
+
+  friend void swap(CreateRepositoryRequest& a, CreateRepositoryRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(CreateRepositoryRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(CreateRepositoryRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  CreateRepositoryRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<CreateRepositoryRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const CreateRepositoryRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const CreateRepositoryRequest& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(CreateRepositoryRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cniface.CreateRepositoryRequest";
+  }
+  protected:
+  explicit CreateRepositoryRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kRepoNameFieldNumber = 1,
+  };
+  // string repoName = 1;
+  void clear_reponame();
+  const std::string& reponame() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_reponame(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_reponame();
+  PROTOBUF_NODISCARD std::string* release_reponame();
+  void set_allocated_reponame(std::string* reponame);
+  private:
+  const std::string& _internal_reponame() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_reponame(const std::string& value);
+  std::string* _internal_mutable_reponame();
+  public:
+
+  // @@protoc_insertion_point(class_scope:cniface.CreateRepositoryRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr reponame_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_cniface_2eproto;
+};
+// -------------------------------------------------------------------
+
+class CreateRepositoryResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cniface.CreateRepositoryResponse) */ {
+ public:
+  inline CreateRepositoryResponse() : CreateRepositoryResponse(nullptr) {}
+  ~CreateRepositoryResponse() override;
+  explicit constexpr CreateRepositoryResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  CreateRepositoryResponse(const CreateRepositoryResponse& from);
+  CreateRepositoryResponse(CreateRepositoryResponse&& from) noexcept
+    : CreateRepositoryResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline CreateRepositoryResponse& operator=(const CreateRepositoryResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline CreateRepositoryResponse& operator=(CreateRepositoryResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const CreateRepositoryResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const CreateRepositoryResponse* internal_default_instance() {
+    return reinterpret_cast<const CreateRepositoryResponse*>(
+               &_CreateRepositoryResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    10;
+
+  friend void swap(CreateRepositoryResponse& a, CreateRepositoryResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(CreateRepositoryResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(CreateRepositoryResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  CreateRepositoryResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<CreateRepositoryResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const CreateRepositoryResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const CreateRepositoryResponse& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(CreateRepositoryResponse* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cniface.CreateRepositoryResponse";
+  }
+  protected:
+  explicit CreateRepositoryResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kMessageFieldNumber = 2,
+    kCodeFieldNumber = 1,
+  };
+  // string message = 2;
+  void clear_message();
+  const std::string& message() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_message(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_message();
+  PROTOBUF_NODISCARD std::string* release_message();
+  void set_allocated_message(std::string* message);
+  private:
+  const std::string& _internal_message() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_message(const std::string& value);
+  std::string* _internal_mutable_message();
+  public:
+
+  // int32 code = 1;
+  void clear_code();
+  int32_t code() const;
+  void set_code(int32_t value);
+  private:
+  int32_t _internal_code() const;
+  void _internal_set_code(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:cniface.CreateRepositoryResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr message_;
+  int32_t code_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_cniface_2eproto;
+};
+// -------------------------------------------------------------------
+
+class DeleteRepositoryRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cniface.DeleteRepositoryRequest) */ {
+ public:
+  inline DeleteRepositoryRequest() : DeleteRepositoryRequest(nullptr) {}
+  ~DeleteRepositoryRequest() override;
+  explicit constexpr DeleteRepositoryRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  DeleteRepositoryRequest(const DeleteRepositoryRequest& from);
+  DeleteRepositoryRequest(DeleteRepositoryRequest&& from) noexcept
+    : DeleteRepositoryRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline DeleteRepositoryRequest& operator=(const DeleteRepositoryRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline DeleteRepositoryRequest& operator=(DeleteRepositoryRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const DeleteRepositoryRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const DeleteRepositoryRequest* internal_default_instance() {
+    return reinterpret_cast<const DeleteRepositoryRequest*>(
+               &_DeleteRepositoryRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    11;
+
+  friend void swap(DeleteRepositoryRequest& a, DeleteRepositoryRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(DeleteRepositoryRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(DeleteRepositoryRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  DeleteRepositoryRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<DeleteRepositoryRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const DeleteRepositoryRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const DeleteRepositoryRequest& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(DeleteRepositoryRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cniface.DeleteRepositoryRequest";
+  }
+  protected:
+  explicit DeleteRepositoryRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kRepoNameFieldNumber = 1,
+  };
+  // string repoName = 1;
+  void clear_reponame();
+  const std::string& reponame() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_reponame(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_reponame();
+  PROTOBUF_NODISCARD std::string* release_reponame();
+  void set_allocated_reponame(std::string* reponame);
+  private:
+  const std::string& _internal_reponame() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_reponame(const std::string& value);
+  std::string* _internal_mutable_reponame();
+  public:
+
+  // @@protoc_insertion_point(class_scope:cniface.DeleteRepositoryRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr reponame_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_cniface_2eproto;
+};
+// -------------------------------------------------------------------
+
+class DeleteRepositoryResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cniface.DeleteRepositoryResponse) */ {
+ public:
+  inline DeleteRepositoryResponse() : DeleteRepositoryResponse(nullptr) {}
+  ~DeleteRepositoryResponse() override;
+  explicit constexpr DeleteRepositoryResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  DeleteRepositoryResponse(const DeleteRepositoryResponse& from);
+  DeleteRepositoryResponse(DeleteRepositoryResponse&& from) noexcept
+    : DeleteRepositoryResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline DeleteRepositoryResponse& operator=(const DeleteRepositoryResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline DeleteRepositoryResponse& operator=(DeleteRepositoryResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const DeleteRepositoryResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const DeleteRepositoryResponse* internal_default_instance() {
+    return reinterpret_cast<const DeleteRepositoryResponse*>(
+               &_DeleteRepositoryResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    12;
+
+  friend void swap(DeleteRepositoryResponse& a, DeleteRepositoryResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(DeleteRepositoryResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(DeleteRepositoryResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  DeleteRepositoryResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<DeleteRepositoryResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const DeleteRepositoryResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const DeleteRepositoryResponse& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(DeleteRepositoryResponse* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cniface.DeleteRepositoryResponse";
+  }
+  protected:
+  explicit DeleteRepositoryResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kMessageFieldNumber = 2,
+    kCodeFieldNumber = 1,
+  };
+  // string message = 2;
+  void clear_message();
+  const std::string& message() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_message(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_message();
+  PROTOBUF_NODISCARD std::string* release_message();
+  void set_allocated_message(std::string* message);
+  private:
+  const std::string& _internal_message() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_message(const std::string& value);
+  std::string* _internal_mutable_message();
+  public:
+
+  // int32 code = 1;
+  void clear_code();
+  int32_t code() const;
+  void set_code(int32_t value);
+  private:
+  int32_t _internal_code() const;
+  void _internal_set_code(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:cniface.DeleteRepositoryResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr message_;
+  int32_t code_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_cniface_2eproto;
+};
+// -------------------------------------------------------------------
+
+class ExistRepositoryRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cniface.ExistRepositoryRequest) */ {
+ public:
+  inline ExistRepositoryRequest() : ExistRepositoryRequest(nullptr) {}
+  ~ExistRepositoryRequest() override;
+  explicit constexpr ExistRepositoryRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  ExistRepositoryRequest(const ExistRepositoryRequest& from);
+  ExistRepositoryRequest(ExistRepositoryRequest&& from) noexcept
+    : ExistRepositoryRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline ExistRepositoryRequest& operator=(const ExistRepositoryRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ExistRepositoryRequest& operator=(ExistRepositoryRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ExistRepositoryRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ExistRepositoryRequest* internal_default_instance() {
+    return reinterpret_cast<const ExistRepositoryRequest*>(
+               &_ExistRepositoryRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    13;
+
+  friend void swap(ExistRepositoryRequest& a, ExistRepositoryRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ExistRepositoryRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ExistRepositoryRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ExistRepositoryRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ExistRepositoryRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const ExistRepositoryRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const ExistRepositoryRequest& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ExistRepositoryRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cniface.ExistRepositoryRequest";
+  }
+  protected:
+  explicit ExistRepositoryRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kRepoNameFieldNumber = 1,
+  };
+  // string repoName = 1;
+  void clear_reponame();
+  const std::string& reponame() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_reponame(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_reponame();
+  PROTOBUF_NODISCARD std::string* release_reponame();
+  void set_allocated_reponame(std::string* reponame);
+  private:
+  const std::string& _internal_reponame() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_reponame(const std::string& value);
+  std::string* _internal_mutable_reponame();
+  public:
+
+  // @@protoc_insertion_point(class_scope:cniface.ExistRepositoryRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr reponame_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_cniface_2eproto;
+};
+// -------------------------------------------------------------------
+
+class ExistRepositoryResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cniface.ExistRepositoryResponse) */ {
+ public:
+  inline ExistRepositoryResponse() : ExistRepositoryResponse(nullptr) {}
+  ~ExistRepositoryResponse() override;
+  explicit constexpr ExistRepositoryResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  ExistRepositoryResponse(const ExistRepositoryResponse& from);
+  ExistRepositoryResponse(ExistRepositoryResponse&& from) noexcept
+    : ExistRepositoryResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline ExistRepositoryResponse& operator=(const ExistRepositoryResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ExistRepositoryResponse& operator=(ExistRepositoryResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ExistRepositoryResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ExistRepositoryResponse* internal_default_instance() {
+    return reinterpret_cast<const ExistRepositoryResponse*>(
+               &_ExistRepositoryResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    14;
+
+  friend void swap(ExistRepositoryResponse& a, ExistRepositoryResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ExistRepositoryResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ExistRepositoryResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ExistRepositoryResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ExistRepositoryResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const ExistRepositoryResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const ExistRepositoryResponse& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ExistRepositoryResponse* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cniface.ExistRepositoryResponse";
+  }
+  protected:
+  explicit ExistRepositoryResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kMessageFieldNumber = 2,
+    kCodeFieldNumber = 1,
+    kExistFieldNumber = 3,
+  };
+  // string message = 2;
+  void clear_message();
+  const std::string& message() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_message(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_message();
+  PROTOBUF_NODISCARD std::string* release_message();
+  void set_allocated_message(std::string* message);
+  private:
+  const std::string& _internal_message() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_message(const std::string& value);
+  std::string* _internal_mutable_message();
+  public:
+
+  // int32 code = 1;
+  void clear_code();
+  int32_t code() const;
+  void set_code(int32_t value);
+  private:
+  int32_t _internal_code() const;
+  void _internal_set_code(int32_t value);
+  public:
+
+  // bool exist = 3;
+  void clear_exist();
+  bool exist() const;
+  void set_exist(bool value);
+  private:
+  bool _internal_exist() const;
+  void _internal_set_exist(bool value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:cniface.ExistRepositoryResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr message_;
+  int32_t code_;
+  bool exist_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_cniface_2eproto;
+};
+// -------------------------------------------------------------------
+
+class ListRepositoryResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cniface.ListRepositoryResponse) */ {
+ public:
+  inline ListRepositoryResponse() : ListRepositoryResponse(nullptr) {}
+  ~ListRepositoryResponse() override;
+  explicit constexpr ListRepositoryResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  ListRepositoryResponse(const ListRepositoryResponse& from);
+  ListRepositoryResponse(ListRepositoryResponse&& from) noexcept
+    : ListRepositoryResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline ListRepositoryResponse& operator=(const ListRepositoryResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ListRepositoryResponse& operator=(ListRepositoryResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ListRepositoryResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ListRepositoryResponse* internal_default_instance() {
+    return reinterpret_cast<const ListRepositoryResponse*>(
+               &_ListRepositoryResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    15;
+
+  friend void swap(ListRepositoryResponse& a, ListRepositoryResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ListRepositoryResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ListRepositoryResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ListRepositoryResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ListRepositoryResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const ListRepositoryResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const ListRepositoryResponse& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ListRepositoryResponse* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cniface.ListRepositoryResponse";
+  }
+  protected:
+  explicit ListRepositoryResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kNamesFieldNumber = 3,
+    kMessageFieldNumber = 2,
+    kCodeFieldNumber = 1,
+  };
+  // repeated string names = 3;
+  int names_size() const;
+  private:
+  int _internal_names_size() const;
+  public:
+  void clear_names();
+  const std::string& names(int index) const;
+  std::string* mutable_names(int index);
+  void set_names(int index, const std::string& value);
+  void set_names(int index, std::string&& value);
+  void set_names(int index, const char* value);
+  void set_names(int index, const char* value, size_t size);
+  std::string* add_names();
+  void add_names(const std::string& value);
+  void add_names(std::string&& value);
+  void add_names(const char* value);
+  void add_names(const char* value, size_t size);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& names() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_names();
+  private:
+  const std::string& _internal_names(int index) const;
+  std::string* _internal_add_names();
+  public:
+
+  // string message = 2;
+  void clear_message();
+  const std::string& message() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_message(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_message();
+  PROTOBUF_NODISCARD std::string* release_message();
+  void set_allocated_message(std::string* message);
+  private:
+  const std::string& _internal_message() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_message(const std::string& value);
+  std::string* _internal_mutable_message();
+  public:
+
+  // int32 code = 1;
+  void clear_code();
+  int32_t code() const;
+  void set_code(int32_t value);
+  private:
+  int32_t _internal_code() const;
+  void _internal_set_code(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:cniface.ListRepositoryResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> names_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr message_;
+  int32_t code_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_cniface_2eproto;
+};
+// -------------------------------------------------------------------
+
+class AddOrUpdateItemRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cniface.AddOrUpdateItemRequest) */ {
+ public:
+  inline AddOrUpdateItemRequest() : AddOrUpdateItemRequest(nullptr) {}
+  ~AddOrUpdateItemRequest() override;
+  explicit constexpr AddOrUpdateItemRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  AddOrUpdateItemRequest(const AddOrUpdateItemRequest& from);
+  AddOrUpdateItemRequest(AddOrUpdateItemRequest&& from) noexcept
+    : AddOrUpdateItemRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline AddOrUpdateItemRequest& operator=(const AddOrUpdateItemRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline AddOrUpdateItemRequest& operator=(AddOrUpdateItemRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const AddOrUpdateItemRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const AddOrUpdateItemRequest* internal_default_instance() {
+    return reinterpret_cast<const AddOrUpdateItemRequest*>(
+               &_AddOrUpdateItemRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    16;
+
+  friend void swap(AddOrUpdateItemRequest& a, AddOrUpdateItemRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(AddOrUpdateItemRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(AddOrUpdateItemRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  AddOrUpdateItemRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<AddOrUpdateItemRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const AddOrUpdateItemRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const AddOrUpdateItemRequest& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(AddOrUpdateItemRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cniface.AddOrUpdateItemRequest";
+  }
+  protected:
+  explicit AddOrUpdateItemRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kFeatureFieldNumber = 3,
+    kRepoNameFieldNumber = 1,
+    kIdFieldNumber = 2,
+  };
+  // repeated float feature = 3;
+  int feature_size() const;
+  private:
+  int _internal_feature_size() const;
+  public:
+  void clear_feature();
+  private:
+  float _internal_feature(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+      _internal_feature() const;
+  void _internal_add_feature(float value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+      _internal_mutable_feature();
+  public:
+  float feature(int index) const;
+  void set_feature(int index, float value);
+  void add_feature(float value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+      feature() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+      mutable_feature();
+
+  // string repoName = 1;
+  void clear_reponame();
+  const std::string& reponame() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_reponame(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_reponame();
+  PROTOBUF_NODISCARD std::string* release_reponame();
+  void set_allocated_reponame(std::string* reponame);
+  private:
+  const std::string& _internal_reponame() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_reponame(const std::string& value);
+  std::string* _internal_mutable_reponame();
+  public:
+
+  // int64 id = 2;
+  void clear_id();
+  int64_t id() const;
+  void set_id(int64_t value);
+  private:
+  int64_t _internal_id() const;
+  void _internal_set_id(int64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:cniface.AddOrUpdateItemRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< float > feature_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr reponame_;
+  int64_t id_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_cniface_2eproto;
+};
+// -------------------------------------------------------------------
+
+class AddOrUpdateItemResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cniface.AddOrUpdateItemResponse) */ {
+ public:
+  inline AddOrUpdateItemResponse() : AddOrUpdateItemResponse(nullptr) {}
+  ~AddOrUpdateItemResponse() override;
+  explicit constexpr AddOrUpdateItemResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  AddOrUpdateItemResponse(const AddOrUpdateItemResponse& from);
+  AddOrUpdateItemResponse(AddOrUpdateItemResponse&& from) noexcept
+    : AddOrUpdateItemResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline AddOrUpdateItemResponse& operator=(const AddOrUpdateItemResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline AddOrUpdateItemResponse& operator=(AddOrUpdateItemResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const AddOrUpdateItemResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const AddOrUpdateItemResponse* internal_default_instance() {
+    return reinterpret_cast<const AddOrUpdateItemResponse*>(
+               &_AddOrUpdateItemResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    17;
+
+  friend void swap(AddOrUpdateItemResponse& a, AddOrUpdateItemResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(AddOrUpdateItemResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(AddOrUpdateItemResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  AddOrUpdateItemResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<AddOrUpdateItemResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const AddOrUpdateItemResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const AddOrUpdateItemResponse& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(AddOrUpdateItemResponse* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cniface.AddOrUpdateItemResponse";
+  }
+  protected:
+  explicit AddOrUpdateItemResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kMessageFieldNumber = 2,
+    kCodeFieldNumber = 1,
+  };
+  // string message = 2;
+  void clear_message();
+  const std::string& message() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_message(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_message();
+  PROTOBUF_NODISCARD std::string* release_message();
+  void set_allocated_message(std::string* message);
+  private:
+  const std::string& _internal_message() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_message(const std::string& value);
+  std::string* _internal_mutable_message();
+  public:
+
+  // int32 code = 1;
+  void clear_code();
+  int32_t code() const;
+  void set_code(int32_t value);
+  private:
+  int32_t _internal_code() const;
+  void _internal_set_code(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:cniface.AddOrUpdateItemResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr message_;
+  int32_t code_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_cniface_2eproto;
+};
+// -------------------------------------------------------------------
+
+class DeleteItemRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cniface.DeleteItemRequest) */ {
+ public:
+  inline DeleteItemRequest() : DeleteItemRequest(nullptr) {}
+  ~DeleteItemRequest() override;
+  explicit constexpr DeleteItemRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  DeleteItemRequest(const DeleteItemRequest& from);
+  DeleteItemRequest(DeleteItemRequest&& from) noexcept
+    : DeleteItemRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline DeleteItemRequest& operator=(const DeleteItemRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline DeleteItemRequest& operator=(DeleteItemRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const DeleteItemRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const DeleteItemRequest* internal_default_instance() {
+    return reinterpret_cast<const DeleteItemRequest*>(
+               &_DeleteItemRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    18;
+
+  friend void swap(DeleteItemRequest& a, DeleteItemRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(DeleteItemRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(DeleteItemRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  DeleteItemRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<DeleteItemRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const DeleteItemRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const DeleteItemRequest& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(DeleteItemRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cniface.DeleteItemRequest";
+  }
+  protected:
+  explicit DeleteItemRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kRepoNameFieldNumber = 1,
+    kIdFieldNumber = 2,
+  };
+  // string repoName = 1;
+  void clear_reponame();
+  const std::string& reponame() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_reponame(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_reponame();
+  PROTOBUF_NODISCARD std::string* release_reponame();
+  void set_allocated_reponame(std::string* reponame);
+  private:
+  const std::string& _internal_reponame() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_reponame(const std::string& value);
+  std::string* _internal_mutable_reponame();
+  public:
+
+  // int64 id = 2;
+  void clear_id();
+  int64_t id() const;
+  void set_id(int64_t value);
+  private:
+  int64_t _internal_id() const;
+  void _internal_set_id(int64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:cniface.DeleteItemRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr reponame_;
+  int64_t id_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_cniface_2eproto;
+};
+// -------------------------------------------------------------------
+
+class DeleteItemResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cniface.DeleteItemResponse) */ {
+ public:
+  inline DeleteItemResponse() : DeleteItemResponse(nullptr) {}
+  ~DeleteItemResponse() override;
+  explicit constexpr DeleteItemResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  DeleteItemResponse(const DeleteItemResponse& from);
+  DeleteItemResponse(DeleteItemResponse&& from) noexcept
+    : DeleteItemResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline DeleteItemResponse& operator=(const DeleteItemResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline DeleteItemResponse& operator=(DeleteItemResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const DeleteItemResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const DeleteItemResponse* internal_default_instance() {
+    return reinterpret_cast<const DeleteItemResponse*>(
+               &_DeleteItemResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    19;
+
+  friend void swap(DeleteItemResponse& a, DeleteItemResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(DeleteItemResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(DeleteItemResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  DeleteItemResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<DeleteItemResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const DeleteItemResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const DeleteItemResponse& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(DeleteItemResponse* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cniface.DeleteItemResponse";
+  }
+  protected:
+  explicit DeleteItemResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kMessageFieldNumber = 2,
+    kCodeFieldNumber = 1,
+  };
+  // string message = 2;
+  void clear_message();
+  const std::string& message() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_message(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_message();
+  PROTOBUF_NODISCARD std::string* release_message();
+  void set_allocated_message(std::string* message);
+  private:
+  const std::string& _internal_message() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_message(const std::string& value);
+  std::string* _internal_mutable_message();
+  public:
+
+  // int32 code = 1;
+  void clear_code();
+  int32_t code() const;
+  void set_code(int32_t value);
+  private:
+  int32_t _internal_code() const;
+  void _internal_set_code(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:cniface.DeleteItemResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr message_;
+  int32_t code_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_cniface_2eproto;
+};
+// -------------------------------------------------------------------
+
+class SearchResponseItem final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cniface.SearchResponseItem) */ {
+ public:
+  inline SearchResponseItem() : SearchResponseItem(nullptr) {}
+  ~SearchResponseItem() override;
+  explicit constexpr SearchResponseItem(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  SearchResponseItem(const SearchResponseItem& from);
+  SearchResponseItem(SearchResponseItem&& from) noexcept
+    : SearchResponseItem() {
+    *this = ::std::move(from);
+  }
+
+  inline SearchResponseItem& operator=(const SearchResponseItem& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SearchResponseItem& operator=(SearchResponseItem&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SearchResponseItem& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SearchResponseItem* internal_default_instance() {
+    return reinterpret_cast<const SearchResponseItem*>(
+               &_SearchResponseItem_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    20;
+
+  friend void swap(SearchResponseItem& a, SearchResponseItem& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(SearchResponseItem* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SearchResponseItem* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SearchResponseItem* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<SearchResponseItem>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const SearchResponseItem& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const SearchResponseItem& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(SearchResponseItem* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cniface.SearchResponseItem";
+  }
+  protected:
+  explicit SearchResponseItem(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kIdFieldNumber = 1,
+    kScoreFieldNumber = 2,
+  };
+  // int64 id = 1;
+  void clear_id();
+  int64_t id() const;
+  void set_id(int64_t value);
+  private:
+  int64_t _internal_id() const;
+  void _internal_set_id(int64_t value);
+  public:
+
+  // float score = 2;
+  void clear_score();
+  float score() const;
+  void set_score(float value);
+  private:
+  float _internal_score() const;
+  void _internal_set_score(float value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:cniface.SearchResponseItem)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  int64_t id_;
+  float score_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_cniface_2eproto;
+};
+// -------------------------------------------------------------------
+
+class SearchRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cniface.SearchRequest) */ {
+ public:
+  inline SearchRequest() : SearchRequest(nullptr) {}
+  ~SearchRequest() override;
+  explicit constexpr SearchRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  SearchRequest(const SearchRequest& from);
+  SearchRequest(SearchRequest&& from) noexcept
+    : SearchRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline SearchRequest& operator=(const SearchRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SearchRequest& operator=(SearchRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SearchRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SearchRequest* internal_default_instance() {
+    return reinterpret_cast<const SearchRequest*>(
+               &_SearchRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    21;
+
+  friend void swap(SearchRequest& a, SearchRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(SearchRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SearchRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SearchRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<SearchRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const SearchRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const SearchRequest& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(SearchRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cniface.SearchRequest";
+  }
+  protected:
+  explicit SearchRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kFeatureFieldNumber = 3,
+    kRepoNameFieldNumber = 1,
+    kTopkFieldNumber = 2,
+  };
+  // repeated float feature = 3;
+  int feature_size() const;
+  private:
+  int _internal_feature_size() const;
+  public:
+  void clear_feature();
+  private:
+  float _internal_feature(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+      _internal_feature() const;
+  void _internal_add_feature(float value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+      _internal_mutable_feature();
+  public:
+  float feature(int index) const;
+  void set_feature(int index, float value);
+  void add_feature(float value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+      feature() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+      mutable_feature();
+
+  // string repoName = 1;
+  void clear_reponame();
+  const std::string& reponame() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_reponame(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_reponame();
+  PROTOBUF_NODISCARD std::string* release_reponame();
+  void set_allocated_reponame(std::string* reponame);
+  private:
+  const std::string& _internal_reponame() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_reponame(const std::string& value);
+  std::string* _internal_mutable_reponame();
+  public:
+
+  // int32 topk = 2;
+  void clear_topk();
+  int32_t topk() const;
+  void set_topk(int32_t value);
+  private:
+  int32_t _internal_topk() const;
+  void _internal_set_topk(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:cniface.SearchRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< float > feature_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr reponame_;
+  int32_t topk_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_cniface_2eproto;
+};
+// -------------------------------------------------------------------
+
+class SearchResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cniface.SearchResponse) */ {
+ public:
+  inline SearchResponse() : SearchResponse(nullptr) {}
+  ~SearchResponse() override;
+  explicit constexpr SearchResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  SearchResponse(const SearchResponse& from);
+  SearchResponse(SearchResponse&& from) noexcept
+    : SearchResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline SearchResponse& operator=(const SearchResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SearchResponse& operator=(SearchResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SearchResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SearchResponse* internal_default_instance() {
+    return reinterpret_cast<const SearchResponse*>(
+               &_SearchResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    22;
+
+  friend void swap(SearchResponse& a, SearchResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(SearchResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SearchResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SearchResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<SearchResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const SearchResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const SearchResponse& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(SearchResponse* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cniface.SearchResponse";
+  }
+  protected:
+  explicit SearchResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kResultsFieldNumber = 3,
+    kMessageFieldNumber = 2,
+    kCodeFieldNumber = 1,
+  };
+  // repeated .cniface.SearchResponseItem results = 3;
+  int results_size() const;
+  private:
+  int _internal_results_size() const;
+  public:
+  void clear_results();
+  ::cniface::SearchResponseItem* mutable_results(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::cniface::SearchResponseItem >*
+      mutable_results();
+  private:
+  const ::cniface::SearchResponseItem& _internal_results(int index) const;
+  ::cniface::SearchResponseItem* _internal_add_results();
+  public:
+  const ::cniface::SearchResponseItem& results(int index) const;
+  ::cniface::SearchResponseItem* add_results();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::cniface::SearchResponseItem >&
+      results() const;
+
+  // string message = 2;
+  void clear_message();
+  const std::string& message() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_message(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_message();
+  PROTOBUF_NODISCARD std::string* release_message();
+  void set_allocated_message(std::string* message);
+  private:
+  const std::string& _internal_message() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_message(const std::string& value);
+  std::string* _internal_mutable_message();
+  public:
+
+  // int32 code = 1;
+  void clear_code();
+  int32_t code() const;
+  void set_code(int32_t value);
+  private:
+  int32_t _internal_code() const;
+  void _internal_set_code(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:cniface.SearchResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::cniface::SearchResponseItem > results_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr message_;
+  int32_t code_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_cniface_2eproto;
+};
 // ===================================================================
 
 
@@ -1919,6 +4349,26 @@ inline void DetectRequest::_internal_set_score(float value) {
 inline void DetectRequest::set_score(float value) {
   _internal_set_score(value);
   // @@protoc_insertion_point(field_set:cniface.DetectRequest.score)
+}
+
+// bool isReturnRecognitionSubImage = 4;
+inline void DetectRequest::clear_isreturnrecognitionsubimage() {
+  isreturnrecognitionsubimage_ = false;
+}
+inline bool DetectRequest::_internal_isreturnrecognitionsubimage() const {
+  return isreturnrecognitionsubimage_;
+}
+inline bool DetectRequest::isreturnrecognitionsubimage() const {
+  // @@protoc_insertion_point(field_get:cniface.DetectRequest.isReturnRecognitionSubImage)
+  return _internal_isreturnrecognitionsubimage();
+}
+inline void DetectRequest::_internal_set_isreturnrecognitionsubimage(bool value) {
+  
+  isreturnrecognitionsubimage_ = value;
+}
+inline void DetectRequest::set_isreturnrecognitionsubimage(bool value) {
+  _internal_set_isreturnrecognitionsubimage(value);
+  // @@protoc_insertion_point(field_set:cniface.DetectRequest.isReturnRecognitionSubImage)
 }
 
 // -------------------------------------------------------------------
@@ -2090,6 +4540,57 @@ inline void DetectResult::_internal_set_maskscore(float value) {
 inline void DetectResult::set_maskscore(float value) {
   _internal_set_maskscore(value);
   // @@protoc_insertion_point(field_set:cniface.DetectResult.maskScore)
+}
+
+// string subImageBase64 = 8;
+inline void DetectResult::clear_subimagebase64() {
+  subimagebase64_.ClearToEmpty();
+}
+inline const std::string& DetectResult::subimagebase64() const {
+  // @@protoc_insertion_point(field_get:cniface.DetectResult.subImageBase64)
+  return _internal_subimagebase64();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void DetectResult::set_subimagebase64(ArgT0&& arg0, ArgT... args) {
+ 
+ subimagebase64_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:cniface.DetectResult.subImageBase64)
+}
+inline std::string* DetectResult::mutable_subimagebase64() {
+  std::string* _s = _internal_mutable_subimagebase64();
+  // @@protoc_insertion_point(field_mutable:cniface.DetectResult.subImageBase64)
+  return _s;
+}
+inline const std::string& DetectResult::_internal_subimagebase64() const {
+  return subimagebase64_.Get();
+}
+inline void DetectResult::_internal_set_subimagebase64(const std::string& value) {
+  
+  subimagebase64_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* DetectResult::_internal_mutable_subimagebase64() {
+  
+  return subimagebase64_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* DetectResult::release_subimagebase64() {
+  // @@protoc_insertion_point(field_release:cniface.DetectResult.subImageBase64)
+  return subimagebase64_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void DetectResult::set_allocated_subimagebase64(std::string* subimagebase64) {
+  if (subimagebase64 != nullptr) {
+    
+  } else {
+    
+  }
+  subimagebase64_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), subimagebase64,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (subimagebase64_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    subimagebase64_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:cniface.DetectResult.subImageBase64)
 }
 
 // -------------------------------------------------------------------
@@ -2358,6 +4859,26 @@ inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
 ExtractFeatureRequest::mutable_kps() {
   // @@protoc_insertion_point(field_mutable_list:cniface.ExtractFeatureRequest.kps)
   return _internal_mutable_kps();
+}
+
+// bool isDoNormalizeL2 = 4;
+inline void ExtractFeatureRequest::clear_isdonormalizel2() {
+  isdonormalizel2_ = false;
+}
+inline bool ExtractFeatureRequest::_internal_isdonormalizel2() const {
+  return isdonormalizel2_;
+}
+inline bool ExtractFeatureRequest::isdonormalizel2() const {
+  // @@protoc_insertion_point(field_get:cniface.ExtractFeatureRequest.isDoNormalizeL2)
+  return _internal_isdonormalizel2();
+}
+inline void ExtractFeatureRequest::_internal_set_isdonormalizel2(bool value) {
+  
+  isdonormalizel2_ = value;
+}
+inline void ExtractFeatureRequest::set_isdonormalizel2(bool value) {
+  _internal_set_isdonormalizel2(value);
+  // @@protoc_insertion_point(field_set:cniface.ExtractFeatureRequest.isDoNormalizeL2)
 }
 
 // -------------------------------------------------------------------
@@ -2943,9 +5464,1225 @@ inline void GenderAgeResponse::set_age(int32_t value) {
   // @@protoc_insertion_point(field_set:cniface.GenderAgeResponse.age)
 }
 
+// -------------------------------------------------------------------
+
+// CreateRepositoryRequest
+
+// string repoName = 1;
+inline void CreateRepositoryRequest::clear_reponame() {
+  reponame_.ClearToEmpty();
+}
+inline const std::string& CreateRepositoryRequest::reponame() const {
+  // @@protoc_insertion_point(field_get:cniface.CreateRepositoryRequest.repoName)
+  return _internal_reponame();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void CreateRepositoryRequest::set_reponame(ArgT0&& arg0, ArgT... args) {
+ 
+ reponame_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:cniface.CreateRepositoryRequest.repoName)
+}
+inline std::string* CreateRepositoryRequest::mutable_reponame() {
+  std::string* _s = _internal_mutable_reponame();
+  // @@protoc_insertion_point(field_mutable:cniface.CreateRepositoryRequest.repoName)
+  return _s;
+}
+inline const std::string& CreateRepositoryRequest::_internal_reponame() const {
+  return reponame_.Get();
+}
+inline void CreateRepositoryRequest::_internal_set_reponame(const std::string& value) {
+  
+  reponame_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* CreateRepositoryRequest::_internal_mutable_reponame() {
+  
+  return reponame_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* CreateRepositoryRequest::release_reponame() {
+  // @@protoc_insertion_point(field_release:cniface.CreateRepositoryRequest.repoName)
+  return reponame_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void CreateRepositoryRequest::set_allocated_reponame(std::string* reponame) {
+  if (reponame != nullptr) {
+    
+  } else {
+    
+  }
+  reponame_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), reponame,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (reponame_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    reponame_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:cniface.CreateRepositoryRequest.repoName)
+}
+
+// -------------------------------------------------------------------
+
+// CreateRepositoryResponse
+
+// int32 code = 1;
+inline void CreateRepositoryResponse::clear_code() {
+  code_ = 0;
+}
+inline int32_t CreateRepositoryResponse::_internal_code() const {
+  return code_;
+}
+inline int32_t CreateRepositoryResponse::code() const {
+  // @@protoc_insertion_point(field_get:cniface.CreateRepositoryResponse.code)
+  return _internal_code();
+}
+inline void CreateRepositoryResponse::_internal_set_code(int32_t value) {
+  
+  code_ = value;
+}
+inline void CreateRepositoryResponse::set_code(int32_t value) {
+  _internal_set_code(value);
+  // @@protoc_insertion_point(field_set:cniface.CreateRepositoryResponse.code)
+}
+
+// string message = 2;
+inline void CreateRepositoryResponse::clear_message() {
+  message_.ClearToEmpty();
+}
+inline const std::string& CreateRepositoryResponse::message() const {
+  // @@protoc_insertion_point(field_get:cniface.CreateRepositoryResponse.message)
+  return _internal_message();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void CreateRepositoryResponse::set_message(ArgT0&& arg0, ArgT... args) {
+ 
+ message_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:cniface.CreateRepositoryResponse.message)
+}
+inline std::string* CreateRepositoryResponse::mutable_message() {
+  std::string* _s = _internal_mutable_message();
+  // @@protoc_insertion_point(field_mutable:cniface.CreateRepositoryResponse.message)
+  return _s;
+}
+inline const std::string& CreateRepositoryResponse::_internal_message() const {
+  return message_.Get();
+}
+inline void CreateRepositoryResponse::_internal_set_message(const std::string& value) {
+  
+  message_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* CreateRepositoryResponse::_internal_mutable_message() {
+  
+  return message_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* CreateRepositoryResponse::release_message() {
+  // @@protoc_insertion_point(field_release:cniface.CreateRepositoryResponse.message)
+  return message_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void CreateRepositoryResponse::set_allocated_message(std::string* message) {
+  if (message != nullptr) {
+    
+  } else {
+    
+  }
+  message_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), message,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (message_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    message_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:cniface.CreateRepositoryResponse.message)
+}
+
+// -------------------------------------------------------------------
+
+// DeleteRepositoryRequest
+
+// string repoName = 1;
+inline void DeleteRepositoryRequest::clear_reponame() {
+  reponame_.ClearToEmpty();
+}
+inline const std::string& DeleteRepositoryRequest::reponame() const {
+  // @@protoc_insertion_point(field_get:cniface.DeleteRepositoryRequest.repoName)
+  return _internal_reponame();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void DeleteRepositoryRequest::set_reponame(ArgT0&& arg0, ArgT... args) {
+ 
+ reponame_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:cniface.DeleteRepositoryRequest.repoName)
+}
+inline std::string* DeleteRepositoryRequest::mutable_reponame() {
+  std::string* _s = _internal_mutable_reponame();
+  // @@protoc_insertion_point(field_mutable:cniface.DeleteRepositoryRequest.repoName)
+  return _s;
+}
+inline const std::string& DeleteRepositoryRequest::_internal_reponame() const {
+  return reponame_.Get();
+}
+inline void DeleteRepositoryRequest::_internal_set_reponame(const std::string& value) {
+  
+  reponame_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* DeleteRepositoryRequest::_internal_mutable_reponame() {
+  
+  return reponame_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* DeleteRepositoryRequest::release_reponame() {
+  // @@protoc_insertion_point(field_release:cniface.DeleteRepositoryRequest.repoName)
+  return reponame_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void DeleteRepositoryRequest::set_allocated_reponame(std::string* reponame) {
+  if (reponame != nullptr) {
+    
+  } else {
+    
+  }
+  reponame_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), reponame,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (reponame_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    reponame_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:cniface.DeleteRepositoryRequest.repoName)
+}
+
+// -------------------------------------------------------------------
+
+// DeleteRepositoryResponse
+
+// int32 code = 1;
+inline void DeleteRepositoryResponse::clear_code() {
+  code_ = 0;
+}
+inline int32_t DeleteRepositoryResponse::_internal_code() const {
+  return code_;
+}
+inline int32_t DeleteRepositoryResponse::code() const {
+  // @@protoc_insertion_point(field_get:cniface.DeleteRepositoryResponse.code)
+  return _internal_code();
+}
+inline void DeleteRepositoryResponse::_internal_set_code(int32_t value) {
+  
+  code_ = value;
+}
+inline void DeleteRepositoryResponse::set_code(int32_t value) {
+  _internal_set_code(value);
+  // @@protoc_insertion_point(field_set:cniface.DeleteRepositoryResponse.code)
+}
+
+// string message = 2;
+inline void DeleteRepositoryResponse::clear_message() {
+  message_.ClearToEmpty();
+}
+inline const std::string& DeleteRepositoryResponse::message() const {
+  // @@protoc_insertion_point(field_get:cniface.DeleteRepositoryResponse.message)
+  return _internal_message();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void DeleteRepositoryResponse::set_message(ArgT0&& arg0, ArgT... args) {
+ 
+ message_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:cniface.DeleteRepositoryResponse.message)
+}
+inline std::string* DeleteRepositoryResponse::mutable_message() {
+  std::string* _s = _internal_mutable_message();
+  // @@protoc_insertion_point(field_mutable:cniface.DeleteRepositoryResponse.message)
+  return _s;
+}
+inline const std::string& DeleteRepositoryResponse::_internal_message() const {
+  return message_.Get();
+}
+inline void DeleteRepositoryResponse::_internal_set_message(const std::string& value) {
+  
+  message_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* DeleteRepositoryResponse::_internal_mutable_message() {
+  
+  return message_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* DeleteRepositoryResponse::release_message() {
+  // @@protoc_insertion_point(field_release:cniface.DeleteRepositoryResponse.message)
+  return message_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void DeleteRepositoryResponse::set_allocated_message(std::string* message) {
+  if (message != nullptr) {
+    
+  } else {
+    
+  }
+  message_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), message,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (message_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    message_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:cniface.DeleteRepositoryResponse.message)
+}
+
+// -------------------------------------------------------------------
+
+// ExistRepositoryRequest
+
+// string repoName = 1;
+inline void ExistRepositoryRequest::clear_reponame() {
+  reponame_.ClearToEmpty();
+}
+inline const std::string& ExistRepositoryRequest::reponame() const {
+  // @@protoc_insertion_point(field_get:cniface.ExistRepositoryRequest.repoName)
+  return _internal_reponame();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void ExistRepositoryRequest::set_reponame(ArgT0&& arg0, ArgT... args) {
+ 
+ reponame_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:cniface.ExistRepositoryRequest.repoName)
+}
+inline std::string* ExistRepositoryRequest::mutable_reponame() {
+  std::string* _s = _internal_mutable_reponame();
+  // @@protoc_insertion_point(field_mutable:cniface.ExistRepositoryRequest.repoName)
+  return _s;
+}
+inline const std::string& ExistRepositoryRequest::_internal_reponame() const {
+  return reponame_.Get();
+}
+inline void ExistRepositoryRequest::_internal_set_reponame(const std::string& value) {
+  
+  reponame_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* ExistRepositoryRequest::_internal_mutable_reponame() {
+  
+  return reponame_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* ExistRepositoryRequest::release_reponame() {
+  // @@protoc_insertion_point(field_release:cniface.ExistRepositoryRequest.repoName)
+  return reponame_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void ExistRepositoryRequest::set_allocated_reponame(std::string* reponame) {
+  if (reponame != nullptr) {
+    
+  } else {
+    
+  }
+  reponame_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), reponame,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (reponame_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    reponame_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:cniface.ExistRepositoryRequest.repoName)
+}
+
+// -------------------------------------------------------------------
+
+// ExistRepositoryResponse
+
+// int32 code = 1;
+inline void ExistRepositoryResponse::clear_code() {
+  code_ = 0;
+}
+inline int32_t ExistRepositoryResponse::_internal_code() const {
+  return code_;
+}
+inline int32_t ExistRepositoryResponse::code() const {
+  // @@protoc_insertion_point(field_get:cniface.ExistRepositoryResponse.code)
+  return _internal_code();
+}
+inline void ExistRepositoryResponse::_internal_set_code(int32_t value) {
+  
+  code_ = value;
+}
+inline void ExistRepositoryResponse::set_code(int32_t value) {
+  _internal_set_code(value);
+  // @@protoc_insertion_point(field_set:cniface.ExistRepositoryResponse.code)
+}
+
+// string message = 2;
+inline void ExistRepositoryResponse::clear_message() {
+  message_.ClearToEmpty();
+}
+inline const std::string& ExistRepositoryResponse::message() const {
+  // @@protoc_insertion_point(field_get:cniface.ExistRepositoryResponse.message)
+  return _internal_message();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void ExistRepositoryResponse::set_message(ArgT0&& arg0, ArgT... args) {
+ 
+ message_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:cniface.ExistRepositoryResponse.message)
+}
+inline std::string* ExistRepositoryResponse::mutable_message() {
+  std::string* _s = _internal_mutable_message();
+  // @@protoc_insertion_point(field_mutable:cniface.ExistRepositoryResponse.message)
+  return _s;
+}
+inline const std::string& ExistRepositoryResponse::_internal_message() const {
+  return message_.Get();
+}
+inline void ExistRepositoryResponse::_internal_set_message(const std::string& value) {
+  
+  message_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* ExistRepositoryResponse::_internal_mutable_message() {
+  
+  return message_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* ExistRepositoryResponse::release_message() {
+  // @@protoc_insertion_point(field_release:cniface.ExistRepositoryResponse.message)
+  return message_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void ExistRepositoryResponse::set_allocated_message(std::string* message) {
+  if (message != nullptr) {
+    
+  } else {
+    
+  }
+  message_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), message,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (message_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    message_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:cniface.ExistRepositoryResponse.message)
+}
+
+// bool exist = 3;
+inline void ExistRepositoryResponse::clear_exist() {
+  exist_ = false;
+}
+inline bool ExistRepositoryResponse::_internal_exist() const {
+  return exist_;
+}
+inline bool ExistRepositoryResponse::exist() const {
+  // @@protoc_insertion_point(field_get:cniface.ExistRepositoryResponse.exist)
+  return _internal_exist();
+}
+inline void ExistRepositoryResponse::_internal_set_exist(bool value) {
+  
+  exist_ = value;
+}
+inline void ExistRepositoryResponse::set_exist(bool value) {
+  _internal_set_exist(value);
+  // @@protoc_insertion_point(field_set:cniface.ExistRepositoryResponse.exist)
+}
+
+// -------------------------------------------------------------------
+
+// ListRepositoryResponse
+
+// int32 code = 1;
+inline void ListRepositoryResponse::clear_code() {
+  code_ = 0;
+}
+inline int32_t ListRepositoryResponse::_internal_code() const {
+  return code_;
+}
+inline int32_t ListRepositoryResponse::code() const {
+  // @@protoc_insertion_point(field_get:cniface.ListRepositoryResponse.code)
+  return _internal_code();
+}
+inline void ListRepositoryResponse::_internal_set_code(int32_t value) {
+  
+  code_ = value;
+}
+inline void ListRepositoryResponse::set_code(int32_t value) {
+  _internal_set_code(value);
+  // @@protoc_insertion_point(field_set:cniface.ListRepositoryResponse.code)
+}
+
+// string message = 2;
+inline void ListRepositoryResponse::clear_message() {
+  message_.ClearToEmpty();
+}
+inline const std::string& ListRepositoryResponse::message() const {
+  // @@protoc_insertion_point(field_get:cniface.ListRepositoryResponse.message)
+  return _internal_message();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void ListRepositoryResponse::set_message(ArgT0&& arg0, ArgT... args) {
+ 
+ message_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:cniface.ListRepositoryResponse.message)
+}
+inline std::string* ListRepositoryResponse::mutable_message() {
+  std::string* _s = _internal_mutable_message();
+  // @@protoc_insertion_point(field_mutable:cniface.ListRepositoryResponse.message)
+  return _s;
+}
+inline const std::string& ListRepositoryResponse::_internal_message() const {
+  return message_.Get();
+}
+inline void ListRepositoryResponse::_internal_set_message(const std::string& value) {
+  
+  message_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* ListRepositoryResponse::_internal_mutable_message() {
+  
+  return message_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* ListRepositoryResponse::release_message() {
+  // @@protoc_insertion_point(field_release:cniface.ListRepositoryResponse.message)
+  return message_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void ListRepositoryResponse::set_allocated_message(std::string* message) {
+  if (message != nullptr) {
+    
+  } else {
+    
+  }
+  message_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), message,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (message_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    message_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:cniface.ListRepositoryResponse.message)
+}
+
+// repeated string names = 3;
+inline int ListRepositoryResponse::_internal_names_size() const {
+  return names_.size();
+}
+inline int ListRepositoryResponse::names_size() const {
+  return _internal_names_size();
+}
+inline void ListRepositoryResponse::clear_names() {
+  names_.Clear();
+}
+inline std::string* ListRepositoryResponse::add_names() {
+  std::string* _s = _internal_add_names();
+  // @@protoc_insertion_point(field_add_mutable:cniface.ListRepositoryResponse.names)
+  return _s;
+}
+inline const std::string& ListRepositoryResponse::_internal_names(int index) const {
+  return names_.Get(index);
+}
+inline const std::string& ListRepositoryResponse::names(int index) const {
+  // @@protoc_insertion_point(field_get:cniface.ListRepositoryResponse.names)
+  return _internal_names(index);
+}
+inline std::string* ListRepositoryResponse::mutable_names(int index) {
+  // @@protoc_insertion_point(field_mutable:cniface.ListRepositoryResponse.names)
+  return names_.Mutable(index);
+}
+inline void ListRepositoryResponse::set_names(int index, const std::string& value) {
+  names_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set:cniface.ListRepositoryResponse.names)
+}
+inline void ListRepositoryResponse::set_names(int index, std::string&& value) {
+  names_.Mutable(index)->assign(std::move(value));
+  // @@protoc_insertion_point(field_set:cniface.ListRepositoryResponse.names)
+}
+inline void ListRepositoryResponse::set_names(int index, const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  names_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:cniface.ListRepositoryResponse.names)
+}
+inline void ListRepositoryResponse::set_names(int index, const char* value, size_t size) {
+  names_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:cniface.ListRepositoryResponse.names)
+}
+inline std::string* ListRepositoryResponse::_internal_add_names() {
+  return names_.Add();
+}
+inline void ListRepositoryResponse::add_names(const std::string& value) {
+  names_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:cniface.ListRepositoryResponse.names)
+}
+inline void ListRepositoryResponse::add_names(std::string&& value) {
+  names_.Add(std::move(value));
+  // @@protoc_insertion_point(field_add:cniface.ListRepositoryResponse.names)
+}
+inline void ListRepositoryResponse::add_names(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  names_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:cniface.ListRepositoryResponse.names)
+}
+inline void ListRepositoryResponse::add_names(const char* value, size_t size) {
+  names_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:cniface.ListRepositoryResponse.names)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
+ListRepositoryResponse::names() const {
+  // @@protoc_insertion_point(field_list:cniface.ListRepositoryResponse.names)
+  return names_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
+ListRepositoryResponse::mutable_names() {
+  // @@protoc_insertion_point(field_mutable_list:cniface.ListRepositoryResponse.names)
+  return &names_;
+}
+
+// -------------------------------------------------------------------
+
+// AddOrUpdateItemRequest
+
+// string repoName = 1;
+inline void AddOrUpdateItemRequest::clear_reponame() {
+  reponame_.ClearToEmpty();
+}
+inline const std::string& AddOrUpdateItemRequest::reponame() const {
+  // @@protoc_insertion_point(field_get:cniface.AddOrUpdateItemRequest.repoName)
+  return _internal_reponame();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void AddOrUpdateItemRequest::set_reponame(ArgT0&& arg0, ArgT... args) {
+ 
+ reponame_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:cniface.AddOrUpdateItemRequest.repoName)
+}
+inline std::string* AddOrUpdateItemRequest::mutable_reponame() {
+  std::string* _s = _internal_mutable_reponame();
+  // @@protoc_insertion_point(field_mutable:cniface.AddOrUpdateItemRequest.repoName)
+  return _s;
+}
+inline const std::string& AddOrUpdateItemRequest::_internal_reponame() const {
+  return reponame_.Get();
+}
+inline void AddOrUpdateItemRequest::_internal_set_reponame(const std::string& value) {
+  
+  reponame_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* AddOrUpdateItemRequest::_internal_mutable_reponame() {
+  
+  return reponame_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* AddOrUpdateItemRequest::release_reponame() {
+  // @@protoc_insertion_point(field_release:cniface.AddOrUpdateItemRequest.repoName)
+  return reponame_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void AddOrUpdateItemRequest::set_allocated_reponame(std::string* reponame) {
+  if (reponame != nullptr) {
+    
+  } else {
+    
+  }
+  reponame_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), reponame,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (reponame_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    reponame_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:cniface.AddOrUpdateItemRequest.repoName)
+}
+
+// int64 id = 2;
+inline void AddOrUpdateItemRequest::clear_id() {
+  id_ = int64_t{0};
+}
+inline int64_t AddOrUpdateItemRequest::_internal_id() const {
+  return id_;
+}
+inline int64_t AddOrUpdateItemRequest::id() const {
+  // @@protoc_insertion_point(field_get:cniface.AddOrUpdateItemRequest.id)
+  return _internal_id();
+}
+inline void AddOrUpdateItemRequest::_internal_set_id(int64_t value) {
+  
+  id_ = value;
+}
+inline void AddOrUpdateItemRequest::set_id(int64_t value) {
+  _internal_set_id(value);
+  // @@protoc_insertion_point(field_set:cniface.AddOrUpdateItemRequest.id)
+}
+
+// repeated float feature = 3;
+inline int AddOrUpdateItemRequest::_internal_feature_size() const {
+  return feature_.size();
+}
+inline int AddOrUpdateItemRequest::feature_size() const {
+  return _internal_feature_size();
+}
+inline void AddOrUpdateItemRequest::clear_feature() {
+  feature_.Clear();
+}
+inline float AddOrUpdateItemRequest::_internal_feature(int index) const {
+  return feature_.Get(index);
+}
+inline float AddOrUpdateItemRequest::feature(int index) const {
+  // @@protoc_insertion_point(field_get:cniface.AddOrUpdateItemRequest.feature)
+  return _internal_feature(index);
+}
+inline void AddOrUpdateItemRequest::set_feature(int index, float value) {
+  feature_.Set(index, value);
+  // @@protoc_insertion_point(field_set:cniface.AddOrUpdateItemRequest.feature)
+}
+inline void AddOrUpdateItemRequest::_internal_add_feature(float value) {
+  feature_.Add(value);
+}
+inline void AddOrUpdateItemRequest::add_feature(float value) {
+  _internal_add_feature(value);
+  // @@protoc_insertion_point(field_add:cniface.AddOrUpdateItemRequest.feature)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+AddOrUpdateItemRequest::_internal_feature() const {
+  return feature_;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+AddOrUpdateItemRequest::feature() const {
+  // @@protoc_insertion_point(field_list:cniface.AddOrUpdateItemRequest.feature)
+  return _internal_feature();
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+AddOrUpdateItemRequest::_internal_mutable_feature() {
+  return &feature_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+AddOrUpdateItemRequest::mutable_feature() {
+  // @@protoc_insertion_point(field_mutable_list:cniface.AddOrUpdateItemRequest.feature)
+  return _internal_mutable_feature();
+}
+
+// -------------------------------------------------------------------
+
+// AddOrUpdateItemResponse
+
+// int32 code = 1;
+inline void AddOrUpdateItemResponse::clear_code() {
+  code_ = 0;
+}
+inline int32_t AddOrUpdateItemResponse::_internal_code() const {
+  return code_;
+}
+inline int32_t AddOrUpdateItemResponse::code() const {
+  // @@protoc_insertion_point(field_get:cniface.AddOrUpdateItemResponse.code)
+  return _internal_code();
+}
+inline void AddOrUpdateItemResponse::_internal_set_code(int32_t value) {
+  
+  code_ = value;
+}
+inline void AddOrUpdateItemResponse::set_code(int32_t value) {
+  _internal_set_code(value);
+  // @@protoc_insertion_point(field_set:cniface.AddOrUpdateItemResponse.code)
+}
+
+// string message = 2;
+inline void AddOrUpdateItemResponse::clear_message() {
+  message_.ClearToEmpty();
+}
+inline const std::string& AddOrUpdateItemResponse::message() const {
+  // @@protoc_insertion_point(field_get:cniface.AddOrUpdateItemResponse.message)
+  return _internal_message();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void AddOrUpdateItemResponse::set_message(ArgT0&& arg0, ArgT... args) {
+ 
+ message_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:cniface.AddOrUpdateItemResponse.message)
+}
+inline std::string* AddOrUpdateItemResponse::mutable_message() {
+  std::string* _s = _internal_mutable_message();
+  // @@protoc_insertion_point(field_mutable:cniface.AddOrUpdateItemResponse.message)
+  return _s;
+}
+inline const std::string& AddOrUpdateItemResponse::_internal_message() const {
+  return message_.Get();
+}
+inline void AddOrUpdateItemResponse::_internal_set_message(const std::string& value) {
+  
+  message_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* AddOrUpdateItemResponse::_internal_mutable_message() {
+  
+  return message_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* AddOrUpdateItemResponse::release_message() {
+  // @@protoc_insertion_point(field_release:cniface.AddOrUpdateItemResponse.message)
+  return message_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void AddOrUpdateItemResponse::set_allocated_message(std::string* message) {
+  if (message != nullptr) {
+    
+  } else {
+    
+  }
+  message_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), message,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (message_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    message_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:cniface.AddOrUpdateItemResponse.message)
+}
+
+// -------------------------------------------------------------------
+
+// DeleteItemRequest
+
+// string repoName = 1;
+inline void DeleteItemRequest::clear_reponame() {
+  reponame_.ClearToEmpty();
+}
+inline const std::string& DeleteItemRequest::reponame() const {
+  // @@protoc_insertion_point(field_get:cniface.DeleteItemRequest.repoName)
+  return _internal_reponame();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void DeleteItemRequest::set_reponame(ArgT0&& arg0, ArgT... args) {
+ 
+ reponame_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:cniface.DeleteItemRequest.repoName)
+}
+inline std::string* DeleteItemRequest::mutable_reponame() {
+  std::string* _s = _internal_mutable_reponame();
+  // @@protoc_insertion_point(field_mutable:cniface.DeleteItemRequest.repoName)
+  return _s;
+}
+inline const std::string& DeleteItemRequest::_internal_reponame() const {
+  return reponame_.Get();
+}
+inline void DeleteItemRequest::_internal_set_reponame(const std::string& value) {
+  
+  reponame_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* DeleteItemRequest::_internal_mutable_reponame() {
+  
+  return reponame_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* DeleteItemRequest::release_reponame() {
+  // @@protoc_insertion_point(field_release:cniface.DeleteItemRequest.repoName)
+  return reponame_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void DeleteItemRequest::set_allocated_reponame(std::string* reponame) {
+  if (reponame != nullptr) {
+    
+  } else {
+    
+  }
+  reponame_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), reponame,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (reponame_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    reponame_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:cniface.DeleteItemRequest.repoName)
+}
+
+// int64 id = 2;
+inline void DeleteItemRequest::clear_id() {
+  id_ = int64_t{0};
+}
+inline int64_t DeleteItemRequest::_internal_id() const {
+  return id_;
+}
+inline int64_t DeleteItemRequest::id() const {
+  // @@protoc_insertion_point(field_get:cniface.DeleteItemRequest.id)
+  return _internal_id();
+}
+inline void DeleteItemRequest::_internal_set_id(int64_t value) {
+  
+  id_ = value;
+}
+inline void DeleteItemRequest::set_id(int64_t value) {
+  _internal_set_id(value);
+  // @@protoc_insertion_point(field_set:cniface.DeleteItemRequest.id)
+}
+
+// -------------------------------------------------------------------
+
+// DeleteItemResponse
+
+// int32 code = 1;
+inline void DeleteItemResponse::clear_code() {
+  code_ = 0;
+}
+inline int32_t DeleteItemResponse::_internal_code() const {
+  return code_;
+}
+inline int32_t DeleteItemResponse::code() const {
+  // @@protoc_insertion_point(field_get:cniface.DeleteItemResponse.code)
+  return _internal_code();
+}
+inline void DeleteItemResponse::_internal_set_code(int32_t value) {
+  
+  code_ = value;
+}
+inline void DeleteItemResponse::set_code(int32_t value) {
+  _internal_set_code(value);
+  // @@protoc_insertion_point(field_set:cniface.DeleteItemResponse.code)
+}
+
+// string message = 2;
+inline void DeleteItemResponse::clear_message() {
+  message_.ClearToEmpty();
+}
+inline const std::string& DeleteItemResponse::message() const {
+  // @@protoc_insertion_point(field_get:cniface.DeleteItemResponse.message)
+  return _internal_message();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void DeleteItemResponse::set_message(ArgT0&& arg0, ArgT... args) {
+ 
+ message_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:cniface.DeleteItemResponse.message)
+}
+inline std::string* DeleteItemResponse::mutable_message() {
+  std::string* _s = _internal_mutable_message();
+  // @@protoc_insertion_point(field_mutable:cniface.DeleteItemResponse.message)
+  return _s;
+}
+inline const std::string& DeleteItemResponse::_internal_message() const {
+  return message_.Get();
+}
+inline void DeleteItemResponse::_internal_set_message(const std::string& value) {
+  
+  message_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* DeleteItemResponse::_internal_mutable_message() {
+  
+  return message_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* DeleteItemResponse::release_message() {
+  // @@protoc_insertion_point(field_release:cniface.DeleteItemResponse.message)
+  return message_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void DeleteItemResponse::set_allocated_message(std::string* message) {
+  if (message != nullptr) {
+    
+  } else {
+    
+  }
+  message_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), message,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (message_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    message_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:cniface.DeleteItemResponse.message)
+}
+
+// -------------------------------------------------------------------
+
+// SearchResponseItem
+
+// int64 id = 1;
+inline void SearchResponseItem::clear_id() {
+  id_ = int64_t{0};
+}
+inline int64_t SearchResponseItem::_internal_id() const {
+  return id_;
+}
+inline int64_t SearchResponseItem::id() const {
+  // @@protoc_insertion_point(field_get:cniface.SearchResponseItem.id)
+  return _internal_id();
+}
+inline void SearchResponseItem::_internal_set_id(int64_t value) {
+  
+  id_ = value;
+}
+inline void SearchResponseItem::set_id(int64_t value) {
+  _internal_set_id(value);
+  // @@protoc_insertion_point(field_set:cniface.SearchResponseItem.id)
+}
+
+// float score = 2;
+inline void SearchResponseItem::clear_score() {
+  score_ = 0;
+}
+inline float SearchResponseItem::_internal_score() const {
+  return score_;
+}
+inline float SearchResponseItem::score() const {
+  // @@protoc_insertion_point(field_get:cniface.SearchResponseItem.score)
+  return _internal_score();
+}
+inline void SearchResponseItem::_internal_set_score(float value) {
+  
+  score_ = value;
+}
+inline void SearchResponseItem::set_score(float value) {
+  _internal_set_score(value);
+  // @@protoc_insertion_point(field_set:cniface.SearchResponseItem.score)
+}
+
+// -------------------------------------------------------------------
+
+// SearchRequest
+
+// string repoName = 1;
+inline void SearchRequest::clear_reponame() {
+  reponame_.ClearToEmpty();
+}
+inline const std::string& SearchRequest::reponame() const {
+  // @@protoc_insertion_point(field_get:cniface.SearchRequest.repoName)
+  return _internal_reponame();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SearchRequest::set_reponame(ArgT0&& arg0, ArgT... args) {
+ 
+ reponame_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:cniface.SearchRequest.repoName)
+}
+inline std::string* SearchRequest::mutable_reponame() {
+  std::string* _s = _internal_mutable_reponame();
+  // @@protoc_insertion_point(field_mutable:cniface.SearchRequest.repoName)
+  return _s;
+}
+inline const std::string& SearchRequest::_internal_reponame() const {
+  return reponame_.Get();
+}
+inline void SearchRequest::_internal_set_reponame(const std::string& value) {
+  
+  reponame_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* SearchRequest::_internal_mutable_reponame() {
+  
+  return reponame_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* SearchRequest::release_reponame() {
+  // @@protoc_insertion_point(field_release:cniface.SearchRequest.repoName)
+  return reponame_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void SearchRequest::set_allocated_reponame(std::string* reponame) {
+  if (reponame != nullptr) {
+    
+  } else {
+    
+  }
+  reponame_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), reponame,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (reponame_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    reponame_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:cniface.SearchRequest.repoName)
+}
+
+// int32 topk = 2;
+inline void SearchRequest::clear_topk() {
+  topk_ = 0;
+}
+inline int32_t SearchRequest::_internal_topk() const {
+  return topk_;
+}
+inline int32_t SearchRequest::topk() const {
+  // @@protoc_insertion_point(field_get:cniface.SearchRequest.topk)
+  return _internal_topk();
+}
+inline void SearchRequest::_internal_set_topk(int32_t value) {
+  
+  topk_ = value;
+}
+inline void SearchRequest::set_topk(int32_t value) {
+  _internal_set_topk(value);
+  // @@protoc_insertion_point(field_set:cniface.SearchRequest.topk)
+}
+
+// repeated float feature = 3;
+inline int SearchRequest::_internal_feature_size() const {
+  return feature_.size();
+}
+inline int SearchRequest::feature_size() const {
+  return _internal_feature_size();
+}
+inline void SearchRequest::clear_feature() {
+  feature_.Clear();
+}
+inline float SearchRequest::_internal_feature(int index) const {
+  return feature_.Get(index);
+}
+inline float SearchRequest::feature(int index) const {
+  // @@protoc_insertion_point(field_get:cniface.SearchRequest.feature)
+  return _internal_feature(index);
+}
+inline void SearchRequest::set_feature(int index, float value) {
+  feature_.Set(index, value);
+  // @@protoc_insertion_point(field_set:cniface.SearchRequest.feature)
+}
+inline void SearchRequest::_internal_add_feature(float value) {
+  feature_.Add(value);
+}
+inline void SearchRequest::add_feature(float value) {
+  _internal_add_feature(value);
+  // @@protoc_insertion_point(field_add:cniface.SearchRequest.feature)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+SearchRequest::_internal_feature() const {
+  return feature_;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+SearchRequest::feature() const {
+  // @@protoc_insertion_point(field_list:cniface.SearchRequest.feature)
+  return _internal_feature();
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+SearchRequest::_internal_mutable_feature() {
+  return &feature_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+SearchRequest::mutable_feature() {
+  // @@protoc_insertion_point(field_mutable_list:cniface.SearchRequest.feature)
+  return _internal_mutable_feature();
+}
+
+// -------------------------------------------------------------------
+
+// SearchResponse
+
+// int32 code = 1;
+inline void SearchResponse::clear_code() {
+  code_ = 0;
+}
+inline int32_t SearchResponse::_internal_code() const {
+  return code_;
+}
+inline int32_t SearchResponse::code() const {
+  // @@protoc_insertion_point(field_get:cniface.SearchResponse.code)
+  return _internal_code();
+}
+inline void SearchResponse::_internal_set_code(int32_t value) {
+  
+  code_ = value;
+}
+inline void SearchResponse::set_code(int32_t value) {
+  _internal_set_code(value);
+  // @@protoc_insertion_point(field_set:cniface.SearchResponse.code)
+}
+
+// string message = 2;
+inline void SearchResponse::clear_message() {
+  message_.ClearToEmpty();
+}
+inline const std::string& SearchResponse::message() const {
+  // @@protoc_insertion_point(field_get:cniface.SearchResponse.message)
+  return _internal_message();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SearchResponse::set_message(ArgT0&& arg0, ArgT... args) {
+ 
+ message_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:cniface.SearchResponse.message)
+}
+inline std::string* SearchResponse::mutable_message() {
+  std::string* _s = _internal_mutable_message();
+  // @@protoc_insertion_point(field_mutable:cniface.SearchResponse.message)
+  return _s;
+}
+inline const std::string& SearchResponse::_internal_message() const {
+  return message_.Get();
+}
+inline void SearchResponse::_internal_set_message(const std::string& value) {
+  
+  message_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* SearchResponse::_internal_mutable_message() {
+  
+  return message_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* SearchResponse::release_message() {
+  // @@protoc_insertion_point(field_release:cniface.SearchResponse.message)
+  return message_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void SearchResponse::set_allocated_message(std::string* message) {
+  if (message != nullptr) {
+    
+  } else {
+    
+  }
+  message_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), message,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (message_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    message_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:cniface.SearchResponse.message)
+}
+
+// repeated .cniface.SearchResponseItem results = 3;
+inline int SearchResponse::_internal_results_size() const {
+  return results_.size();
+}
+inline int SearchResponse::results_size() const {
+  return _internal_results_size();
+}
+inline void SearchResponse::clear_results() {
+  results_.Clear();
+}
+inline ::cniface::SearchResponseItem* SearchResponse::mutable_results(int index) {
+  // @@protoc_insertion_point(field_mutable:cniface.SearchResponse.results)
+  return results_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::cniface::SearchResponseItem >*
+SearchResponse::mutable_results() {
+  // @@protoc_insertion_point(field_mutable_list:cniface.SearchResponse.results)
+  return &results_;
+}
+inline const ::cniface::SearchResponseItem& SearchResponse::_internal_results(int index) const {
+  return results_.Get(index);
+}
+inline const ::cniface::SearchResponseItem& SearchResponse::results(int index) const {
+  // @@protoc_insertion_point(field_get:cniface.SearchResponse.results)
+  return _internal_results(index);
+}
+inline ::cniface::SearchResponseItem* SearchResponse::_internal_add_results() {
+  return results_.Add();
+}
+inline ::cniface::SearchResponseItem* SearchResponse::add_results() {
+  ::cniface::SearchResponseItem* _add = _internal_add_results();
+  // @@protoc_insertion_point(field_add:cniface.SearchResponse.results)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::cniface::SearchResponseItem >&
+SearchResponse::results() const {
+  // @@protoc_insertion_point(field_list:cniface.SearchResponse.results)
+  return results_;
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

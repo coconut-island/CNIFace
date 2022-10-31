@@ -8,7 +8,6 @@
 #include <tvm/runtime/module.h>
 
 using namespace std;
-using namespace tvm::runtime;
 
 class ArcFace {
 public:
@@ -17,19 +16,19 @@ public:
     ~ArcFace();
 
     /**
-     * @param input_img 112 * 112 rgb img
+     * @param input_img 112 * 112 bgr img
      * @param feature 512
      */
-    void recognize(const uint8_t* rgb_img, float *feature);
+    void recognize(const uint8_t* img, float *feature);
 
     /**
-     * @param rgb_img source img
+     * @param bgr_img source img
      * @param img_width source img width
      * @param img_height source img height
      * @param kps anchor.kps
      * @param feature 512
      */
-    void recognize(const uint8_t* rgb_img, int img_width, int img_height, const vector<float>& kps, float* feature);
+    void recognize(const uint8_t* bgr_img, int img_width, int img_height, const vector<float>& kps, float* feature);
 
     size_t getFeatureSize() const;
 
@@ -37,7 +36,7 @@ private:
     void init(const std::string &model_dir_path, const std::string &model_name);
 
 private:
-    shared_ptr<Module> m_handle;
+    shared_ptr<tvm::runtime::Module> m_handle;
 
     string m_default_model_name = "w600k_r50";
 

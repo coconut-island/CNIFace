@@ -47,6 +47,15 @@ grpc::Status DetectService::detect(::grpc::ServerContext *context, const ::cnifa
         anchors = m_retinaFace10g->detect(bgr_img, img.cols, img.rows, request->score());
     }
 
+    bool isReturnRecognitionSubImage = request->isreturnrecognitionsubimage();
+
+
+    int subImageSize = 112 * 112 * 3;
+    u_int8_t * subImage = nullptr;
+    if (isReturnRecognitionSubImage) {
+        subImage = (uint8_t*)malloc(subImageSize * sizeof(uint8_t));
+    }
+
     for (const auto& anchor : anchors) {
         auto result = response->add_results();
         result->set_maskscore(anchor.mask_score);
@@ -59,6 +68,36 @@ grpc::Status DetectService::detect(::grpc::ServerContext *context, const ::cnifa
         for (float kp : anchor.kps) {
             result->add_kps(kp);
         }
+
+
+        if (isReturnRecognitionSubImage) {
+            auto kps = anchor.kps;
+
+            float dst[10] = {38.2946, 73.5318, 56.0252, 41.5493, 70.7299,
+                                                    51.6963, 51.5014, 71.7366, 92.3655, 92.2041};
+            float src[10];
+            for (int i = 0; i < 5; i++) {
+                src[i] = kps[2 * i];
+                src[i + 5] = kps[2 * i + 1];
+            }
+
+            float M[6];
+            ImageUtil::getAffineMatrix(src, dst, M);
+
+            ImageUtil::warpAffineMatrix(bgr_img, subImage, img.cols, img.rows, 112, 112, M);
+
+            std::vector<uchar> buffer;
+            cv::Mat subImageMat(112, 112, CV_8UC3, subImage);
+            cv::imencode(".png", subImageMat, buffer);
+
+            string subImageBase64 = base64_encode(buffer.data(), buffer.size());
+
+            result->set_subimagebase64(subImageBase64);
+        }
+    }
+
+    if (isReturnRecognitionSubImage) {
+        free(subImage);
     }
 
     free(bgr_img);

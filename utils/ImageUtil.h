@@ -23,6 +23,7 @@ public:
 
     static void bilinear_resize(const uint8_t* dataSrc, uint8_t* dataDst, int src_width, int src_height, int dst_width, int dst_height);
 
+    static void GetRotate2DArray(float* m, float angle, float scale, float centerx, float centery, int nTargetWd, int nTargetHt);
 
     static void getAffineMatrix(float* src_5pts, const float* dst_5pts, float* M);
 

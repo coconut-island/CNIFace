@@ -8,7 +8,6 @@
 #include <tvm/runtime/module.h>
 
 using namespace std;
-using namespace tvm::runtime;
 
 class GenderAgeResult {
 public:
@@ -29,7 +28,7 @@ private:
     void init(const std::string &model_dir_path, const std::string &model_name);
 
 private:
-    shared_ptr<Module> m_handle;
+    shared_ptr<tvm::runtime::Module> m_handle;
 
     string m_default_model_name = "genderage";
 

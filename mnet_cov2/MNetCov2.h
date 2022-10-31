@@ -14,7 +14,6 @@
 #include "../common/Anchor.h"
 
 using namespace std;
-using namespace tvm::runtime;
 
 struct anchor_box {
     float x1;
@@ -47,7 +46,7 @@ public:
     vector<Anchor> detect(uint8_t* rgb_img, int img_width, int img_height, float score_threshold);
     static void nms(std::vector<Anchor>& anchors, float threshold, std::vector<Anchor>& out_anchors);
 private:
-    shared_ptr<Module> m_handle;
+    shared_ptr<tvm::runtime::Module> m_handle;
 
     string m_model_name = "mnet_cov2";
     float m_nms_thresh = 0.4;

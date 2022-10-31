@@ -35,29 +35,35 @@ grpc::Status RecognitionService::extractFeature(::grpc::ServerContext *context, 
     std::vector<char> base64_img(imgStr.begin(), imgStr.end());
     auto img = cv::imdecode(base64_img, cv::IMREAD_UNCHANGED);
 
-    auto* rgb_img = (uint8_t*)malloc(img.rows * img.cols * 3 * sizeof(uint8_t));
-    ImageUtil::bgr2rgb_packed(img.data, rgb_img, img.cols, img.rows);
+    auto* feature = new float[DEFAULT_FEATURE_DIM];
 
     vector<float> kps;
     for (const auto& kp : request->kps()) {
         kps.emplace_back(kp);
     }
 
-    auto* feature = new float[DEFAULT_FEATURE_DIM];
-
-    if (model == "w600k_mbf") {
-        m_w600k_mbf->recognize(img.data, img.cols, img.rows, kps, feature);
+    if (kps.size() < 10 && img.cols == 112 && img.rows == 112) {
+        if (model == "w600k_mbf") {
+            m_w600k_mbf->recognize(img.data, feature);
+        } else {
+            m_w600k_r50->recognize(img.data, feature);
+        }
     } else {
-        m_w600k_r50->recognize(img.data, img.cols, img.rows, kps, feature);
+        if (model == "w600k_mbf") {
+            m_w600k_mbf->recognize(img.data, img.cols, img.rows, kps, feature);
+        } else {
+            m_w600k_r50->recognize(img.data, img.cols, img.rows, kps, feature);
+        }
     }
 
-    MathUtil::normalize_L2(feature, DEFAULT_FEATURE_DIM);
+    if (request->isdonormalizel2()) {
+        MathUtil::normalize_L2(feature, DEFAULT_FEATURE_DIM);
+    }
 
     for (int i = 0; i < DEFAULT_FEATURE_DIM; ++i) {
         response->add_feature(feature[i]);
     }
 
-    free(rgb_img);
     return grpc::Status::OK;
 }
 

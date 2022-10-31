@@ -4,12 +4,14 @@ set(CMAKE_CXX_STANDARD 14)
 
 find_package(OpenCV REQUIRED)
 
-option(SAMPLES "compile samples" ON)
+option(BUILD_SAMPLES "BUILD SAMPLES" ON)
 
-message("SAMPLES=${SAMPLES}")
+message("BUILD_SAMPLES=${BUILD_SAMPLES}")
 
 set(SYSTEM_INCLUDE "/usr/local/include")
 set(SYSTEM_LIB "/usr/local/lib")
+
+set(GAMMA_INCLUDE /usr/local/include/gamma/ /usr/local/include/gamma/third_party)
 
 file(GLOB COMMON_SRC
         ${CMAKE_CURRENT_SOURCE_DIR}/common/*.h
@@ -51,6 +53,11 @@ file(GLOB SERVICE_SRC
         ${CMAKE_CURRENT_SOURCE_DIR}/service/*.cpp
         )
 
+file(GLOB REPOSITORY_SERVICE_SRC
+        ${CMAKE_CURRENT_SOURCE_DIR}/repository/*.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/repository/*.cpp
+        )
+
 set(SOURCE_FILES
         main.cpp
         ${COMMON_SRC}
@@ -63,24 +70,27 @@ set(SOURCE_FILES
         ${UTILS_SRC}
         ${GRPC_SRC}
         ${SERVICE_SRC}
+        ${REPOSITORY_SERVICE_SRC}
 )
 
 include_directories(
         ${OpenCV_INCLUDE_DIRS}
         ${SYSTEM_INCLUDE}
+        ${GAMMA_INCLUDE}
 )
 
 link_directories(
         ${OpenCV_LIBRARY_DIRS}
         ${SYSTEM_LIB}
+        ${GAMMA_LIB}
 )
 
 # main
 add_executable(${CMAKE_PROJECT_NAME} ${SOURCE_FILES})
-target_link_libraries(${CMAKE_PROJECT_NAME} ${OpenCV_LIBS} dl pthread tvm_runtime gflags grpc++ protobuf absl_synchronization)
+target_link_libraries(${CMAKE_PROJECT_NAME} ${OpenCV_LIBS} dl pthread tvm_runtime gflags grpc++ protobuf absl_synchronization gamma)
 
 # samples
-if(SAMPLES)
+if(BUILD_SAMPLES)
     add_executable (detect ./samples/detect.cpp ${COMMON_SRC} ${UTILS_SRC} ${RETINA_FACE_SRC})
     target_link_libraries(detect ${OpenCV_LIBS} dl pthread tvm_runtime)
 
@@ -101,6 +111,9 @@ if(SAMPLES)
 
     add_executable (attribute ./samples/attribute.cpp ${COMMON_SRC} ${UTILS_SRC} ${RETINA_FACE_SRC} ${GENDER_AGE_SRC})
     target_link_libraries(attribute ${OpenCV_LIBS} dl pthread tvm_runtime)
+
+    add_executable (repository ./samples/repository.cpp ${COMMON_SRC} ${UTILS_SRC} ${ARC_FACE_SRC} ${RETINA_FACE_SRC} ${GENDER_AGE_SRC} ${REPOSITORY_SERVICE_SRC})
+    target_link_libraries(repository ${OpenCV_LIBS} dl pthread tvm_runtime gamma)
 endif()
 
 

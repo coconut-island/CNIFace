@@ -5,7 +5,9 @@ services:
     image: abelleeye/cniface:latest
     container_name: cniface
     restart: always
-    command: cniface -m /models/
+    command: cniface -m /models/ -r /repo_root/ -p 22506
+    volumes:
+      - ./repo_root/:/repo_root/
     ports:
       - 22506:22506
 
@@ -18,6 +20,17 @@ services:
     command: java -jar cniface-platform.jar
     ports:
       - 22605:22605
+
+  cniface-platform-db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=cniface
+      - MYSQL_DATABASE=cniface
+    ports:
+      - 3306:3306
+    volumes:
+      - /db:/var/lib/mysql
 
   cniface-website:
     image: abelleeye/cniface-website:latest

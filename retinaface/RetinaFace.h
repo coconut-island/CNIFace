@@ -13,7 +13,6 @@
 #include "../common/Anchor.h"
 
 using namespace std;
-using namespace tvm::runtime;
 
 class RetinaFace {
 public:
@@ -27,7 +26,7 @@ private:
     void init(const std::string& model_dir_path, const std::string& model_name);
 
 private:
-    shared_ptr<Module> m_handle;
+    shared_ptr<tvm::runtime::Module> m_handle;
 
     string m_default_model_name = "det_10g";
     float m_nms_thresh = 0.4;

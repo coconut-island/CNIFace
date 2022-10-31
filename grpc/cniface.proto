@@ -7,6 +7,8 @@ option objc_class_prefix = "CNIFACE";
 
 package cniface;
 
+import "google/protobuf/empty.proto";
+
 
 service DetectService {
     rpc detect (DetectRequest) returns ( DetectResponse) {}
@@ -16,6 +18,7 @@ message DetectRequest {
     string model = 1;
     string faceImageBase64 = 2;
     float score = 3;
+    bool isReturnRecognitionSubImage = 4;
 }
 
 message DetectResult {
@@ -26,6 +29,7 @@ message DetectResult {
     float h = 5;
     repeated float kps = 6;
     float maskScore = 7;
+    string subImageBase64 = 8;
 }
 
 message DetectResponse {
@@ -44,6 +48,7 @@ message ExtractFeatureRequest {
     string model = 1;
     string faceImageBase64 = 2;
     repeated float kps = 3;
+    bool isDoNormalizeL2 = 4;
 }
 
 message ExtractFeatureResponse {
@@ -81,3 +86,86 @@ message GenderAgeResponse {
     int32 age = 4;
 }
 
+
+// RepositoryService
+message CreateRepositoryRequest {
+    string repoName = 1;
+}
+
+message CreateRepositoryResponse {
+    int32 code = 1;
+    string message = 2;
+}
+
+message DeleteRepositoryRequest {
+    string repoName = 1;
+}
+
+message DeleteRepositoryResponse {
+    int32 code = 1;
+    string message = 2;
+}
+
+message ExistRepositoryRequest {
+    string repoName = 1;
+}
+
+message ExistRepositoryResponse {
+    int32 code = 1;
+    string message = 2;
+    bool exist = 3;
+}
+
+message ListRepositoryResponse {
+    int32 code = 1;
+    string message = 2;
+    repeated string names = 3;
+}
+
+message AddOrUpdateItemRequest {
+    string repoName = 1;
+    int64 id = 2;
+    repeated float feature = 3;
+}
+
+message AddOrUpdateItemResponse {
+    int32 code = 1;
+    string message = 2;
+}
+
+message DeleteItemRequest {
+    string repoName = 1;
+    int64 id = 2;
+}
+
+message DeleteItemResponse {
+    int32 code = 1;
+    string message = 2;
+}
+
+message SearchResponseItem {
+    int64 id = 1;
+    float score = 2;
+}
+
+message SearchRequest {
+    string repoName = 1;
+    int32 topk = 2;
+    repeated float feature = 3;
+}
+
+message SearchResponse {
+    int32 code = 1;
+    string message = 2;
+    repeated SearchResponseItem results = 3;
+}
+
+service RepositoryService {
+    rpc createRepository (CreateRepositoryRequest) returns ( CreateRepositoryResponse) {}
+    rpc deleteRepository (DeleteRepositoryRequest) returns ( DeleteRepositoryResponse) {}
+    rpc existRepository (ExistRepositoryRequest) returns ( ExistRepositoryResponse) {}
+    rpc listRepository (google.protobuf.Empty) returns ( ListRepositoryResponse) {}
+    rpc addOrUpdateItem (AddOrUpdateItemRequest) returns ( AddOrUpdateItemResponse) {}
+    rpc deleteItem (DeleteItemRequest) returns ( DeleteItemResponse) {}
+    rpc search (SearchRequest) returns ( SearchResponse) {}
+}

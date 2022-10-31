@@ -246,5 +246,318 @@ AttributeService::Service::~Service() {
 }
 
 
+static const char* RepositoryService_method_names[] = {
+  "/cniface.RepositoryService/createRepository",
+  "/cniface.RepositoryService/deleteRepository",
+  "/cniface.RepositoryService/existRepository",
+  "/cniface.RepositoryService/listRepository",
+  "/cniface.RepositoryService/addOrUpdateItem",
+  "/cniface.RepositoryService/deleteItem",
+  "/cniface.RepositoryService/search",
+};
+
+std::unique_ptr< RepositoryService::Stub> RepositoryService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
+  (void)options;
+  std::unique_ptr< RepositoryService::Stub> stub(new RepositoryService::Stub(channel, options));
+  return stub;
+}
+
+RepositoryService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
+  : channel_(channel), rpcmethod_createRepository_(RepositoryService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_deleteRepository_(RepositoryService_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_existRepository_(RepositoryService_method_names[2], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_listRepository_(RepositoryService_method_names[3], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_addOrUpdateItem_(RepositoryService_method_names[4], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_deleteItem_(RepositoryService_method_names[5], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_search_(RepositoryService_method_names[6], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  {}
+
+::grpc::Status RepositoryService::Stub::createRepository(::grpc::ClientContext* context, const ::cniface::CreateRepositoryRequest& request, ::cniface::CreateRepositoryResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::cniface::CreateRepositoryRequest, ::cniface::CreateRepositoryResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_createRepository_, context, request, response);
+}
+
+void RepositoryService::Stub::async::createRepository(::grpc::ClientContext* context, const ::cniface::CreateRepositoryRequest* request, ::cniface::CreateRepositoryResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::cniface::CreateRepositoryRequest, ::cniface::CreateRepositoryResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_createRepository_, context, request, response, std::move(f));
+}
+
+void RepositoryService::Stub::async::createRepository(::grpc::ClientContext* context, const ::cniface::CreateRepositoryRequest* request, ::cniface::CreateRepositoryResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_createRepository_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::cniface::CreateRepositoryResponse>* RepositoryService::Stub::PrepareAsynccreateRepositoryRaw(::grpc::ClientContext* context, const ::cniface::CreateRepositoryRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::cniface::CreateRepositoryResponse, ::cniface::CreateRepositoryRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_createRepository_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::cniface::CreateRepositoryResponse>* RepositoryService::Stub::AsynccreateRepositoryRaw(::grpc::ClientContext* context, const ::cniface::CreateRepositoryRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsynccreateRepositoryRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status RepositoryService::Stub::deleteRepository(::grpc::ClientContext* context, const ::cniface::DeleteRepositoryRequest& request, ::cniface::DeleteRepositoryResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::cniface::DeleteRepositoryRequest, ::cniface::DeleteRepositoryResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_deleteRepository_, context, request, response);
+}
+
+void RepositoryService::Stub::async::deleteRepository(::grpc::ClientContext* context, const ::cniface::DeleteRepositoryRequest* request, ::cniface::DeleteRepositoryResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::cniface::DeleteRepositoryRequest, ::cniface::DeleteRepositoryResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_deleteRepository_, context, request, response, std::move(f));
+}
+
+void RepositoryService::Stub::async::deleteRepository(::grpc::ClientContext* context, const ::cniface::DeleteRepositoryRequest* request, ::cniface::DeleteRepositoryResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_deleteRepository_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::cniface::DeleteRepositoryResponse>* RepositoryService::Stub::PrepareAsyncdeleteRepositoryRaw(::grpc::ClientContext* context, const ::cniface::DeleteRepositoryRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::cniface::DeleteRepositoryResponse, ::cniface::DeleteRepositoryRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_deleteRepository_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::cniface::DeleteRepositoryResponse>* RepositoryService::Stub::AsyncdeleteRepositoryRaw(::grpc::ClientContext* context, const ::cniface::DeleteRepositoryRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncdeleteRepositoryRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status RepositoryService::Stub::existRepository(::grpc::ClientContext* context, const ::cniface::ExistRepositoryRequest& request, ::cniface::ExistRepositoryResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::cniface::ExistRepositoryRequest, ::cniface::ExistRepositoryResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_existRepository_, context, request, response);
+}
+
+void RepositoryService::Stub::async::existRepository(::grpc::ClientContext* context, const ::cniface::ExistRepositoryRequest* request, ::cniface::ExistRepositoryResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::cniface::ExistRepositoryRequest, ::cniface::ExistRepositoryResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_existRepository_, context, request, response, std::move(f));
+}
+
+void RepositoryService::Stub::async::existRepository(::grpc::ClientContext* context, const ::cniface::ExistRepositoryRequest* request, ::cniface::ExistRepositoryResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_existRepository_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::cniface::ExistRepositoryResponse>* RepositoryService::Stub::PrepareAsyncexistRepositoryRaw(::grpc::ClientContext* context, const ::cniface::ExistRepositoryRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::cniface::ExistRepositoryResponse, ::cniface::ExistRepositoryRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_existRepository_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::cniface::ExistRepositoryResponse>* RepositoryService::Stub::AsyncexistRepositoryRaw(::grpc::ClientContext* context, const ::cniface::ExistRepositoryRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncexistRepositoryRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status RepositoryService::Stub::listRepository(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::cniface::ListRepositoryResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::google::protobuf::Empty, ::cniface::ListRepositoryResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_listRepository_, context, request, response);
+}
+
+void RepositoryService::Stub::async::listRepository(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::cniface::ListRepositoryResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::google::protobuf::Empty, ::cniface::ListRepositoryResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_listRepository_, context, request, response, std::move(f));
+}
+
+void RepositoryService::Stub::async::listRepository(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::cniface::ListRepositoryResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_listRepository_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::cniface::ListRepositoryResponse>* RepositoryService::Stub::PrepareAsynclistRepositoryRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::cniface::ListRepositoryResponse, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_listRepository_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::cniface::ListRepositoryResponse>* RepositoryService::Stub::AsynclistRepositoryRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsynclistRepositoryRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status RepositoryService::Stub::addOrUpdateItem(::grpc::ClientContext* context, const ::cniface::AddOrUpdateItemRequest& request, ::cniface::AddOrUpdateItemResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::cniface::AddOrUpdateItemRequest, ::cniface::AddOrUpdateItemResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_addOrUpdateItem_, context, request, response);
+}
+
+void RepositoryService::Stub::async::addOrUpdateItem(::grpc::ClientContext* context, const ::cniface::AddOrUpdateItemRequest* request, ::cniface::AddOrUpdateItemResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::cniface::AddOrUpdateItemRequest, ::cniface::AddOrUpdateItemResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_addOrUpdateItem_, context, request, response, std::move(f));
+}
+
+void RepositoryService::Stub::async::addOrUpdateItem(::grpc::ClientContext* context, const ::cniface::AddOrUpdateItemRequest* request, ::cniface::AddOrUpdateItemResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_addOrUpdateItem_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::cniface::AddOrUpdateItemResponse>* RepositoryService::Stub::PrepareAsyncaddOrUpdateItemRaw(::grpc::ClientContext* context, const ::cniface::AddOrUpdateItemRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::cniface::AddOrUpdateItemResponse, ::cniface::AddOrUpdateItemRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_addOrUpdateItem_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::cniface::AddOrUpdateItemResponse>* RepositoryService::Stub::AsyncaddOrUpdateItemRaw(::grpc::ClientContext* context, const ::cniface::AddOrUpdateItemRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncaddOrUpdateItemRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status RepositoryService::Stub::deleteItem(::grpc::ClientContext* context, const ::cniface::DeleteItemRequest& request, ::cniface::DeleteItemResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::cniface::DeleteItemRequest, ::cniface::DeleteItemResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_deleteItem_, context, request, response);
+}
+
+void RepositoryService::Stub::async::deleteItem(::grpc::ClientContext* context, const ::cniface::DeleteItemRequest* request, ::cniface::DeleteItemResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::cniface::DeleteItemRequest, ::cniface::DeleteItemResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_deleteItem_, context, request, response, std::move(f));
+}
+
+void RepositoryService::Stub::async::deleteItem(::grpc::ClientContext* context, const ::cniface::DeleteItemRequest* request, ::cniface::DeleteItemResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_deleteItem_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::cniface::DeleteItemResponse>* RepositoryService::Stub::PrepareAsyncdeleteItemRaw(::grpc::ClientContext* context, const ::cniface::DeleteItemRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::cniface::DeleteItemResponse, ::cniface::DeleteItemRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_deleteItem_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::cniface::DeleteItemResponse>* RepositoryService::Stub::AsyncdeleteItemRaw(::grpc::ClientContext* context, const ::cniface::DeleteItemRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncdeleteItemRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status RepositoryService::Stub::search(::grpc::ClientContext* context, const ::cniface::SearchRequest& request, ::cniface::SearchResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::cniface::SearchRequest, ::cniface::SearchResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_search_, context, request, response);
+}
+
+void RepositoryService::Stub::async::search(::grpc::ClientContext* context, const ::cniface::SearchRequest* request, ::cniface::SearchResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::cniface::SearchRequest, ::cniface::SearchResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_search_, context, request, response, std::move(f));
+}
+
+void RepositoryService::Stub::async::search(::grpc::ClientContext* context, const ::cniface::SearchRequest* request, ::cniface::SearchResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_search_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::cniface::SearchResponse>* RepositoryService::Stub::PrepareAsyncsearchRaw(::grpc::ClientContext* context, const ::cniface::SearchRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::cniface::SearchResponse, ::cniface::SearchRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_search_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::cniface::SearchResponse>* RepositoryService::Stub::AsyncsearchRaw(::grpc::ClientContext* context, const ::cniface::SearchRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncsearchRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+RepositoryService::Service::Service() {
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      RepositoryService_method_names[0],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< RepositoryService::Service, ::cniface::CreateRepositoryRequest, ::cniface::CreateRepositoryResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](RepositoryService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::cniface::CreateRepositoryRequest* req,
+             ::cniface::CreateRepositoryResponse* resp) {
+               return service->createRepository(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      RepositoryService_method_names[1],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< RepositoryService::Service, ::cniface::DeleteRepositoryRequest, ::cniface::DeleteRepositoryResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](RepositoryService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::cniface::DeleteRepositoryRequest* req,
+             ::cniface::DeleteRepositoryResponse* resp) {
+               return service->deleteRepository(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      RepositoryService_method_names[2],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< RepositoryService::Service, ::cniface::ExistRepositoryRequest, ::cniface::ExistRepositoryResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](RepositoryService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::cniface::ExistRepositoryRequest* req,
+             ::cniface::ExistRepositoryResponse* resp) {
+               return service->existRepository(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      RepositoryService_method_names[3],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< RepositoryService::Service, ::google::protobuf::Empty, ::cniface::ListRepositoryResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](RepositoryService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::google::protobuf::Empty* req,
+             ::cniface::ListRepositoryResponse* resp) {
+               return service->listRepository(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      RepositoryService_method_names[4],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< RepositoryService::Service, ::cniface::AddOrUpdateItemRequest, ::cniface::AddOrUpdateItemResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](RepositoryService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::cniface::AddOrUpdateItemRequest* req,
+             ::cniface::AddOrUpdateItemResponse* resp) {
+               return service->addOrUpdateItem(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      RepositoryService_method_names[5],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< RepositoryService::Service, ::cniface::DeleteItemRequest, ::cniface::DeleteItemResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](RepositoryService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::cniface::DeleteItemRequest* req,
+             ::cniface::DeleteItemResponse* resp) {
+               return service->deleteItem(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      RepositoryService_method_names[6],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< RepositoryService::Service, ::cniface::SearchRequest, ::cniface::SearchResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](RepositoryService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::cniface::SearchRequest* req,
+             ::cniface::SearchResponse* resp) {
+               return service->search(ctx, req, resp);
+             }, this)));
+}
+
+RepositoryService::Service::~Service() {
+}
+
+::grpc::Status RepositoryService::Service::createRepository(::grpc::ServerContext* context, const ::cniface::CreateRepositoryRequest* request, ::cniface::CreateRepositoryResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status RepositoryService::Service::deleteRepository(::grpc::ServerContext* context, const ::cniface::DeleteRepositoryRequest* request, ::cniface::DeleteRepositoryResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status RepositoryService::Service::existRepository(::grpc::ServerContext* context, const ::cniface::ExistRepositoryRequest* request, ::cniface::ExistRepositoryResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status RepositoryService::Service::listRepository(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::cniface::ListRepositoryResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status RepositoryService::Service::addOrUpdateItem(::grpc::ServerContext* context, const ::cniface::AddOrUpdateItemRequest* request, ::cniface::AddOrUpdateItemResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status RepositoryService::Service::deleteItem(::grpc::ServerContext* context, const ::cniface::DeleteItemRequest* request, ::cniface::DeleteItemResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status RepositoryService::Service::search(::grpc::ServerContext* context, const ::cniface::SearchRequest* request, ::cniface::SearchResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+
 }  // namespace cniface
 
