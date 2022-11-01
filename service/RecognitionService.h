@@ -11,7 +11,7 @@
 
 class RecognitionService final : public cniface::RecognitionService::Service {
 public:
-    explicit RecognitionService(const std::string& model_dir);
+    explicit RecognitionService(const std::string& model_dir, const std::vector<int> &cpu_devices);
     ~RecognitionService() override;
 
     grpc::Status extractFeature(::grpc::ServerContext *context, const ::cniface::ExtractFeatureRequest *request,

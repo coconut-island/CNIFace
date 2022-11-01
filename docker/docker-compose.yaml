@@ -5,7 +5,7 @@ services:
     image: abelleeye/cniface:latest
     container_name: cniface
     restart: always
-    command: cniface -m /models/ -r /repo_root/ -p 22506
+    command: cniface -m /models/ -r /repo_root/ -p 22506 -c 0
     volumes:
       - ./repo_root/:/repo_root/
     ports:

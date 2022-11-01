@@ -14,9 +14,9 @@
 
 
 
-RecognitionService::RecognitionService(const string &model_dir) {
-    m_w600k_r50 = new ArcFace(model_dir);
-    m_w600k_mbf = new ArcFace(model_dir, "w600k_mbf");
+RecognitionService::RecognitionService(const string &model_dir, const std::vector<int> &cpu_devices) {
+    m_w600k_r50 = new ArcFace(model_dir, cpu_devices);
+    m_w600k_mbf = new ArcFace(model_dir, "w600k_mbf", cpu_devices);
 }
 
 RecognitionService::~RecognitionService() {

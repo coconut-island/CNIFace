@@ -79,8 +79,8 @@ int main(int argc, char *argv[]) {
 
     std::string server_address("0.0.0.0:" + port);
     DetectService detectService(model_dir, cpu_devices);
-    RecognitionService recognitionService(model_dir);
-    AttributeService attributeService(model_dir);
+    RecognitionService recognitionService(model_dir, cpu_devices);
+    AttributeService attributeService(model_dir, cpu_devices);
     RepositoryService repositoryService(repo_root_dir);
 
     grpc::ServerBuilder builder;

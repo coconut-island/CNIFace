@@ -11,7 +11,7 @@
 
 class AttributeService final : public cniface::AttributeService::Service {
 public:
-    explicit AttributeService(const std::string& model_dir);
+    explicit AttributeService(const std::string& model_dir, const std::vector<int> &cpu_devices);
     ~AttributeService() override;
 
     grpc::Status genderAge(::grpc::ServerContext *context, const ::cniface::GenderAgeRequest *request,

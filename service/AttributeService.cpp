@@ -9,8 +9,8 @@
 #include "../utils/ImageUtil.h"
 #include "../utils/base64.h"
 
-AttributeService::AttributeService(const string &model_dir) {
-    m_genderAge = new GenderAge(model_dir);
+AttributeService::AttributeService(const string &model_dir, const std::vector<int> &cpu_devices) {
+    m_genderAge = new GenderAge(model_dir, cpu_devices);
 }
 
 AttributeService::~AttributeService() {
