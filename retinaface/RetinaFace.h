@@ -17,6 +17,7 @@ using namespace std;
 
 class RetinaFace {
 public:
+    explicit RetinaFace(const std::string& model_dir_path);
     explicit RetinaFace(const std::string& model_dir_path, const std::vector<int> &cpu_devices);
     explicit RetinaFace(const std::string& model_dir_path, const std::string& model_name, const std::vector<int> &cpu_devices);
     ~RetinaFace();

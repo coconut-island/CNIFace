@@ -9,6 +9,11 @@
 #include "ArcFace.h"
 #include "../utils/ImageUtil.h"
 
+ArcFace::ArcFace(const string &model_dir_path) {
+    std::vector<int> cpu_devices = {0};
+    init(model_dir_path, m_default_model_name, cpu_devices);
+}
+
 ArcFace::ArcFace(const string &model_dir_path, const std::vector<int> &cpu_devices) {
     init(model_dir_path, m_default_model_name, cpu_devices);
 }

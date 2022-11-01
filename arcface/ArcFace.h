@@ -11,6 +11,7 @@ using namespace std;
 
 class ArcFace {
 public:
+    explicit ArcFace(const std::string &model_dir_path);
     explicit ArcFace(const std::string &model_dir_path, const std::vector<int> &cpu_devices);
     explicit ArcFace(const std::string &model_dir_path, const std::string &model_name, const std::vector<int> &cpu_devices);
     ~ArcFace();

@@ -17,6 +17,7 @@ public:
 
 class GenderAge {
 public:
+    explicit GenderAge(const std::string &model_dir_path);
     explicit GenderAge(const std::string &model_dir_path, const std::vector<int> &cpu_devices);
     ~GenderAge();
 
