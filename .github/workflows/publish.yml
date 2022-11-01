@@ -25,6 +25,10 @@ jobs:
         with:
           username: ${{ secrets.REACTUSERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+          
+      - name: Get date time
+        id: date
+        run: echo "::set-output name=current_time::$(date +'%Y%m%d%H%M')"
 
       - name: Build and push
         uses: docker/build-push-action@v2
@@ -32,4 +36,6 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.REACTUSERNAME }}/cniface:latest
+          tags: |
+            ${{ secrets.REACTUSERNAME }}/cniface:latest
+            ${{ secrets.REACTUSERNAME }}/cniface:${{ steps.date.outputs.current_time }}
