@@ -241,7 +241,18 @@ void MNetCov2::nms(std::vector<Anchor>& anchors, float threshold, std::vector<An
     }
 }
 
+MNetCov2::MNetCov2(const std::string &model_dir_path) {
+    std::vector<int> cpu_devices = {0};
+    init(model_dir_path, cpu_devices);
+}
+
 MNetCov2::MNetCov2(const std::string &model_dir_path, const std::vector<int> &cpu_devices) {
+    init(model_dir_path, cpu_devices);
+}
+
+MNetCov2::~MNetCov2() = default;
+
+void MNetCov2::init(const std::string &model_dir_path, const std::vector<int> &cpu_devices) {
     string so_lib_path = model_dir_path + m_model_name  + ".so";
     tvm::runtime::Module mod_syslib = tvm::runtime::Module::LoadFromFile(so_lib_path);
 
@@ -304,8 +315,6 @@ MNetCov2::MNetCov2(const std::string &model_dir_path, const std::vector<int> &cp
         m_anchors[key] = anchors_plane(outputH[i], outputW[i], stride, m_anchors_fpn[key]);
     }
 }
-
-MNetCov2::~MNetCov2() = default;
 
 vector<Anchor> MNetCov2::detect(uint8_t* bgr_img, int img_width, int img_height, float score_threshold = 0.5) {
     float im_ratio = (float)img_height / (float)img_width;

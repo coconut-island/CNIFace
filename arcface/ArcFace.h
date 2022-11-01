@@ -6,6 +6,7 @@
 #define CNIFACE_ARCFACE_H
 
 #include <tvm/runtime/module.h>
+#include <atomic>
 
 using namespace std;
 
