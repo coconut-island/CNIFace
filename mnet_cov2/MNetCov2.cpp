@@ -241,7 +241,7 @@ void MNetCov2::nms(std::vector<Anchor>& anchors, float threshold, std::vector<An
     }
 }
 
-MNetCov2::MNetCov2(const std::string &model_dir_path) {
+MNetCov2::MNetCov2(const std::string &model_dir_path, const std::vector<int> &cpu_devices) {
     string so_lib_path = model_dir_path + m_model_name  + ".so";
     tvm::runtime::Module mod_syslib = tvm::runtime::Module::LoadFromFile(so_lib_path);
 
@@ -257,14 +257,16 @@ MNetCov2::MNetCov2(const std::string &model_dir_path) {
 
     tvm::runtime::Module mod = (*tvm::runtime::Registry::Get("tvm.graph_executor.create"))(json_data, mod_syslib, m_device_type, m_device_id);
 
-    this->m_handle = std::make_shared<tvm::runtime::Module>(mod);
+    for (auto& cpu_device : cpu_devices) {
+        tvm::runtime::Module mod = (*tvm::runtime::Registry::Get("tvm.graph_executor.create"))(json_data, mod_syslib, m_device_type, cpu_device);
+        this->m_handles.emplace_back(std::make_shared<tvm::runtime::Module>(mod));
 
-    TVMByteArray params_arr;
-    params_arr.data = params_data.c_str();
-    params_arr.size = params_data.length();
-    tvm::runtime::PackedFunc load_params = mod.GetFunction("load_params");
-    load_params(params_arr);
-
+        TVMByteArray params_arr;
+        params_arr.data = params_data.c_str();
+        params_arr.size = params_data.length();
+        tvm::runtime::PackedFunc load_params = mod.GetFunction("load_params");
+        load_params(params_arr);
+    }
 
     vector<float> ratio = {1.0};
     anchor_cfg tmp;
@@ -346,7 +348,8 @@ vector<Anchor> MNetCov2::detect(uint8_t* bgr_img, int img_width, int img_height,
         input_data[i + m_input_width * m_input_height * 2] = m_scale * ((float) resized_padding_img[i * 3] - m_mean);
     }
 
-    auto *mod = (tvm::runtime::Module *)m_handle.get();
+    auto *mod = (tvm::runtime::Module *)m_handles[m_cur_cpu_device_idx].get();
+    if (++m_cur_cpu_device_idx >= m_handles.size()) m_cur_cpu_device_idx = 0;
 
     tvm::runtime::PackedFunc set_input = mod->GetFunction("set_input");
     tvm::runtime::PackedFunc load_params = mod->GetFunction("load_params");

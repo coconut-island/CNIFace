@@ -11,8 +11,8 @@ using namespace std;
 
 class ArcFace {
 public:
-    explicit ArcFace(const std::string &model_dir_path);
-    explicit ArcFace(const std::string &model_dir_path, const std::string &model_name);
+    explicit ArcFace(const std::string &model_dir_path, const std::vector<int> &cpu_devices);
+    explicit ArcFace(const std::string &model_dir_path, const std::string &model_name, const std::vector<int> &cpu_devices);
     ~ArcFace();
 
     /**
@@ -33,10 +33,11 @@ public:
     size_t getFeatureSize() const;
 
 private:
-    void init(const std::string &model_dir_path, const std::string &model_name);
+    void init(const std::string &model_dir_path, const std::string &model_name, const std::vector<int> &cpu_devices);
 
 private:
-    shared_ptr<tvm::runtime::Module> m_handle;
+    std::vector<shared_ptr<tvm::runtime::Module>> m_handles;
+    std::atomic_int m_cur_cpu_device_idx{0};
 
     string m_default_model_name = "w600k_r50";
 

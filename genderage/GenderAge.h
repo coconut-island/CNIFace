@@ -17,7 +17,7 @@ public:
 
 class GenderAge {
 public:
-    explicit GenderAge(const std::string &model_dir_path);
+    explicit GenderAge(const std::string &model_dir_path, const std::vector<int> &cpu_devices);
     ~GenderAge();
 
     GenderAgeResult infer(const uint8_t* bgr_img, int img_width, int img_height, const vector<float>& kps);
@@ -25,10 +25,11 @@ public:
     GenderAgeResult infer(const uint8_t* bgr_img);
 
 private:
-    void init(const std::string &model_dir_path, const std::string &model_name);
+    void init(const std::string &model_dir_path, const std::string &model_name, const std::vector<int> &cpu_devices);
 
 private:
-    shared_ptr<tvm::runtime::Module> m_handle;
+    std::vector<shared_ptr<tvm::runtime::Module>> m_handles;
+    std::atomic_int m_cur_cpu_device_idx{0};
 
     string m_default_model_name = "genderage";
 

@@ -9,13 +9,13 @@
 #include "../utils/ImageUtil.h"
 
 
-GenderAge::GenderAge(const string &model_dir_path) {
-    init(model_dir_path, m_default_model_name);
+GenderAge::GenderAge(const string &model_dir_path, const std::vector<int> &cpu_devices) {
+    init(model_dir_path, m_default_model_name, cpu_devices);
 }
 
 GenderAge::~GenderAge() = default;
 
-void GenderAge::init(const string &model_dir_path, const string &model_name) {
+void GenderAge::init(const string &model_dir_path, const string &model_name, const std::vector<int> &cpu_devices) {
     string so_lib_path = model_dir_path + model_name  + ".so";
     tvm::runtime::Module mod_syslib = tvm::runtime::Module::LoadFromFile(so_lib_path);
 
@@ -29,15 +29,16 @@ void GenderAge::init(const string &model_dir_path, const string &model_name) {
     std::string params_data((std::istreambuf_iterator<char>(params_in)), std::istreambuf_iterator<char>());
     params_in.close();
 
-    tvm::runtime::Module mod = (*tvm::runtime::Registry::Get("tvm.graph_executor.create"))(json_data, mod_syslib, m_device_type, m_device_id);
+    for (auto& cpu_device : cpu_devices) {
+        tvm::runtime::Module mod = (*tvm::runtime::Registry::Get("tvm.graph_executor.create"))(json_data, mod_syslib, m_device_type, cpu_device);
+        this->m_handles.emplace_back(std::make_shared<tvm::runtime::Module>(mod));
 
-    this->m_handle = std::make_shared<tvm::runtime::Module>(mod);
-
-    TVMByteArray params_arr;
-    params_arr.data = params_data.c_str();
-    params_arr.size = params_data.length();
-    tvm::runtime::PackedFunc load_params = mod.GetFunction("load_params");
-    load_params(params_arr);
+        TVMByteArray params_arr;
+        params_arr.data = params_data.c_str();
+        params_arr.size = params_data.length();
+        tvm::runtime::PackedFunc load_params = mod.GetFunction("load_params");
+        load_params(params_arr);
+    }
 }
 
 GenderAgeResult GenderAge::infer(const uint8_t *bgr_img) {
@@ -48,7 +49,8 @@ GenderAgeResult GenderAge::infer(const uint8_t *bgr_img) {
         input_data[i + m_input_width * m_input_height * 2] = m_scale * ((float)bgr_img[i * 3] - m_mean);
     }
 
-    auto *mod = (tvm::runtime::Module *)m_handle.get();
+    auto *mod = (tvm::runtime::Module *)m_handles[m_cur_cpu_device_idx].get();
+    if (++m_cur_cpu_device_idx >= m_handles.size()) m_cur_cpu_device_idx = 0;
 
     tvm::runtime::PackedFunc set_input = mod->GetFunction("set_input");
     tvm::runtime::PackedFunc load_params = mod->GetFunction("load_params");

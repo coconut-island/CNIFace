@@ -41,12 +41,13 @@ public:
 
 class MNetCov2 {
 public:
-    explicit MNetCov2(const std::string& model_dir_path);
+    explicit MNetCov2(const std::string& model_dir_path, const std::vector<int> &cpu_devices);
     ~MNetCov2();
     vector<Anchor> detect(uint8_t* rgb_img, int img_width, int img_height, float score_threshold);
     static void nms(std::vector<Anchor>& anchors, float threshold, std::vector<Anchor>& out_anchors);
 private:
-    shared_ptr<tvm::runtime::Module> m_handle;
+    std::vector<shared_ptr<tvm::runtime::Module>> m_handles;
+    std::atomic_int m_cur_cpu_device_idx{0};
 
     string m_model_name = "mnet_cov2";
     float m_nms_thresh = 0.4;

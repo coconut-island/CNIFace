@@ -10,10 +10,10 @@
 
 
 
-DetectService::DetectService(const string &model_dir) {
-    m_retinaFace10g = new RetinaFace(model_dir);
-    m_retinaFace500m = new RetinaFace(model_dir, "det_500m");
-    m_mNetCov2 = new MNetCov2(model_dir);
+DetectService::DetectService(const string &model_dir, const std::vector<int> &cpu_devices) {
+    m_retinaFace10g = new RetinaFace(model_dir, cpu_devices);
+    m_retinaFace500m = new RetinaFace(model_dir, "det_500m", cpu_devices);
+    m_mNetCov2 = new MNetCov2(model_dir, cpu_devices);
 }
 
 DetectService::~DetectService() {

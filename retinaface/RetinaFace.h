@@ -7,6 +7,7 @@
 
 #include <string>
 #include <vector>
+#include <atomic>
 
 #include <tvm/runtime/module.h>
 
@@ -16,17 +17,18 @@ using namespace std;
 
 class RetinaFace {
 public:
-    explicit RetinaFace(const std::string& model_dir_path);
-    explicit RetinaFace(const std::string& model_dir_path, const std::string& model_name);
+    explicit RetinaFace(const std::string& model_dir_path, const std::vector<int> &cpu_devices);
+    explicit RetinaFace(const std::string& model_dir_path, const std::string& model_name, const std::vector<int> &cpu_devices);
     ~RetinaFace();
     vector<Anchor> detect(uint8_t* rgb_img, int img_width, int img_height, float score_threshold);
     static void nms(std::vector<Anchor>& anchors, float threshold, std::vector<Anchor>& out_anchors);
 
 private:
-    void init(const std::string& model_dir_path, const std::string& model_name);
+    void init(const std::string& model_dir_path, const std::string& model_name, const std::vector<int> &cpu_devices);
 
 private:
-    shared_ptr<tvm::runtime::Module> m_handle;
+    std::vector<shared_ptr<tvm::runtime::Module>> m_handles;
+    std::atomic_int m_cur_cpu_device_idx{0};
 
     string m_default_model_name = "det_10g";
     float m_nms_thresh = 0.4;

@@ -9,10 +9,12 @@ This project is one **simple face platform && grpc server**!
 - Web server link: [CNIFacePlatform](https://github.com/coconut-island/CNIFacePlatform)
 
 Supported modules:
-- [x] face detect
-- [x] face recognition
-- [x] face && mask detect, mnet_cov2
-- [x] attribute gender and age
+- [x] Face Detect
+- [x] Face Recognition
+- [x] Face && Mask Detect
+- [x] Attribute Gender And Age
+- [x] Support Multiple CPU
+- [ ] Model Performance Tune
 
 # Docker
 

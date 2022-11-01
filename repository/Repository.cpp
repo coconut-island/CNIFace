@@ -95,7 +95,7 @@ int Repository::createRepository(std::string &repoName) {
     std::string retrieval_type = "FLAT";
     std::string store_type = "MemoryOnly";
     std::string kFLATParam = R"({"metric_type" : "InnerProduct"})";
-    int indexing_size = 100000;
+    int indexing_size = 300000;
     std::string model_id = "model";
 
     tig_gamma::TableInfo table;

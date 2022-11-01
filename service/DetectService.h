@@ -12,7 +12,7 @@
 
 class DetectService final : public cniface::DetectService::Service {
 public:
-    explicit DetectService(const std::string& model_dir);
+    explicit DetectService(const std::string& model_dir, const std::vector<int> &cpu_devices);
     ~DetectService() override;
 
     grpc::Status detect(::grpc::ServerContext *context, const ::cniface::DetectRequest *request,
