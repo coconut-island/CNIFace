@@ -3,8 +3,6 @@ FROM abelleeye/cniface-base:202211010248
 RUN git clone https://github.com/coconut-island/CNIFace.git
 
 RUN mkdir -p /models/
-RUN wget
-RUN cd /CNIFace/models
 
 RUN wget https://github.com/coconut-island/CNIFaceResource/raw/main/relay_models/x86_llvm/det_10g.json -O /models/det_10g.json
 RUN wget https://github.com/coconut-island/CNIFaceResource/raw/main/relay_models/x86_llvm/det_10g.params -O /models/det_10g.params
