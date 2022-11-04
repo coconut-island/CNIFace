@@ -16,6 +16,7 @@ services:
     container_name: cniface-platform
     environment:
       - CNIFACE_GRPC_ADDR=static://cniface:22506
+      - DB_URL=jdbc:mysql://cniface-platform-db:3306/cniface?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
     restart: always
     command: java -jar cniface-platform.jar
     ports:
