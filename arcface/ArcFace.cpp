@@ -58,6 +58,7 @@ void ArcFace::recognize(const uint8_t* bgr_img, float *feature) {
         input_data[i] = m_scale * ((float)bgr_img[i * 3 + 2] - m_mean);
     }
 
+    int cur_cpu_device_idx = m_cur_cpu_device_idx;
     auto *mod = (tvm::runtime::Module *)m_handles[m_cur_cpu_device_idx].get();
     if (++m_cur_cpu_device_idx >= m_handles.size()) m_cur_cpu_device_idx = 0;
 
@@ -68,7 +69,7 @@ void ArcFace::recognize(const uint8_t* bgr_img, float *feature) {
 
     DLTensor* tvm_input_data;
     int64_t in_shape[4] = { 1, m_input_channel, m_input_height, m_input_width };
-    TVMArrayAlloc(in_shape, m_in_ndim, m_dtype_code, m_dtype_bits, m_dtype_lanes, m_device_type, m_device_id, &tvm_input_data);
+    TVMArrayAlloc(in_shape, m_in_ndim, m_dtype_code, m_dtype_bits, m_dtype_lanes, m_device_type, cur_cpu_device_idx, &tvm_input_data);
     TVMArrayCopyFromBytes(tvm_input_data, input_data, m_input_size);
 
     set_input(m_input_name, tvm_input_data);

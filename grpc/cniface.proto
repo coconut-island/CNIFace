@@ -169,3 +169,29 @@ service RepositoryService {
     rpc deleteItem (DeleteItemRequest) returns ( DeleteItemResponse) {}
     rpc search (SearchRequest) returns ( SearchResponse) {}
 }
+
+
+message OCRRequest {
+    string imageBase64 = 1;
+    bool isCls = 2; // 设置为true，可识别倒立的文字。
+    bool isRec = 3; // 是否识别文字。
+}
+
+message OCRResponseItem {
+    repeated float position = 1;
+    float score = 2;
+    string text = 3;
+    float clsScore = 4;
+    int32 clsLabel = 5;
+}
+
+message OCRResponse {
+    int32 code = 1;
+    string message = 2;
+    repeated OCRResponseItem results = 3;
+}
+
+service OCRService {
+    rpc ocr (OCRRequest) returns ( OCRResponse) {}
+}
+

@@ -58,6 +58,11 @@ file(GLOB REPOSITORY_SERVICE_SRC
         ${CMAKE_CURRENT_SOURCE_DIR}/repository/*.cpp
         )
 
+file(GLOB PADDLE_OCR_SRC
+        ${CMAKE_CURRENT_SOURCE_DIR}/ppocr/*.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/ppocr/*.cpp
+        )
+
 set(SOURCE_FILES
         main.cpp
         ${COMMON_SRC}
@@ -71,6 +76,7 @@ set(SOURCE_FILES
         ${GRPC_SRC}
         ${SERVICE_SRC}
         ${REPOSITORY_SERVICE_SRC}
+        ${PADDLE_OCR_SRC}
 )
 
 include_directories(
@@ -114,7 +120,11 @@ if(BUILD_SAMPLES)
 
     add_executable (repository ./samples/repository.cpp ${COMMON_SRC} ${UTILS_SRC} ${ARC_FACE_SRC} ${RETINA_FACE_SRC} ${GENDER_AGE_SRC} ${REPOSITORY_SERVICE_SRC})
     target_link_libraries(repository ${OpenCV_LIBS} dl pthread tvm_runtime gamma)
+
+    add_executable (ppocr ./samples/ppocr.cpp ${COMMON_SRC} ${UTILS_SRC} ${PADDLE_OCR_SRC})
+    target_link_libraries(ppocr ${OpenCV_LIBS} dl pthread tvm_runtime)
 endif()
 
 
 install(TARGETS ${CMAKE_PROJECT_NAME} DESTINATION bin)
+install(DIRECTORY resources DESTINATION /cniface)

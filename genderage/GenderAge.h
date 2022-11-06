@@ -39,7 +39,6 @@ private:
     int m_dtype_bits = 32;
     int m_dtype_lanes = 1;
     int m_device_type = kDLCPU;
-    int m_device_id = 0;
     int m_in_ndim = 4;
 
     float m_mean = 0.0;

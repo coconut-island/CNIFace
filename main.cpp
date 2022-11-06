@@ -6,12 +6,14 @@
 #include "./service/RecognitionService.h"
 #include "./service/AttributeService.h"
 #include "./service/RepositoryService.h"
+#include "./service/OCRService.h"
 
 
 #define DEFAULT_MODEL_DIR_PATH "../models/relay/"
 #define DEFAULT_REPO_DIR_PATH "./repo_root"
 #define DEFAULT_GRPC_PORT "22506"
 #define DEFAULT_CPU_DEVICES "0"
+#define DEFAULT_RESOURCE_DIR_PATH "../resources/"
 
 void showUsage() {
     std::cout << "Usage: cniface [m] [p]" << std::endl;
@@ -19,14 +21,15 @@ void showUsage() {
     std::cout << "    r: 对比库文件存放文件夹路径，默认: " << DEFAULT_REPO_DIR_PATH << std::endl;
     std::cout << "    p: grpc端口号，默认: " << DEFAULT_GRPC_PORT << std::endl;
     std::cout << "    c: cpu devices，格式：0,1,2，默认: " << DEFAULT_CPU_DEVICES << std::endl;
+    std::cout << "    z: 资源文件存放文件夹路径，默认: " << DEFAULT_RESOURCE_DIR_PATH << std::endl;
     std::cout << "    h: help" << std::endl;
     exit(0);
 }
 
-void getCustomOpt(int argc, char *argv[], std::string &model_dir, std::string &repository_dir, std::string &port,
-                  std::vector<int> &cpu_devices) {
+void getCustomOpt(int argc, char *argv[], std::string &model_dir, std::string &resource_dir,
+        std::string &repository_dir, std::string &port, std::vector<int> &cpu_devices) {
     int opt;
-    const char* opt_string = "m:r:p:c:h";
+    const char* opt_string = "m:r:p:c:z:h";
     while(-1 != (opt = getopt(argc, argv, opt_string))) {
         switch (opt) {
             case 'm':
@@ -34,6 +37,9 @@ void getCustomOpt(int argc, char *argv[], std::string &model_dir, std::string &r
                 break;
             case 'r':
                 repository_dir = optarg;
+                break;
+            case 'z':
+                resource_dir = optarg;
                 break;
             case 'p':
                 port = optarg;
@@ -58,10 +64,11 @@ void getCustomOpt(int argc, char *argv[], std::string &model_dir, std::string &r
     std::string print_cpu_device = print_cpu_device_stream.str().substr(0, print_cpu_device_stream.str().length() - 1);
 
     LOG(INFO) << "=====CustomOpt=====";
-    LOG(INFO) << "Model Dir   = " << model_dir;
-    LOG(INFO) << "Repo Dir    = " << repository_dir;
-    LOG(INFO) << "Port        = " << port;
-    LOG(INFO) << "CPU DEVICES = " << print_cpu_device;
+    LOG(INFO) << "Model Dir    = " << model_dir;
+    LOG(INFO) << "Repo Dir     = " << repository_dir;
+    LOG(INFO) << "Resource Dir = " << resource_dir;
+    LOG(INFO) << "Port         = " << port;
+    LOG(INFO) << "CPU DEVICES  = " << print_cpu_device;
     LOG(INFO) << "===================";
 }
 
@@ -70,10 +77,11 @@ int main(int argc, char *argv[]) {
 
     std::string model_dir = DEFAULT_MODEL_DIR_PATH;
     std::string repo_root_dir = DEFAULT_REPO_DIR_PATH;
+    std::string resource_dir = DEFAULT_RESOURCE_DIR_PATH;
     std::string port = DEFAULT_GRPC_PORT;
     std::vector<int> cpu_devices = {0};
 
-    getCustomOpt(argc, argv, model_dir, repo_root_dir, port, cpu_devices);
+    getCustomOpt(argc, argv, model_dir, resource_dir, repo_root_dir, port, cpu_devices);
 
     LOG(INFO) << "Starting All Servers!";
 
@@ -82,6 +90,7 @@ int main(int argc, char *argv[]) {
     RecognitionService recognitionService(model_dir, cpu_devices);
     AttributeService attributeService(model_dir, cpu_devices);
     RepositoryService repositoryService(repo_root_dir);
+    OCRService ocrService(model_dir, resource_dir, cpu_devices);
 
     grpc::ServerBuilder builder;
     builder.AddListeningPort(server_address, grpc::InsecureServerCredentials());
@@ -89,6 +98,7 @@ int main(int argc, char *argv[]) {
     builder.RegisterService(&recognitionService);
     builder.RegisterService(&attributeService);
     builder.RegisterService(&repositoryService);
+    builder.RegisterService(&ocrService);
     std::unique_ptr<grpc::Server> server(builder.BuildAndStart());
     LOG(INFO) << "Server listening on " << server_address;
     server->Wait();

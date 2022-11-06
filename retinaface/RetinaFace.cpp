@@ -153,6 +153,7 @@ vector<Anchor> RetinaFace::detect(uint8_t* bgr_img, int img_width, int img_heigh
         input_data[i + m_input_width * m_input_height * 2] = m_scale * ((float)resized_padding_img[i * 3] - m_mean);
     }
 
+    int cur_cpu_device_idx = m_cur_cpu_device_idx;
     auto *mod = (tvm::runtime::Module *)m_handles[m_cur_cpu_device_idx].get();
     if (++m_cur_cpu_device_idx >= m_handles.size()) m_cur_cpu_device_idx = 0;
 
@@ -163,7 +164,7 @@ vector<Anchor> RetinaFace::detect(uint8_t* bgr_img, int img_width, int img_heigh
 
     DLTensor* tvm_input_data;
     int64_t in_shape[4] = { 1, m_input_channel, m_input_height, m_input_width };
-    TVMArrayAlloc(in_shape, m_in_ndim, m_dtype_code, m_dtype_bits, m_dtype_lanes, m_device_type, m_device_id, &tvm_input_data);
+    TVMArrayAlloc(in_shape, m_in_ndim, m_dtype_code, m_dtype_bits, m_dtype_lanes, m_device_type, cur_cpu_device_idx, &tvm_input_data);
     TVMArrayCopyFromBytes(tvm_input_data, input_data, m_input_size);
 
     set_input(m_input_name, tvm_input_data);

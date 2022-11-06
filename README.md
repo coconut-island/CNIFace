@@ -14,7 +14,7 @@ Supported modules:
 - [x] Face && Mask Detect
 - [x] Attribute Gender And Age
 - [x] Support Multiple CPU
-- [ ] Support PaddleOCR
+- [x] Support PaddleOCR, only move right now
 - [ ] Fuse Preprocess
 - [ ] Refine Models Outputs OPs
 - [ ] Model Performance Tune

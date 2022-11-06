@@ -1954,6 +1954,213 @@ class RepositoryService final {
   typedef WithStreamedUnaryMethod_createRepository<WithStreamedUnaryMethod_deleteRepository<WithStreamedUnaryMethod_existRepository<WithStreamedUnaryMethod_listRepository<WithStreamedUnaryMethod_addOrUpdateItem<WithStreamedUnaryMethod_deleteItem<WithStreamedUnaryMethod_search<Service > > > > > > > StreamedService;
 };
 
+class OCRService final {
+ public:
+  static constexpr char const* service_full_name() {
+    return "cniface.OCRService";
+  }
+  class StubInterface {
+   public:
+    virtual ~StubInterface() {}
+    virtual ::grpc::Status ocr(::grpc::ClientContext* context, const ::cniface::OCRRequest& request, ::cniface::OCRResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cniface::OCRResponse>> Asyncocr(::grpc::ClientContext* context, const ::cniface::OCRRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cniface::OCRResponse>>(AsyncocrRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cniface::OCRResponse>> PrepareAsyncocr(::grpc::ClientContext* context, const ::cniface::OCRRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::cniface::OCRResponse>>(PrepareAsyncocrRaw(context, request, cq));
+    }
+    class async_interface {
+     public:
+      virtual ~async_interface() {}
+      virtual void ocr(::grpc::ClientContext* context, const ::cniface::OCRRequest* request, ::cniface::OCRResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void ocr(::grpc::ClientContext* context, const ::cniface::OCRRequest* request, ::cniface::OCRResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+    };
+    typedef class async_interface experimental_async_interface;
+    virtual class async_interface* async() { return nullptr; }
+    class async_interface* experimental_async() { return async(); }
+   private:
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::cniface::OCRResponse>* AsyncocrRaw(::grpc::ClientContext* context, const ::cniface::OCRRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::cniface::OCRResponse>* PrepareAsyncocrRaw(::grpc::ClientContext* context, const ::cniface::OCRRequest& request, ::grpc::CompletionQueue* cq) = 0;
+  };
+  class Stub final : public StubInterface {
+   public:
+    Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
+    ::grpc::Status ocr(::grpc::ClientContext* context, const ::cniface::OCRRequest& request, ::cniface::OCRResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cniface::OCRResponse>> Asyncocr(::grpc::ClientContext* context, const ::cniface::OCRRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cniface::OCRResponse>>(AsyncocrRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cniface::OCRResponse>> PrepareAsyncocr(::grpc::ClientContext* context, const ::cniface::OCRRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::cniface::OCRResponse>>(PrepareAsyncocrRaw(context, request, cq));
+    }
+    class async final :
+      public StubInterface::async_interface {
+     public:
+      void ocr(::grpc::ClientContext* context, const ::cniface::OCRRequest* request, ::cniface::OCRResponse* response, std::function<void(::grpc::Status)>) override;
+      void ocr(::grpc::ClientContext* context, const ::cniface::OCRRequest* request, ::cniface::OCRResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+     private:
+      friend class Stub;
+      explicit async(Stub* stub): stub_(stub) { }
+      Stub* stub() { return stub_; }
+      Stub* stub_;
+    };
+    class async* async() override { return &async_stub_; }
+
+   private:
+    std::shared_ptr< ::grpc::ChannelInterface> channel_;
+    class async async_stub_{this};
+    ::grpc::ClientAsyncResponseReader< ::cniface::OCRResponse>* AsyncocrRaw(::grpc::ClientContext* context, const ::cniface::OCRRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::cniface::OCRResponse>* PrepareAsyncocrRaw(::grpc::ClientContext* context, const ::cniface::OCRRequest& request, ::grpc::CompletionQueue* cq) override;
+    const ::grpc::internal::RpcMethod rpcmethod_ocr_;
+  };
+  static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
+
+  class Service : public ::grpc::Service {
+   public:
+    Service();
+    virtual ~Service();
+    virtual ::grpc::Status ocr(::grpc::ServerContext* context, const ::cniface::OCRRequest* request, ::cniface::OCRResponse* response);
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_ocr : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_ocr() {
+      ::grpc::Service::MarkMethodAsync(0);
+    }
+    ~WithAsyncMethod_ocr() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ocr(::grpc::ServerContext* /*context*/, const ::cniface::OCRRequest* /*request*/, ::cniface::OCRResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void Requestocr(::grpc::ServerContext* context, ::cniface::OCRRequest* request, ::grpc::ServerAsyncResponseWriter< ::cniface::OCRResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_ocr<Service > AsyncService;
+  template <class BaseClass>
+  class WithCallbackMethod_ocr : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_ocr() {
+      ::grpc::Service::MarkMethodCallback(0,
+          new ::grpc::internal::CallbackUnaryHandler< ::cniface::OCRRequest, ::cniface::OCRResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::cniface::OCRRequest* request, ::cniface::OCRResponse* response) { return this->ocr(context, request, response); }));}
+    void SetMessageAllocatorFor_ocr(
+        ::grpc::MessageAllocator< ::cniface::OCRRequest, ::cniface::OCRResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(0);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::cniface::OCRRequest, ::cniface::OCRResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_ocr() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ocr(::grpc::ServerContext* /*context*/, const ::cniface::OCRRequest* /*request*/, ::cniface::OCRResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* ocr(
+      ::grpc::CallbackServerContext* /*context*/, const ::cniface::OCRRequest* /*request*/, ::cniface::OCRResponse* /*response*/)  { return nullptr; }
+  };
+  typedef WithCallbackMethod_ocr<Service > CallbackService;
+  typedef CallbackService ExperimentalCallbackService;
+  template <class BaseClass>
+  class WithGenericMethod_ocr : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_ocr() {
+      ::grpc::Service::MarkMethodGeneric(0);
+    }
+    ~WithGenericMethod_ocr() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ocr(::grpc::ServerContext* /*context*/, const ::cniface::OCRRequest* /*request*/, ::cniface::OCRResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_ocr : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_ocr() {
+      ::grpc::Service::MarkMethodRaw(0);
+    }
+    ~WithRawMethod_ocr() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ocr(::grpc::ServerContext* /*context*/, const ::cniface::OCRRequest* /*request*/, ::cniface::OCRResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void Requestocr(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_ocr : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_ocr() {
+      ::grpc::Service::MarkMethodRawCallback(0,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ocr(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_ocr() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ocr(::grpc::ServerContext* /*context*/, const ::cniface::OCRRequest* /*request*/, ::cniface::OCRResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* ocr(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_ocr : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_ocr() {
+      ::grpc::Service::MarkMethodStreamed(0,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::cniface::OCRRequest, ::cniface::OCRResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::cniface::OCRRequest, ::cniface::OCRResponse>* streamer) {
+                       return this->Streamedocr(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_ocr() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status ocr(::grpc::ServerContext* /*context*/, const ::cniface::OCRRequest* /*request*/, ::cniface::OCRResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status Streamedocr(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::cniface::OCRRequest,::cniface::OCRResponse>* server_unary_streamer) = 0;
+  };
+  typedef WithStreamedUnaryMethod_ocr<Service > StreamedUnaryService;
+  typedef Service SplitStreamedService;
+  typedef WithStreamedUnaryMethod_ocr<Service > StreamedService;
+};
+
 }  // namespace cniface
 
 

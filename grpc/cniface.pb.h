@@ -47,7 +47,7 @@ struct TableStruct_cniface_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[23]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[26]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -109,6 +109,15 @@ extern GenderAgeResponseDefaultTypeInternal _GenderAgeResponse_default_instance_
 class ListRepositoryResponse;
 struct ListRepositoryResponseDefaultTypeInternal;
 extern ListRepositoryResponseDefaultTypeInternal _ListRepositoryResponse_default_instance_;
+class OCRRequest;
+struct OCRRequestDefaultTypeInternal;
+extern OCRRequestDefaultTypeInternal _OCRRequest_default_instance_;
+class OCRResponse;
+struct OCRResponseDefaultTypeInternal;
+extern OCRResponseDefaultTypeInternal _OCRResponse_default_instance_;
+class OCRResponseItem;
+struct OCRResponseItemDefaultTypeInternal;
+extern OCRResponseItemDefaultTypeInternal _OCRResponseItem_default_instance_;
 class SearchRequest;
 struct SearchRequestDefaultTypeInternal;
 extern SearchRequestDefaultTypeInternal _SearchRequest_default_instance_;
@@ -144,6 +153,9 @@ template<> ::cniface::ExtractFeatureResponse* Arena::CreateMaybeMessage<::cnifac
 template<> ::cniface::GenderAgeRequest* Arena::CreateMaybeMessage<::cniface::GenderAgeRequest>(Arena*);
 template<> ::cniface::GenderAgeResponse* Arena::CreateMaybeMessage<::cniface::GenderAgeResponse>(Arena*);
 template<> ::cniface::ListRepositoryResponse* Arena::CreateMaybeMessage<::cniface::ListRepositoryResponse>(Arena*);
+template<> ::cniface::OCRRequest* Arena::CreateMaybeMessage<::cniface::OCRRequest>(Arena*);
+template<> ::cniface::OCRResponse* Arena::CreateMaybeMessage<::cniface::OCRResponse>(Arena*);
+template<> ::cniface::OCRResponseItem* Arena::CreateMaybeMessage<::cniface::OCRResponseItem>(Arena*);
 template<> ::cniface::SearchRequest* Arena::CreateMaybeMessage<::cniface::SearchRequest>(Arena*);
 template<> ::cniface::SearchResponse* Arena::CreateMaybeMessage<::cniface::SearchResponse>(Arena*);
 template<> ::cniface::SearchResponseItem* Arena::CreateMaybeMessage<::cniface::SearchResponseItem>(Arena*);
@@ -4218,6 +4230,569 @@ class SearchResponse final :
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_cniface_2eproto;
 };
+// -------------------------------------------------------------------
+
+class OCRRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cniface.OCRRequest) */ {
+ public:
+  inline OCRRequest() : OCRRequest(nullptr) {}
+  ~OCRRequest() override;
+  explicit constexpr OCRRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  OCRRequest(const OCRRequest& from);
+  OCRRequest(OCRRequest&& from) noexcept
+    : OCRRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline OCRRequest& operator=(const OCRRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline OCRRequest& operator=(OCRRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const OCRRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const OCRRequest* internal_default_instance() {
+    return reinterpret_cast<const OCRRequest*>(
+               &_OCRRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    23;
+
+  friend void swap(OCRRequest& a, OCRRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(OCRRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(OCRRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  OCRRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<OCRRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const OCRRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const OCRRequest& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(OCRRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cniface.OCRRequest";
+  }
+  protected:
+  explicit OCRRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kImageBase64FieldNumber = 1,
+    kIsClsFieldNumber = 2,
+    kIsRecFieldNumber = 3,
+  };
+  // string imageBase64 = 1;
+  void clear_imagebase64();
+  const std::string& imagebase64() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_imagebase64(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_imagebase64();
+  PROTOBUF_NODISCARD std::string* release_imagebase64();
+  void set_allocated_imagebase64(std::string* imagebase64);
+  private:
+  const std::string& _internal_imagebase64() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_imagebase64(const std::string& value);
+  std::string* _internal_mutable_imagebase64();
+  public:
+
+  // bool isCls = 2;
+  void clear_iscls();
+  bool iscls() const;
+  void set_iscls(bool value);
+  private:
+  bool _internal_iscls() const;
+  void _internal_set_iscls(bool value);
+  public:
+
+  // bool isRec = 3;
+  void clear_isrec();
+  bool isrec() const;
+  void set_isrec(bool value);
+  private:
+  bool _internal_isrec() const;
+  void _internal_set_isrec(bool value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:cniface.OCRRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr imagebase64_;
+  bool iscls_;
+  bool isrec_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_cniface_2eproto;
+};
+// -------------------------------------------------------------------
+
+class OCRResponseItem final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cniface.OCRResponseItem) */ {
+ public:
+  inline OCRResponseItem() : OCRResponseItem(nullptr) {}
+  ~OCRResponseItem() override;
+  explicit constexpr OCRResponseItem(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  OCRResponseItem(const OCRResponseItem& from);
+  OCRResponseItem(OCRResponseItem&& from) noexcept
+    : OCRResponseItem() {
+    *this = ::std::move(from);
+  }
+
+  inline OCRResponseItem& operator=(const OCRResponseItem& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline OCRResponseItem& operator=(OCRResponseItem&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const OCRResponseItem& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const OCRResponseItem* internal_default_instance() {
+    return reinterpret_cast<const OCRResponseItem*>(
+               &_OCRResponseItem_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    24;
+
+  friend void swap(OCRResponseItem& a, OCRResponseItem& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(OCRResponseItem* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(OCRResponseItem* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  OCRResponseItem* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<OCRResponseItem>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const OCRResponseItem& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const OCRResponseItem& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(OCRResponseItem* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cniface.OCRResponseItem";
+  }
+  protected:
+  explicit OCRResponseItem(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kPositionFieldNumber = 1,
+    kTextFieldNumber = 3,
+    kScoreFieldNumber = 2,
+    kClsScoreFieldNumber = 4,
+    kClsLabelFieldNumber = 5,
+  };
+  // repeated float position = 1;
+  int position_size() const;
+  private:
+  int _internal_position_size() const;
+  public:
+  void clear_position();
+  private:
+  float _internal_position(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+      _internal_position() const;
+  void _internal_add_position(float value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+      _internal_mutable_position();
+  public:
+  float position(int index) const;
+  void set_position(int index, float value);
+  void add_position(float value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+      position() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+      mutable_position();
+
+  // string text = 3;
+  void clear_text();
+  const std::string& text() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_text(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_text();
+  PROTOBUF_NODISCARD std::string* release_text();
+  void set_allocated_text(std::string* text);
+  private:
+  const std::string& _internal_text() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_text(const std::string& value);
+  std::string* _internal_mutable_text();
+  public:
+
+  // float score = 2;
+  void clear_score();
+  float score() const;
+  void set_score(float value);
+  private:
+  float _internal_score() const;
+  void _internal_set_score(float value);
+  public:
+
+  // float clsScore = 4;
+  void clear_clsscore();
+  float clsscore() const;
+  void set_clsscore(float value);
+  private:
+  float _internal_clsscore() const;
+  void _internal_set_clsscore(float value);
+  public:
+
+  // int32 clsLabel = 5;
+  void clear_clslabel();
+  int32_t clslabel() const;
+  void set_clslabel(int32_t value);
+  private:
+  int32_t _internal_clslabel() const;
+  void _internal_set_clslabel(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:cniface.OCRResponseItem)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< float > position_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr text_;
+  float score_;
+  float clsscore_;
+  int32_t clslabel_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_cniface_2eproto;
+};
+// -------------------------------------------------------------------
+
+class OCRResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:cniface.OCRResponse) */ {
+ public:
+  inline OCRResponse() : OCRResponse(nullptr) {}
+  ~OCRResponse() override;
+  explicit constexpr OCRResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  OCRResponse(const OCRResponse& from);
+  OCRResponse(OCRResponse&& from) noexcept
+    : OCRResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline OCRResponse& operator=(const OCRResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline OCRResponse& operator=(OCRResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const OCRResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const OCRResponse* internal_default_instance() {
+    return reinterpret_cast<const OCRResponse*>(
+               &_OCRResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    25;
+
+  friend void swap(OCRResponse& a, OCRResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(OCRResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(OCRResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  OCRResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<OCRResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const OCRResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const OCRResponse& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(OCRResponse* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "cniface.OCRResponse";
+  }
+  protected:
+  explicit OCRResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kResultsFieldNumber = 3,
+    kMessageFieldNumber = 2,
+    kCodeFieldNumber = 1,
+  };
+  // repeated .cniface.OCRResponseItem results = 3;
+  int results_size() const;
+  private:
+  int _internal_results_size() const;
+  public:
+  void clear_results();
+  ::cniface::OCRResponseItem* mutable_results(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::cniface::OCRResponseItem >*
+      mutable_results();
+  private:
+  const ::cniface::OCRResponseItem& _internal_results(int index) const;
+  ::cniface::OCRResponseItem* _internal_add_results();
+  public:
+  const ::cniface::OCRResponseItem& results(int index) const;
+  ::cniface::OCRResponseItem* add_results();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::cniface::OCRResponseItem >&
+      results() const;
+
+  // string message = 2;
+  void clear_message();
+  const std::string& message() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_message(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_message();
+  PROTOBUF_NODISCARD std::string* release_message();
+  void set_allocated_message(std::string* message);
+  private:
+  const std::string& _internal_message() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_message(const std::string& value);
+  std::string* _internal_mutable_message();
+  public:
+
+  // int32 code = 1;
+  void clear_code();
+  int32_t code() const;
+  void set_code(int32_t value);
+  private:
+  int32_t _internal_code() const;
+  void _internal_set_code(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:cniface.OCRResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::cniface::OCRResponseItem > results_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr message_;
+  int32_t code_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_cniface_2eproto;
+};
 // ===================================================================
 
 
@@ -6652,9 +7227,387 @@ SearchResponse::results() const {
   return results_;
 }
 
+// -------------------------------------------------------------------
+
+// OCRRequest
+
+// string imageBase64 = 1;
+inline void OCRRequest::clear_imagebase64() {
+  imagebase64_.ClearToEmpty();
+}
+inline const std::string& OCRRequest::imagebase64() const {
+  // @@protoc_insertion_point(field_get:cniface.OCRRequest.imageBase64)
+  return _internal_imagebase64();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void OCRRequest::set_imagebase64(ArgT0&& arg0, ArgT... args) {
+ 
+ imagebase64_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:cniface.OCRRequest.imageBase64)
+}
+inline std::string* OCRRequest::mutable_imagebase64() {
+  std::string* _s = _internal_mutable_imagebase64();
+  // @@protoc_insertion_point(field_mutable:cniface.OCRRequest.imageBase64)
+  return _s;
+}
+inline const std::string& OCRRequest::_internal_imagebase64() const {
+  return imagebase64_.Get();
+}
+inline void OCRRequest::_internal_set_imagebase64(const std::string& value) {
+  
+  imagebase64_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* OCRRequest::_internal_mutable_imagebase64() {
+  
+  return imagebase64_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* OCRRequest::release_imagebase64() {
+  // @@protoc_insertion_point(field_release:cniface.OCRRequest.imageBase64)
+  return imagebase64_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void OCRRequest::set_allocated_imagebase64(std::string* imagebase64) {
+  if (imagebase64 != nullptr) {
+    
+  } else {
+    
+  }
+  imagebase64_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), imagebase64,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (imagebase64_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    imagebase64_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:cniface.OCRRequest.imageBase64)
+}
+
+// bool isCls = 2;
+inline void OCRRequest::clear_iscls() {
+  iscls_ = false;
+}
+inline bool OCRRequest::_internal_iscls() const {
+  return iscls_;
+}
+inline bool OCRRequest::iscls() const {
+  // @@protoc_insertion_point(field_get:cniface.OCRRequest.isCls)
+  return _internal_iscls();
+}
+inline void OCRRequest::_internal_set_iscls(bool value) {
+  
+  iscls_ = value;
+}
+inline void OCRRequest::set_iscls(bool value) {
+  _internal_set_iscls(value);
+  // @@protoc_insertion_point(field_set:cniface.OCRRequest.isCls)
+}
+
+// bool isRec = 3;
+inline void OCRRequest::clear_isrec() {
+  isrec_ = false;
+}
+inline bool OCRRequest::_internal_isrec() const {
+  return isrec_;
+}
+inline bool OCRRequest::isrec() const {
+  // @@protoc_insertion_point(field_get:cniface.OCRRequest.isRec)
+  return _internal_isrec();
+}
+inline void OCRRequest::_internal_set_isrec(bool value) {
+  
+  isrec_ = value;
+}
+inline void OCRRequest::set_isrec(bool value) {
+  _internal_set_isrec(value);
+  // @@protoc_insertion_point(field_set:cniface.OCRRequest.isRec)
+}
+
+// -------------------------------------------------------------------
+
+// OCRResponseItem
+
+// repeated float position = 1;
+inline int OCRResponseItem::_internal_position_size() const {
+  return position_.size();
+}
+inline int OCRResponseItem::position_size() const {
+  return _internal_position_size();
+}
+inline void OCRResponseItem::clear_position() {
+  position_.Clear();
+}
+inline float OCRResponseItem::_internal_position(int index) const {
+  return position_.Get(index);
+}
+inline float OCRResponseItem::position(int index) const {
+  // @@protoc_insertion_point(field_get:cniface.OCRResponseItem.position)
+  return _internal_position(index);
+}
+inline void OCRResponseItem::set_position(int index, float value) {
+  position_.Set(index, value);
+  // @@protoc_insertion_point(field_set:cniface.OCRResponseItem.position)
+}
+inline void OCRResponseItem::_internal_add_position(float value) {
+  position_.Add(value);
+}
+inline void OCRResponseItem::add_position(float value) {
+  _internal_add_position(value);
+  // @@protoc_insertion_point(field_add:cniface.OCRResponseItem.position)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+OCRResponseItem::_internal_position() const {
+  return position_;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+OCRResponseItem::position() const {
+  // @@protoc_insertion_point(field_list:cniface.OCRResponseItem.position)
+  return _internal_position();
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+OCRResponseItem::_internal_mutable_position() {
+  return &position_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+OCRResponseItem::mutable_position() {
+  // @@protoc_insertion_point(field_mutable_list:cniface.OCRResponseItem.position)
+  return _internal_mutable_position();
+}
+
+// float score = 2;
+inline void OCRResponseItem::clear_score() {
+  score_ = 0;
+}
+inline float OCRResponseItem::_internal_score() const {
+  return score_;
+}
+inline float OCRResponseItem::score() const {
+  // @@protoc_insertion_point(field_get:cniface.OCRResponseItem.score)
+  return _internal_score();
+}
+inline void OCRResponseItem::_internal_set_score(float value) {
+  
+  score_ = value;
+}
+inline void OCRResponseItem::set_score(float value) {
+  _internal_set_score(value);
+  // @@protoc_insertion_point(field_set:cniface.OCRResponseItem.score)
+}
+
+// string text = 3;
+inline void OCRResponseItem::clear_text() {
+  text_.ClearToEmpty();
+}
+inline const std::string& OCRResponseItem::text() const {
+  // @@protoc_insertion_point(field_get:cniface.OCRResponseItem.text)
+  return _internal_text();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void OCRResponseItem::set_text(ArgT0&& arg0, ArgT... args) {
+ 
+ text_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:cniface.OCRResponseItem.text)
+}
+inline std::string* OCRResponseItem::mutable_text() {
+  std::string* _s = _internal_mutable_text();
+  // @@protoc_insertion_point(field_mutable:cniface.OCRResponseItem.text)
+  return _s;
+}
+inline const std::string& OCRResponseItem::_internal_text() const {
+  return text_.Get();
+}
+inline void OCRResponseItem::_internal_set_text(const std::string& value) {
+  
+  text_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* OCRResponseItem::_internal_mutable_text() {
+  
+  return text_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* OCRResponseItem::release_text() {
+  // @@protoc_insertion_point(field_release:cniface.OCRResponseItem.text)
+  return text_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void OCRResponseItem::set_allocated_text(std::string* text) {
+  if (text != nullptr) {
+    
+  } else {
+    
+  }
+  text_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), text,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (text_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    text_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:cniface.OCRResponseItem.text)
+}
+
+// float clsScore = 4;
+inline void OCRResponseItem::clear_clsscore() {
+  clsscore_ = 0;
+}
+inline float OCRResponseItem::_internal_clsscore() const {
+  return clsscore_;
+}
+inline float OCRResponseItem::clsscore() const {
+  // @@protoc_insertion_point(field_get:cniface.OCRResponseItem.clsScore)
+  return _internal_clsscore();
+}
+inline void OCRResponseItem::_internal_set_clsscore(float value) {
+  
+  clsscore_ = value;
+}
+inline void OCRResponseItem::set_clsscore(float value) {
+  _internal_set_clsscore(value);
+  // @@protoc_insertion_point(field_set:cniface.OCRResponseItem.clsScore)
+}
+
+// int32 clsLabel = 5;
+inline void OCRResponseItem::clear_clslabel() {
+  clslabel_ = 0;
+}
+inline int32_t OCRResponseItem::_internal_clslabel() const {
+  return clslabel_;
+}
+inline int32_t OCRResponseItem::clslabel() const {
+  // @@protoc_insertion_point(field_get:cniface.OCRResponseItem.clsLabel)
+  return _internal_clslabel();
+}
+inline void OCRResponseItem::_internal_set_clslabel(int32_t value) {
+  
+  clslabel_ = value;
+}
+inline void OCRResponseItem::set_clslabel(int32_t value) {
+  _internal_set_clslabel(value);
+  // @@protoc_insertion_point(field_set:cniface.OCRResponseItem.clsLabel)
+}
+
+// -------------------------------------------------------------------
+
+// OCRResponse
+
+// int32 code = 1;
+inline void OCRResponse::clear_code() {
+  code_ = 0;
+}
+inline int32_t OCRResponse::_internal_code() const {
+  return code_;
+}
+inline int32_t OCRResponse::code() const {
+  // @@protoc_insertion_point(field_get:cniface.OCRResponse.code)
+  return _internal_code();
+}
+inline void OCRResponse::_internal_set_code(int32_t value) {
+  
+  code_ = value;
+}
+inline void OCRResponse::set_code(int32_t value) {
+  _internal_set_code(value);
+  // @@protoc_insertion_point(field_set:cniface.OCRResponse.code)
+}
+
+// string message = 2;
+inline void OCRResponse::clear_message() {
+  message_.ClearToEmpty();
+}
+inline const std::string& OCRResponse::message() const {
+  // @@protoc_insertion_point(field_get:cniface.OCRResponse.message)
+  return _internal_message();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void OCRResponse::set_message(ArgT0&& arg0, ArgT... args) {
+ 
+ message_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:cniface.OCRResponse.message)
+}
+inline std::string* OCRResponse::mutable_message() {
+  std::string* _s = _internal_mutable_message();
+  // @@protoc_insertion_point(field_mutable:cniface.OCRResponse.message)
+  return _s;
+}
+inline const std::string& OCRResponse::_internal_message() const {
+  return message_.Get();
+}
+inline void OCRResponse::_internal_set_message(const std::string& value) {
+  
+  message_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* OCRResponse::_internal_mutable_message() {
+  
+  return message_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* OCRResponse::release_message() {
+  // @@protoc_insertion_point(field_release:cniface.OCRResponse.message)
+  return message_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void OCRResponse::set_allocated_message(std::string* message) {
+  if (message != nullptr) {
+    
+  } else {
+    
+  }
+  message_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), message,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (message_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    message_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:cniface.OCRResponse.message)
+}
+
+// repeated .cniface.OCRResponseItem results = 3;
+inline int OCRResponse::_internal_results_size() const {
+  return results_.size();
+}
+inline int OCRResponse::results_size() const {
+  return _internal_results_size();
+}
+inline void OCRResponse::clear_results() {
+  results_.Clear();
+}
+inline ::cniface::OCRResponseItem* OCRResponse::mutable_results(int index) {
+  // @@protoc_insertion_point(field_mutable:cniface.OCRResponse.results)
+  return results_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::cniface::OCRResponseItem >*
+OCRResponse::mutable_results() {
+  // @@protoc_insertion_point(field_mutable_list:cniface.OCRResponse.results)
+  return &results_;
+}
+inline const ::cniface::OCRResponseItem& OCRResponse::_internal_results(int index) const {
+  return results_.Get(index);
+}
+inline const ::cniface::OCRResponseItem& OCRResponse::results(int index) const {
+  // @@protoc_insertion_point(field_get:cniface.OCRResponse.results)
+  return _internal_results(index);
+}
+inline ::cniface::OCRResponseItem* OCRResponse::_internal_add_results() {
+  return results_.Add();
+}
+inline ::cniface::OCRResponseItem* OCRResponse::add_results() {
+  ::cniface::OCRResponseItem* _add = _internal_add_results();
+  // @@protoc_insertion_point(field_add:cniface.OCRResponse.results)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::cniface::OCRResponseItem >&
+OCRResponse::results() const {
+  // @@protoc_insertion_point(field_list:cniface.OCRResponse.results)
+  return results_;
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

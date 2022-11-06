@@ -559,5 +559,66 @@ RepositoryService::Service::~Service() {
 }
 
 
+static const char* OCRService_method_names[] = {
+  "/cniface.OCRService/ocr",
+};
+
+std::unique_ptr< OCRService::Stub> OCRService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
+  (void)options;
+  std::unique_ptr< OCRService::Stub> stub(new OCRService::Stub(channel, options));
+  return stub;
+}
+
+OCRService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
+  : channel_(channel), rpcmethod_ocr_(OCRService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  {}
+
+::grpc::Status OCRService::Stub::ocr(::grpc::ClientContext* context, const ::cniface::OCRRequest& request, ::cniface::OCRResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::cniface::OCRRequest, ::cniface::OCRResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ocr_, context, request, response);
+}
+
+void OCRService::Stub::async::ocr(::grpc::ClientContext* context, const ::cniface::OCRRequest* request, ::cniface::OCRResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::cniface::OCRRequest, ::cniface::OCRResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ocr_, context, request, response, std::move(f));
+}
+
+void OCRService::Stub::async::ocr(::grpc::ClientContext* context, const ::cniface::OCRRequest* request, ::cniface::OCRResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ocr_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::cniface::OCRResponse>* OCRService::Stub::PrepareAsyncocrRaw(::grpc::ClientContext* context, const ::cniface::OCRRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::cniface::OCRResponse, ::cniface::OCRRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_ocr_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::cniface::OCRResponse>* OCRService::Stub::AsyncocrRaw(::grpc::ClientContext* context, const ::cniface::OCRRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncocrRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+OCRService::Service::Service() {
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      OCRService_method_names[0],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< OCRService::Service, ::cniface::OCRRequest, ::cniface::OCRResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](OCRService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::cniface::OCRRequest* req,
+             ::cniface::OCRResponse* resp) {
+               return service->ocr(ctx, req, resp);
+             }, this)));
+}
+
+OCRService::Service::~Service() {
+}
+
+::grpc::Status OCRService::Service::ocr(::grpc::ServerContext* context, const ::cniface::OCRRequest* request, ::cniface::OCRResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+
 }  // namespace cniface
 
