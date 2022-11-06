@@ -49,7 +49,7 @@ grpc::Status OCRService::ocr(::grpc::ServerContext *context, const ::cniface::OC
 
     std::vector<cv::Mat> img_list;
 
-    if (!request->iscls() && !request->isrec()) {
+    if (request->iscls() || request->isrec()) {
         for (auto & ocr_result : ocr_results) {
             cv::Mat crop_img;
             crop_img = PaddleOCR::Utility::GetRotateCropImage(img, ocr_result.box);
