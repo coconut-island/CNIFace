@@ -35,7 +35,7 @@ RUN wget https://github.com/coconut-island/CNIFaceResource/raw/main/relay_models
 
 RUN wget https://github.com/coconut-island/CNIFaceResource/raw/main/relay_models/x86_llvm/w600k_r50.json -O /cniface/models/w600k_r50.json
 RUN wget https://github.com/coconut-island/CNIFaceResource/raw/main/relay_models/x86_llvm/w600k_r50.params -O /cniface/models/w600k_r50.params
-RUN wget https://github.com/coconut-island/CNIFaceResource/raw/main/relay_models/x86_llvm/w600k_r50.so -O v/models/w600k_r50.so
+RUN wget https://github.com/coconut-island/CNIFaceResource/raw/main/relay_models/x86_llvm/w600k_r50.so -O /cniface/models/w600k_r50.so
 
 RUN wget https://github.com/coconut-island/CNIFaceResource/raw/main/relay_models/x86_llvm/w600k_mbf.json -O /cniface/models/w600k_mbf.json
 RUN wget https://github.com/coconut-island/CNIFaceResource/raw/main/relay_models/x86_llvm/w600k_mbf.params -O /cniface/models/w600k_mbf.params
