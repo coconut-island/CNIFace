@@ -1,4 +1,4 @@
-FROM abelleeye/cniface-base:202211010248
+FROM abelleeye/cniface-base:202211200337
 
 RUN mkdir -p /cniface
 
