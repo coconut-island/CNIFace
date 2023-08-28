@@ -1,0 +1,85 @@
+plugins {
+    id 'org.springframework.boot' version '2.7.0'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+    id 'com.google.protobuf' version '0.8.18'
+    id "de.undercouch.download" version "5.1.0"
+}
+
+apply plugin: 'com.google.protobuf'
+
+group = 'cn.abellee.cniface'
+description = "CNIFace is a simple way of face platform."
+sourceCompatibility = JavaVersion.VERSION_11
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa"
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    implementation 'net.devh:grpc-client-spring-boot-starter:2.13.1.RELEASE'
+
+    implementation 'io.jsonwebtoken:jjwt-api:0.10.6'
+    implementation 'io.jsonwebtoken:jjwt-impl:0.10.6'
+    implementation 'io.jsonwebtoken:jjwt-jackson:0.10.6'
+
+    runtimeOnly 'mysql:mysql-connector-java'
+
+    compileOnly 'org.projectlombok:lombok'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'build/generated/source/proto/main/java'
+        }
+        proto {
+            srcDir 'proto'
+        }
+        resources {
+        }
+    }
+}
+
+task downloadCNIFaceProto(type: Download) {
+    src 'https://raw.githubusercontent.com/coconut-island/CNIFace/master/grpc/cniface.proto'
+    dest 'proto'
+    overwrite true
+}
+
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:3.19.4"
+    }
+    plugins {
+        grpc {
+            artifact = 'io.grpc:protoc-gen-grpc-java:1.47.0'
+        }
+    }
+    generateProtoTasks {
+        all()*.plugins {
+            grpc {
+                outputSubDir = "java"
+            }
+        }
+    }
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}

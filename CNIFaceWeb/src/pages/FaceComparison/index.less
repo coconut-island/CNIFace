@@ -1,0 +1,55 @@
+@import (reference) '~antd/es/style/themes/index';
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .faceDetectorWrapper {
+    height: 50vh;
+    width: 100vh;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .selectImgWrapper {
+    z-index: 10;
+    position: absolute;
+    width: 960px;
+    height: 540px;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .selectRect {
+      position: absolute;
+      cursor: pointer;
+    }
+  }
+
+  .similarityWrapper {
+    flex-direction: column;
+    display: flex;
+
+    .similarityValue {
+      margin-bottom: 20px;
+      color: rgb(151, 34, 34);
+      font-size: 4vh;
+      text-align: center;
+    }
+  }
+}
+
+
+.faceScoreThresholdSliderWrapper {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+
+  .faceScoreThresholdSlider {
+    width: 25%;
+  }
+}

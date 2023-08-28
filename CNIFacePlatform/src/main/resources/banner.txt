@@ -1,0 +1,8 @@
+${AnsiColor.BLUE}
+   ____ _   _ ___ _____
+  / ___| \ | |_ _|  ___|_ _  ___ ___
+ | |   |  \| || || |_ / _` |/ __/ _ \
+ | |___| |\  || ||  _| (_| | (_|  __/
+  \____|_| \_|___|_|  \__,_|\___\___|
+${AnsiColor.BRIGHT_YELLOW}
+Version: ${application.version}${AnsiColor.GREEN}

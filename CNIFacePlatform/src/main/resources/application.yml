@@ -1,0 +1,44 @@
+server:
+  port: 22605
+
+spring:
+  application:
+    name: cniface-platform
+  jackson:
+    default-property-inclusion: NON_NULL
+    date-format: yyyy-MM-dd HH:mm:ss
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${DB_URL:jdbc:mysql://localhost:3306/cniface?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8}
+    username: root
+    password: cniface
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    show-sql: false
+    database-platform: cn.abellee.cniface.platform.domain.entity.mysql.DefaultMySQL57InnoDBDialect
+  servlet:
+    multipart:
+      max-file-size: 10240MB
+      max-request-size: 10240MB
+      resolve-lazily: true
+
+grpc:
+  client:
+    cniface:
+      address: ${CNIFACE_GRPC_ADDR:static://127.0.0.1:22506}
+      enable-keep-alive: true
+      keep-alive-without-calls: true
+      negotiation-type: plaintext
+
+jwt:
+  base64-secret: Y25pZmFjZUZhY2VQbGF0Zm9ybUp3dFRva2VuU2VjcmV0
+  token-validity-in-seconds: 86400
+  token-validity-in-seconds-for-remember-me: 1080000
+
+cniface:
+  model:
+    detect: det_10g
+    recognition: w600k_r50
